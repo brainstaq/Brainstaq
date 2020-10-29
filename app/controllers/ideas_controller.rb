@@ -8,10 +8,19 @@ class IdeasController < ApplicationController
 
   # GET /ideas.json
   def index
-    @page = params.fetch(:page, 0).to_i 
-    @next_page = @page + 1 if Idea.count >= 6
-    @prev_page = @page - 1 if @page < 0
-    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
+    if params[:category].blank?
+      @page = params.fetch(:page, 0).to_i 
+      @next_page = @page + 1 if Idea.count >= 6
+      @prev_page = @page - 1 if @page < 0
+      @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      # @ideas = Idea.where(category_id: @category_id).order("created_at DESC")
+      @page = params.fetch(:page, 0).to_i 
+      @next_page = @page + 1 if Idea.count >= 6
+      @prev_page = @page - 1 if @page < 0
+      @ideas = Idea.where(category_id: @category_id).offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
+    end
 
     @ideas.each do |idea|
       idea.set_days_left!
@@ -56,6 +65,7 @@ class IdeasController < ApplicationController
       else
         format.html { render :new }
       end
+
     end
   end
 

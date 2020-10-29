@@ -1,5 +1,12 @@
-<% Category.all.each do |category| %>
-  <li>
-    <%= link_to category.name, ideas_path(category: category.name) %>
-  </li>
-<% end %>
+<div class="dropright">
+  <button class="btn btn-primary" style="font-size: 14px;" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort by Category
+  </button>
+  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+    <% Category.all.each do |category| %>
+      <li>
+        <%= link_to category.name, ideas_path(category: category.name), class: "dropdown-item" %>
+      </li>
+    <% end %>      
+  </div>
+</div>

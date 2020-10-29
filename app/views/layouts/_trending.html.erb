@@ -11,7 +11,7 @@
           <h4><%= link_to idea.title, idea, class: 'text-dark' %></h4>
           <span>
             <% if idea.category %>
-            <%= idea.category %>
+            <%= idea.category.name %>
             <% else %>
             <%= 'General' %>
             <% end %>

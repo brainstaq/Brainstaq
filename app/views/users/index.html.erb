@@ -61,7 +61,7 @@
                       <li><i class="fas fa-map-marker-alt"></i>  <%= idea.user.country %></li>
                       <li><i class="fas fa-list-alt"></i>  
                         <% if idea.category %>
-                          <%= idea.category %>
+                          <%= idea.category.name %>
                       <% else %>
                       <%= 'General' %>
                       <% end %></li>

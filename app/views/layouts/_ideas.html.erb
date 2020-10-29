@@ -1,6 +1,6 @@
 <% @ideas.in_groups_of(3) do |group| %>
           <!-- <div> -->
-            <div class="container mb-5">
+            <div class="container mb-3">
               <div class="row">
                 <% group.compact.each do |idea| %>
                   <div class="col-md-4 mb-3">
@@ -11,7 +11,7 @@
                       <div class="idea-inner-text py-4 px-4">
                         <span class="idea-category" style="font-size: 12px; font-weight: bold;">
                           <% if idea.category %>
-                          <%= idea.category %>
+                          <%= idea.category.name %>
                           <% else %>
                           <%= 'General' %>
                           <% end %>

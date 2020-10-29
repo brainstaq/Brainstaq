@@ -16,6 +16,7 @@ class Idea < ApplicationRecord
   has_many :donors, through: :donations
   has_many :perks, dependent: :destroy
   has_many_attached :images, dependent: :destroy
+  has_many :line_items, inverse_of: :order
 
   accepts_nested_attributes_for :perks, allow_destroy: true, reject_if: proc { |attr| attr['title'].blank? } 
 
@@ -71,7 +72,7 @@ class Idea < ApplicationRecord
   end
 
   def expired?
-    self.expiration_date < Time.current
+    self.end_date < Time.current
   end
 
   # def relevance_bar

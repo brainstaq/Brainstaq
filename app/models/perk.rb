@@ -11,4 +11,5 @@ class Perk < ApplicationRecord
   def donations_count
     donations.map{ |e| e.donor_id }.uniq.count
   end
+
 end

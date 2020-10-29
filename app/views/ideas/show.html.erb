@@ -6,7 +6,11 @@
       </div>
       <div class="col-md-5 pl-0">
         <button type="button" class="btn btn-primary btn-sm my-3 float-right rounded-pill" disabled>
-          <%= @idea.category %>
+          <% if @idea.category %>
+            <%= @idea.category %>
+          <% else %>
+            <%= 'General' %>
+          <% end %>
         </button>
         <h3 class="card-title" style="margin-bottom: -3px; font-size: 32px; font-weight: bold;">
           <%= @idea.title %>
@@ -30,39 +34,39 @@
           <% else %>
             <%#= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
           <% end %>    
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 1 %>
           <div class="mt-3" style="margin-bottom: -30px;">
             <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
               <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
-              | <small><%#= idea.donors_count %> 200 donors</small>
-              | <small><%= distance_of_time_in_words_to_now(@idea.expires_at) %> to go</small>
+              | <small><%= @idea.donors_count %> donors</small>
+              | <small><%= distance_of_time_in_words_to_now(@idea.end_date) %> to go</small>
             </p>
           </div>
         <% else %>
         <div class="mt-3" style="margin-bottom: -30px;">
           <p class="text-danger mb-5" style="font-weight: bold;">Inactive Campaign <br>
             <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
-            | <small><%#= idea.donors_count %> 0 donors</small>
+            | <small><%= @idea.donors_count %> donors</small>
             <!-- | <small>Campaign Expired!</small> -->
           </p>
         </div>  
         <% end %>
       <% else %>
-      <%= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
+      <%#= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
         <%#= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 1 %>
           <div class="mt-3" style="margin-bottom: -30px;">
             <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
               <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
-              | <small><%#= idea.donors_count %> 200 donors</small>
-              | <small><%= distance_of_time_in_words_to_now(@idea.expires_at) %> to go</small>
+              | <small><%= @idea.donors_count %> donors</small>
+              | <small><%= distance_of_time_in_words_to_now(@idea.end_date) %> to go</small>
             </p>
           </div>
         <% else %>
         <div class="mt-3" style="margin-bottom: -30px;">
           <p class="text-danger mb-5" style="font-weight: bold;">Inactive Campaign <br>
             <small>N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
-            | <small><%#= idea.donors_count %> 0 donors</small>
+            | <small><%= @idea.donors_count %> donors</small>
             <!-- | <small>Campaign Expired!</small> -->
           </p>
         </div>  
@@ -94,13 +98,13 @@
       </a>
 
       <%# if user_signed_in? %>
-        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 75 %>
+        <% if "#{@idea.impressions.size + @idea.get_likes.size + @idea.comments.size}".to_i > 1 %>
           <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseUpdates" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
             Support this Idea
           </a>
         <% end %>
       <%# end %>
-    </p>
+    </p> 
     
     <div class="collapse mb-3" id="collapseDetails">
       <div class="card card-body">
@@ -168,8 +172,7 @@
                     <!-- <p class="text-sm">You're already subscribed to this perk.</p> -->
                   <% else %>
                     <%= link_to "Support this idea with #{number_to_currency(perk.amount, :unit => "N")}", 
-                    new_subscription_path(amount: perk.amount, idea: @idea, 
-                    plan: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn btn1 btn-block text-white" %>
+                    new_donation_path(amount: perk.amount, idea: @idea), class: "btn btn1 btn-block text-white" %>
                   <%# end %>
                 <% end %>
               <% end %>

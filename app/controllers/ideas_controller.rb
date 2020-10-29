@@ -1,19 +1,22 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show]
   before_action :set_idea, only: [:show, :edit, :destroy, :update, :like, :unlike]
+  before_action :find_idea, only: [:show, :edit, :update, :destroy]
   impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
   
-
   IDEAS_PER_PAGE = 6
-
-   
 
   # GET /ideas.json
   def index
     @page = params.fetch(:page, 0).to_i 
-    @next_page = @page + 1 if Idea.count > 6
+    @next_page = @page + 1 if Idea.count >= 6
     @prev_page = @page - 1 if @page < 0
-    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)  
+    @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
+
+    @ideas.each do |idea|
+      idea.set_days_left!
+      idea.set_pct_funded!
+    end
   end
 
   # GET /ideas/1
@@ -23,6 +26,8 @@ class IdeasController < ApplicationController
     @comment = Comment.new
     @comments = @idea.comments
     @comment.idea_id = @idea.id
+    @idea.set_days_left!
+    @idea.set_pct_funded!
   end
 
   # GET /ideas/new
@@ -99,9 +104,13 @@ class IdeasController < ApplicationController
       @idea = Idea.find(params[:id])
     end
 
+    def find_idea
+      @idea = Idea.find(params[:id])
+    end
+
     # Only allow a list of trusted parameters through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :overview, :impact, :donation_goal, :challenges, :category, :image, :image_cache, :user_id, 
+      params.require(:idea).permit(:title, :description, :overview, :impact, :donation_goal, :challenges, :category_id, :image, :end_date, :image_cache, :user_id, 
       perks_attributes: [:id, :_destroy, :title, :description, :amount, :quantity])
     end
 end

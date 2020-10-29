@@ -1,7 +1,7 @@
 <%= form_with(model: idea, local: true, multipart: true) do |form| %>
   <% if idea.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+    <div id="error_explanation" class="text-center text-danger">
+      <h4>Oops! You've got <%= pluralize(idea.errors.count, "error") %></h4>
 
       <ul>
         <% idea.errors.full_messages.each do |message| %>
@@ -15,70 +15,48 @@
   <div class="container col-sm-6">
     <div class="row m-3">
       <div class="col-sm-12 form-group">
-        <%= form.label :idea_title %>
+        <%= form.label :idea_title, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_field :title, maxlength: "23", class: "form-control", placeholder: "What would you call your idea?"  %>
       </div>
       <div class="col-sm-12 form-group">
-        <%= form.label :idea_category %>
-        <%= form.select :category, options_for_select([
-          ['What category does your idea fall into?'],
-          ['Agriculture'], 
-          ['Arts & Culture'], 
-          ['Beauty & Fashion'], 
-          ['Business'],
-          ['Community'],
-          ['Design'],
-          ['Education'],
-          ['Entertainment'],
-          ['Food'],
-          ['Gadgets'],
-          ['Internet'],
-          ['IT & Telecoms'],
-          ['Kids'],
-          ['Media & Publishing'],
-          ['Recipes'],
-          ['Renewable Energy'],
-          ['Science & Technology'],
-          ['Social Networks'],
-          ['Social & Organization'],
-          ['Sports & Hobbies'],
-          ['Startups'],
-          ['Sustainability'],
-          ['Tourism & Travel'],
-          ['Transportation'],
-          ['Web & Applications'],
-          ['Writings'],
-          ['Other']
-          ]), {}, :class => 'form-control', :prompt => 'Select Category' %>
+        <%= form.label :idea_category, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.collection_select(:category_id, Category.all, :id, :name, 
+            {prompt: 'What category does your idea fall into?'}, class: "form-control") %>
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :idea_description %>
+        <%= form.label :idea_description, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_area :description, class: "form-control tinymce", placeholder: "How would you describe your idea in 5 sentences?"%>
         <%= tinymce %>
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :problem %>
+        <%= form.label :problem, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_area :challenges, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
         <%= tinymce %>
       </div>
       
       <div class="form-group col-sm-12">
-        <%= form.label :solution %>
+        <%= form.label :solution, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_area :overview, class: "form-control tinymce", placeholder: "How are you solving this problem?"%>
         <%= tinymce %>
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :impact %>
+        <%= form.label :impact, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_area :impact, class: "form-control tinymce", placeholder: "How would your idea impact the world?"%>
         <%= tinymce %>
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :funding_goal %>
+        <%= form.label :funding_goal, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_field :donation_goal, class: "form-control tinymce", placeholder: "How much would it cost to implement your idea?"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :campaign_expiry_date, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.date_field :end_date, class: "form-control tinymce", placeholder: "How much time do you need to raise the funding you need?"%>
         <%= tinymce %>
       </div>
 
@@ -87,7 +65,7 @@
       </div>
     
       <div class="col-sm-12">
-        <%= form.label :idea_image %>
+        <%= form.label :idea_image, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.file_field :image %>
       </div>
             

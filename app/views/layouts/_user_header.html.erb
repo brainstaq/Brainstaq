@@ -25,7 +25,7 @@
         <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", style: "font-size: 24px;"), new_idea_path %> 
         
       
-        <div class="navbar-text float-right">
+        <div class="navbar-text float-right mr-5">
           <div class="dropdown ml-1">
             <% if current_user.image_url %>
               <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>

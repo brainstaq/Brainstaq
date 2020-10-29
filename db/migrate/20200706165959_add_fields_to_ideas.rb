@@ -5,3 +5,4 @@ class AddFieldsToIdeas < ActiveRecord::Migration[6.0]
     add_column :ideas, :status, :string, default: "active"
   end
 end
+ 

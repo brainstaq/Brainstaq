@@ -11,6 +11,7 @@ class User < ApplicationRecord
   #has_secure_password
 
   has_many :ideas, dependent: :destroy
+  has_many :donations
   has_many :comments, dependent: :destroy
 
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy

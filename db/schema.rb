@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_22_155835) do
+ActiveRecord::Schema.define(version: 2020_10_28_190200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 2020_08_22_155835) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "username"
     t.text "body"
@@ -59,6 +65,15 @@ ActiveRecord::Schema.define(version: 2020_08_22_155835) do
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.integer "donor_id", null: false
+    t.integer "idea_id", null: false
+    t.integer "perk_id", null: false
+    t.float "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -100,7 +115,6 @@ ActiveRecord::Schema.define(version: 2020_08_22_155835) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.string "category"
     t.integer "relevance_bar", default: 0
     t.string "slug"
     t.string "overview"
@@ -108,8 +122,10 @@ ActiveRecord::Schema.define(version: 2020_08_22_155835) do
     t.string "impact"
     t.decimal "donation_goal", default: "0.0"
     t.integer "donated_amount", default: 0
-    t.datetime "expires_at", default: "2020-08-20 19:00:16"
     t.string "status", default: "active"
+    t.integer "donations_count", default: 0
+    t.date "end_date"
+    t.integer "category_id"
     t.index ["slug"], name: "index_ideas_on_slug", unique: true
   end
 

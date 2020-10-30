@@ -31,18 +31,27 @@
                           <p class="mb-0 mt-3" style="font-size: 12px;">
                             <%= truncate(sanitize(idea.description, tags: []), length: 120) %>
                           </p>
-                          <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
+                          
+                          <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 && idea.expired? || 
+                              "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i < 75 && idea.expired? %>
                             <div class="mt-3" style="margin-bottom: -30px;">
-                              <p class="text-success" style="font-weight: bold;">Active Campaign <br>
+                              <p class="text-danger" style="font-weight: bold;">Campaign Expired! <br>
                                 <small>N<%= idea.donated_amount %> raised of <%= number_to_currency(idea.donation_goal, :unit => "N") %></small>
-                                | <small>Expiry: <%= idea.end_date %></small>
+                                | <small>Campaign Expired!</small>
                               </p>
                             </div>
-                          <% else %>
+                          <% elsif "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i < 75 %>
                           <div class="mt-3" style="margin-bottom: -30px;">
                             <p class="text-danger" style="font-weight: bold;">Inactive Campaign <br>
                               <small>N<%= idea.donated_amount %> raised of <%= number_to_currency(idea.donation_goal, :unit => "N") %></small>
-                              | <small>Expiry: <%= idea.end_date %></small>
+                              | <small><%= distance_of_time_in_words_to_now(idea.end_date) %> to go</small>
+                            </p>
+                          </div>
+                          <% elsif "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
+                          <div class="mt-3" style="margin-bottom: -30px;">
+                            <p class="text-success" style="font-weight: bold;">Active Campaign <br>
+                              <small>N<%= idea.donated_amount %> raised of <%= number_to_currency(idea.donation_goal, :unit => "N") %></small>
+                              | <small><%= distance_of_time_in_words_to_now(idea.end_date) %> to go</small>
                             </p>
                           </div>
                           <% end %>   

@@ -186,19 +186,29 @@
                             </div>
                             <div class="job_descp">
                               <h3><%= link_to idea.title, idea, class: 'text-dark' %></h3>
-                              <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
-                                <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
-                                  <small>N<%= idea.donated_amount %> raised of 
-                                    <%= number_to_currency(idea.donation_goal, :unit => "N") %>
-                                  </small>
-                                </span>
-                              <% else %>
-                              <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
+                              <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 && idea.expired? || 
+                              "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i < 75 && idea.expired? %>
+                              <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
                                 <small>N<%= idea.donated_amount %> raised of 
-                                  <%= number_to_currency(idea.donation_goal, :unit => "N") %>
+                                  <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
+                                  <!-- | Exp: <%#= idea.end_date %> -->
                                 </small>
                               </span>
-                              <% end %>
+                            <% elsif "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i < 75 %>
+                              <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
+                                <small>N<%= idea.donated_amount %> raised of 
+                                  <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
+                                  <!-- | Exp: <%#= idea.end_date %> -->
+                                </small>
+                              </span>
+                            <% elsif "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
+                              <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
+                                <small>N<%= idea.donated_amount %> raised of 
+                                  <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
+                                  <!-- | Exp: <%#= idea.end_date %> -->
+                                </small>
+                              </span>
+                            <% end %>
                               <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %>
                               <p class="mt-3 mb-0" style="font-size: 14px;"><%= truncate(sanitize(idea.description, tags: []), length: 200) %></p>
                             </div>

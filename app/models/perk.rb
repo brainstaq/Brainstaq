@@ -2,7 +2,7 @@ class Perk < ApplicationRecord
   belongs_to :idea
 
   has_many :donations
-  has_many :donors, through: :donations, source: :donor
+  has_many :users
 
   def total_donations
     donations.reduce(0){ |acc, cont| acc + cont.amount }

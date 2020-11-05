@@ -13,7 +13,7 @@ class Idea < ApplicationRecord
   
   has_many :comments
   has_many :donations, through: :perks, source: :donations
-  has_many :donors, through: :donations
+  has_many :users, through: :donations
   has_many :perks, dependent: :destroy
   has_many_attached :images, dependent: :destroy
   has_many :line_items, inverse_of: :order
@@ -75,9 +75,9 @@ class Idea < ApplicationRecord
     self.end_date < Time.current
   end
 
-  # def relevance_bar
-  #   "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}"
-  # end
+  def relevance_bar
+    self.relevance_bar = (self.impressions.size + self.get_likes.size + self.comments.size)
+  end
 
   # extend FriendlyId
   # friendly_id :user_id, use: :slugged

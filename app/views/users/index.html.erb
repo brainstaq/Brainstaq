@@ -69,22 +69,21 @@
                   </div>
                   <div class="job_descp">
                     <h3><%= link_to idea.title, idea, class: 'text-dark' %></h3>
-                    <% if "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 && idea.expired? || 
-                      "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i < 75 && idea.expired? %>
+                    <% if idea.relevance_bar.to_i > 75 && idea.expired? || idea.relevance_bar.to_i < 75 && idea.expired? %>
                       <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
                         <small>N<%= idea.donated_amount %> raised of 
                           <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
                           <!-- | Exp: <%#= idea.end_date %> -->
                         </small>
                       </span>
-                    <% elsif "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i < 75 %>
+                    <% elsif idea.relevance_bar.to_i < 75 %>
                       <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
                         <small>N<%= idea.donated_amount %> raised of 
                           <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
                           <!-- | Exp: <%#= idea.end_date %> -->
                         </small>
                       </span>
-                    <% elsif "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}".to_i > 75 %>
+                    <% elsif idea.relevance_bar.to_i > 75 %>
                       <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
                         <small>N<%= idea.donated_amount %> raised of 
                           <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
@@ -118,7 +117,7 @@
 
                         <li style="font-size: 12px;"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
                         </ul>
-                      <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong><%= "#{idea.impressions.size + idea.get_likes.size + idea.comments.size }%" %></strong></a>                  
+                      <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong><%= "#{idea.relevance_bar.to_i}%" %></strong></a>                  
                   </div>
                 </div><!--post-bar end-->
               </div><!--posts-section end-->

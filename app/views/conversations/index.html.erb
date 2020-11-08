@@ -2,8 +2,6 @@
   <h3>My <span class="text-primary">Inbox</span></h3>
 </header>
 
-
-
 <style>
   .glyphicon {
     float: right;
@@ -41,31 +39,32 @@
 <div class="panel panel-default">
   <div class="col-lg-6">
     <div id="mail" class="collapse">
-      <h4 class="panel-heading">All Conversations:</h4>
+      <h4 class="panel-heading text-primary">All Conversations:</h4>
       <div class="panel-body">
         <div class="item">
           
           <% @conversations.each do |conversation| %>
             <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-            <% if conversation.recipient.present? %>
-              <% if conversation.sender_id == current_user.id %>
-                <% recipient = User.find(conversation.recipient_id) %>
-              <% else %>
-                <% recipient = User.find(conversation.sender_id) %>
-              <% end %>
-              <% unless current_user.id == recipient %>
-                <div class="columns">
-                  <div class="column">
-                    <% if recipient.image.url %>
-                      <%= image_tag recipient.image.url, class: 'rounded-circle img-circle img-responsive mr-2', style: "width: 30px; height: 30px;" %>
-                    <% else %>
-                      <%= image_tag 'avatar.png', style: "width: 40px; height: 40px;", class: "rounded-circle mr-2" %>
-                    <% end %>
-                    <div class="inline-block"><%= link_to recipient.username, conversation_messages_path(conversation) %></div>
+              <% if conversation.recipient.present? %>
+                <% if conversation.sender_id == current_user.id %>
+                  <% recipient = User.find(conversation.recipient_id) %>
+                <% else %>
+                  <% recipient = User.find(conversation.sender_id) %>
+                <% end %>
+                <% unless current_user.id == recipient %>
+                  <div class="columns">
+                    <div class="row">
+                      <% if recipient.image.url %>
+                        <%= image_tag recipient.image.url, class: 'rounded-circle img-circle img-responsive mr-2', style: "width: 30px; height: 30px;" %>
+                      <% else %>
+                        <%= image_tag 'avatar.png', style: "width: 40px; height: 40px;", class: "rounded-circle mr-2" %>
+                      <% end %>
+                      <div class="inline-block"><%= link_to recipient.first_name, conversation_messages_path(conversation), class: "text-dark" %></div>
+                    </div>
+                    <hr width="200">
                   </div>
-                </div>
+                <% end %>
               <% end %>
-            <% end %>
             <% end %>
           <% end %>
         </div>
@@ -73,17 +72,18 @@
     </div>
     <div id="new" class="collapse">
       <div class="panel-body">
-        <h4 class="panel-heading mt-2">All Users:</h4>
+        <h4 class="panel-heading mt-2 text-primary">All Users:</h4>
         <% @users.each do |user| %>
           <% if user.id != current_user.id %>
-            <div class="item">
+            <div class="row">
               <% if user.image.url %>
                 <%= image_tag user.image.url, class: 'rounded-circle img-circle img-responsive mr-2', style: "width: 30px; height: 30px;" %>
               <% else %>
-                <%= image_tag 'avatar.png', style: "width: 40px; height: 40px;", class: "rounded-circle mr-2" %>
+                <%= image_tag 'avatar.png', style: "width: 35px; height: 35px;", class: "rounded-circle img-circle img-responsive" %>
               <% end %>
-              <%= link_to "Message #{user.username}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+              <%= link_to "Message #{user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post", class: "text-dark" %>
             </div>
+            <hr width="200">
           <% end %>
         <% end %>
       </div>

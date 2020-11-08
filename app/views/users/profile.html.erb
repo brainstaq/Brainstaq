@@ -57,16 +57,42 @@
                           <%#= tel_to @user.phone if @user.phone.present? %>
                       </div> -->
                       
-                      <div style="font-size: 12px;">
-                        <i class="fas fa-globe"></i>  
-                          <%= link_to @user.website, url_for(@user.website), target: "_blank" if @user.website.present? %>
+                      <!-- <div style="font-size: 12px;">
+                        <i class="fas fa-globe"></i>   -->
+                          <%#= link_to @user.website, url_for(@user.website), target: "_blank" if @user.website.present? %>
                           <%#= link_to @user.website, URI::HTTP.build({:host => @user.website}).to_s, target: "_blank" if @user.website.present? %>
-                      </div>
+                      <!-- </div> -->
+
                       <div class="social-links mt-2">
-                        <a href="https://twitter.com/BrainstaqNG" target="_blank" class="twitter mr-1"><i class="fab fa-twitter"></i></a>
-                        <a href="https://web.facebook.com/brainstaq" target="_blank" class="facebook mr-1"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/brainstaqng/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-                        <!-- <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a> -->
+                        <% if @user.website.present? %>
+                          <%= link_to (@user.website), target: "_blank", title: "#{@user.website}" do %>
+                            <i class="fas fa-globe mr-1"></i>
+                          <% end %>
+                        <% end %>
+
+                        <% if @user.facebook_url.present? %>
+                          <%= link_to (@user.facebook_url), target: "_blank", title: "#{@user.facebook_url}" do %>
+                            <i class="fab fa-facebook mr-1"></i>
+                          <% end %>
+                        <% end %>
+
+                        <% if @user.twitter_url.present? %>
+                          <%= link_to (@user.twitter_url), target: "_blank", title: "#{@user.twitter_url}" do %>
+                            <i class="fab fa-twitter mr-1"></i>
+                          <% end %>
+                        <% end %>
+
+                        <% if @user.instagram_url.present? %>
+                          <%= link_to (@user.instagram_url), target: "_blank", title: "#{@user.instagram_url}" do %>
+                            <i class="fab fa-instagram mr-1"></i>
+                          <% end %>
+                        <% end %>
+
+                        <% if @user.linkedin_url.present? %>
+                          <%= link_to (@user.linkedin_url), target: "_blank", title: "#{@user.linkedin_url}" do %>
+                            <i class="fab fa-linkedin"></i>
+                          <% end %>
+                        <% end %>
                       </div>
                     </div><!--user_pro_status end-->
                   </div><!--user_profile end-->          
@@ -235,7 +261,7 @@
                               <li style="font-size: 12px;"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
                               </ul>
                             <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong>
-                              <%= "#{idea.impressions.size + idea.get_likes.size + idea.comments.size}%" %>
+                              <%= "#{idea.relevance_bar.to_i}%" %>
                             </strong></a>
                           </div>
                         </div><!--post-bar end-->

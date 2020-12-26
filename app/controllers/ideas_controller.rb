@@ -37,6 +37,10 @@ class IdeasController < ApplicationController
     @comment.idea_id = @idea.id
     @idea.set_days_left!
     @idea.set_pct_funded!
+    donation = Donation.includes(:idea).where(idea_id: params[:id])
+    @donors_count = donation.count
+    @donated_amount = donation.sum(:amount)
+    render :show
   end
 
   # GET /ideas/new

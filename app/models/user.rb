@@ -41,6 +41,11 @@ class User < ApplicationRecord
     Follow.where(follower_id: self.id).count
   end
 
+  # def country_name
+  #   country = ISO3166::Country[country_code]
+  #   country.translations[I18n.locale.to_s] || country.name
+  # end
+
   def self.find_for_database_authentication warden_condition
     conditions = warden_condition.dup
     login = conditions.delete(:login)

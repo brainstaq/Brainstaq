@@ -17,13 +17,19 @@
           </li>
         </ul>
 
+        <%# if cookies[:moon] %>
+          <%#= button_to 'Light', sun_path, method: :get, class: "btn-sm btn-light rounded-pill mr-2" %>
+        <%# else %>
+          <%#= button_to 'Dark', moon_path, method: :get, class: "btn-sm btn-dark rounded-pill mr-2" %>
+        <%# end %>
+
         <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
           <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded-pill', placeholder: 'Search' %>
         <% end %>
 
         
         <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", style: "font-size: 24px;"), new_idea_path %> 
-        
+         
       
         <div class="navbar-text float-right mr-5">
           <div class="dropdown ml-1">

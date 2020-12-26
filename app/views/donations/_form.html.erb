@@ -46,10 +46,10 @@
       amount:    amount,
       ref:       generateREF(),
       
-      callback:  function(response){
-        var msg = 'Success! Reference: <b>"' + response.trxref + '"</b>';
-        document.getElementById('alert-holder').innerHTML = '<div class="alert alert-success text-center">' + msg + '</div>';
-        // document.getElementById("pay-form").reset();
+      callback: function(response){
+        var msg = 'Donation Successful! Transaction Reference: <b>"' + response.trxref + '"</b>';
+        document.getElementById('alert-holder').innerHTML = '<div class="alert alert-success m-2 text-center">' + msg + '</div>';
+        //document.getElementById("pay-form").reset();
       },
       
       onClose:  function(){
@@ -60,4 +60,3 @@
     handler.openIframe();
   }
 </script>
-

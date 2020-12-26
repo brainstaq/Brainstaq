@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   # get 'user/followers', to: "users#followers", as: "user_followers"
   # get 'user/followees', to: "users#followees", as: "user_followees"
 
+  #get '/moon', to: 'application#moon', as: 'moon'
+  #get '/sun', to: 'application#sun', as: 'sun'
 
   get 'pages/about'
   get 'pages/career'
@@ -70,6 +72,9 @@ Rails.application.routes.draw do
       get 'followers' => 'follows#follower'
     end
   end
+
+  # post '/:donation/pstk_webhook' => 'webhooks#receive', as: :receive_webhooks
+  post 'donations/receive_webhooks', to: 'donations#receive'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

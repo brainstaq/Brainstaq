@@ -10,21 +10,21 @@
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fa fa-user"></i></span>
       </div>
-      <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      <%= f.text_field :last_name, :readonly => f.object.persisted?, placeholder: "Last Name", class: "form-control" %>
     </div>
     
     <div class="form-group input-group">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fa fa-user"></i></span>
       </div>
-      <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+      <%= f.text_field :first_name, :readonly => f.object.persisted?, placeholder: "First Name", class: "form-control" %>
     </div>
     
     <div class="form-group input-group">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
       </div>
-      <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
+      <%= f.text_field :username, :readonly => f.object.persisted?, placeholder: "Username", class: "form-control" %>
     </div>
 
     <div class="form-group input-group">
@@ -38,7 +38,11 @@
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
       </div>
-      <%= f.select :country, options_for_select([
+
+      <% if @user.country %>
+        <%= f.text_field :country, value: "#{@user.country}", :class => 'form-control' %>
+      <% else %>
+        <%= f.select :country, options_for_select([
           ['Algeria'],
           ['Angola'],
           ['Benin'],
@@ -93,14 +97,15 @@
           ['Uganda'],
           ['Zambia'],
           ['Zimbabwe']
-          ]), {}, :class => 'form-control' %>
-    </div>
+        ]), {}, :class => 'form-control' %>
+      <% end %>
+    </div>        
 
     <div class="form-group input-group">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
       </div>
-      <%= f.number_field :phone, placeholder: "Phone Number", class: "form-control" %>
+      <%= f.number_field :phone, :readonly => f.object.persisted?, placeholder: "Phone Number", class: "form-control" %>
     </div>
 
     <div class="form-group input-group">
@@ -131,7 +136,7 @@
       <%= f.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
     </div>
 
-    <div class="form-group input-group">
+        <div class="form-group input-group">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fab fa-instagram"></i></span>
       </div>

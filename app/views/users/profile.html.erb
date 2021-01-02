@@ -184,7 +184,9 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
                                 
-                                  <%= link_to "Edit Idea", edit_idea_path(idea), class: "dropdown-item" %>
+                                  <% if !idea.expired? %>
+                                   <%= link_to "Edit Idea", edit_idea_path(idea), class: "dropdown-item" %>
+                                   <% end %>
                                   <%= link_to "Delete", idea, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
                                 
                                 

@@ -28,8 +28,10 @@
           <% if current_user.id == @idea.user_id %>
             <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
                 idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
-                edit_idea_path(@idea) %>     
+            <% if !@idea.expired? %>
+              <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+                edit_idea_path(@idea) %>
+            <% end %>     
             <%#= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>  
           <% else %>
             <%#= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>

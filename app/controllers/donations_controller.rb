@@ -12,14 +12,14 @@ class DonationsController < ApplicationController
     @donation = Donation.new
     @donation.donor_id = current_user.id
 
-    donation_id = params[:id]
-    donor = params[:email]
-    first_name = params[:first_name]
-    last_name = params[:last_name]
-    phone = params[:phone]
-    reference = params[:reference]
-    amount = params[:amount]
-    date = params[:paid_at]
+    # donation_id = params[:id]
+    # donor = params[:email]
+    # first_name = params[:first_name]
+    # last_name = params[:last_name]
+    # phone = params[:phone]
+    # reference = params[:reference]
+    # amount = params[:amount]
+    # date = params[:paid_at]
 
     #@donation.save!
       
@@ -39,11 +39,6 @@ class DonationsController < ApplicationController
       format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
     end
   end
-
-  # def show
-  #   @donation = Donation.find(params[:id])
-  #   render :show
-  # end
 
   def receive
     if request.headers['Content-Type'] == 'application/json'

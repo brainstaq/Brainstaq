@@ -1,6 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
-
-    private
+    
+  invisible_captcha only: [:create, :update], honeypot: :middle_name
+  
+  private
   
       def sign_up_params
         params.require(:user).permit(:email, :password, :last_name, :first_name, :username, :country, :password_confirmation)
@@ -26,6 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
       #   yield resource if block_given?
       #   respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
       # end
-  end 
+  end
+   
 
   

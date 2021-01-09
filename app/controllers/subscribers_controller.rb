@@ -1,4 +1,7 @@
 class SubscribersController < ApplicationController
+
+  invisible_captcha only: [:subscribe]
+
   def index
     @subscriber = Subscriber.new
   end
@@ -23,3 +26,4 @@ class SubscribersController < ApplicationController
     params.require(:subscriber).permit(:email)
   end
 end
+ 

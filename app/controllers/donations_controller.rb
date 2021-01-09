@@ -11,33 +11,18 @@ class DonationsController < ApplicationController
     @user = current_user
     @donation = Donation.new
     @donation.donor_id = current_user.id
-
-    # donation_id = params[:id]
-    # donor = params[:email]
-    # first_name = params[:first_name]
-    # last_name = params[:last_name]
-    # phone = params[:phone]
-    # reference = params[:reference]
-    # amount = params[:amount]
-    # date = params[:paid_at]
-
-    #@donation.save!
-      
-    #Update idea attributes
-    # idea_updates = {
-    #   donors_count: @idea.donors_count.next,
-    #   donated_amount: @idea.donations.sum(:amount),
-    # }
-  
-    #  @idea.update(idea_updates)
-    #  format.html { redirect_to @idea, notice: 'Donation was successfully made.' }
   end
 
   def create
     @donation = current_user.donations.build(donation_params)
     if @donation.save
-      format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
+      render :show
     end
+  end
+
+  def show
+    @donation = Donation.find(params[:id])
+    render :show
   end
 
   def receive

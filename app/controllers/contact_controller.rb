@@ -1,6 +1,7 @@
 class ContactController < ApplicationController
   
   before_action :contact_params, only: [:create]
+  invisible_captcha only: [:contact]
   
   def index
     @contact = Contact.new

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:profile, :index, :delete]
     impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
+    invisible_captcha only: [:create, :update], honeypot: :middle_name
 
     def index
       @ideas = Idea.all.order(created_at: :desc).take(15)

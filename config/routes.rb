@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  resources :donations, only: [:index, :new, :create]
+  resources :donations
 
   resources :contact, only: [:create]
 

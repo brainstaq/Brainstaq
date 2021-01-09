@@ -1,6 +1,10 @@
-<h1>Donations</h1>
+<!-- <h1>Donations</h1>
 <ul>
   <% @donations.each do |donate| %>
-    <li><a href='<%= user_path(donate.donor) %>'><%= donate.donor.full_name %></a> supported <a href='<%= idea_path(donate.idea) %>'><%= donate.idea.title %></a> for N<%= donate.amount %> <%= "WOW!" if donate.amount > 1000000 %> </li>
+    <li><a href='<%= user_path(donate.donor) %>'>
+      <%= donate.donor.full_name %>
+        </a> supported <a href='<%= idea_path(donate.idea) %>'><%= donate.idea.title %></a> 
+        for N<%= donated_amount.amount %> <%= "WOW!" if donated_amount.amount > 1000000 %> 
+    </li>
   <% end %>
-</ul>
+</ul> -->

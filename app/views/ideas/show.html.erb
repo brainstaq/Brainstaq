@@ -28,7 +28,7 @@
           <% if current_user.id == @idea.user_id %>
             <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
                 idea_path(@idea), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% if !@idea.expired? %>
+            <% if @idea.end_date.future? %>
               <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
                 edit_idea_path(@idea) %>
             <% end %>     
@@ -36,7 +36,7 @@
           <% else %>
             <%#= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
           <% end %>
-          <% if @idea.relevance_bar.to_i > 75 || @idea.relevance_bar.to_i < 75 %>
+          <% if @idea.relevance_bar.to_i > 75 && !@idea.end_date.future? || @idea.relevance_bar.to_i < 75 && !@idea.end_date.future? %>
             <div class="mt-3" style="margin-bottom: -30px;">
               <p class="text-danger mb-5" style="font-weight: bold;">Campaign Expired! <br>
                 <small style="font-size: 11px;">N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>
@@ -64,7 +64,7 @@
         <% else %>
           <%#= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
           <%#= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
-          <% if @idea.relevance_bar.to_i > 75 || @idea.relevance_bar.to_i < 75 %>
+          <% if @idea.relevance_bar.to_i > 75 && !@idea.end_date.future? || @idea.relevance_bar.to_i < 75 && !@idea.end_date.future? %>
             <div class="mt-3" style="margin-bottom: -30px;">
               <p class="text-danger mb-5" style="font-weight: bold;">Campaign Expired! <br>
                 <small style="font-size: 11px;">N<%= @idea.donated_amount %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "N") %></small>

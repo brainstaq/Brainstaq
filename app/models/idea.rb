@@ -72,7 +72,7 @@ class Idea < ApplicationRecord
   end
 
   def expired?
-    self.end_date < Time.current
+    self.end_date < Time.now
   end
 
   def relevance_bar

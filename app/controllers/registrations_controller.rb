@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
     
-  # invisible_captcha only: [:create, :update], honeypot: :middle_name
+   invisible_captcha only: [:create, :update], honeypot: :middle_name
   
   private
   

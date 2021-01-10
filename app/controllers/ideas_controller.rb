@@ -22,10 +22,10 @@ class IdeasController < ApplicationController
       @ideas = Idea.where(category_id: @category_id).offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
     end
 
-    @ideas.each do |idea|
-      idea.set_days_left!
-      idea.set_pct_funded!
-    end
+    # @ideas.each do |idea|
+    #   idea.set_days_left!
+    #   idea.set_pct_funded!
+    # end
   end
 
   # GET /ideas/1
@@ -35,8 +35,9 @@ class IdeasController < ApplicationController
     @comment = Comment.new
     @comments = @idea.comments
     @comment.idea_id = @idea.id
-    @idea.set_days_left!
-    @idea.set_pct_funded!
+    # @idea.set_days_left!
+    # @idea.set_pct_funded!
+    #@idea.expired?
     donation = Donation.includes(:idea).where(idea_id: params[:id])
     @donors_count = donation.count
     @donated_amount = donation.sum(:amount)
@@ -116,6 +117,10 @@ class IdeasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
       @idea = Idea.find(params[:id])
+    end
+
+    def expired?
+      @idea.end_date < Time.now 
     end
 
     def find_idea

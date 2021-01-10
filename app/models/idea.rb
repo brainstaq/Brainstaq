@@ -51,13 +51,13 @@ class Idea < ApplicationRecord
     end.reduce(:+)
   end
 
-  def set_days_left!
-    self.days_left = (self.end_date.beginning_of_day.to_i - DateTime.current.to_i) / 86400
-  end
+  # def set_days_left!
+  #   self.days_left = (self.end_date.beginning_of_day.to_i - DateTime.current.to_i) / 86400
+  # end
 
-  def set_pct_funded!
-    self.pct_funded = (100 * self.donated_amount.to_f / self.donation_goal).round(1)
-  end
+  # def set_pct_funded!
+  #   self.pct_funded = (100 * self.donated_amount.to_f / self.donation_goal).round(1)
+  # end
 
   # def funding_percent
   #   (donated_amount / donation_goal) * 100.0
@@ -71,9 +71,9 @@ class Idea < ApplicationRecord
     status == "inactive"
   end
 
-  # def expired?
-  #   self.end_date < Time.now
-  # end
+  def expired?
+    self.end_date < Time.now 
+  end
 
   def relevance_bar
     self.relevance_bar = (self.impressions.size + self.get_likes.size + self.comments.size)

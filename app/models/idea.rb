@@ -71,9 +71,9 @@ class Idea < ApplicationRecord
     status == "inactive"
   end
 
-  def expired?
-    self.end_date < Time.now
-  end
+  # def expired?
+  #   self.end_date < Time.now
+  # end
 
   def relevance_bar
     self.relevance_bar = (self.impressions.size + self.get_likes.size + self.comments.size)

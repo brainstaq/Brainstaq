@@ -175,8 +175,6 @@ GEM
       sass-rails
       shepherdjs_rails (= 4.6.0)
       sprockets
-    invisible_captcha (1.1.0)
-      rails (>= 4.2)
     ipaddress (0.8.3)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
@@ -400,7 +398,6 @@ DEPENDENCIES
   friendly_id (~> 5.3)
   impressionist
   intro (~> 0.3.0)
-  invisible_captcha (~> 1.1)
   jbuilder (~> 2.7)
   jquery-rails
   jquery-ui-rails

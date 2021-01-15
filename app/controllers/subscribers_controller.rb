@@ -1,7 +1,5 @@
 class SubscribersController < ApplicationController
 
-   invisible_captcha only: [:subscribe]
-
   def index
     @subscriber = Subscriber.new
   end

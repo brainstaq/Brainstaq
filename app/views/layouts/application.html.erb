@@ -5,8 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :recaptcha_js %>
-
     <style type="text/css">
       BODY {overflow-x: hidden}
     </style>
@@ -26,6 +24,8 @@
     
     <%= stylesheet_link_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.min.css' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%#= yield :recaptcha_js %>
   </head>
 
   <body>

@@ -115,7 +115,7 @@
           Comments (<%= @idea.comments.size %>)
         </a>
 
-        <% if @idea.relevance_bar > 5 %>
+        <% if @idea.relevance_bar > 75 %>
           <% if !@idea.expired? %>
             <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseSupport" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
               Support this Idea

@@ -7,44 +7,44 @@
     <input type="hidden" id="phone" name="phone" value="<%= current_user.phone %>">
     <input type="hidden" id="fullname" name="fullname" value="<%= current_user.full_name %>">
     <p>
-      <button class="btn btn1 text-white" type="submit" id="submit" onclick="payWithPaystack()"> 
+      <button class="btn btn1 text-white" type="submit" id="submit" onClick="makePayment()"> 
         Donate <%= number_to_currency(params[:amount], :unit => "N") %>
       </button>
     </p>
   </form>
 </div>
-<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
 <script>
-  var public_key = 'pk_test_dbc69abc1c9ab93762b8fa610c3628dda0231e3c';
+  var public_key = "FLWPUBK_TEST-07496b219a30824e8c250b91e64f8c84-X";
 
   const email = document.getElementById('email').value;
   const amount = 100 * +document.getElementById('amount').value;
   const fullname = document.getElementById('fullname').value;
   const phone  = document.getElementById('phone').value;
     
-  payWithPaystack(email, amount, fullname, phone);
+  makePayment(email, amount, fullname, phone);
 
   function generateREF(){
     var d = new Date().getTime();
     if(window.performance && typeof window.performance.now === "function"){
       d += performance.now();
     }
-    var ref = '<%= params[:idea] %>-xxxx-4xxx-<%= params[:perk] %>-xxxx'.replace(/[xy]/g, function(c) {
+    var tx_ref = '<%= params[:idea] %>-xxxx-4xxx-<%= params[:perk] %>-xxxx'.replace(/[xy]/g, function(c) {
       var r = (d + Math.random()*16)%16 | 0;
       d = Math.floor(d/16);
       return (c=='x' ? r : (r&0x3|0x8)).toString(16);
     });
-    return ref;
+    return tx_ref;
   }
   
-  function payWithPaystack(email, amount, fullname, phone){
-    var handler = PaystackPop.setup({
+  function makePayment(email, amount, fullname, phone){
+    FlutterwaveCheckout({
       key:       public_key,
       email:     email,
       fullname:  fullname,
       phone:     phone,
       amount:    amount,
-      ref:       generateREF(),
+      tx_ref:    generateREF(),
       
       callback: function(response){
         var msg = 'Donation Successful! Transaction Reference: <b>"' + response.trxref + '"</b>';

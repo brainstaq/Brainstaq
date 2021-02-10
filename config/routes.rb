@@ -74,7 +74,6 @@ Rails.application.routes.draw do
   end
 
   # post '/:donation/pstk_webhook' => 'webhooks#receive', as: :receive_webhooks
-  post 'donations/receive_webhooks', to: 'donations#receive'
+  post 'paystack/receive_webhooks', to: 'paystack#webhook'
   
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -3,7 +3,7 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :destroy, :update, :like, :unlike]
   before_action :find_idea, only: [:show, :edit, :update, :destroy]
   impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
-  
+   
   IDEAS_PER_PAGE = 6
 
   # GET /ideas.json

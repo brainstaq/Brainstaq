@@ -1,6 +1,5 @@
 # Controller to handle Event.
 class PaystackController < ApplicationController
-  #skip_before_action :authorize_request, only: :webhook
   skip_before_action :verify_authenticity_token
 
   def webhook

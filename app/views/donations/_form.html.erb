@@ -120,7 +120,7 @@
     }
     
     function payWithPaystack(email, amount, donor_id, idea_id, perk_id, response_reference, phone){
-      // var response_reference = undefined
+      var response_reference = undefined
       var handler = PaystackPop.setup({
         key:       public_key,
         email:     email,
@@ -129,11 +129,13 @@
         perk_id: perk_id,
         phone:     phone,
         amount:    amount,
-        response_reference:       generateREF(),
+        response_reference: generateREF(),
         metadata: {
-          display_name: "donation id",
-          variable_name: "donation_id",
-          value: generateREF()
+          donor_id: donor_id,
+          idea_id: idea_id,
+          perk_id: perk_id,
+          amount: amount,
+          response_reference: generateREF()
         },
         callback: function(response){
           var response_reference = undefined
@@ -159,7 +161,7 @@
                 phone:     phone,
                 amount:    amount,
                 authenticity_token: window._token
-                },
+              },
               success:function(data){
                 console.log(data.success)
                 console.log(data.user_fullname)
@@ -190,4 +192,3 @@
       handler.openIframe();
     }
   </script>
-   

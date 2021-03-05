@@ -53,4 +53,8 @@ class User < ApplicationRecord
       ["lower(username) = :value OR lower(email) = :value", 
         { value: login.strip.downcase}]).first
   end
+
+  def donated_amount
+    self.donated_amount = @donation.sum(:amount).to_f / 100
+   end
 end

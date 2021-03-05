@@ -4,7 +4,7 @@ class Idea < ApplicationRecord
   validates :category, presence: true
   after_validation :set_slug, only: [:create, :update]
 
-  attr_accessor :days_left, :pct_funded
+  # attr_accessor :days_left, :pct_funded
   
   mount_uploader :image, ImageUploader
     
@@ -12,7 +12,7 @@ class Idea < ApplicationRecord
   belongs_to :category
   
   has_many :comments
-  has_many :donations, through: :perks, source: :donations
+  has_many :donations #through: :perks, source: :donations
   has_many :users, through: :donations
   has_many :perks, dependent: :destroy
   has_many_attached :images, dependent: :destroy
@@ -40,15 +40,11 @@ class Idea < ApplicationRecord
   end
 
   def donors_count
-    perks.map do |perk|
-      perk.donations_count
-    end.reduce(:+)
+    self.donations.count
   end
 
   def donated_amount
-    perks.map do |perk|
-       perk.total_donations
-    end.reduce(:+)
+   self.donated_amount = donations.sum(:amount) / 100
   end
 
   # def set_days_left!
@@ -59,9 +55,9 @@ class Idea < ApplicationRecord
   #   self.pct_funded = (100 * self.donated_amount.to_f / self.donation_goal).round(1)
   # end
 
-  # def funding_percent
-  #   (donated_amount / donation_goal) * 100.0
-  # end
+  def funding_percent
+    (self.donated_amount.to_f / self.donation_goal).round(2) * 100
+  end
 
   def active?
     status == "active"

@@ -39,9 +39,13 @@ class IdeasController < ApplicationController
     # @idea.set_pct_funded!
     #@idea.expired?
     donation = Donation.includes(:idea).where(idea_id: params[:id])
-    @donors_count = donation.count
-    @donated_amount = donation.sum(:amount)
+    donors_count = donation.count
+    @donated_amount = @idea.donations.sum(:amount)
     render :show
+  end
+
+  def set_pct_funded!
+    self.pct_funded = (100 * self.donated_amount.to_f / self.donation_goal).round(1)
   end
 
   # GET /ideas/new
@@ -49,6 +53,7 @@ class IdeasController < ApplicationController
     @idea = current_user.ideas.build
     @user = current_user
     @idea = Idea.new
+    @perk = Perk.find_by_id params[:perk]
   end
 
   # GET /ideas/1/edit

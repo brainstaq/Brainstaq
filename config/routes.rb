@@ -73,7 +73,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # post '/:donation/pstk_webhook' => 'webhooks#receive', as: :receive_webhooks
   post 'paystack/receive_webhooks', to: 'paystack#webhook'
-  
 end

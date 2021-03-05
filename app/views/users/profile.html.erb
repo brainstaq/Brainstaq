@@ -216,21 +216,21 @@
                               <h3><%= link_to idea.title, idea, class: 'text-dark' %></h3>
                               <% if idea.relevance_bar.to_i > 75 && idea.expired? || idea.relevance_bar.to_i < 75 && idea.expired? %>
                               <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
-                                <small style="font-size: 9px;">N<%= idea.donated_amount %> raised of 
+                                <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "N") %> raised of 
                                   <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
                                   <!-- | Exp: <%#= idea.end_date %> -->
                                 </small>
                               </span>
                             <% elsif idea.relevance_bar.to_i < 75 %>
                               <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
-                                <small style="font-size: 9px;">N<%= idea.donated_amount %> raised of 
+                                <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "N") %> raised of 
                                   <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
                                   <!-- | Exp: <%#= idea.end_date %> -->
                                 </small>
                               </span>
                             <% elsif idea.relevance_bar.to_i > 75 %>
                               <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
-                                <small style="font-size: 9px;">N<%= idea.donated_amount %> raised of 
+                                <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "N") %> raised of 
                                   <%= number_to_currency(idea.donation_goal, :unit => "N") %> <br>
                                   <!-- | Exp: <%#= idea.end_date %> -->
                                 </small>

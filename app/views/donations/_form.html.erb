@@ -86,7 +86,7 @@
       <input type="hidden" id="fullname" name="fullname" value="<%= current_user.full_name %>">
       <p>
         <button class="btn btn1 text-white" type="submit" id="submit" onclick="payWithPaystack()"> 
-          Donate <%= number_to_currency(params[:amount], :unit => "N") %>
+          Donate <%= number_to_currency(params[:amount], :unit => "₦") %>
         </button>
       </p>
     </form>

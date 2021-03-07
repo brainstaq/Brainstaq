@@ -47,6 +47,10 @@ class Idea < ApplicationRecord
    self.donated_amount = donations.sum(:amount) / 100
   end
 
+  def total_donations
+    self.total_donations = Donations.sum(:amount) / 100
+  end
+
   # def set_days_left!
   #   self.days_left = (self.end_date.beginning_of_day.to_i - DateTime.current.to_i) / 86400
   # end

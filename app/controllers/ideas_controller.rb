@@ -53,7 +53,7 @@ class IdeasController < ApplicationController
     @idea = current_user.ideas.build
     @user = current_user
     @idea = Idea.new
-    @perk = Perk.find_by_id params[:perk]
+    # @perk = Perk.find_by_id params[:perk]
   end
 
   # GET /ideas/1/edit

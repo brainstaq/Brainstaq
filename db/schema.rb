@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_214423) do
+ActiveRecord::Schema.define(version: 2021_03_07_180221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_02_19_214423) do
   create_table "donations", force: :cascade do |t|
     t.integer "donor_id", null: false
     t.integer "idea_id", null: false
-    t.integer "perk_id", null: false
     t.float "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -238,6 +237,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_214423) do
     t.string "instagram_url"
     t.string "linkedin_url"
     t.string "country"
+    t.text "perk_subscriptions", default: [], array: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

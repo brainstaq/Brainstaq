@@ -3,7 +3,7 @@
   <%= form.hidden_field :_destroy %>
 
   <div class="mb-6 col-sm-12 form-group">
-    <%= form.label :title %>
+    <%= form.label :category %>
     <%= form.text_field :title, class: "input form-control" %>
   </div>
 
@@ -18,8 +18,8 @@
   </div>
 
   <div class="mb-6 col-sm-12 form-group">
-    <%= form.label :quantity %>
-    <%= form.text_field :quantity, placeholder: "10", class: "input form-control" %>
+    <%= form.hidden_field :quantity %>
+    <%= form.hidden_field :quantity, placeholder: "10", class: "input form-control" %>
   </div>
 
   <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "text-primary underline text-sm col-sm-12" %>

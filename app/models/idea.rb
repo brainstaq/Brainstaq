@@ -12,7 +12,7 @@ class Idea < ApplicationRecord
   belongs_to :category
   
   has_many :comments
-  has_many :donations #through: :perks, source: :donations
+  has_many :donations
   has_many :users, through: :donations
   has_many :perks, dependent: :destroy
   has_many_attached :images, dependent: :destroy
@@ -70,6 +70,7 @@ class Idea < ApplicationRecord
   def expired?
     self.end_date < Time.now 
   end
+  
 
   def relevance_bar
     self.relevance_bar = (self.impressions.size + self.get_likes.size + self.comments.size)

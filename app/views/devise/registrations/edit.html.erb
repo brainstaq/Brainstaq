@@ -174,11 +174,11 @@
  
     <div class="container ml-2">
       <% if @user.image_url %>
-      <%= image_tag @user.image_url, style: "width: 32px;", class: "rounded-circle mr-2" %>
+        <%= image_tag @user.image_url, style: "width: 32px;", class: "rounded-circle mr-2" %>
       <% else %>
-      <%= image_tag 'avatar.png', style: "width: 32px;", class: "rounded-circle mr-2" %>
+        <%= image_tag 'avatar.png', style: "width: 32px;", class: "rounded-circle mr-2" %>
       <% end %>
-      <p><small>Change Profile Photo</small></p>
+      <p><small>Change Profile Photo (100x100)</small></p>
       <div class="cpp-fiel">
         <%= f.file_field :image, class: "form-control" %>
       </div>

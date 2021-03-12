@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     def index
       @ideas = Idea.all.order(created_at: :desc).take(15)
       @users = User.find_by_username params[:username]
-      @user = User.all
 
       following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)
       following_ids << current_user.id
@@ -40,8 +39,7 @@ class UsersController < ApplicationController
 
     def profile
       @profile = User.find_by_username params[:username]
-      @ideas = Idea.all.order(created_at: :desc)
-      @ideas = current_user.ideas.order(created_at: :desc)
+      @ideas = current_user.ideas.all.order(created_at: :desc)
     end
 
 
@@ -49,6 +47,14 @@ class UsersController < ApplicationController
       @user = User.find_by_username params[:username]
       @ideas = @user.ideas
     end
+
+    # def show
+    #   @donor = User.find_by_id params[:id]
+    #   @idea = Idea.find_by_id params[:idea]
+    #   @donations = Donation.all
+    #   @ideas = Idea.all
+    #   @donations = Idea.find_by_id params[:idea]
+    # end
 
 
     def set_user

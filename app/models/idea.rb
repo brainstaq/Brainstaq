@@ -4,7 +4,7 @@ class Idea < ApplicationRecord
   validates :category, presence: true
   after_validation :set_slug, only: [:create, :update]
 
-  # attr_accessor :days_left, :pct_funded
+  default_scope { order(created_at: :desc)}
   
   mount_uploader :image, ImageUploader
     
@@ -12,6 +12,7 @@ class Idea < ApplicationRecord
   belongs_to :category
   
   has_many :comments
+  has_many :donors
   has_many :donations
   has_many :users, through: :donations
   has_many :perks, dependent: :destroy
@@ -50,14 +51,6 @@ class Idea < ApplicationRecord
   def total_donations
     self.total_donations = Donations.sum(:amount) / 100
   end
-
-  # def set_days_left!
-  #   self.days_left = (self.end_date.beginning_of_day.to_i - DateTime.current.to_i) / 86400
-  # end
-
-  # def set_pct_funded!
-  #   self.pct_funded = (100 * self.donated_amount.to_f / self.donation_goal).round(1)
-  # end
 
   def funding_percent
     (self.donated_amount.to_f / self.donation_goal).round(2) * 100

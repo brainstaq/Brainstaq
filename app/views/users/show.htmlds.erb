@@ -1,5 +1,5 @@
-<header class="section-header mb-5" style="padding-top: 150px;">
-  <h3 span class="text-primary">Donations</span></h3>
+<!-- <header class="section-header mb-5" style="padding-top: 150px;">
+  <h3 span class="text-primary">Donors</span></h3>
 </header>
 
 <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
@@ -17,21 +17,22 @@
             </tr>
           </thead>
           <tbody>
-          <% @donations.each do |donation| %>
+          <% User.all do |user| %>
             <tr>
-              <td><%= donation.id %></td>
+              <td><%= @user.full_name %></td>
               <td>
                 <div class="d-flex align-items-center">
-                  <div class="mr-3"><%= image_tag donation.user.image_url, style:"width:28px; height: 28px; margin-right: 0px;", class: "rounded-circle" %></div>
+                  <div class="mr-3"><%= image_tag @user.image_url, 
+                    style: "width: 60%;", class: "rounded-circle" if @user.image_url.present? %></div>
                   <div class="">
-                    <p class="font-weight-bold mb-0"><%= link_to (donation.user.full_name), profile_path(donation.user.username) %></p>
-                    <p class="text-muted mb-0"><%= donation.user.email %></p>
+                    <p class="font-weight-bold mb-0"><%= link_to (@user.full_name), profile_path(@user.username) %></p>
+                    <p class="text-muted mb-0"><%= @user.email %></p>
                   </div>
                 </div>
               </td>
-              <td><%= number_to_currency(donation.amount/100, :unit => "₦") %></td>
-              <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
-              <td><%= link_to (donation.idea.title), idea_path(donation.idea) %></td>
+              <td><%= @donation.idea.amount %></td>
+              <td><%= @user.donation.created_at %></td>
+              <td><%= @donation.idea.title %></td>
             </tr>
           </tbody>
           <% end %>
@@ -140,4 +141,4 @@ table.dataTable {
   background-color: #c8d9f1;
   color: #467fcf;
 } */
-</style>
+</style> -->

@@ -40,25 +40,45 @@
             <div class="mt-3" style="margin-bottom: -30px;">
               <p class="text-danger mb-5" style="font-weight: bold;">Campaign Expired! <br>
                 <small style="font-size: 11px;"><%= number_to_currency(@idea.donated_amount, :unit => "₦") %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "₦") %></small>
-                | <small style="font-size: 11px;"><%= pluralize(@idea.donors_count, 'donor') %></small>
+                | <small style="font-size: 11px;">
+                  <%# if @idea.user_id == current_user.id %>
+                    <%#= link_to (pluralize(@idea.donors_count, 'donor')), donations_path %>
+                  <%# else %>
+                    <%= pluralize(@idea.donors_count, 'donor') %>
+                  <%# end %>
+                </small>
                 | <small style="font-size: 11px;">Expired <%= time_ago_in_words(@idea.end_date) %> ago</small>
+                | <small style="font-size: 11px;"><%= @idea.funding_percent %>% funded</small>
               </p> 
             </div>  
           <% elsif @idea.relevance_bar.to_i > 75 %>
             <div class="mt-3" style="margin-bottom: -30px;">
               <p class="text-success mb-5" style="font-weight: bold;">Active Campaign <br>
                 <small style="font-size: 11px;"><%= number_to_currency(@idea.donated_amount, :unit => "₦") %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "₦") %></small>
-                | <small style="font-size: 11px;"><%= pluralize(@idea.donors_count, 'donor') %></small>
+                | <small style="font-size: 11px;">
+                  <%# if @idea.user_id == current_user.id %>
+                    <%#= link_to (pluralize(@idea.donors_count, 'donor')), donations_path %>
+                  <%# else %>
+                    <%= pluralize(@idea.donors_count, 'donor') %>
+                  <%# end %>
+                  </small>
                 | <small style="font-size: 11px;"><%= distance_of_time_in_words_to_now(@idea.end_date) %> to go</small>
+                | <small style="font-size: 11px;"><%= @idea.funding_percent %>% funded</small>
               </p>
             </div>
           <% elsif @idea.relevance_bar.to_i < 75 %>
             <div class="mt-3" style="margin-bottom: -30px;">
               <p class="text-danger mb-5" style="font-weight: bold;">Inactive Campaign <br>
                 <small style="font-size: 11px;"><%= number_to_currency(@idea.donated_amount, :unit => "₦") %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "₦") %></small>
-                | <small style="font-size: 11px;"><%= pluralize(@idea.donors_count, 'donor') %></small>
-                | <small style="font-size: 11px;"><%= distance_of_time_in_words_to_now(@idea.end_date) %> to go</small>
-                | <small style="font-size: 11px;"><%= @idea.funding_percent %>% funded</small>
+                | <small style="font-size: 11px;">
+                  <%# if @idea.user_id == current_user.id %>
+                    <%#= link_to (pluralize(@idea.donors_count, 'donor')), donations_path %>
+                  <%# else %>
+                    <%= pluralize(@idea.donors_count, 'donor') %>
+                  <%# end %>
+                  </small>
+                  | <small style="font-size: 11px;"><%= distance_of_time_in_words_to_now(@idea.end_date) %> to go</small>
+                  | <small style="font-size: 11px;"><%= @idea.funding_percent %>% funded</small>
               </p>
             </div>
           <% end %>
@@ -71,6 +91,7 @@
                 <small style="font-size: 11px;"><%= number_to_currency(@idea.donated_amount, :unit => "₦") %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "₦") %></small>
                 | <small style="font-size: 11px;"><%= pluralize(@idea.donors_count, 'donor') %></small>
                 | <small style="font-size: 11px;">Expired <%= time_ago_in_words(@idea.end_date) %> ago</small>
+                | <small style="font-size: 11px;"><%= @idea.funding_percent %>% funded</small>
               </p>
             </div>  
           <% elsif @idea.relevance_bar.to_i > 75 %>
@@ -79,6 +100,7 @@
                 <small style="font-size: 11px;"><%= number_to_currency(@idea.donated_amount, :unit => "₦") %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "₦") %></small>
                 | <small style="font-size: 11px;"><%= pluralize(@idea.donors_count, 'donor') %></small>
                 | <small style="font-size: 11px;"><%= distance_of_time_in_words_to_now(@idea.end_date) %> to go</small>
+                | <small style="font-size: 11px;"><%= @idea.funding_percent %>% funded</small>
               </p>
             </div>
           <% elsif @idea.relevance_bar.to_i < 75 %>
@@ -87,6 +109,7 @@
                 <small style="font-size: 11px;"><%= number_to_currency(@idea.donated_amount, :unit => "₦") %> raised of <%= number_to_currency(@idea.donation_goal, :unit => "₦") %></small>
                 | <small style="font-size: 11px;"><%= pluralize(@idea.donors_count, 'donor') %></small>
                 | <small style="font-size: 11px;"><%= distance_of_time_in_words_to_now(@idea.end_date) %> to go</small>
+                | <small style="font-size: 11px;"><%= @idea.funding_percent %>% funded</small>
               </p>
             </div>
           <% end %>

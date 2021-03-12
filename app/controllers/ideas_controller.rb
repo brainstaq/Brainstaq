@@ -15,17 +15,12 @@ class IdeasController < ApplicationController
       @ideas = Idea.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
     else
       @category_id = Category.find_by(name: params[:category]).id
-      # @ideas = Idea.where(category_id: @category_id).order("created_at DESC")
       @page = params.fetch(:page, 0).to_i 
       @next_page = @page + 1 if Idea.count >= 6
       @prev_page = @page - 1 if @page < 0
       @ideas = Idea.where(category_id: @category_id).offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
     end
 
-    # @ideas.each do |idea|
-    #   idea.set_days_left!
-    #   idea.set_pct_funded!
-    # end
   end
 
   # GET /ideas/1
@@ -35,11 +30,10 @@ class IdeasController < ApplicationController
     @comment = Comment.new
     @comments = @idea.comments
     @comment.idea_id = @idea.id
-    # @idea.set_days_left!
-    # @idea.set_pct_funded!
-    #@idea.expired?
     donation = Donation.includes(:idea).where(idea_id: params[:id])
+    @donation = Donation.new
     donors_count = donation.count
+    @donors = @idea.donations
     @donated_amount = @idea.donations.sum(:amount)
     render :show
   end
@@ -53,7 +47,6 @@ class IdeasController < ApplicationController
     @idea = current_user.ideas.build
     @user = current_user
     @idea = Idea.new
-    # @perk = Perk.find_by_id params[:perk]
   end
 
   # GET /ideas/1/edit

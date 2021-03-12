@@ -3,8 +3,6 @@ class Donation < ApplicationRecord
   belongs_to :idea
   # belongs_to :perk #optional: true
 
-  # def perk_id
-  #   @perk.idea_id
-  # end
+  default_scope { order(created_at: :desc)}
 end
 

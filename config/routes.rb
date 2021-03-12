@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :donors
   mount Intro::Engine => "/intro"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
@@ -57,6 +58,8 @@ Rails.application.routes.draw do
   get 'profile/:username' => 'users#profile', as: :profile
 
   get '/dashboard' => 'users#index'
+
+
 
   # Routes for blog
   # match '/blog',        to: 'blog_posts#index', as: :blog_posts, via: :get

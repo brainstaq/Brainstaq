@@ -15,22 +15,22 @@
       <div class="row counters">
 
         <div class="col-lg-3 col-6 text-center">
-          <span style="font-size: 36px;" data-toggle="counter-up"><%= Idea.count %></span>
+          <span style="font-size: 28px;" data-toggle="counter-up"><%= Idea.count %></span>
           <p style="font-size: 20px;">Ideas Shared</p>
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span style="font-size: 36px;" data-toggle="counter-up"><%= User.count %></span>
+          <span style="font-size: 28px;" data-toggle="counter-up"><%= User.count %></span>
           <p style="font-size: 20px;">Brainers</p>
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span style="font-size: 36px;" data-toggle="counter-up"><%=Idea.active.count %></span>
+          <span style="font-size: 28px;" data-toggle="counter-up"><%=Idea.active.count %></span>
           <p style="font-size: 20px;">Campaigns</p>
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span style="font-size: 36px;" data-toggle="counter-up"><%= number_to_currency(Donation.sum(:amount)/100, :unit => "₦") %></span>
+          <span style="font-size: 28px;" data-toggle="counter-up"><%= number_to_currency(Donation.sum(:amount)/100, :unit => "₦") %></span>
           <p style="font-size: 20px;">Funds Raised</p>
         </div>
       </div>

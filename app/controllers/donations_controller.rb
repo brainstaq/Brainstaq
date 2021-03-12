@@ -3,18 +3,13 @@ class DonationsController < ApplicationController
   skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def index
-    @donations = Donation.all
+    @donations = Donation.where(idea_id: current_user.ideas)
   end
   
   def new
     @idea = current_user.ideas.build
     @idea = Idea.find_by_id params[:idea]
-    #@perk = Perk.find_by_id params[:perk]
   end
-
-  # def perk_id
-  #   @perk.idea_id
-  # end
 
   def create
     @donor_id = params[:donor_id]
@@ -38,10 +33,13 @@ class DonationsController < ApplicationController
   end
 
   def show
-    @idea = Idea.find_by_id params[:idea]
-    @donation = Donation.find(params[:id])
-    @donors_count = donations.count
-    render :show
+    # # donation = Donation.find(params[:id])
+    # @donation = Donation.where(idea_id: current_user.ideas)
+    # render :show
+  end
+
+  def donor
+    # @donor ||= Donation.find_by(user: donor_id, idea: idea_id)
   end
   
   private

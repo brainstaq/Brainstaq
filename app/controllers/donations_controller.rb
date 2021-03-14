@@ -3,7 +3,9 @@ class DonationsController < ApplicationController
   skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def index
-    @donations = Donation.where(idea_id: current_user.ideas)
+    @donations = Donation.where.not(idea_id: current_user.ideas)
+    #@ideas = @user.ideas_with_donations
+    #@donation.idea_id = @idea.id
   end
   
   def new

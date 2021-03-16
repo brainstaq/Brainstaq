@@ -63,6 +63,11 @@ GEM
     acts_as_votable (0.12.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ahoy_matey (3.2.0)
+      activesupport (>= 5)
+      device_detector
+      geocoder (>= 1.4.5)
+      safely_block (>= 0.2.1)
     aws-eventstream (1.1.0)
     aws-partitions (1.342.0)
     aws-sdk-core (3.104.0)
@@ -111,6 +116,7 @@ GEM
     concurrent-ruby (1.1.6)
     connection_pool (2.2.3)
     crass (1.0.6)
+    device_detector (1.0.5)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -123,6 +129,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    errbase (0.2.1)
     erubi (1.9.0)
     excon (0.75.0)
     execjs (2.7.0)
@@ -152,6 +159,7 @@ GEM
     formatador (0.2.5)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
+    geocoder (1.6.6)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -313,6 +321,8 @@ GEM
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     rubyzip (2.3.0)
+    safely_block (0.3.0)
+      errbase (>= 0.1.1)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -392,6 +402,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 6.0, >= 6.0.3.2)
   acts_as_votable
+  ahoy_matey
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   byebug

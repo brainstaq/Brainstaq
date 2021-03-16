@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
 
+  has_many :visits, class_name: "Ahoy::Visit"
+
   acts_as_voter
 
   has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'

@@ -2,7 +2,7 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
   resources :donors
-  mount Intro::Engine => "/intro"
+  mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   resources :follows

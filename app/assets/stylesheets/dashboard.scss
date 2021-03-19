@@ -5204,10 +5204,12 @@ input:checked + .slider:before{
 	.acc-leftbar .nav-tabs > a {font-size: 14px;}
 	.notification-box {left: 100%;top: 0;}
 	nav ul ul {left: 50%;top: 0;border: 1px solid #e4e4e4;padding-left: 20px;padding-right: 20px;}
+  .sgt-text span {font-size: 12px;}
 }
 
 
 @media (max-width: 991px) {
+  .sgt-text span {font-size: 14px;}
 	main {padding: 20px 0 60px 0;}
 	.user-specs span {font-size: 13px;}
 	.comment_box input {width: 275px;}
@@ -5332,6 +5334,7 @@ input:checked + .slider:before{
 	.user-account-settingss {right: auto;left: 0;}
 	.login-resources {text-align: left;}
   .forum-bar ul li:last-child {margin-bottom: 0;}
+  .conversation-box {left: -20px;width: 280px;}
   .main-left-sidebar {
     float: left;
     width: 100%;

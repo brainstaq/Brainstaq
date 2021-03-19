@@ -20,78 +20,78 @@
           </h5>
           
           <div class="form-group">
-            <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+            <%= f.text_field :last_name, required: true, class: "form-control", placeholder: "Last Name" %>
           </div>
           
           <div class="form-group">
-            <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+            <%= f.text_field :first_name, required: true, class: "form-control", placeholder: "First Name" %>
           </div>
 
           <div class="form-group">
-            <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+            <%= f.text_field :username, required: true, class: "form-control", placeholder: "Username" %>
           </div>
 
           <div class="form-group">
             <%= f.select :country, options_for_select([
-            ['Algeria'],
-            ['Angola'],
-            ['Benin'],
-            ['Botswana'],
-            ['Burkina Faso'],
-            ['Burundi'],
-            ['Cape Verde'],
-            ['Cameroon'],
-            ['Central African Republic (CAR)'],
-            ['Chad'],
-            ['Comoros'],
-            ['Republic of the Congo'],
-            ['Democratic Republic of Congo'],
-            ["Cote d'Ivoire"],
-            ['Djibouti'],
-            ['Egypt'],
-            ['Equatorial Guinea'],
-            ['Eritrea'],
-            ['Eswatini'],
-            ['Ethiopia'],
-            ['Gabon'],
-            ['Gambia'],
-            ['Ghana'],
-            ['Guinea'],
-            ['Guinea-Bissau'],
-            ['Kenya'],
-            ['Lesotho'],
-            ['Liberia'],
-            ['Libya'],
-            ['Madagascar'],
-            ['Malawi'],
-            ['Mali'],
-            ['Mauritania'],
-            ['Mauritius'],
-            ['Morocco'],
-            ['Mozambique'],
-            ['Namibia'],
-            ['Niger'],
-            ['Nigeria'],
-            ['Rwanda'],
-            ['Sao Tome and Principe'],
-            ['Senegal'],
-            ['Seychelles'],
-            ['Sierra Leone'],
-            ['Somalia'],
-            ['South Africa'],
-            ['South Sudan'],
-            ['Sudan'],
-            ['Tanzania'],
-            ['Togo'],
-            ['Tunisia'],
-            ['Uganda'],
-            ['Zambia'],
-            ['Zimbabwe']
+            # ['Algeria'],
+            # ['Angola'],
+            # ['Benin'],
+            # ['Botswana'],
+            # ['Burkina Faso'],
+            # ['Burundi'],
+            # ['Cape Verde'],
+            # ['Cameroon'],
+            # ['Central African Republic (CAR)'],
+            # ['Chad'],
+            # ['Comoros'],
+            # ['Republic of the Congo'],
+            # ['Democratic Republic of Congo'],
+            # ["Cote d'Ivoire"],
+            # ['Djibouti'],
+            # ['Egypt'],
+            # ['Equatorial Guinea'],
+            # ['Eritrea'],
+            # ['Eswatini'],
+            # ['Ethiopia'],
+            # ['Gabon'],
+            # ['Gambia'],
+            # ['Ghana'],
+            # ['Guinea'],
+            # ['Guinea-Bissau'],
+            # ['Kenya'],
+            # ['Lesotho'],
+            # ['Liberia'],
+            # ['Libya'],
+            # ['Madagascar'],
+            # ['Malawi'],
+            # ['Mali'],
+            # ['Mauritania'],
+            # ['Mauritius'],
+            # ['Morocco'],
+            # ['Mozambique'],
+            # ['Namibia'],
+            # ['Niger'],
+            ['Nigeria']
+            # ['Rwanda'],
+            # ['Sao Tome and Principe'],
+            # ['Senegal'],
+            # ['Seychelles'],
+            # ['Sierra Leone'],
+            # ['Somalia'],
+            # ['South Africa'],
+            # ['South Sudan'],
+            # ['Sudan'],
+            # ['Tanzania'],
+            # ['Togo'],
+            # ['Tunisia'],
+            # ['Uganda'],
+            # ['Zambia'],
+            # ['Zimbabwe']
             ]), {}, :class => 'form-control' %>
           </div>
 
           <div class="form-group">
-            <%= f.email_field :email, class: "form-control", placeholder: "Email Address" %>
+            <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email Address" %>
           </div>
 
           <div class="form-group">

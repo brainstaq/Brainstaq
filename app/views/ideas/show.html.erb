@@ -14,10 +14,10 @@
           <% end %>
         </button>
         <h3 class="card-title" style="margin-bottom: -3px; font-size: 32px; font-weight: bold;">
-          <%= @idea.title %>
+          <%= @idea.title.titleize %>
         </h3>
       
-        <small>Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %> 
+        <small>Created by <%= link_to (@idea.user.full_name.titleize), profile_path(@idea.user.username, @user) %> 
           on <%= local_time(@idea.created_at) %>
         </small>
         <p class="card-text mt-3 fr-view mb-3" style="font-size: 14px;">
@@ -150,9 +150,9 @@
     
       <div class="collapse mb-3" id="collapseDetails">
         <div class="card card-body">
-          <h1 class="mt-2 mb-2"><%= @idea.title %></h1>
+          <h1 class="mt-2 mb-2"><%= @idea.title.titleize %></h1>
           <p class="lead mb-2">
-            Created by <%= link_to (@idea.user.full_name), profile_path(@idea.user.username, @user) %>
+            Created by <%= link_to (@idea.user.full_name.titleize), profile_path(@idea.user.username, @user) %>
           </p>
           <h6 class="mb-2">Posted on <%= local_time(@idea.created_at) %></h6>
           <hr>

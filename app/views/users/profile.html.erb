@@ -102,7 +102,7 @@
               <div class="col-lg-6 col-md-8 no-pd">
                 <div class="main-ws-sec">
                   <div class="user-tab-sec">
-                    <h3 style="font-size: 30px;"><%= @user.full_name %></h3>
+                    <h3 style="font-size: 30px;"><%= @user.full_name.titleize %></h3>
                     <h4 style="font-size: 18px; color: #007bff;">@<%= @user.username %></h4>
                     <div class="star-descp">
                       <h5 style="font-weight: bold; margin-bottom: 3px;">About</h5>
@@ -172,7 +172,7 @@
                                 <%= image_tag 'avatar.png', style: "width: 40px;", class: "rounded-circle ml-1" %>
                               <% end %>
                               <div class="usy-name">
-                                <h3><%= idea.user.full_name %></h3>
+                                <h3><%= idea.user.full_name.titleize %></h3>
                                 <span class="ml-1"><i class="fas fa-clock mr-1"></i>Created on <%= local_time(idea.created_at) %></span>
                               </div>
                             </div>
@@ -213,7 +213,7 @@
                               </ul>
                             </div>
                             <div class="job_descp">
-                              <h3><%= link_to idea.title, idea, class: 'text-dark' %></h3>
+                              <h3><%= link_to idea.title.titleize, idea, class: 'text-dark' %></h3>
                               <% if idea.relevance_bar.to_i > 75 && idea.expired? || idea.relevance_bar.to_i < 75 && idea.expired? %>
                               <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
                                 <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 

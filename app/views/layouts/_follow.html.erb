@@ -16,7 +16,7 @@
         <% end %>
  
         <div class="sgt-text">
-          <h4><%= link_to user.full_name, profile_path(user.username), class: "text-primary" %></h4>
+          <h4><%= link_to user.full_name.titleize, profile_path(user.username), class: "text-primary" %></h4>
           <span style="font-size: 12px; font-weight: bold;" class= "text-dark"><%= user.country %></span>
           <% if user.created_at > 2.days.ago %>
             <p style="font-size: 10px;">New to Brainstaq</p>

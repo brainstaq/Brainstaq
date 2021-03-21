@@ -14,7 +14,7 @@
             </div>
             <div class="col-xs-10 col-md-11 ml-0">
               <div>
-                <strong><%= comment.user.full_name %></strong>
+                <strong><%= comment.user.full_name.titleize %></strong>
                 <div class="mic-info">
                   <p>Posted on <%= local_time(comment.created_at) %></p>
                 </div>

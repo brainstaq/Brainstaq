@@ -38,7 +38,7 @@
                       <% end %>
                       
                       <div class="usy-name">
-                        <h3><%= link_to idea.user.full_name, profile_path(idea.user.username), class: 'text-dark' %></h3>
+                        <h3><%= link_to idea.user.full_name.titleize, profile_path(idea.user.username), class: 'text-dark' %></h3>
                         <span> Created on <%= local_time(idea.created_at) %></span>
                       </div>
                     </div>
@@ -70,7 +70,7 @@
                     </ul>
                   </div>
                   <div class="job_descp">
-                    <h3><%= link_to idea.title, idea, class: 'text-dark' %></h3>
+                    <h3><%= link_to idea.title.titleize, idea, class: 'text-dark' %></h3>
                     <% if idea.relevance_bar.to_i > 75 && idea.expired? || idea.relevance_bar.to_i < 75 && idea.expired? %>
                       <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
                         <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
@@ -142,7 +142,7 @@
 					          </div><!--username-dt end-->
 												  
 					          <div class="user-specs">
-					            <h3 class="mb-0"><%= current_user.full_name %></h3>
+					            <h3 class="mb-0"><%= current_user.full_name.titleize %></h3>
                       <h6 class="p-4 text-muted" style="font-size: 12px; margin-top: -10px; margin-bottom: -30px;"><%= current_user.bio %></h6>
                       <!-- <div class="social-links" style="margin-bottom: -20px;">
                         <a href="#"><i class="fab fa-twitter m-2"></i></a>

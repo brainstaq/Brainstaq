@@ -33,7 +33,7 @@
             </div>
             <div class="received_msg">
               <div class="received_withd_msg">
-                <h5 class="mb-2"> <%= user.full_name %></h5>
+                <h5 class="mb-2"> <%= user.full_name.titleize %></h5>
                 <h6 class="text-primary" style="font-size: 14px; margin-top: -5px;">@<%= link_to user.username %></h6>
                 <p><%= message.body %></p>
                 <span class="time_date mb-3"> <%= local_time(message.created_at) %></span>

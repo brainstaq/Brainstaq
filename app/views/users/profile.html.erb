@@ -240,7 +240,7 @@
                               <p class="mt-3 mb-0" style="font-size: 14px;"><%= truncate(sanitize(idea.description, tags: []), length: 200) %></p>
                             </div>
               
-                            <div class="job-status-bar mt-1" style="margin-bottom: -15px;">
+                            <div class="job-status-bar mt-1">
                               <ul class="like-com">
                                 <li style="font-size: 12px;" href="#"><i class="fa fa-eye"></i> <%= pluralize(idea.impressionist_count, 'View') %></li> 
                         
@@ -260,7 +260,7 @@
                                     <% end %>
                                 <% end %>
 
-                              <li style="font-size: 12px;"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
+                                <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
                               </ul>
                             <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong>
                               <%= "#{idea.relevance_bar.to_i}%" %>

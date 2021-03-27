@@ -1,20 +1,17 @@
 <div class="main-left-sidebar no-margin" style="width: 280px;">			
   <div class="suggestions full-width">
-    
     <div class="sd-title">
       <h6 style="font-weight: bold; text-align: center;">Popular Brainers</h6>
     </div>
-    
     <% @follower_suggestions.each do |user| %>
     <div class="suggestions-list">
-      <div class="suggestion-usd" style="margin-bottom: -55px;">
+      <div class="suggestion-usd" style="margin-bottom: -55px; margin-left: 5px;">
         
         <% if user.image.url %>
           <%=image_tag (user.image_url), style: "width: 35px; height: 35px;", class: "rounded-circle" %>
         <% else %>
           <%= image_tag 'avatar.png', style: "width: 35px; height: 35px;", class: "rounded-circle ml-1" %>
         <% end %>
- 
         <div class="sgt-text">
           <h4><%= link_to user.full_name.titleize, profile_path(user.username), class: "text-primary" %></h4>
           <span style="font-size: 12px; font-weight: bold;" class= "text-dark"><%= user.country %></span>
@@ -27,12 +24,8 @@
         <span>
           <%#= link_to "View", profile_path(user.username), class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;" %>
         </span>
-        
-      
       </div>
-      
     </div>
-    
     <% end %>
 <!--     
       <div class="view-more mb-4 mt-3">

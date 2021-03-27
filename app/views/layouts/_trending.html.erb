@@ -6,7 +6,7 @@
   <% @ideas.sort_by{|idea| - idea.impressions.size.to_i}.first(10).each do |idea| %>  
     <div class="suggestions-list" style="padding-bottom: 60px;">
       <div class="suggestion-usd" style="margin-bottom: -60px;">
-        <%= image_tag idea.image_url, style: "width: 50px; height: 50px; margin-left: -5px; margin-right: 5px;"  %>
+        <%= image_tag idea.image_url, style: "width: 50px; height: 50px; margin-left: 5px; margin-right: 5px;"  %>
         <div class="sgt-text">
           <h4><%= link_to idea.title.titleize, idea, class: 'text-dark' %></h4>
           <span>

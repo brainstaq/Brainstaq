@@ -18,12 +18,15 @@
  */
 
  @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+ 
  @import "home.scss";
 
  @import "pages.scss";
 
- @import "dashboard.css";
+ @import "dashboard.scss";
 
+ @import "responsive.scss";
+ 
  @import "ionicons";
 
  @import "social-share-button";

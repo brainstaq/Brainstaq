@@ -352,24 +352,66 @@
 @media (max-width: 320px) {
   .suggestions {
     width: auto !important;
-    margin-left: 25px !important;
+    margin-left: -10px !important;
+    margin-right: -5px !important;
+    margin-top: 5px !important;
   }
   .sd-title {
     padding-top: 25px !important;
   }
+  .usy-name h3 {
+    font-size: 12px !important;
+  }
+  .usy-name span {
+    font-size: 10px !important;
+  }
+  .epi-sec li {
+    font-size: 10px !important;
+  }
+  .job_descp h3 {
+    font-size: 14px !important;
+  }
+  .job_descp span {
+    font-size: 10px !important;
+  }
   .main-left-sidebar {
-    width: 300px !important;
-    padding-top: 25px !important;
-    margin-right: 0px !important;
+    width: auto !important;
+    padding-top: 0px !important;
   }
   .right-sidebar {
-    width: 300px !important;
-    margin-left: 22px !important;
+    width: auto !important;
+    margin-left: -10px !important;
     margin-right: -15px !important;
   }
   .main-ws-sec {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: -5px !important;
+  }
+  .user-data {
+    width: auto !important;
+    margin-left: 5px !important;
+    margin-right: 10px !important;
+    margin-top: -50px !important;
+  }
+  .widget {
+    width: auto !important;
+    margin-left: 5px !important;
+    margin-right: 15px !important;
+  }
+  .navbar-toggler {
+    float: right;
+    margin-left: -170px !important;
+  }
+  .navbar-collapse {
+    margin-left: 45px !important;
+  }
+  .search-form {
+    margin-bottom: 10px;
+  }
+  .form-box {
     width: 300px !important;
-    margin-left: 2px !important;
-    margin-right: -25px !important;
+    margin-left: -10px !important;
+    margin-right: 15px !important;
   }
 }

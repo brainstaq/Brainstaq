@@ -1,9 +1,7 @@
-
-
 <% if notice || alert %> 
 <div class="flash-message <%#= notice ? "notice" : ""%><%#= alert ? "error" : ""%>"> 
   <div class="container clearfix">
-    <div class="alert">
+    <div class="alert justify-content-center align-self-center">
       <button type="button" class="close" data-dismiss="alert" aria-label="close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -16,3 +14,4 @@
   </div>
 </div> 
 <% end %>
+

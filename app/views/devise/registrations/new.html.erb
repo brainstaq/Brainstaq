@@ -1,5 +1,5 @@
 <article class="card-body mx-auto" style="max-width: 400px; padding-top: 150px;">
-  <header class="section-header mb-5">
+  <header class="section-header mb-5 clearfix">
     <h3>Create <span class="text-primary"> Account</span></h3>
   </header>
   <!-- <p>
@@ -9,7 +9,7 @@
   <p class="divider-text">
     <span class="bg-light">OR</span>
   </p> -->
-
+ 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <small><%= render "devise/shared/error_messages", resource: resource %></small>
 

@@ -38,6 +38,9 @@
 	.notification-box {left: 100%;top: 0;}
 	nav ul ul {left: 50%;top: 0;border: 1px solid #e4e4e4;padding-left: 20px;padding-right: 20px;}
 	.sgt-text span {font-size: 12px;}
+  .dropdown-toggle {
+    float: right !important;
+  }
 }
 
 
@@ -107,10 +110,64 @@
 	// .mf-field input {width: 100%;margin-bottom: 20px;}
 	// .mf-field button {margin-left: 0;margin-bottom: 10px;}
 	// .message-inner-dt > img {margin-bottom: 10px;}
+  .alert {
+    &.error {
+      border: solid 2px #900;
+      background-color: red;
+    }
+    &.notice {
+      border: solid 2px #26722D;
+      background-color: green;
+    }
+    color: white;
+    position: fixed;
+    z-index: 999;
+    font-weight: bold;
+    width: 200px;
+    margin-left: -70px;
+    text-align: center;
+    p {
+      font-size: 80%;
+      margin: 15px 0;
+    }
+  }
   .suggestions {
     width: auto !important;
     margin-left: 10px !important;
     margin-right: 15px !important;
+  }
+  .career-txt {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 5px !important;
+  }
+  .career-img {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 15px !important;
+  }
+  .section-header {
+    position: center;
+  }
+  .about-container {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .background {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: 40px !important;
+    margin-top: -40px !important;
+  }
+  .about-extra {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .contact-details {
+    float: left;
+    margin-left: 20px !important;
   }
   .sd-title {
     padding-top: 25px !important;
@@ -145,10 +202,22 @@
     margin-right: 15px !important;
     margin-top: -50px !important;
   }
+  .user_profile {
+    width: 500px !important;
+    margin-left: 0px !important;
+    //margin-right: 25px !important;
+    margin-top: -50px !important;
+  }
+  .dropdown-toggle {
+    float: right !important;
+  }
   .widget {
     width: auto !important;
     margin-left: 22px !important;
     margin-right: 15px !important;
+  }
+  .back-to-top {
+    margin-right: 15px;
   }
 }
 
@@ -216,6 +285,39 @@
     margin-left: 22px !important;
     margin-right: -15px !important;
   }
+  .section-header {
+    position: center;
+  }
+  .career-txt {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 5px !important;
+  }
+  .career-img {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 15px !important;
+  }
+  .about-container {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .background {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: 40px !important;
+    margin-top: -40px !important;
+  }
+  .about-extra {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .contact-details {
+    float: left;
+    margin-left: 20px !important;
+  }
   .sd-title {
     padding-top: 25px !important;
   }
@@ -247,10 +349,40 @@
     margin-left: 22px !important;
     margin-right: 5px !important;
   }
+  .user_profile {
+    width: 500px !important;
+    margin-left: 0px !important;
+    //margin-right: 25px !important;
+    margin-top: -50px !important;
+  }
+  .dropdown-toggle {
+    float: right !important;
+  }
   .widget {
     width: auto !important;
     margin-left: 22px !important;
     margin-right: 5px !important;
+  }
+  .alert {
+    &.error {
+      border: solid 2px #900;
+      background-color: red;
+    }
+    &.notice {
+      border: solid 2px #26722D;
+      background-color: green;
+    }
+    color: white;
+    position: fixed;
+    z-index: 999;
+    font-weight: bold;
+    width: 200px;
+    margin-left: -80px;
+    text-align: center;
+    p {
+      font-size: 80%;
+      margin: 15px 0;
+    }
   }
 }
 
@@ -271,6 +403,35 @@
     width: auto !important;
     margin-left: 10px !important;
     margin-right: 5px !important;
+  }
+  .about-container {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .career-txt {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 5px !important;
+  }
+  .career-img {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 15px !important;
+  }
+  .background {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: 40px !important;
+    margin-top: -40px !important;
+  }
+  .about-extra {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .contact-details {
+    text-align: center;
   }
   .sd-title {
     padding-top: 25px !important;
@@ -298,6 +459,11 @@
   }
   .search-form {
     margin-bottom: 10px;
+    margin-right: 20px;
+  }
+  .form-box {
+    width: 380px !important;
+    margin-right: 15px;
   }
   .user-data {
     width: auto !important;
@@ -305,10 +471,46 @@
     margin-right: 5px !important;
     margin-top: -50px !important;
   }
+  .user_profile {
+    width: 350px !important;
+    margin-left: 10px !important;
+    //margin-right: 25px !important;
+    margin-top: -50px !important;
+  }
+  .dropdown-toggle {
+    float: right !important;
+  }
   .widget {
     width: auto !important;
     margin-left: 22px !important;
     margin-right: 5px !important;
+  }
+  .captcha {
+    margin-right: 0px;
+  }
+  .back-to-top {
+    margin-right: 25px !important;
+  }
+  .alert {
+    &.error {
+      border: solid 2px #900;
+      background-color: red;
+    }
+    &.notice {
+      border: solid 2px #26722D;
+      background-color: green;
+    }
+    color: white;
+    position: fixed;
+    z-index: 999;
+    font-weight: bold;
+    width: 200px;
+    margin-left: -90px;
+    text-align: center;
+    p {
+      font-size: 80%;
+      margin: 15px 0;
+    }
   }
 }
 
@@ -318,13 +520,31 @@
     margin-left: 5px !important;
     margin-right: -20px !important;
   }
+  .about-container {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .background {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: 40px !important;
+    margin-top: -40px !important;
+  }
+  .about-extra {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .contact-details {
+    text-align: center;
+  }
   .sd-title {
     padding-top: 25px !important;
   }
   .main-left-sidebar {
     width: 300px !important;
     padding-top: 0px !important;
-    //margin-right: -20px !important;
   }
   .right-sidebar {
     width: 300px !important;
@@ -338,8 +558,14 @@
   }
   .user-data {
     width: 315px !important;
-    margin-left: 5px !important;
+    margin-left: 0px !important;
     margin-right: 25px !important;
+    margin-top: -50px !important;
+  }
+  .user_profile {
+    width: 330px !important;
+    margin-left: 5px !important;
+    margin-right: 15px !important;
     margin-top: -50px !important;
   }
   .widget {
@@ -347,14 +573,58 @@
     margin-left: 5px !important;
     margin-right: 15px !important;
   }
+  .form-box {
+    width: 350px !important;
+    margin-right: 15px !important;
+  }
+  .alert {
+    &.error {
+      border: solid 2px #900;
+      background-color: red;
+    }
+    &.notice {
+      border: solid 2px #26722D;
+      background-color: green;
+    }
+    color: white;
+    position: fixed;
+    z-index: 999;
+    font-weight: bold;
+    width: 200px;
+    margin-left: -100px;
+    text-align: center;
+    p {
+      font-size: 80%;
+      margin: 15px 0;
+    }
+  }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 324px) {
   .suggestions {
     width: auto !important;
     margin-left: -10px !important;
     margin-right: -5px !important;
     margin-top: 5px !important;
+  }
+  .about-container {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .background {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: 40px !important;
+    margin-top: -40px !important;
+  }
+  .about-extra {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .contact-details {
+    text-align: center;
   }
   .sd-title {
     padding-top: 25px !important;
@@ -394,14 +664,32 @@
     margin-right: 10px !important;
     margin-top: -50px !important;
   }
+  .user_profile {
+    width: auto !important;
+    margin-left: 5px !important;
+    margin-right: 10px !important;
+    margin-top: -50px !important;
+  }
   .widget {
     width: auto !important;
     margin-left: 5px !important;
     margin-right: 15px !important;
   }
+  .count span {
+    font-size: 20px !important;
+  }
+  .count p {
+    font-size: 15px !important;
+  }
+  .idea-form {
+    width: 400px !important;
+    //margin-left: 5px !important;
+    //margin-right: 15px !important;
+  }
   .navbar-toggler {
-    float: right;
-    margin-left: -170px !important;
+    float: right !important;
+    //margin-left: -100px !important;
+    margin-right: -35px !important;
   }
   .navbar-collapse {
     margin-left: 45px !important;
@@ -413,5 +701,26 @@
     width: 300px !important;
     margin-left: -10px !important;
     margin-right: 15px !important;
+  }
+  .alert {
+    &.error {
+      border: solid 2px #900;
+      background-color: red;
+    }
+    &.notice {
+      border: solid 2px #26722D;
+      background-color: green;
+    }
+    color: white;
+    position: fixed;
+    z-index: 999;
+    font-weight: bold;
+    width: 200px;
+    margin-left: -110px;
+    text-align: center;
+    p {
+      font-size: 80%;
+      margin: 15px 0;
+    }
   }
 }

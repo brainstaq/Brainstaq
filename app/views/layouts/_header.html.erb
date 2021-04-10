@@ -1,34 +1,36 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+  <div class="container-fluid">  
     <div class="navbar-brand py-0 mx-5" style="width: 225px;">
       <%= link_to (image_tag 'logo.png', style:"width:150px; height: 50px;"), root_path %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler py-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
   
-      <div class="collapse navbar-collapse" id="navbarCollapse" >
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to 'Home', root_path, class: 'nav-link para-font' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Discover', ideas_path, class: 'nav-link para-font' %>
-          </li>
-        </ul>
+    <div class="collapse navbar-collapse" id="navbarCollapse" >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: 'nav-link para-font' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Discover', ideas_path, class: 'nav-link para-font' %>
+        </li>
+      </ul>
 
-        <%# if cookies[:moon] %>
-          <%#= button_to 'Light', sun_path, method: :get, class: "btn-sm btn-light rounded-pill mr-2" %>
-        <%# else %>
-          <%#= button_to 'Dark', moon_path, method: :get, class: "btn-sm btn-dark rounded-pill mr-2" %>
-        <%# end %>
+      <%# if cookies[:moon] %>
+        <%#= button_to 'Light', sun_path, method: :get, class: "btn-sm btn-light rounded-pill mr-2" %>
+      <%# else %>
+        <%#= button_to 'Dark', moon_path, method: :get, class: "btn-sm btn-dark rounded-pill mr-2" %>
+      <%# end %>
 
-        <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
-          <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded-pill', placeholder: 'Search' %>
-        <% end %>
+      <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+        <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded-pill', placeholder: 'Search' %>
+      <% end %>
       
-        <div class="navbar-text float-right mr-5">
-          <%= link_to "Log In", new_user_session_path, class: "btn btn1 rounded-pill mr-1 text-white" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn1 rounded-pill text-white" %>
-        </div>
+      <div class="navbar-text float-right mr-5">
+        <%= link_to "Log In", new_user_session_path, class: "btn btn1 rounded-pill mr-1 text-white" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn1 rounded-pill text-white" %>
+      </div>
     </div>
-  </nav>
+  </div>
+</nav>

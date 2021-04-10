@@ -1,93 +1,93 @@
-@media (max-width: 1200px) {
-	header nav {position: fixed;top: 0;left: 0;width: 200px;height: 100%;background-color: #e44d3a;padding: 25px 20px;opacity: 0;visibility: hidden;z-index: 0}
-	header nav.active {opacity: 1;visibility: visible;z-index: 9999;}
-	header nav ul li {float: left;width: 100%;text-align: left;padding: 0 0 0 0;margin-bottom: 20px;}
-	.menu-btn {display: block;}
-	header nav ul li span {display: inline-block;margin-right: 10px;}
-	.widget-about h3 {font-size: 16px;}
-	.widget-about span {font-size: 13px;}
-	.suggestion-usd {padding: 15px 5px;}
-	.cp-sec p {margin-top: 10px;float: none;}
-	.comment_box input {width: 281px;}
-	.job-details {width: 112px;}
-	.job-details h3 {line-height: 18px;}
-	.sd-title h3 {font-size: 15px;}
-	.cp-sec > img {text-align: center;float: none;}
-	.cp-sec {text-align: center;}
-	.flw-status li {margin-right: 10px;}
-	.flw-status li span {font-size: 16px;}
-	.social_links li a {font-size: 10px;}
-	.footy-sec ul {width: 100%;text-align: center;}
-	.fl-rgt {float: none;margin-top: 0;padding-bottom: 20px;width: auto;padding-right: 0;}
-	.footy-sec.mn p {margin-top: 0;padding-bottom: 20px;}
-	.footy-sec.mn ul {padding: 30px 0 25px 0;}
-	.hr-rate {margin-top: 10px;}
-	.filter-secs {margin-bottom: 40px;}
-	.tab-feed ul li {margin-bottom: 30px;}
-	.star-descp > a {float: left;width: 100%;margin-left: 0;margin-top: 10px;}
-	.tab-feed {margin-bottom: 30px;}
-	.footy-sec p {width: 100%;text-align: center;margin-top: 15px;}
-	.footy-sec p img {float: none;top: 2px;}
-	.footy-sec {text-align: center;}
-	.search-bar.st2 {display: none;}
-	.usr_quest {width: 85%;}
-	.full-pagi {display: block !important;}
-	.post_comment_sec {width: 85%;}
-	.acc-leftbar .nav-tabs > a i {width: 30px;}
-	.acc-leftbar .nav-tabs > a {font-size: 14px;}
-	.notification-box {left: 100%;top: 0;}
-	nav ul ul {left: 50%;top: 0;border: 1px solid #e4e4e4;padding-left: 20px;padding-right: 20px;}
-	.sgt-text span {font-size: 12px;}
-  .dropdown-toggle {
-    float: right !important;
-  }
-}
+// @media (max-width: 1200px) {
+// 	header nav {position: fixed;top: 0;left: 0;width: 200px;height: 100%;background-color: #e44d3a;padding: 25px 20px;opacity: 0;visibility: hidden;z-index: 0}
+// 	header nav.active {opacity: 1;visibility: visible;z-index: 9999;}
+// 	header nav ul li {float: left;width: 100%;text-align: left;padding: 0 0 0 0;margin-bottom: 20px;}
+// 	.menu-btn {display: block;}
+// 	header nav ul li span {display: inline-block;margin-right: 10px;}
+// 	.widget-about h3 {font-size: 16px;}
+// 	.widget-about span {font-size: 13px;}
+// 	.suggestion-usd {padding: 15px 5px;}
+// 	.cp-sec p {margin-top: 10px;float: none;}
+// 	.comment_box input {width: 281px;}
+// 	.job-details {width: 112px;}
+// 	.job-details h3 {line-height: 18px;}
+// 	.sd-title h3 {font-size: 15px;}
+// 	.cp-sec > img {text-align: center;float: none;}
+// 	.cp-sec {text-align: center;}
+// 	.flw-status li {margin-right: 10px;}
+// 	.flw-status li span {font-size: 16px;}
+// 	.social_links li a {font-size: 10px;}
+// 	.footy-sec ul {width: 100%;text-align: center;}
+// 	.fl-rgt {float: none;margin-top: 0;padding-bottom: 20px;width: auto;padding-right: 0;}
+// 	.footy-sec.mn p {margin-top: 0;padding-bottom: 20px;}
+// 	.footy-sec.mn ul {padding: 30px 0 25px 0;}
+// 	.hr-rate {margin-top: 10px;}
+// 	.filter-secs {margin-bottom: 40px;}
+// 	.tab-feed ul li {margin-bottom: 30px;}
+// 	.star-descp > a {float: left;width: 100%;margin-left: 0;margin-top: 10px;}
+// 	.tab-feed {margin-bottom: 30px;}
+// 	.footy-sec p {width: 100%;text-align: center;margin-top: 15px;}
+// 	.footy-sec p img {float: none;top: 2px;}
+// 	.footy-sec {text-align: center;}
+// 	.search-bar.st2 {display: none;}
+// 	.usr_quest {width: 85%;}
+// 	.full-pagi {display: block !important;}
+// 	.post_comment_sec {width: 85%;}
+// 	.acc-leftbar .nav-tabs > a i {width: 30px;}
+// 	.acc-leftbar .nav-tabs > a {font-size: 14px;}
+// 	.notification-box {left: 100%;top: 0;}
+// 	nav ul ul {left: 50%;top: 0;border: 1px solid #e4e4e4;padding-left: 20px;padding-right: 20px;}
+// 	.sgt-text span {font-size: 12px;}
+//   .dropdown-toggle {
+//     float: right !important;
+//   }
+// }
 
 
-@media (max-width: 991px) {
-	.sgt-text span {font-size: 14px;}
-	main {padding: 20px 0 60px 0;}
-	.user-specs span {font-size: 13px;}
-	.comment_box input {width: 275px;}
-	.job-details {width: auto;}
-	.hr-rate {margin-top: 15px;}
-	.suggestion-usd {padding: 15px 20px;}
-	.right-sidebar {margin-top: 50px;}
-	.companies-info {padding: 30px 0 60px 0;}
-	.pf-gallery ul li {width: auto;}
-	.social_links li a {font-size: 13px;}
-	.footy-sec.mn ul li {margin-bottom: 10px;}
-	.user-pro-img > a {left: 56%;}
-	.no-pd {padding: 0;}
-	.footy-sec ul li {margin-bottom: 10px;}
-	.cm-logo {padding-left: 0;}
-	.signin-pop::before {display: none;}
-	.cmp-info > img {display: none;}
-	.cm-logo {margin-bottom: 0px;}
-	.sign-control {text-align: left;}
-	.sign_in_sec {padding: 0 20px;}
-	.sign-control {padding-left: 20px;padding-right: 0;margin-bottom: 30px;}
-	.login-resources ul li {float: none;width: auto;display: inline-block;margin-right: 10px;}
-	.login-resources ul li a {padding: 13px 15px;}
-	.signin-popup {width: 100%;padding: 0 20px;}
-	.cmp-info {padding: 40px 20px 0 20px;}
-	.signup-tab {margin-top: 0;}
-	.full-pagi {margin-bottom: 20px;}
-	.widget-adver img {width: auto;}
-	.widget-adver {text-align: center;}
-	.widget-adver img {float: none;}
-	.next-prev {margin-bottom: 20px;}
-	.msgs-list {margin-bottom: 30px;}
-	.acc-leftbar .nav-tabs > a i {width: 40px;}
-	.acc-leftbar .nav-tabs > a {font-size: 16px;}
-	.acc-leftbar {margin-bottom: 30px;}
-	.profile-account-setting {margin-bottom: 50px;}
-	.profile-bx-info {margin-bottom: 25px;}
-	.profile-bx-details {margin-bottom: -25px;}
-}
+// @media (max-width: 991px) {
+// 	.sgt-text span {font-size: 14px;}
+// 	main {padding: 20px 0 60px 0;}
+// 	.user-specs span {font-size: 13px;}
+// 	.comment_box input {width: 275px;}
+// 	.job-details {width: auto;}
+// 	.hr-rate {margin-top: 15px;}
+// 	.suggestion-usd {padding: 15px 20px;}
+// 	.right-sidebar {margin-top: 50px;}
+// 	.companies-info {padding: 30px 0 60px 0;}
+// 	.pf-gallery ul li {width: auto;}
+// 	.social_links li a {font-size: 13px;}
+// 	.footy-sec.mn ul li {margin-bottom: 10px;}
+// 	.user-pro-img > a {left: 56%;}
+// 	.no-pd {padding: 0;}
+// 	.footy-sec ul li {margin-bottom: 10px;}
+// 	.cm-logo {padding-left: 0;}
+// 	.signin-pop::before {display: none;}
+// 	.cmp-info > img {display: none;}
+// 	.cm-logo {margin-bottom: 0px;}
+// 	.sign-control {text-align: left;}
+// 	.sign_in_sec {padding: 0 20px;}
+// 	.sign-control {padding-left: 20px;padding-right: 0;margin-bottom: 30px;}
+// 	.login-resources ul li {float: none;width: auto;display: inline-block;margin-right: 10px;}
+// 	.login-resources ul li a {padding: 13px 15px;}
+// 	.signin-popup {width: 100%;padding: 0 20px;}
+// 	.cmp-info {padding: 40px 20px 0 20px;}
+// 	.signup-tab {margin-top: 0;}
+// 	.full-pagi {margin-bottom: 20px;}
+// 	.widget-adver img {width: auto;}
+// 	.widget-adver {text-align: center;}
+// 	.widget-adver img {float: none;}
+// 	.next-prev {margin-bottom: 20px;}
+// 	.msgs-list {margin-bottom: 30px;}
+// 	.acc-leftbar .nav-tabs > a i {width: 40px;}
+// 	.acc-leftbar .nav-tabs > a {font-size: 16px;}
+// 	.acc-leftbar {margin-bottom: 30px;}
+// 	.profile-account-setting {margin-bottom: 50px;}
+// 	.profile-bx-info {margin-bottom: 25px;}
+// 	.profile-bx-details {margin-bottom: -25px;}
+// }
 
 
-@media (max-width: 600px) {
+//@media (max-width: 600px) {
 	// .login_register {display: none;}
 	// .forum-bar ul {float: right;}
 	// .comment_box input {width: 84%;}
@@ -110,408 +110,408 @@
 	// .mf-field input {width: 100%;margin-bottom: 20px;}
 	// .mf-field button {margin-left: 0;margin-bottom: 10px;}
 	// .message-inner-dt > img {margin-bottom: 10px;}
-  .alert {
-    &.error {
-      border: solid 2px #900;
-      background-color: red;
-    }
-    &.notice {
-      border: solid 2px #26722D;
-      background-color: green;
-    }
-    color: white;
-    position: fixed;
-    z-index: 999;
-    font-weight: bold;
-    width: 200px;
-    margin-left: -70px;
-    text-align: center;
-    p {
-      font-size: 80%;
-      margin: 15px 0;
-    }
-  }
-  .suggestions {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 15px !important;
-  }
-  .career-txt {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 5px !important;
-  }
-  .career-img {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 15px !important;
-  }
-  .section-header {
-    position: center;
-  }
-  .about-container {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 0px !important;
-  }
-  .background {
-    width: auto !important;
-    margin-left: -30px !important;
-    margin-right: 40px !important;
-    margin-top: -40px !important;
-  }
-  .about-extra {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 0px !important;
-  }
-  .contact-details {
-    float: left;
-    margin-left: 20px !important;
-  }
-  .sd-title {
-    padding-top: 25px !important;
-  }
-  .main-left-sidebar {
-    width: auto !important;
-    padding-top: 25px !important;
-    margin-left: 5px !important;
-  }
-  .right-sidebar {
-    width: auto !important;
-    margin-left: -10px !important;
-  }
-  .main-ws-sec {
-    width: auto !important;
-    margin-left: -10px !important;
-    margin-right: 20px !important;
-  }
-  .navbar-toggler {
-    float: right;
-    margin-right: 50px !important;
-  }
-  .navbar-collapse {
-    margin-left: 45px !important;
-  }
-  .search-form {
-    margin-bottom: 10px;
-  }
-  .user-data {
-    width: auto !important;
-    margin-left: 22px !important;
-    margin-right: 15px !important;
-    margin-top: -50px !important;
-  }
-  .user_profile {
-    width: 500px !important;
-    margin-left: 0px !important;
-    //margin-right: 25px !important;
-    margin-top: -50px !important;
-  }
-  .dropdown-toggle {
-    float: right !important;
-  }
-  .widget {
-    width: auto !important;
-    margin-left: 22px !important;
-    margin-right: 15px !important;
-  }
-  .back-to-top {
-    margin-right: 15px;
-  }
-}
+  // .alert {
+  //   &.error {
+  //     border: solid 2px #900;
+  //     background-color: red;
+  //   }
+  //   &.notice {
+  //     border: solid 2px #26722D;
+  //     background-color: green;
+  //   }
+  //   color: white;
+  //   position: fixed;
+  //   z-index: 999;
+  //   font-weight: bold;
+  //   width: 200px;
+  //   margin-left: -70px;
+  //   text-align: center;
+  //   p {
+  //     font-size: 80%;
+  //     margin: 15px 0;
+  //   }
+  // }
+  // .suggestions {
+  //   width: auto !important;
+  //   margin-left: 10px !important;
+  //   margin-right: 15px !important;
+  // }
+  // .career-txt {
+  //   width: auto !important;
+  //   margin-left: 10px !important;
+  //   margin-right: 5px !important;
+  // }
+  // .career-img {
+  //   width: auto !important;
+  //   margin-left: 10px !important;
+  //   margin-right: 15px !important;
+  // }
+  // .section-header {
+  //   position: center;
+  // }
+  // .about-container {
+  //   width: auto !important;
+  //   margin-left: 10px !important;
+  //   margin-right: 0px !important;
+  // }
+  // .background {
+  //   width: auto !important;
+  //   margin-left: -30px !important;
+  //   margin-right: 40px !important;
+  //   margin-top: -40px !important;
+  // }
+  // .about-extra {
+  //   width: auto !important;
+  //   margin-left: 10px !important;
+  //   margin-right: 0px !important;
+  // }
+  // .contact-details {
+  //   float: left;
+  //   margin-left: 20px !important;
+  // }
+  // .sd-title {
+  //   padding-top: 25px !important;
+  // }
+  // .main-left-sidebar {
+  //   width: auto !important;
+  //   padding-top: 25px !important;
+  //   margin-left: 5px !important;
+  // }
+  // .right-sidebar {
+  //   width: auto !important;
+  //   margin-left: -10px !important;
+  // }
+  // .main-ws-sec {
+  //   width: auto !important;
+  //   margin-left: -10px !important;
+  //   margin-right: 20px !important;
+  // }
+  // .navbar-toggler {
+  //   float: right;
+  //   margin-right: 50px !important;
+  // }
+  // .navbar-collapse {
+  //   margin-left: 45px !important;
+  // }
+  // .search-form {
+  //   margin-bottom: 10px;
+  // }
+  // .user-data {
+  //   width: auto !important;
+  //   margin-left: 22px !important;
+  //   margin-right: 15px !important;
+  //   margin-top: -50px !important;
+  // }
+  // .user_profile {
+  //   width: 500px !important;
+  //   margin-left: 0px !important;
+  //   //margin-right: 25px !important;
+  //   margin-top: -50px !important;
+  // }
+  // .dropdown-toggle {
+  //   float: right !important;
+  // }
+  // .widget {
+  //   width: auto !important;
+  //   margin-left: 22px !important;
+  //   margin-right: 15px !important;
+  // }
+  // .back-to-top {
+  //   margin-right: 15px;
+  // }
+//}
 
 
-@media (max-width: 576px) {
-	.signin-pop {margin-bottom: 40px;}
-	.login-resources ul li {margin-bottom: 7px;}
-	.logo {width: 100%;text-align: center;}
-	.logo img {float: none;}
-	.search-bar {width: 100%;}
-	.user-account {float: left;}
-	.cm_img {width: 100%;text-align: center;margin-bottom: 10px;}
-	.cm_img img {float: none;}
-	.comment_box {width: 100%;}
-	.comment_box input {width: 100%;margin-bottom: 10px;}
-	.comment_box form button {float: none;}
-	.post-comment {text-align: center;}
-	.comment_box form button {padding: 0 15px;}
-	.job-details {width: 80%;}
-	.cover-sec {height: 200px;}
-	.cover-sec img {height: 100%;object-fit: cover;}
-	.star-descp > ul {width: 100%;margin-top: 10px;}
-	.like-com li {margin-right: 5px;}
-	.bk-links {width: 100%;margin-top: 15px;}
-	main {padding: 20px 0 40px 0}
-	.bk-links {margin-bottom: 10px;}
-	.star-descp {margin-bottom: 25px;}
-	.like-com li {float: left;width: 100%;margin-bottom: 15px;}
-	.job-status-bar > a {float: left;width: 100%;margin-top: -5px;}
-	.lt-sec h4 {font-size: 14px;}
-	.cc-head ul {float: left;width: 100%;margin-top: 10px;}
-	.add-billing-method span {width: 85%;line-height: 18px;}
-	.add-billing-method h4 img {margin-top: 10px;}
-	.star-descp span {font-size: 14px;}
-	.footy-sec {margin-top: 30px;}
-	.post-popup {width: 100%;overflow: scroll;}
-	.price-br {float: left;width: 100% !important;}
-	.price-sec span {padding: 0;margin-bottom: 20px;}
-	.post-project > a {top: 21px;right: 20px;}
-	.forum-bar h2 {float: left;width: 100%;text-align: center;}
-	.forum-bar {margin-top: 0;width: 100%;}
-	.forum-bar ul {width: 100%;text-align: center;margin-top: 30px;padding-bottom: 20px;}
-	.forum-bar ul li {float: left;width: 100%;text-align: center;margin-bottom: 25px;}
-	.usr_quest > h3 {line-height: 22px;}
-	.quest-posted-time {position: static;float: left;width: 100%;margin-top: 20px;}
-	.react-links li {float: left;width: 100%;margin-bottom: 15px;}
-	.react-links li:last-child {margin-bottom: 0;}
-	.pagination {display: block;}
-	.pagination li {margin-bottom: 15px;}
-	.post_comment_sec {width: 100%;margin-top: 20px;}
-	.widget-adver img {width: 100%;}
-	.message-inner-dt > p {width: 80%;}
-	.mf-field button {width: auto;padding: 0 20px;}
-	.save-stngs ul li {float: left;width: 100%;margin-bottom: 15px;}
-	.save-stngs ul li:last-child {margin-bottom: 0;}
-	.notification-info {width: 100%;padding: 0;margin-top: 15px;}
-	.notification-info h3 {line-height: 18px;}
-	.conversation-box {width: 100%;right: 0;}
-	.user-account-settingss {right: auto;left: 0;}
-	.login-resources {text-align: left;}
-	.forum-bar ul li:last-child {margin-bottom: 0;}
-	.conversation-box {left: -20px;width: 280px;}
-  .suggestions {
-    width: 500 !important;
-    margin-left: 22px !important;
-    margin-right: -15px !important;
-  }
-  .section-header {
-    position: center;
-  }
-  .career-txt {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 5px !important;
-  }
-  .career-img {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 15px !important;
-  }
-  .about-container {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 0px !important;
-  }
-  .background {
-    width: auto !important;
-    margin-left: -30px !important;
-    margin-right: 40px !important;
-    margin-top: -40px !important;
-  }
-  .about-extra {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 0px !important;
-  }
-  .contact-details {
-    float: left;
-    margin-left: 20px !important;
-  }
-  .sd-title {
-    padding-top: 25px !important;
-  }
-  .main-left-sidebar {
-    width: 480px !important;
-    padding-top: 25px !important;
-    margin-left: 5px !important;
-  }
-  .right-sidebar {
-    width: 500px !important;
-    margin-left: 5px !important;
-  }
-  .main-ws-sec {
-    width: 500px !important;
-    margin-left: 2px !important;
-    margin-right: -25px !important;
-  }
-  .navbar-toggler {
-    margin-right: 20px !important;
-  }
-  .navbar-collapse {
-    margin-left: 45px !important;
-  }
-  .search-form {
-    margin-bottom: 10px;
-  }
-  .user-data {
-    width: auto !important;
-    margin-left: 22px !important;
-    margin-right: 5px !important;
-  }
-  .user_profile {
-    width: 500px !important;
-    margin-left: 0px !important;
-    //margin-right: 25px !important;
-    margin-top: -50px !important;
-  }
-  .dropdown-toggle {
-    float: right !important;
-  }
-  .widget {
-    width: auto !important;
-    margin-left: 22px !important;
-    margin-right: 5px !important;
-  }
-  .alert {
-    &.error {
-      border: solid 2px #900;
-      background-color: red;
-    }
-    &.notice {
-      border: solid 2px #26722D;
-      background-color: green;
-    }
-    color: white;
-    position: fixed;
-    z-index: 999;
-    font-weight: bold;
-    width: 200px;
-    margin-left: -80px;
-    text-align: center;
-    p {
-      font-size: 80%;
-      margin: 15px 0;
-    }
-  }
-}
+// @media (max-width: 576px) {
+// 	.signin-pop {margin-bottom: 40px;}
+// 	.login-resources ul li {margin-bottom: 7px;}
+// 	.logo {width: 100%;text-align: center;}
+// 	.logo img {float: none;}
+// 	.search-bar {width: 100%;}
+// 	.user-account {float: left;}
+// 	.cm_img {width: 100%;text-align: center;margin-bottom: 10px;}
+// 	.cm_img img {float: none;}
+// 	.comment_box {width: 100%;}
+// 	.comment_box input {width: 100%;margin-bottom: 10px;}
+// 	.comment_box form button {float: none;}
+// 	.post-comment {text-align: center;}
+// 	.comment_box form button {padding: 0 15px;}
+// 	.job-details {width: 80%;}
+// 	.cover-sec {height: 200px;}
+// 	.cover-sec img {height: 100%;object-fit: cover;}
+// 	.star-descp > ul {width: 100%;margin-top: 10px;}
+// 	.like-com li {margin-right: 5px;}
+// 	.bk-links {width: 100%;margin-top: 15px;}
+// 	main {padding: 20px 0 40px 0}
+// 	.bk-links {margin-bottom: 10px;}
+// 	.star-descp {margin-bottom: 25px;}
+// 	.like-com li {float: left;width: 100%;margin-bottom: 15px;}
+// 	.job-status-bar > a {float: left;width: 100%;margin-top: -5px;}
+// 	.lt-sec h4 {font-size: 14px;}
+// 	.cc-head ul {float: left;width: 100%;margin-top: 10px;}
+// 	.add-billing-method span {width: 85%;line-height: 18px;}
+// 	.add-billing-method h4 img {margin-top: 10px;}
+// 	.star-descp span {font-size: 14px;}
+// 	.footy-sec {margin-top: 30px;}
+// 	.post-popup {width: 100%;overflow: scroll;}
+// 	.price-br {float: left;width: 100% !important;}
+// 	.price-sec span {padding: 0;margin-bottom: 20px;}
+// 	.post-project > a {top: 21px;right: 20px;}
+// 	.forum-bar h2 {float: left;width: 100%;text-align: center;}
+// 	.forum-bar {margin-top: 0;width: 100%;}
+// 	.forum-bar ul {width: 100%;text-align: center;margin-top: 30px;padding-bottom: 20px;}
+// 	.forum-bar ul li {float: left;width: 100%;text-align: center;margin-bottom: 25px;}
+// 	.usr_quest > h3 {line-height: 22px;}
+// 	.quest-posted-time {position: static;float: left;width: 100%;margin-top: 20px;}
+// 	.react-links li {float: left;width: 100%;margin-bottom: 15px;}
+// 	.react-links li:last-child {margin-bottom: 0;}
+// 	.pagination {display: block;}
+// 	.pagination li {margin-bottom: 15px;}
+// 	.post_comment_sec {width: 100%;margin-top: 20px;}
+// 	.widget-adver img {width: 100%;}
+// 	.message-inner-dt > p {width: 80%;}
+// 	.mf-field button {width: auto;padding: 0 20px;}
+// 	.save-stngs ul li {float: left;width: 100%;margin-bottom: 15px;}
+// 	.save-stngs ul li:last-child {margin-bottom: 0;}
+// 	.notification-info {width: 100%;padding: 0;margin-top: 15px;}
+// 	.notification-info h3 {line-height: 18px;}
+// 	.conversation-box {width: 100%;right: 0;}
+// 	.user-account-settingss {right: auto;left: 0;}
+// 	.login-resources {text-align: left;}
+// 	.forum-bar ul li:last-child {margin-bottom: 0;}
+// 	.conversation-box {left: -20px;width: 280px;}
+//   .suggestions {
+//     width: 500 !important;
+//     margin-left: 22px !important;
+//     margin-right: -15px !important;
+//   }
+//   .section-header {
+//     position: center;
+//   }
+//   .career-txt {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 5px !important;
+//   }
+//   .career-img {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 15px !important;
+//   }
+//   .about-container {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 0px !important;
+//   }
+//   .background {
+//     width: auto !important;
+//     margin-left: -30px !important;
+//     margin-right: 40px !important;
+//     margin-top: -40px !important;
+//   }
+//   .about-extra {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 0px !important;
+//   }
+//   .contact-details {
+//     float: left;
+//     margin-left: 20px !important;
+//   }
+//   .sd-title {
+//     padding-top: 25px !important;
+//   }
+//   .main-left-sidebar {
+//     width: 480px !important;
+//     padding-top: 25px !important;
+//     margin-left: 5px !important;
+//   }
+//   .right-sidebar {
+//     width: 500px !important;
+//     margin-left: 5px !important;
+//   }
+//   .main-ws-sec {
+//     width: 500px !important;
+//     margin-left: 2px !important;
+//     margin-right: -25px !important;
+//   }
+//   .navbar-toggler {
+//     margin-right: 20px !important;
+//   }
+//   .navbar-collapse {
+//     margin-left: 45px !important;
+//   }
+//   .search-form {
+//     margin-bottom: 10px;
+//   }
+//   .user-data {
+//     width: auto !important;
+//     margin-left: 22px !important;
+//     margin-right: 5px !important;
+//   }
+//   .user_profile {
+//     width: 500px !important;
+//     margin-left: 0px !important;
+//     //margin-right: 25px !important;
+//     margin-top: -50px !important;
+//   }
+//   .dropdown-toggle {
+//     float: right !important;
+//   }
+//   .widget {
+//     width: auto !important;
+//     margin-left: 22px !important;
+//     margin-right: 5px !important;
+//   }
+//   .alert {
+//     &.error {
+//       border: solid 2px #900;
+//       background-color: red;
+//     }
+//     &.notice {
+//       border: solid 2px #26722D;
+//       background-color: green;
+//     }
+//     color: white;
+//     position: fixed;
+//     z-index: 999;
+//     font-weight: bold;
+//     width: 200px;
+//     margin-left: -80px;
+//     text-align: center;
+//     p {
+//       font-size: 80%;
+//       margin: 15px 0;
+//     }
+//   }
+// }
 
 @media (max-width: 410px) {
-	.post-st ul li a {font-size: 12px;padding: 0 6px;}
-	.like-com li a {font-size: 12px;}
-	.job_descp h3 {font-size: 16px;}
-	.pf-gallery ul li {padding: 3px;}
-	.checky-sec > a {float: left;width: 100%;margin-top: 10px;padding-left: 20px;}
-	.checky-sec.st2 small {width: 85%;}
-	.quest-tags li {float: left;width: 100%;margin-bottom: 15px;}
-	.quest-tags li:last-child {margin-bottom: 0;}
-	.message-inner-dt > p {padding: 10px;}
-	.request-info {width: 100%;padding: 0;margin: 15px 0;}
-	.accept-feat {width: 100%;}
-	.requests-list {padding-bottom: 50px;}
-  .suggestions {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 5px !important;
-  }
-  .about-container {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 0px !important;
-  }
-  .career-txt {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 5px !important;
-  }
-  .career-img {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 15px !important;
-  }
-  .background {
-    width: auto !important;
-    margin-left: -30px !important;
-    margin-right: 40px !important;
-    margin-top: -40px !important;
-  }
-  .about-extra {
-    width: auto !important;
-    margin-left: 10px !important;
-    margin-right: 0px !important;
-  }
-  .contact-details {
-    text-align: center;
-  }
-  .sd-title {
-    padding-top: 25px !important;
-  }
-  .main-left-sidebar {
-    width: auto !important;
-    padding-top: 25px !important;
-    margin-left: 5px !important;
-  }
-  .right-sidebar {
-    width: auto !important;
-    margin-left: -10px !important;
-  }
-  .main-ws-sec {
-    width: 380px !important;
-    margin-left: -10px !important;
-    margin-right: -25px !important;
-  }
-  .navbar-toggler {
-    float: right;
-    margin-left: -70px !important;
-  }
-  .navbar-collapse {
-    margin-left: 45px !important;
-  }
-  .search-form {
-    margin-bottom: 10px;
-    margin-right: 20px;
-  }
-  .form-box {
-    width: 380px !important;
-    margin-right: 15px;
-  }
-  .user-data {
-    width: auto !important;
-    margin-left: 22px !important;
-    margin-right: 5px !important;
-    margin-top: -50px !important;
-  }
-  .user_profile {
-    width: 350px !important;
-    margin-left: 10px !important;
-    //margin-right: 25px !important;
-    margin-top: -50px !important;
-  }
-  .dropdown-toggle {
-    float: right !important;
-  }
-  .widget {
-    width: auto !important;
-    margin-left: 22px !important;
-    margin-right: 5px !important;
-  }
-  .captcha {
-    margin-right: 0px;
-  }
-  .back-to-top {
-    margin-right: 25px !important;
-  }
-  .alert {
-    &.error {
-      border: solid 2px #900;
-      background-color: red;
-    }
-    &.notice {
-      border: solid 2px #26722D;
-      background-color: green;
-    }
-    color: white;
-    position: fixed;
-    z-index: 999;
-    font-weight: bold;
-    width: 200px;
-    margin-left: -90px;
-    text-align: center;
-    p {
-      font-size: 80%;
-      margin: 15px 0;
-    }
-  }
+// 	.post-st ul li a {font-size: 12px;padding: 0 6px;}
+// 	.like-com li a {font-size: 12px;}
+// 	.job_descp h3 {font-size: 16px;}
+// 	.pf-gallery ul li {padding: 3px;}
+// 	.checky-sec > a {float: left;width: 100%;margin-top: 10px;padding-left: 20px;}
+// 	.checky-sec.st2 small {width: 85%;}
+// 	.quest-tags li {float: left;width: 100%;margin-bottom: 15px;}
+// 	.quest-tags li:last-child {margin-bottom: 0;}
+// 	.message-inner-dt > p {padding: 10px;}
+// 	.request-info {width: 100%;padding: 0;margin: 15px 0;}
+// 	.accept-feat {width: 100%;}
+// 	.requests-list {padding-bottom: 50px;}
+//   .suggestions {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 5px !important;
+//   }
+//   .about-container {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 0px !important;
+//   }
+//   .career-txt {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 5px !important;
+//   }
+//   .career-img {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 15px !important;
+//   }
+//   .background {
+//     width: auto !important;
+//     margin-left: -30px !important;
+//     margin-right: 40px !important;
+//     margin-top: -40px !important;
+//   }
+//   .about-extra {
+//     width: auto !important;
+//     margin-left: 10px !important;
+//     margin-right: 0px !important;
+//   }
+//   .contact-details {
+//     text-align: center;
+//   }
+//   .sd-title {
+//     padding-top: 25px !important;
+//   }
+//   .main-left-sidebar {
+//     width: auto !important;
+//     padding-top: 25px !important;
+//     margin-left: 5px !important;
+//   }
+//   .right-sidebar {
+//     width: auto !important;
+//     margin-left: -10px !important;
+//   }
+//   .main-ws-sec {
+//     width: 380px !important;
+//     margin-left: -10px !important;
+//     margin-right: -25px !important;
+//   }
+//   .navbar-toggler {
+//     float: right;
+//     margin-left: -70px !important;
+//   }
+//   .navbar-collapse {
+//     margin-left: 45px !important;
+//   }
+//   .search-form {
+//     margin-bottom: 10px;
+//     margin-right: 20px;
+//   }
+//   .form-box {
+//     width: 380px !important;
+//     margin-right: 15px;
+//   }
+//   .user-data {
+//     width: auto !important;
+//     margin-left: 22px !important;
+//     margin-right: 5px !important;
+//     margin-top: -50px !important;
+//   }
+//   .user_profile {
+//     width: 350px !important;
+//     margin-left: 10px !important;
+//     //margin-right: 25px !important;
+//     margin-top: -50px !important;
+//   }
+//   .dropdown-toggle {
+//     float: right !important;
+//   }
+//   .widget {
+//     width: auto !important;
+//     margin-left: 22px !important;
+//     margin-right: 5px !important;
+//   }
+//   .captcha {
+//     margin-right: 0px;
+//   }
+//   .back-to-top {
+//     margin-right: 25px !important;
+//   }
+//   .alert {
+//     &.error {
+//       border: solid 2px #900;
+//       background-color: red;
+//     }
+//     &.notice {
+//       border: solid 2px #26722D;
+//       background-color: green;
+//     }
+//     color: white;
+//     position: fixed;
+//     z-index: 999;
+//     font-weight: bold;
+//     width: 200px;
+//     margin-left: -90px;
+//     text-align: center;
+//     p {
+//       font-size: 80%;
+//       margin: 15px 0;
+//     }
+//   }
 }
 
 @media (max-width: 375px) {
@@ -600,12 +600,12 @@
   }
 }
 
-@media (max-width: 324px) {
+@media (max-width: 360px) {
   .suggestions {
     width: auto !important;
-    margin-left: -10px !important;
-    margin-right: -5px !important;
-    margin-top: 5px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
   }
   .about-container {
     width: auto !important;
@@ -691,16 +691,137 @@
     //margin-left: -100px !important;
     margin-right: -35px !important;
   }
-  .navbar-collapse {
-    margin-left: 45px !important;
+  .search-form {
+    margin-bottom: 10px;
+  }
+  .form-box {
+    width: 330px !important;
+    margin-left: -10px !important;
+    margin-right: 15px !important;
+  }
+  .alert {
+    &.error {
+      border: solid 2px #900;
+      background-color: red;
+    }
+    &.notice {
+      border: solid 2px #26722D;
+      background-color: green;
+    }
+    color: white;
+    position: fixed;
+    z-index: 999;
+    font-weight: bold;
+    width: 200px;
+    margin-left: -110px;
+    text-align: center;
+    p {
+      font-size: 80%;
+      margin: 15px 0;
+    }
+  }
+}
+
+@media (max-width: 324px) {
+  .suggestions {
+    width: auto !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+  }
+  .about-container {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .background {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: 40px !important;
+    margin-top: -40px !important;
+  }
+  .about-extra {
+    width: auto !important;
+    margin-left: 10px !important;
+    margin-right: 0px !important;
+  }
+  .contact-details {
+    text-align: center;
+  }
+  .sd-title {
+    padding-top: 25px !important;
+  }
+  .usy-name h3 {
+    font-size: 12px !important;
+  }
+  .usy-name span {
+    font-size: 10px !important;
+  }
+  .epi-sec li {
+    font-size: 10px !important;
+  }
+  .job_descp h3 {
+    font-size: 14px !important;
+  }
+  .job_descp span {
+    font-size: 10px !important;
+  }
+  .main-left-sidebar {
+    width: auto !important;
+    padding-top: 0px !important;
+  }
+  .right-sidebar {
+    width: auto !important;
+    margin-left: -10px !important;
+    margin-right: -15px !important;
+  }
+  .main-ws-sec {
+    width: auto !important;
+    margin-left: -30px !important;
+    margin-right: -5px !important;
+  }
+  .user-data {
+    width: auto !important;
+    margin-left: 5px !important;
+    margin-right: 10px !important;
+    margin-top: -50px !important;
+  }
+  .idea-img {
+    width: auto !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: -50px !important;
+  }
+  .widget {
+    width: auto !important;
+    margin-left: 5px !important;
+    margin-right: 15px !important;
+  }
+  .count span {
+    font-size: 20px !important;
+  }
+  .count p {
+    font-size: 15px !important;
+  }
+  .idea-form {
+    width: 400px !important;
+    //margin-left: 5px !important;
+    //margin-right: 15px !important;
+  }
+  .navbar-toggler {
+    float: right !important;
+    margin-right: 0px !important;
   }
   .search-form {
     margin-bottom: 10px;
   }
   .form-box {
-    width: 300px !important;
+    width: auto !important;
     margin-left: -10px !important;
     margin-right: 15px !important;
+  }
+  .card-text {
+    margin-left: 5px;
   }
   .alert {
     &.error {

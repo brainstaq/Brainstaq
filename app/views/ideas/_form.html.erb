@@ -12,8 +12,8 @@
     </div>
   <% end %>
 
-  <div class="container col-md-8">
-    <div class="row m-3">
+  <div class="container col-lg-8">
+    <div class="row m-auto">
       <div class="col-sm-12 form-group">
         <%= form.label :idea_title, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_field :title, :readonly => form.object.persisted?, maxlength: "23", class: "form-control", placeholder: "What would you call your idea?"  %>

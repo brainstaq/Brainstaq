@@ -93,7 +93,9 @@
                 <div id="errormessage"></div>
                 
                 <div class="text-center">
-                  <%= f.submit 'Send Message', class: 'btn btn-primary text-white rounded-pill' %>
+                  <% if user_signed_in? %>
+                    <%= f.submit 'Send Message', class: 'btn btn-primary text-white rounded-pill' %>
+                  <% end %>
                 </div>  
               <% end %>
             </div>

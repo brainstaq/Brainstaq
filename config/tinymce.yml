@@ -1,4 +1,4 @@
-height: 300
+height: 350
 menubar: true
 branding: false
 file_picker_types: 'file image media'
@@ -7,13 +7,15 @@ file_picker_callback: true
 automatic_uploads: true
 image_title: true
 toolbar:
-  - undo redo | table | formatselect | code | bold italic backcolor | image |link alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat
+  - undo redo | table | bullist numlist
 plugins:
   - image
   - link
   - media
-  - print
   - preview
   - lists
   - textcolor
   - colorpicker
+  - advlist autolink lists link image charmap print preview anchor
+  - searchreplace visualblocks fullscreen
+  - insertdatetime media paste

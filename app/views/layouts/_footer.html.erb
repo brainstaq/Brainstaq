@@ -113,4 +113,36 @@
     </div>
 </footer><!-- #footer -->
 
-<a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+<!-- <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a> -->
+<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+    background: #007bff;
+    color: #fff;
+    transition: background 0.5s;
+    z-index: 11;
+  }  
+</style>
+<script>
+  $(document).ready(function(){
+	$(window).scroll(function () {
+			if ($(this).scrollTop() > 50) {
+				$('#back-to-top').fadeIn();
+			} else {
+				$('#back-to-top').fadeOut();
+			}
+		});
+		// scroll body to 0px on click
+		$('#back-to-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 1500);
+			return false;
+		});
+});
+</script>

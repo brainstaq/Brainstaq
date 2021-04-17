@@ -124,132 +124,124 @@
       </div>
     </div>
   
-    <div class="col-lg-8">
-      <hr class="w-100 mt-5">
-      <p>
-        <a class="btn mt-0 mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" 
-        aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; 
-        background-color: #fff  !important;">
-          Details
-        </a>
-
-        <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" 
-        aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; 
-        background-color: #fff  !important;" >
-          Comments (<%= @idea.comments.size %>)
-        </a>
+    <div class="col-lg-8 mt-5">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments (<%= @idea.comments.size %>)</a>
+        </li>
 
         <% if @idea.relevance_bar.to_i > 75 %>
           <% if !@idea.expired? %>
-            <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseSupport" role="button" aria-expanded="false" 
-            aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; 
-            background-color: #fff  !important;">
-              Support this Idea
-            </a>
+            <li class="nav-item">
+              <a class="nav-link" id="support-tab" data-toggle="tab" href="#support" role="tab" aria-controls="support" aria-selected="false">Support this Idea</a>
+            </li>
           <% end %>
         <% end %>
-      </p> 
-    
-      <div class="collapse mb-3" id="collapseDetails">
-        <div class="card card-body">
-          <h1 class="mt-2 mb-2" style="font-size: 30px; font-weight: bold;"><%= @idea.title.titleize %></h1>
-          <p class="lead mb-2">
-            Created by <%= link_to (@idea.user.full_name.titleize), profile_path(@idea.user.username, @user) %>
-          </p>
-          <h6 class="mb-2">Posted on <%= local_time(@idea.created_at) %></h6>
-          <hr>
-          <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%', height:'80%' if @idea.image.present? %>
-          <hr>
-          <h4 class="mb-0" style="font-weight: bold;">Description</h4>
-          <p class="mt-0 mb-0">
-            <%= sanitize @idea.description %>
-          </p>
-          
-          <h4 class="mb-0" style="font-weight: bold;">Problem</h4>
-          <p class="mt-0 mb-0">
-            <%= sanitize @idea.challenges %>
-          </p>
-          
-          <h4 class="mb-0" style="font-weight: bold;">Solution</h4>
-          <p class="mt-0 mb-0">
-            <%= sanitize @idea.overview %>
-          </p>
+      </ul>
 
-          <h4 class="mb-0" style="font-weight: bold;">Impact</h4>
-          <p class="mt-0 mb-0">
-            <%= sanitize @idea.impact %>
-          </p>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+          <div class="card card-body mt-5">
+            <h1 class="mt-2 mb-2" style="font-size: 30px; font-weight: bold;">
+              <%= @idea.title.titleize %>
+            </h1>
+            <p class="lead mb-2">
+              Created by <%= link_to (@idea.user.full_name.titleize), profile_path(@idea.user.username, @user) %>
+            </p>
+            <h6 class="mb-3">Posted on <%= local_time(@idea.created_at) %></h6>
+            
+            <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%', height:'80%' if @idea.image.present? %>
+          
+            <h4 class="mb-0 mt-3" style="font-weight: bold;">Description</h4>
+            <p class="mt-0 mb-0">
+              <%= sanitize @idea.description %>
+            </p>
+          
+            <h4 class="mb-0" style="font-weight: bold;">Problem</h4>
+            <p class="mt-0 mb-0">
+              <%= sanitize @idea.challenges %>
+            </p>
+          
+            <h4 class="mb-0" style="font-weight: bold;">Solution</h4>
+            <p class="mt-0 mb-0">
+              <%= sanitize @idea.overview %>
+            </p>
 
-          <h4 class="mb-0" style="font-weight: bold;">Funding Goal</h4>
-          <p class="mt-0 mb-0">
-            <%= number_to_currency(@idea.donation_goal, :unit => "₦") %>
-          </p>
+            <h4 class="mb-0" style="font-weight: bold;">Impact</h4>
+            <p class="mt-0 mb-0">
+              <%= sanitize @idea.impact %>
+            </p>
+
+            <h4 class="mb-0" style="font-weight: bold;">Funding Goal</h4>
+            <p class="mt-0 mb-0">
+              <%= number_to_currency(@idea.donation_goal, :unit => "₦") %>
+            </p>
+          </div>
         </div>
-      </div>
-
-      <div class="collapse mb-3" id="collapseSupport">
-        <div class="card card-body">
-          <h5 class="p-0" style="font-weight: bold;"> SELECT DONATION CATEGORY</h5>
-          <hr>
-          <% @idea.perks.each do |perk| %>
-            <div class="p-0 mb-0">
-              <h6 style="font-weight: bold;"><%= perk.title %></h6>
-              <p class="pb-0 mb-0 text-sm text-danger italic border-b" style="font-weight: bold;" hidden>Only <%= perk.quantity %> left</p>
-              <div class="py-2 text-gray-700" style="font-size: 14px;">
-                <%= perk.description %>
-              </div>
-
-              <% if !user_signed_in? %>
-                <h6 class="mt-1" style="font-size: 18px; font-style: italic;"> You must <strong>Login</strong> to support this idea. 
-                  <%= link_to "Log In", new_user_session_path %> or 
-                  <%= link_to "Create an Account", new_user_registration_path %> 
-                </h6>
-              <% else %>
-                <% if user_signed_in? && perk.idea.user_id == current_user.id %>
-                  <em class="block text-sm text-center" style="font-style: italic; font-weight: bold;" >
-                    Sorry, You can't support your own idea
-                  </em>
+      
+        <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+          <div class="card card-body mt-5">
+            <h5 style="font-weight: bold;">Recent Comments</h5>  
+            <% if !user_signed_in? %>
+              <h6 class="mt-1" style="font-size: 18px; font-style: italic;"> 
+                You must <strong>Login</strong> to post a comment. 
+                <%= link_to "Log In", new_user_session_path %> or 
+                <%= link_to "Create an Account", new_user_registration_path %> 
+              </h6>
+            <% else %>
+              <% if user_signed_in? %>
+                <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
+                <%= render partial: 'comments/form', :locals => { :comment => @comment } %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="tab-pane fade" id="support" role="tabpanel" aria-labelledby="support-tab">
+          <div class="card card-body mt-5">
+            <h5 class="p-0" style="font-weight: bold;"> SELECT DONATION CATEGORY</h5>
+            <hr class="mt-0">
+            <% @idea.perks.each do |perk| %>
+              <div class="p-0 mb-0">
+                <h6 style="font-weight: bold;"><%= perk.title %></h6>
+                <p class="pb-0 mb-0 text-sm text-danger italic border-b" style="font-weight: bold;" hidden>Only <%= perk.quantity %> left</p>
+                <div class="py-2 text-gray-700" style="font-size: 14px;">
+                  <%= perk.description %>
+                </div>
+  
+                <% if !user_signed_in? %>
+                  <h6 class="mt-1" style="font-size: 18px; font-style: italic;"> You must <strong>Login</strong> to support this idea. 
+                    <%= link_to "Log In", new_user_session_path %> or 
+                    <%= link_to "Create an Account", new_user_registration_path %> 
+                  </h6>
                 <% else %>
-                  <% if purchased_perk(perk) %>
-                    <p class="block text-sm text-center" style="font-style: italic; font-weight: bold;" >
-                      You're already donated to this idea.</p>
+                  <% if user_signed_in? && perk.idea.user_id == current_user.id %>
+                    <em class="block text-sm text-center" style="font-style: italic; font-weight: bold;" >
+                      Sorry, You can't support your own idea
+                    </em>
                   <% else %>
-                    <% if @idea.expired? %>
-                      <p class="block text-sm text-danger text-center" style="font-weight: bold;" >
-                        Campaign Expired <%= time_ago_in_words(@idea.end_date) %> ago</p>
+                    <% if purchased_perk(perk) %>
+                      <p class="block text-sm text-center" style="font-style: italic; font-weight: bold;" >
+                        You're already donated to this idea.</p>
                     <% else %>
-                      <%= link_to "Support this idea with #{number_to_currency(perk.amount, :unit => "₦")}", 
-                    new_donation_path(amount: perk.amount, idea: @idea, perk: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn btn1 btn-block text-white" %>
+                      <% if @idea.expired? %>
+                        <p class="block text-sm text-danger text-center" style="font-weight: bold;" >
+                          Campaign Expired <%= time_ago_in_words(@idea.end_date) %> ago</p>
+                      <% else %>
+                        <%= link_to "Support this idea with #{number_to_currency(perk.amount, :unit => "₦")}", 
+                      new_donation_path(amount: perk.amount, idea: @idea, perk: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn btn1 btn-block text-white" %>
+                      <% end %>
                     <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <hr>
-          <% end %>
+              </div>
+              <hr>
+            <% end %>
+          </div>
         </div>
-      </div>
-<!-- <div class="collapse mb-3" id="collapseTeam">
-      <div class="card card-body">
-        Project team goes here
-      </div>
-    </div> -->
-
-    <div class="collapse mb-3" id="collapseComments">
-      <div class="card card-body">
-        <h5 style="font-weight: bold;">Recent Comments</h5>  
-        <% if !user_signed_in? %>
-          <h6 class="mt-1" style="font-size: 18px; font-style: italic;"> 
-            You must <strong>Login</strong> to post a comment. 
-            <%= link_to "Log In", new_user_session_path %> or 
-            <%= link_to "Create an Account", new_user_registration_path %> 
-          </h6>
-        <% else %>
-          <% if user_signed_in? %>
-            <%= render partial: 'ideas/comment', collection: @idea.comments.reverse %>
-            <%= render partial: 'comments/form', :locals => { :comment => @comment } %>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>

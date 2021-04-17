@@ -31,11 +31,13 @@
            
         <div class="navbar-text float-right mr-5">
           <div class="dropdown ml-1">
-            <% if current_user.image_url %>
-              <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
-            <% else %>
-              <%= image_tag 'avatar.png', class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
-            <% end %>
+            <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.image_url %>
+                <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: 'rounded-circle mt-1', style:"width:28px; height: 28px; margin-right: 0px;" %>
+              <% end %>
+            </a>
             <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
               style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #F7F9F9  !important;">

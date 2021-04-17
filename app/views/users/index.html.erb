@@ -10,11 +10,13 @@
 			        <div class="main-ws-sec">
                 <div class="post-topbar">
 				          <div class="user-picy">
-                    <% if current_user.image_url %>
-                      <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:40px; height: 40px; margin-right: 0px;" %>
-                    <% else %>
-                      <%= image_tag 'avatar.png', class: 'rounded-circle mt-1', style:"width:32px; height: 32px; margin-right: 0px;" %>
-                    <% end %>
+                    <a href="<%= profile_path(current_user.username) %>">
+                      <% if current_user.image_url %>
+                        <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:40px; height: 40px; margin-right: 0px;" %>
+                      <% else %>
+                        <%= image_tag 'avatar.png', class: 'rounded-circle mt-1', style:"width:32px; height: 32px; margin-right: 0px;" %>
+                      <% end %>
+                    </a>
                   </div>
                 
 				          <div class="post-st">
@@ -29,12 +31,13 @@
                   <div class="post-bar">
                     <div class="post_topbar">
                       <div class="usy-dt">
-                      
-                        <% if idea.user.image_url %>
-                          <%= image_tag idea.user.image_url, style: "width: 40px; height: 40px;", class: "rounded-circle ml-1" %>
-                        <% else %>
-                          <%= image_tag 'avatar.png', style: "width: 40px; height: 40px;", class: "rounded-circle ml-1" %>
-                        <% end %>
+                        <a href="<%= profile_path(idea.user.username) %>">
+                          <% if idea.user.image_url %>
+                            <%= image_tag idea.user.image_url, style: "width: 40px; height: 40px;", class: "rounded-circle ml-1" %>
+                          <% else %>
+                            <%= image_tag 'avatar.png', style: "width: 40px; height: 40px;", class: "rounded-circle ml-1" %>
+                          <% end %>
+                        </a>
                       
                         <div class="usy-name">
                           <h3><%= link_to idea.user.full_name.titleize, profile_path(idea.user.username), class: 'text-dark' %></h3>
@@ -91,10 +94,15 @@
                           </small>
                         </span>
                       <% end %>
-                      <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %> 
-                        <p class="mt-3 mb-0" style="font-size: 14px;"><%= truncate(sanitize(idea.description, tags: []), length: 200) %></p>
-                    </div>
-                  
+                      <a href="<%= idea_url(idea) %>">
+                        <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %>
+                      </a>
+                      <p class="mt-3 mb-0" style="font-size: 14px;">
+                        <a class="text-dark" href="<%= idea_url(idea) %>">
+                          <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
+                        </a>
+                      </p>
+                    </div>                  
                     <div class="job-status-bar mt-1">
                       <ul class="like-com">
                         <li style="font-size: 12px;" href="#"><i class="fa fa-eye"></i> <%= pluralize(idea.impressionist_count, 'View') %></li> 
@@ -127,37 +135,40 @@
           <!-- col-lg-3 col-md-4 pd-left-none no-pd -->
           <div class="col-lg-3 col-md-4 pd-right-none no-pd">
 		        <div class="right-sidebar">
-			        <div class="user-data full-width" style="width: 280px;">
-			          <div class="user-profile">
-				          <div class="username-dt">
-				            <div class="usr-pic rounded-circle">
-                      <% if current_user.image_url %>
-                        <%= image_tag current_user.image_url, style: "width: 100%; height: 100%;", class: "rounded-circle" %>
-                      <% else %>
-                        <%= image_tag 'avatar.png', style: "width: 100%; height: 100%;", class: "rounded-circle" %>
-                      <% end %>
-					          </div>
-					        </div><!--username-dt end-->
+
+              <a href="<%= profile_path(current_user.username) %>">
+			          
+                <div class="user-data full-width" style="width: 280px;">
+			            <div class="user-profile">
+				            <div class="username-dt">
+				              <div class="usr-pic rounded-circle">
+                        <% if current_user.image_url %>
+                          <%= image_tag current_user.image_url, style: "width: 100%; height: 100%;", class: "rounded-circle" %>
+                        <% else %>
+                          <%= image_tag 'avatar.png', style: "width: 100%; height: 100%;", class: "rounded-circle" %>
+                        <% end %>
+					            </div>
+					          </div><!--username-dt end-->
 												  
-					        <div class="user-specs">
-					          <h3 class="mb-0"><%= current_user.full_name.titleize %></h3>
-                    <h6 class="p-4 text-muted" style="font-size: 12px; margin-top: -10px; margin-bottom: -30px;"><%= current_user.bio %></h6>
-                      <!-- <div class="social-links" style="margin-bottom: -20px;">
-                        <a href="#"><i class="fab fa-twitter m-2"></i></a>
-                        <a href="#"><i class="fab fa-facebook m-2"></i></a>
-                        <a href="#"><i class="fab fa-instagram m-2"></i></a>
-                        <a href="#"><i class="fab fa-linkedin m-2"></i></a>
-                      </div> -->
-					        </div>
-                </div><!--user-profile end-->
+					          <div class="user-specs">
+					            <h3 class="mb-0"><%= current_user.full_name.titleize %></h3>
+                      <h6 class="p-4 text-muted" style="font-size: 12px; margin-top: -10px; margin-bottom: -30px;"><%= current_user.bio %></h6>
+                        <!-- <div class="social-links" style="margin-bottom: -20px;">
+                          <a href="#"><i class="fab fa-twitter m-2"></i></a>
+                          <a href="#"><i class="fab fa-facebook m-2"></i></a>
+                          <a href="#"><i class="fab fa-instagram m-2"></i></a>
+                          <a href="#"><i class="fab fa-linkedin m-2"></i></a>
+                        </div> -->
+					          </div>
+                  </div><!--user-profile end-->
 				 
-				        <ul class="user-fw-status" style="margin-bottom: 0px;">
-					        <li>
-					          <%= link_to 'View Profile', profile_path(current_user.username) %>
-					        </li>
-				        </ul>
-				      </div><!--user-data end-->
-			        
+				          <ul class="user-fw-status" style="margin-bottom: 0px;">
+					          <li>
+					            <%= link_to 'View Profile', profile_path(current_user.username) %>
+					          </li>
+				          </ul>
+				        </div><!--user-data end-->
+			        </a>
               <%= render partial: "layouts/trending", locals: { ideas: @ideas} %>
 	              
 							</div><!--widget-jobs end-->

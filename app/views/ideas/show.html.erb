@@ -127,21 +127,23 @@
     <div class="col-lg-8">
       <hr class="w-100 mt-5">
       <p>
-        <a class="btn mt-0 mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+        <a class="btn mt-0 mr-1" data-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" 
+        aria-controls="collapseDetails" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; 
+        background-color: #fff  !important;">
           Details
         </a>
-      
-        <!-- <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseTeam" role="button" aria-expanded="false" aria-controls="collapseTeam" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
-          Team
-        </a> -->
 
-        <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;" >
+        <a class="btn ml-1" data-toggle="collapse" href="#collapseComments" role="button" aria-expanded="false" 
+        aria-controls="collapseComments" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; 
+        background-color: #fff  !important;" >
           Comments (<%= @idea.comments.size %>)
         </a>
 
         <% if @idea.relevance_bar.to_i > 75 %>
           <% if !@idea.expired? %>
-            <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseSupport" role="button" aria-expanded="false" aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; background-color: #fff  !important;">
+            <a class="btn ml-1 mr-1" data-toggle="collapse" href="#collapseSupport" role="button" aria-expanded="false" 
+            aria-controls="collapseUpdates" style = "text-transform: uppercase; font-size: 14px; font-weight: bold; 
+            background-color: #fff  !important;">
               Support this Idea
             </a>
           <% end %>

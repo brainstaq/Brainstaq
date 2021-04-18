@@ -1,25 +1,33 @@
 <div class="row clearfix justify-content-center align-self-center">
-  <header class="section-header mb-5" style="padding-top: 150px;">
-    <h3>My <span class="text-primary">Inbox</span></h3>
-  </header>
+<header class="section-header mb-5" style="padding-top: 150px;">
+  <h3>My <span class="text-primary">Inbox</span></h3>
+</header>
 
-  <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
-
-    <ul class="nav nav-pills nav-stacked d-flex justify-content-center mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item nav-blk">
-        <a class="nav-link" id="pills-conversations-tab" data-toggle="pill" href="#pills-conversations" role="tab" aria-controls="pills-conversations" aria-selected="true">Conversations</a>
+<div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
+  <div class="list-group col-lg-12">
+    <ul class="nav nav-pills nav-stacked d-flex justify-content-center" id="pills-tab" role="tablist">
+      <li class="nav-item mx-2">
+        <button type="button" class="list-group-item mb-3" data-toggle="collapse" data-target="#mail">
+          <h5 class="mb-0">Conversations<i class="glyphicon glyphicon-inbox"></i></h5>
+        </button>
+        <br>
       </li>
-      <li class="nav-item nav-blk">
-        <a class="nav-link" id="pills-message-tab" data-toggle="pill" href="#pills-message" role="tab" aria-controls="pills-message" aria-selected="false">New message</a>
+    
+      <li class="mx-2">
+        <button type="button" class="list-group-item mb-3" data-toggle="collapse" data-target="#new">
+          <h5 class="mb-0">New Message<i class="" style="vertical-align: right;"></i></h5>
+        </button>
       </li>
     </ul>
+  </div>
 
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade" id="pills-conversations" role="tabpanel" aria-labelledby="pills-conversations-tab">
-        <div id="mail" class="tab d-flex justify-content-center">
-          <h4 class="panel-heading text-primary"></h4>
-          <div class="panel-body mt-5">
-            <div class="item" style="float: left;">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="col-lg-6">
+        <div id="mail" class="collapse">
+          <h4 class="panel-heading text-primary">All Conversations:</h4>
+          <div class="panel-body">
+            <div class="item">
               <% @conversations.each do |conversation| %>
                 <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
                   <% if conversation.recipient.present? %>
@@ -47,12 +55,9 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab">
-        <div id="new" class="tab d-flex justify-content-center">
+        <div id="new" class="collapse">
           <div class="panel-body">
-            <h4 class="panel-heading text-primary"></h4>
+            <h4 class="panel-heading text-primary">All Users:</h4>
             <% @users.each do |user| %>
               <% if user.id != current_user.id %>
                 <div class="row">
@@ -63,25 +68,13 @@
                   <% end %>
                   <%= link_to "Message #{user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post", class: "text-dark" %>
                 </div>
-                <hr width="200">
-              <% end %>
+              <hr width="200">
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .nav-blk {
-    color: black;
-    padding: 5px 5px;
-    text-align: center;
-    font-size: 16px;
-    margin: 4px 2px;
-  }
-  a:focus {
-    color:white !important;
-  }
-</style>
+</div>
+</div>

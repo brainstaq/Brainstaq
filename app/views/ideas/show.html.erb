@@ -127,19 +127,19 @@
     <div class="col-lg-8 mt-5">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
+          <a class="nav-link title-blk active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="true">Details</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments (<%= @idea.comments.size %>)</a>
+          <a class="nav-link title-blk" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments (<%= @idea.comments.size %>)</a>
         </li>
 
-        <% if @idea.relevance_bar.to_i > 75 %>
-          <% if !@idea.expired? %>
+        <%# if @idea.relevance_bar.to_i > 75 %>
+          <%# if !@idea.expired? %>
             <li class="nav-item">
-              <a class="nav-link" id="support-tab" data-toggle="tab" href="#support" role="tab" aria-controls="support" aria-selected="false">Support this Idea</a>
+              <a class="nav-link title-blk" id="support-tab" data-toggle="tab" href="#support" role="tab" aria-controls="support" aria-selected="false">Support</a>
             </li>
-          <% end %>
-        <% end %>
+          <%# end %>
+        <%# end %>
       </ul>
 
       <div class="tab-content" id="myTabContent">

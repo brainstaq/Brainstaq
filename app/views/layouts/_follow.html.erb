@@ -20,7 +20,7 @@
           <% if user.created_at > 2.days.ago %>
             <p style="font-size: 10px;">New to Brainstaq</p>
           <% else %>
-            <p style="font-size: 10px;">Followed by <%= pluralize(user.total_following, "user") %></p>
+            <p style="font-size: 10px;"><%= pluralize(user.total_following, "follower") %></p>
           <% end %>
         </div> 
         <span>

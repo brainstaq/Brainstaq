@@ -133,13 +133,13 @@
           <a class="nav-link title-blk" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments (<%= @idea.comments.size %>)</a>
         </li>
 
-        <%# if @idea.relevance_bar.to_i > 75 %>
-          <%# if !@idea.expired? %>
+        <% if @idea.relevance_bar.to_i > 75 %>
+          <% if !@idea.expired? %>
             <li class="nav-item">
               <a class="nav-link title-blk" id="support-tab" data-toggle="tab" href="#support" role="tab" aria-controls="support" aria-selected="false">Support</a>
             </li>
-          <%# end %>
-        <%# end %>
+          <% end %>
+        <% end %>
       </ul>
 
       <div class="tab-content" id="myTabContent">
@@ -202,7 +202,7 @@
         
         <div class="tab-pane fade" id="support" role="tabpanel" aria-labelledby="support-tab">
           <div class="card card-body mt-5">
-            <h5 class="p-0" style="font-weight: bold;"> SELECT DONATION CATEGORY</h5>
+            <h5 class="p-0" style=" font-size: 16px; font-weight: bold;"> SELECT DONATION CATEGORY</h5>
             <hr class="mt-0">
             <% @idea.perks.each do |perk| %>
               <div class="p-0 mb-0">

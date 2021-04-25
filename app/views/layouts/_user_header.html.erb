@@ -25,7 +25,7 @@
     
       <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
         <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded-pill', placeholder: 'Search' %>
-      <% end %>
+      <% end %> 
 
       <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", style: "font-size: 24px;"), new_idea_path %> 
            

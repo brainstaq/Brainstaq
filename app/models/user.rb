@@ -49,6 +49,10 @@ class User < ApplicationRecord
   #   country.translations[I18n.locale.to_s] || country.name
   # end
 
+  def self.search(query)  
+    where("lower(ideas.title) LIKE :search OR lower(users.first_name) LIKE :search ", query: "%#{query.downcase}%").uniq   
+  end
+
   def self.find_for_database_authentication warden_condition
     conditions = warden_condition.dup
     login = conditions.delete(:login)

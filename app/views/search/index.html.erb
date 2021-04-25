@@ -2,41 +2,191 @@
   <h3>Search <span class="text-primary">Results</span></h3>
 </header>
 
-
-<section class="container-fluid" style="margin-bottom: 20px;">
-  <div class="row">
-    <div class="container">
-    <div class="col-lg-12">
-      <div class="col-md-10" style=" margin-bottom: 1rem;">
-        <table class="table table-hover table-responsive", style="border-bottom: 1px solid #f2f2f2;">
-          <tbody>
-            <% c = 0 %>
-            <% @ideas.each do |idea| %>
-            <tr>
-              <td>
-                <% if idea.image.present? %>
-                <%= image_tag idea.image_url(:thumb), style: "width: 150px;" %>
-                <% else %>
-                  No image
-                <% end %>
-              </td> 
-              <td>
-                <%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %>
-              </td>
-              <td>
-                <%= truncate(sanitize(idea.description, tags: []), length: 100) %>
-              </td>
-              <td>
-                <%= link_to 'View More', idea %>
-              </td>
-            </tr>
-            <% c = c + 1 %>
-            <% end %>
-            <h6 class="text-primary">There are <%= c %> ideas containing your search!</h6>
-          </tbody>
-        </table>
+<div class="container">
+  <div class="row ng-scope">
+    <div class="col-md-12 col-md-pull-3">
+      <% c = 0 %>
+      
+      <% @ideas.each do |idea| %>
+          <section class="search-result-item">
+            <a class="image-link" href="<%= idea_url(idea) %>">
+              <% if idea.image.present? %>
+                <%=image_tag idea.image_url(:thumb), class: "image", style: "width: 200px; height: 200px;" %>
+              <% end %>
+            </a>
+            <div class="search-result-item-body">
+              <div class="row">
+                <div class="col-sm-9">
+                  <h4 class="search-result-item-heading">
+                    <%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %>
+                  </h4>
+                  <p class="info usr-cnt"><%= idea.category.name %></p>
+                
+                  <a class="text-dark description" href="<%= idea_url(idea) %>">
+                    <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
+                  </a>
+                </div>
+                <div class="col-sm-3 text-align-center">
+                  <p class="value3 mt-sm"></p>
+                  <p class="value3 mt-sm"></p>
+                  <p class="info text-muted mb-0"><span class="fa fa-filter text-primary mr-1"></span> 
+                    <%= "#{idea.relevance_bar}%" %> Relevance
+                  </p>
+                  <p class="fs-mini info text-muted mb-0"><span class="fa fa-eye text-primary mr-1"></span> 
+                    <%= pluralize(idea.impressionist_count, 'View') %>
+                  </p>
+                  <p class="fs-mini info text-muted mb-3"><span class="fa fa-heart text-primary mr-1"></span> 
+                    <%= pluralize(idea.get_likes.size, 'Like') %>
+                  </p>
+                  <%= link_to 'View More', idea, class: 'btn btn-primary btn-info btn-sm' %>
+                </div>
+              </div>
+            </div>
+          </section>
+          <% c = c + 1 %>
+        <% end %>
+      
+      <% @users.each do |user| %>
+          <section class="search-result-item">
+            <a class="image-link" href="<%= profile_path(user.username, @user) %>">
+              <% if user.image.url %>
+                <%=image_tag (user.image_url), class: "image", style: "width: 200px; height: 210px;" %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: "image", style: "width: 200px; height: 210px;" %>
+              <% end %>
+            </a>
+            <div class="search-result-item-body">
+              <div class="row">
+                <div class="col-sm-9">
+                  <h4 class="search-result-item-heading">
+                    <%= link_to user.full_name, profile_path(user.username, @user), class: 'text-dark' %>
+                  </h4>
+                  <p class="info usr-cnt"><%= user.country %></p>
+                  <p class="description"><%= user.bio %></p>
+                </div>
+                <div class="col-sm-3 text-align-center">
+                  <p class="value3 mt-sm"></p>
+                  <p class="fs-mini info text-muted mb-"><%= (user.ideas.count) %> Ideas Shared</p>
+                  <%= link_to 'View More', profile_path(user.username, @user), class: 'btn btn-primary btn-info btn-sm' %>
+                </div>
+              </div>
+            </div>
+          </section>
+          <% c = c + 1 %>
+        <% end %>
+        <p class="search-results-count" style="position: absolute; top: -50px;">Showing <%= pluralize(c, 'result') %> containing your search!</p>  
       </div>
     </div>
   </div>
-  </div>
-</section>
+
+  <style>
+    body {
+      margin-top:20px;
+      background-color: #eee;
+    }
+
+    .search-result-categories>li>a {
+      color: #b6b6b6;
+      font-weight: 400
+    }
+
+    .search-result-categories>li>a:hover {
+      background-color: #ddd;
+      color: #555
+    }
+
+    .search-result-categories>li>a>.glyphicon {
+      margin-right: 5px
+    }
+
+    .search-result-categories>li>a>.badge {
+      float: right
+    }
+
+    .search-results-count {
+      margin-top: 10px
+    }
+
+    .search-result-item {
+      padding: 20px;
+      margin-bottom: 10px;
+      background-color: #fff;
+      border-radius: 4px
+    }
+
+    .search-result-item:after,
+    .search-result-item:before {
+      content: " ";
+      display: table
+    }
+
+    .search-result-item:after {
+      clear: both
+    }
+
+    .search-result-item .image-link {
+      display: block;
+      overflow: hidden;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px
+    }
+
+    @media (min-width:768px) {
+      .search-result-item .image-link {
+        display: inline-block;
+        margin: -20px 0 -20px -20px;
+        float: left;
+        width: 200px;
+      }
+    }
+
+    @media (max-width:767px) {
+      .search-result-item .image-link {
+        max-height: 200px
+      }
+      .search-results-count {
+        position: absolute;
+        top: -70px !important;
+      }
+      
+    }
+
+    .search-result-item .image {
+      max-width: 100%
+    }
+
+    .search-result-item .info {
+      margin-top: 2px;
+      font-size: 12px;
+      color: #999
+    }
+
+    .search-result-item .description {
+      font-size: 13px
+    }
+
+    .search-result-item+.search-result-item {
+      margin-top: 20px
+    }
+
+    @media (min-width:768px) {
+      .search-result-item-body {
+        margin-left: 200px
+      }
+    }
+
+    .search-result-item-heading {
+      font-weight: 400px;
+      margin-top: 10px;
+    }
+
+    .search-result-item-heading>a {
+      color: #555
+    }
+
+    @media (min-width:768px) {
+      .search-result-item-heading {
+        margin: 0;
+      }
+    }
+</style>

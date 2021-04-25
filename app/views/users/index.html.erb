@@ -105,7 +105,7 @@
                     </div>                  
                     <div class="job-status-bar mt-1">
                       <ul class="like-com">
-                        <li style="font-size: 12px;" href="#"><i class="fa fa-eye"></i> <%= pluralize(idea.impressionist_count, 'View') %></li> 
+                        <li style="font-size: 12px;" href="#"><i class="fa fa-eye text-primary"></i> <%= pluralize(idea.impressionist_count, 'View') %></li> 
                         
                         <% if user_signed_in? %>
                           <% if current_user.liked? idea %>
@@ -123,9 +123,9 @@
                           <% end %>
                         <% end %>
 
-                        <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
+                        <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments text-primary"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
                       </ul>
-                      <a style="font-size: 12px;"><i class="fa fa-filter"></i> Relevance: <strong><%= "#{idea.relevance_bar.to_i}%" %></strong></a>                  
+                      <a style="font-size: 12px;"><i class="fa fa-filter text-primary"></i> Relevance: <strong><%= "#{idea.relevance_bar.to_i}%" %></strong></a>                  
                     </div>
                   </div><!--post-bar end-->
                 </div><!--posts-section end-->

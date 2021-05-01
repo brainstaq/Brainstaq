@@ -1,10 +1,10 @@
-<div class="widget widget-jobs" style="width: 280px;">
+<div class="widget sidebar-item widget-jobs" style="width: 280px;">
   <div class="sd-title">
     <h6 style="font-weight: bold; text-align: center;">Trending Ideas</h6>
   </div>
 
   <% @ideas.sort_by{|idea| - idea.impressions.size.to_i}.first(10).each do |idea| %>  
-    <div class="suggestions-list" style="padding-bottom: 60px;">
+    <div class="suggestions-list make-me-sticky" style="padding-bottom: 60px;">
       <div class="suggestion-usd" style="margin-bottom: -60px;">
         <a href="<%= idea_url(idea) %>">
           <%= image_tag idea.image_url, style: "width: 50px; height: 50px; margin-left: 5px; margin-right: 5px;" %>

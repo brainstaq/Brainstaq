@@ -63,6 +63,7 @@ gem 'activerecord', '~> 6.0', '>= 6.0.3.2'
 gem "aws-sdk-s3", require: false
 
 gem 'ahoy_matey'
+gem 'pagy', '~> 3.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

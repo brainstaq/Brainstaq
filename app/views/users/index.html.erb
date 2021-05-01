@@ -7,27 +7,27 @@
         <div class="row">
           <div class="col-lg-3 col-md-4 pd-left-none no-pd">                    
             <%= render partial: 'layouts/follow', locals: { users: @users} %>
-
 	          <div class="col-lg-6 col-md-8 no-pd">
 			        <div class="main-ws-sec">
                 <div class="post-topbar">
 				          <div class="user-picy">
                     <a href="<%= profile_path(current_user.username) %>">
                       <% if current_user.image_url %>
-                        <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', style:"width:40px; height: 40px; margin-right: 0px;" %>
+                        <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', 
+                        style:"width:40px; height: 40px; margin-right: 0px;" %>
                       <% else %>
-                        <%= image_tag 'avatar.png', class: 'rounded-circle mt-1', style:"width:32px; height: 32px; margin-right: 0px;" %>
+                        <%= image_tag 'avatar.png', class: 'rounded-circle mt-1', 
+                        style:"width:32px; height: 32px; margin-right: 0px;" %>
                       <% end %>
                     </a>
                   </div>
-                
 				          <div class="post-st">
 				            <ul>
-                      <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", style: "font-size: 24px;"), new_idea_path %>
+                      <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", 
+                      style: "font-size: 24px;"), new_idea_path %>
 				            </ul>
 			            </div>
                 </div>
-              
                 <% @ideas.each do |idea|  %>
                 <div class="posts-section">
                   <div class="post-bar">
@@ -107,7 +107,9 @@
                     </div>                  
                     <div class="job-status-bar mt-1">
                       <ul class="like-com">
-                        <li style="font-size: 12px;" href="#"><i class="fa fa-eye text-primary"></i> <%= pluralize(idea.impressionist_count, 'View') %></li> 
+                        <li style="font-size: 12px;" href="#"><i class="fa fa-eye text-primary"></i> 
+                          <%= pluralize(idea.impressionist_count, 'View') %>
+                        </li> 
                         
                         <% if user_signed_in? %>
                           <% if current_user.liked? idea %>
@@ -116,18 +118,26 @@
                             <% end %>
                           <% else %>
                             <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
-                              <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> <%= idea.get_likes.size %></li>
+                              <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> 
+                                <%= idea.get_likes.size %>
+                              </li>
                             <% end %>
                           <% end %>
                         <% else %>
                           <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
-                            <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> <%= idea.get_likes.size %></li>
+                            <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> 
+                              <%= idea.get_likes.size %>
+                            </li>
                           <% end %>
                         <% end %>
 
-                        <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments text-primary"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
+                        <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments text-primary"></i> 
+                          <%= pluralize(idea.comments.size, 'Comment') %>
+                        </li> 
                       </ul>
-                      <a style="font-size: 12px;"><i class="fa fa-filter text-primary"></i> Relevance: <strong><%= "#{idea.relevance_bar.to_i}%" %></strong></a>                  
+                      <a style="font-size: 12px;"><i class="fa fa-filter text-primary"></i> 
+                        Relevance: <strong><%= "#{idea.relevance_bar.to_i}%" %></strong>
+                      </a>                  
                     </div>
                   </div><!--post-bar end-->
                 </div><!--posts-section end-->
@@ -136,11 +146,10 @@
           </div>
           <!-- col-lg-3 col-md-4 pd-left-none no-pd -->
           <div class="col-lg-3 col-md-4 pd-right-none no-pd">
-		        <div class="right-sidebar">
-
+		        <div class="right-sidebar profile-sidebar">
+              <div class="sidebar-item">
               <a href="<%= profile_path(current_user.username) %>">
-			          
-                <div class="user-data full-width" style="width: 280px;">
+                <div class="user-data make-me-sticky full-width" style="width: 280px;">
 			            <div class="user-profile">
 				            <div class="username-dt">
 				              <div class="usr-pic rounded-circle">
@@ -154,13 +163,9 @@
 												  
 					          <div class="user-specs">
 					            <h3 class="mb-0"><%= current_user.full_name.titleize %></h3>
-                      <h6 class="p-4 text-muted" style="font-size: 12px; margin-top: -10px; margin-bottom: -30px;"><%= current_user.bio %></h6>
-                        <!-- <div class="social-links" style="margin-bottom: -20px;">
-                          <a href="#"><i class="fab fa-twitter m-2"></i></a>
-                          <a href="#"><i class="fab fa-facebook m-2"></i></a>
-                          <a href="#"><i class="fab fa-instagram m-2"></i></a>
-                          <a href="#"><i class="fab fa-linkedin m-2"></i></a>
-                        </div> -->
+                      <h6 class="p-4 text-muted" style="font-size: 12px; margin-top: -10px; margin-bottom: -30px;">
+                        <%= current_user.bio %>
+                      </h6>
 					          </div>
                   </div><!--user-profile end-->
 				 
@@ -171,13 +176,33 @@
 				          </ul>
 				        </div><!--user-data end-->
 			        </a>
+              </div>
               <%= render partial: "layouts/trending", locals: { ideas: @ideas} %>
-	              
-							</div><!--widget-jobs end-->
-	          </div><!--right-sidebar end-->
-	        </div>
+						</div><!--widget-jobs end-->
+	        </div><!--right-sidebar end-->
 	      </div>
-	    </div><!-- main-section-data end-->
-	  </div> 
+	    </div>
+	  </div><!-- main-section-data end-->
+	</div> 
   </div>    
 </main>
+
+<style>
+  .main-left-sidebar {
+    position: absolute;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+  }
+  /* .right-sidebar {
+    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+  } */
+  /* .widget {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+  } */
+</style>

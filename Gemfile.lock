@@ -245,6 +245,7 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
     orm_adapter (0.5.0)
+    pagy (3.13.0)
     paystack (0.1.7)
       rest-client (~> 2.0)
     pg (1.2.3)
@@ -425,6 +426,7 @@ DEPENDENCIES
   mail_form
   mini_magick
   omniauth (~> 1.9, >= 1.9.1)
+  pagy (~> 3.5)
   paystack
   pg
   puma (~> 4.1)

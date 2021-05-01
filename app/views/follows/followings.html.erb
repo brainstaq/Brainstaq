@@ -1,34 +1,63 @@
 <% content_for :title, "Share and Discover Disruptive Ideas" %>
 
-<header class="section-header mb-5" style="padding-top: 150px;">
-  <h3>People <%= @user.first_name %> <span class="text-primary">Follows</span></h3>
-</header>
-
-<% if @user.followees.count < 1 %>
-  <p class="text-center text-primary" style="font-size: 18px; font-weight:bold; font-style:italic; ">
-    You have not followed any user yet!
-  </p>
-<% end %>
-  <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
-    <div>
+<main style="padding-top: 50px;">
+  <div class="row justify-content-center align-self-center">
+    <header class="section-header justify-content-center align-self-center mb-5" style="padding-top: 150px;">
+      <h3>People <%= @user.first_name %> <span class="text-primary">Follows</span></h3>
+    </header>
+  
+    <% if @user.followees.count < 1 %>
+      <p class="text-center text-primary" style="font-size: 18px; font-weight:bold; font-style:italic; ">
+        You have not followed any user yet!
+      </p>
+    <% end %>
+  
+    <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
       <div>
-        <% @user.followees.each do |follower| %>
         <div>
-          <% if follower.image.url %>
-            <%=image_tag follower.image.url, class: 'rounded-circle mr-2 ml-2', style:"width:28px; height: 28px;" %>
-          <% else %>
-            <%= image_tag 'avatar.png', class: 'rounded-circle mr-2 ml-2', style:"width:28px; height: 28px;" %>
-          <% end %>
-          <div class="mb-2">
-            <h4 class="mb-0" style="font-size: 24px;"><%= link_to follower.full_name, profile_path(follower.username), class: 'text-dark' %></h4>
-            <span class="ml-5" style="font-size: 14px; color: #007bff;">@<%= follower.username %></span>  
-            <span>
-              <%= link_to "View", profile_path(follower.username), class: "btn btn rounded-pill text-white float-right", style: "font-size: 12px;" %>
-            </span>
+          <% @user.followees.each do |follower| %>
+          <div>
+            <a href="<%= profile_path(follower.username) %>">
+              <% if follower.image.url %>  
+                <%=image_tag follower.image.url, class: 'rounded-circle img mr-2 ml-2', style:"width:28px; height: 28px;" %>
+              <% else %>
+                <%= image_tag 'avatar.png', class: 'rounded-circle img mr-2 ml-2', style:"width:28px; height: 28px;" %>
+              <% end %>
+            </a>
+            <div class="mb-2">
+              <h4 class="mb-0" style="font-size: 24px;">
+                <%= link_to follower.full_name, profile_path(follower.username), class: 'text-dark' %>
+              </h4>
+              <span style="font-size: 14px; color: #007bff;">
+                @<%= follower.username %>
+              </span>  
+              <span>
+                <%#= link_to "View", profile_path(follower.username), class: "btn rounded-pill text-white float-right", style: "font-size: 12px;" %>
+              </span>
+            </div>
+            <hr>
           </div>
-          <hr>
-        </div>
-      <% end %>
-    </div>
-  </div>  
-</div>
+        <% end %>
+      </div>
+    </div>  
+  </div>
+</main>
+
+<style>
+  @media (max-width: 767px) {
+    .btn {
+      margin-right: 20px;
+      margin-top: -10px !important;
+    }
+    .img {
+      margin-left: 20px !important;
+      margin-right: 20px !important;
+    }
+    h3 {
+      font-size: 24px !important;
+    }
+    h4 {
+      font-size: 20px !important;
+    }
+  }
+</style>

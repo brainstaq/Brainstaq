@@ -25,9 +25,9 @@ class UsersController < ApplicationController
       redirect_back(fallback_location: profile_path(@user))
     end
 
-    def user_rating
-      self.user_rating = (self.ideas.count + self.comments.count)
-    end
+    # def user_rating
+    #   self.user_rating = (self.ideas.count + self.comments.count)
+    # end
 
     def create
       @users = User.create(params.require(:user))

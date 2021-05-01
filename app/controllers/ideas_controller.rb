@@ -20,7 +20,6 @@ class IdeasController < ApplicationController
       @prev_page = @page - 1 if @page < 0
       @ideas = Idea.where(category_id: @category_id).offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).order(created_at: :desc)
     end
- 
   end
 
   # GET /ideas/1

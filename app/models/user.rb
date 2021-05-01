@@ -44,6 +44,10 @@ class User < ApplicationRecord
     Follow.where(follower_id: self.id).count
   end
 
+  def user_rating
+    self.user_rating = (self.ideas.count + self.comments.count)
+  end
+
   # def country_name
   #   country = ISO3166::Country[country_code]
   #   country.translations[I18n.locale.to_s] || country.name

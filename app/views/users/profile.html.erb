@@ -109,7 +109,8 @@
                       <span class="mb-3" style="font-size: 14px;"><%= @user.bio %></span>
                       
                       <div class="progress mt-0" style="height: 10px; width: 100%;">
-                        <div class="progress-bar" role="progressbar" style="width: <%= "#{@user.ideas.count + @user.comments.size}%" %>" aria-valuenow="<%= @user.ideas.count %>" 
+                        <div class="progress-bar" role="progressbar" style="width: 
+                        <%= "#{@user.ideas.count + @user.comments.size}%" %>" aria-valuenow="<%= @user.ideas.count %>" 
                           aria-valuemin="0" aria-valuemax="100">
                           <small><%= "#{@user.ideas.size + @user.comments.size}%" %></small>      
                         </div>

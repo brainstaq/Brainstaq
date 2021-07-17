@@ -42,8 +42,10 @@
                     <p>
                       86, Airport Road, Effurun,<br>
                       Delta State. Nigeria<br> 
-                      <strong>Phone:</strong> <%= tel_to '+234 706 182 8205' %><br>
-                      <strong>Email:</strong> <%= mail_to 'brainstaq@gmail.com' %><br>
+                      <% if user_signed_in? %>
+                        <%= phone_to "0706 182 8205", "Call us", country_code: "234" %> |
+                        <%= mail_to "brainstaq@gmail.com", "Email us" %><br>
+                      <% end %>
                     </p>
                   </div>
 

@@ -10,7 +10,7 @@
       <div class="col-md-6 intro-info order-md-first order-last">
         <h2 style="margin-top: 200px;">Bring your ideas to life with <span> Brainstaq!</span></h2>
         <div>
-      		<%= link_to 'Get Started', new_idea_path, class: "btn-get-started" %>
+      		<%= link_to 'Get Started', new_idea_path, class: "btn rounded text-white" %>
         </div>
       </div>
       
@@ -111,11 +111,11 @@
           </small>
 
           <div class="field captcha mt-2 form-group">
-            <%= recaptcha_tags %>
+            <%#= recaptcha_tags %>
           </div>
           
           <div class="form-group"  style="margin-top: 10px; margin-bottom: 0px">
-            <%= f.submit "Create Account", class: "btn btn1 btn-block text-white" %>
+            <%= f.submit "Create Account", class: "btn btn-block text-white" %>
           </div>
         <% end %>
       </div><!-- col end-->

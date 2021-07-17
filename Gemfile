@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 6.1.4'
 
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 5.3', '>= 5.3.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -21,7 +21,7 @@ gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 #gem 'bcrypt', '~> 3.1.7'
 
-gem 'devise'
+gem 'devise', '~> 4.8'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'font_awesome5_rails'
@@ -32,9 +32,9 @@ gem 'mini_magick'
 gem 'intro', '~> 0.3.0'
 gem 'friendly_id', '~> 5.3'
 gem 'local_time', '~> 2.1'
-gem 'tel_to_helper'
+#gem 'tel_to_helper'
 gem 'mail_form'
-gem 'recaptcha', '~> 5.6'
+#gem 'recaptcha', '~> 5.8', '>= 5.8.1'
 gem 'tinymce-rails'
 gem 'social-share-button'
 gem 'impressionist'
@@ -63,8 +63,7 @@ gem 'activerecord', '~> 6.0', '>= 6.0.3.2'
 gem "aws-sdk-s3", require: false
 
 gem 'ahoy_matey'
-gem 'pagy', '~> 3.5'
-
+gem 'pagy', '~> 4.10', '>= 4.10.1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -89,5 +88,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'sidekiq', '~> 6.1'
+gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 # gem "stimulus_reflex", "~> 3.3"

@@ -412,7 +412,7 @@ DEPENDENCIES
   carrierwave
   devise (~> 4.8)
   dotenv-rails
-  figaro
+  figaro (~> 1.2)
   fog-aws
   font-ionicons-rails
   font_awesome5_rails

@@ -42,7 +42,7 @@ gem 'acts_as_votable'
 gem 'uglifier', '~> 4.2', require: 'uglifier'
 
 # local ENV var
-gem "figaro"
+gem 'figaro', '~> 1.2'
 
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'rails_admin_rollincode', '~> 1.0'

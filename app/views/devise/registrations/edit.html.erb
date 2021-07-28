@@ -187,20 +187,20 @@
     </div>
     <div class="save-stngs">
       <ul>
-        <li><%= f.submit "Update Account", class: "btn rounded-pill text-white" %></li>
-        <li><%= link_to "Cancel", :back, class: "btn rounded-pill text-white" %></li>
+        <li><%= f.submit "Update Account", class: "btn rounded text-white" %></li>
+        <li><%= link_to "Cancel", :back, class: "btn rounded text-white" %></li>
       </ul>
     </div><!--save-stngs end-->
     <% end %>
-    <div class="acc-setting mb-5">
-      <h3>Delete Account</h3>
+    <div class="acc-setting mb-5", style= "font-size: 14px;">
+      <h3 style= "color: red;">Delete Account</h3>
         <p class="ml-4 mb-0">We are not happy to see you go. <br>Deleting your account 
           would delete all of your conversations and also remove you of Brainstaq's mailing list 
           and every other correspondences. <br> This action cannot be reversed.</p>
                   
         <div class="save-stngs">
           <ul>
-            <li><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn1 rounded-pill text-white" %></li>
+            <li><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn rounded text-white" %></li>
           </ul>
         </div><!--save-stngs end-->
       </div><!--acc-setting end-->

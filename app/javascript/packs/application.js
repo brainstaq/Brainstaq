@@ -10,6 +10,7 @@
 //= require local-time
 //= require tinymce
 //= require social-share-buttons
+//= require_tree .
 
 require("@rails/ujs").start()
 require("turbolinks").start()

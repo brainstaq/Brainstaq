@@ -16,22 +16,27 @@
 
         <div class="col-lg-3 col-6 count text-center">
           <span style="font-size: 28px;" data-toggle="counter-up"><%= Idea.count %></span>
-          <p style="font-size: 20px;">Ideas Shared</p>
+          <p style="font-size: 16px;">Ideas Shared</p>
         </div>
 
         <div class="col-lg-3 col-6 count text-center">
           <span style="font-size: 28px;" data-toggle="counter-up"><%= User.count %></span>
-          <p style="font-size: 20px;">Brainers</p>
+          <p style="font-size: 16px;">Brainers</p>
         </div>
 
         <div class="col-lg-3 col-6 count text-center">
-          <span style="font-size: 28px;" data-toggle="counter-up"><%=Donation.count %></span>
-          <p style="font-size: 20px;">Active Donors</p>
+          <span style="font-size: 28px;" data-toggle="counter-up"><%=0 %></span>
+          <%
+=begin%>
+ <span style="font-size: 28px;" data-toggle="counter-up"><%=Donation.count %></span> 
+<%
+=end%>
+          <p style="font-size: 16px;">Businesses Created</p>
         </div>
 
         <div class="col-lg-3 col-6 count text-center">
           <span style="font-size: 28px;" data-toggle="counter-up"><%= number_to_currency(Donation.sum(:amount)/100, :unit => "₦") %></span>
-          <p style="font-size: 20px;">Funds Raised</p>
+          <p style="font-size: 16px;">Funds Raised</p>
         </div>
       </div>
     </div>

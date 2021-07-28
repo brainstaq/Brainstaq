@@ -15,6 +15,9 @@
         <li class="nav-item">
           <%= link_to 'Discover', ideas_path, class: 'nav-link' %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Pricing', '#', class: 'nav-link' %>
+        </li>
       </ul>
 
       <%# if cookies[:moon] %>
@@ -28,8 +31,8 @@
       <% end %>
       
       <div class="navbar-text float-right mr-5">
-        <%= link_to "Log In", new_user_session_path, class: "btn rounded mr-1 text-white" %>
-        <%= link_to "Sign Up", new_user_registration_path, class: "btn rounded text-white" %>
+        <%= link_to "CREATE ACCOUNT", new_user_registration_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
+        <%= link_to "LOGIN", new_user_session_path, class: "btn rounded mr-1 text-white", style: "font-size: 14px; font-weight: bold;" %>
       </div>
     </div>
   </div>

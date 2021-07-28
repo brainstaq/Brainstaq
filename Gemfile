@@ -28,6 +28,7 @@ gem 'font_awesome5_rails'
 gem "font-ionicons-rails"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'mini_magick'
 gem 'intro', '~> 0.3.0'
 gem 'friendly_id', '~> 5.3'
@@ -60,7 +61,7 @@ gem 'pg'
 
 gem "fog-aws"
 gem 'activerecord', '~> 6.0', '>= 6.0.3.2'
-gem "aws-sdk-s3", require: false
+#gem "aws-sdk-s3", require: false
 
 gem 'ahoy_matey'
 gem 'pagy', '~> 4.10', '>= 4.10.1'

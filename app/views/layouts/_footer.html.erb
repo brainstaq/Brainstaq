@@ -17,7 +17,7 @@
                       <h4>Subscribe</h4>
                         <p>Subscribe to be kept in the loop of amazing offers from Brainstaq. We will not share your email with the public without your consent.</p>
                         <%= form_for Subscriber.new do |f| %>
-                          <%= f.email_field :email, placeholder: "Enter your email" %><%= f.submit "Subscribe" %>
+                          <%= f.email_field :email, placeholder: "Enter your email" %><%= f.submit "Subscribe", style: "font-weight: bold;" %>
                         <% end %>
                     <% end %>
                   </div>
@@ -96,7 +96,7 @@
                 
                 <div class="text-center">
                   <% if user_signed_in? %>
-                    <%= f.submit 'Send Message', class: 'btn btn-primary text-white rounded-pill' %>
+                    <%= f.submit 'Send Message', class: 'btn btn-primary text-white btn-block', style: "font-weight: bold;" %>
                   <% end %>
                 </div>  
               <% end %>

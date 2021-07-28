@@ -1,0 +1,18 @@
+development:
+  cloud_name: brainstaq
+  api_key: '716226294174755'
+  api_secret: IbZRrI1dhg1IZ21crG52baCUmK8
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: brainstaq
+  api_key: '716226294174755'
+  api_secret: IbZRrI1dhg1IZ21crG52baCUmK8
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: brainstaq
+  api_key: '716226294174755'
+  api_secret: IbZRrI1dhg1IZ21crG52baCUmK8
+  enhance_image_tag: true
+  static_file_support: false

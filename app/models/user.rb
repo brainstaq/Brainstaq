@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable 
 
   mount_uploader :image, ImageUploader
+
+  validate :image_size_validation
   
   #has_secure_password
 
@@ -67,5 +69,12 @@ class User < ApplicationRecord
 
   def donated_amount
     self.donated_amount = @donation.sum(:amount).to_f / 100
-   end
+  end
+
+  private
+
+  def image_size_validation
+    #errors[:image] << "should be less than 1MB" if image.size > 1.megabytes
+    errors.add(:image, message: "should be less than 1MB") if image.size > 1.megabytes
+  end
 end

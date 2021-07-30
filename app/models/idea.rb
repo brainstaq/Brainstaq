@@ -7,7 +7,9 @@ class Idea < ApplicationRecord
   default_scope { order(created_at: :desc)}
   
   mount_uploader :image, ImageUploader
-    
+
+  validate :image_size_validation
+
   belongs_to :user
   belongs_to :category
   
@@ -73,12 +75,15 @@ class Idea < ApplicationRecord
     self.relevance_bar = (self.impressions.size + self.get_likes.size + self.comments.size)
   end
 
-  # extend FriendlyId
-  # friendly_id :user_id, use: :slugged
+  private
+
+  def set_slug
+    self.slug = title.to_s.parameterize
+  end
+
+  def image_size_validation
+    #errors[:image] << "should be less than 1MB" if image.size > 1.megabytes
+    errors.add(:image, message: "should be less than 1MB") if image.size > 1.megabytes
+  end
 end
 
-private
-
-def set_slug
-  self.slug = title.to_s.parameterize
-end

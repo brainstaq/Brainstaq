@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   #get '/sun', to: 'application#sun', as: 'sun'
 
   get 'pages/about'
+  get 'pages/pricing'
   get 'pages/career'
   get 'pages/help'
   get 'pages/terms' 

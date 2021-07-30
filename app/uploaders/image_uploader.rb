@@ -84,6 +84,10 @@ class ImageUploader < CarrierWave::Uploader::Base
       resize_to_fit(50, 50)
     end
     
+    def extension_allowlist
+      %w(jpg jpeg gif png pdf)
+    end
+
     CarrierWave.configure do |config|
       config.cache_storage = :file
      end

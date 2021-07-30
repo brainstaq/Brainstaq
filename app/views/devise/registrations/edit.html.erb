@@ -5,6 +5,7 @@
 </header>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<small><%= render "devise/shared/error_messages", resource: resource %></small>
 
 <section class="profile-account-setting">
   <div class="container col-md-6">  
@@ -182,7 +183,7 @@
       <% end %>
       <p><small>Change Profile Photo (100x100)</small></p>
       <div class="cpp-fiel">
-        <%= f.file_field :image, class: "form-control" %>
+        <%= f.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes }, class: "form-control" %>
       </div>
     </div>
     <div class="save-stngs">

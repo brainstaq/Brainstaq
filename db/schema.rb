@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_162021) do
+ActiveRecord::Schema.define(version: 2021_07_30_154353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -274,6 +274,15 @@ ActiveRecord::Schema.define(version: 2021_07_16_162021) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "subscription_plans", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "plan"
+    t.datetime "active_until"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_subscription_plans_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

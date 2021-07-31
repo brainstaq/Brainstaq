@@ -235,7 +235,7 @@
                           Campaign Expired <%= time_ago_in_words(@idea.end_date) %> ago</p>
                       <% else %>
                         <%= link_to "Support this idea with #{number_to_currency(perk.amount, :unit => "₦")}", 
-                      new_donation_path(amount: perk.amount, idea: @idea, perk: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn btn1 btn-block text-white" %>
+                      new_donation_path(amount: perk.amount, idea: @idea, perk: "#{perk.title.parameterize}-perk_#{perk.id}"), class: "btn rounded btn-block text-white" %>
                       <% end %>
                     <% end %>
                   <% end %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   resources :follows
   resources :subscribers, only: [:create, :new, :index]
+  
   root to: "home#index"
   
   resources :conversations do
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
   #get '/sun', to: 'application#sun', as: 'sun'
 
   get 'pages/about'
-  get 'pages/pricing'
+  get '/plans' => 'pages#plans'
   get 'pages/career'
   get 'pages/help'
   get 'pages/terms' 

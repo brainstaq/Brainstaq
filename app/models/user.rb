@@ -12,6 +12,8 @@ class User < ApplicationRecord
   
   #has_secure_password
 
+  has_one :subscription_plan
+
   has_many :ideas, dependent: :destroy
   # has_many :ideas, :through => :donations, :source => :idea
   has_many :donations, through: :ideas

@@ -20,7 +20,7 @@
       <div class="tab-pane fade" id="pills-conversations" role="tabpanel" aria-labelledby="pills-conversations-tab">
         <div id="mail" class="tab d-flex justify-content-center">
           <h4 class="panel-heading text-primary"></h4>
-          <div class="panel-body mt-5">
+          <div class="panel-body mt-4">
             <div class="item" style="float: left;">
               <% @conversations.each do |conversation| %>
                 <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>

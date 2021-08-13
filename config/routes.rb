@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :plan_subscriptions
   resources :donors
   mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

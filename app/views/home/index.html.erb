@@ -144,10 +144,10 @@
     <div class="row justify-content-center mt-5">
       <div class="col-7 text-center"> 
         <% if @page > 0 %>
-          <%= link_to 'Prev', root_path(page: @page - 1), class: "btn btn1 rounded-pill text-white mr-1" %>
+          <%= link_to 'Prev', root_path(page: @page - 1), class: "btn rounded text-white mr-1" %>
         <% end %>
         <% if @ideas.count >= 3 %>
-          <%= link_to 'Next', root_path(page: @page + 1), class: "btn btn1 rounded-pill text-white ml-1" %>
+          <%= link_to 'Next', root_path(page: @page + 1), class: "btn rounded text-white ml-1" %>
         <% end %>
       </div>
     </div>

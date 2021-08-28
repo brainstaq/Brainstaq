@@ -74,7 +74,7 @@ class User < ApplicationRecord
   end
 
   def subscribed_to_plan?
-    plan_subscription_id?
+    plan_subscription
   end
 
   after_create :setup_plan_subscription

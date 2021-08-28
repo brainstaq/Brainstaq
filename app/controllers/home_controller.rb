@@ -12,7 +12,6 @@ class HomeController < ApplicationController
     status == "inactive"
   end
   
-  
   def index
     @page = params.fetch(:page, 0).to_i 
     @next_page = @page + 1 unless Idea.count < 9

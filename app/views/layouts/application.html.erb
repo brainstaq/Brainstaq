@@ -10,10 +10,8 @@
     </style>
     
     <meta name="viewport" content="width=device-width, initial-scale = 1, maximum-scale=3.0, minimum-scale=0.86, user-scalable=no">
-
     <%= tinymce_assets %>
     <script type="text/javascript" src="/assets/tinymce.js"></script>
-
     <%= favicon_link_tag asset_path('favicon.ico') %>
     
     <%# if cookies[:moon] %>
@@ -30,13 +28,15 @@
 
   <body>
 
-  <% if user_signed_in? %>
-    <%= render partial: "layouts/user_header" %>
-  <% else %>
-    <%= render partial: "layouts/header" %>
-  <% end %>
-  <%= render partial: "layouts/flash" %>
-  <%= yield %>
+    <% if user_signed_in? && current_user.subscribed_to_plan? %>
+      <%= render partial: "layouts/subscribed_header" %>
+    <% elsif user_signed_in? %>
+      <%= render partial: "layouts/user_header" %>
+    <% else %>
+      <%= render partial: "layouts/header" %>
+    <% end %>
+    <%= render partial: "layouts/flash" %>
+    <%= yield %>
     <%= intro_tags %>
     <%= render partial: "layouts/footer" %>
   </body>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_151108) do
+ActiveRecord::Schema.define(version: 2021_08_20_001721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,26 @@ ActiveRecord::Schema.define(version: 2021_08_01_151108) do
     t.index ["user_id"], name: "index_donors_on_user_id"
   end
 
+  create_table "enterprises", force: :cascade do |t|
+    t.string "name"
+    t.string "enterprise_category"
+    t.string "address"
+    t.string "email"
+    t.bigint "phone_number"
+    t.bigint "integer"
+    t.string "country"
+    t.string "state"
+    t.string "logo"
+    t.text "info"
+    t.string "slug"
+    t.integer "status"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["slug"], name: "index_enterprises_on_slug", unique: true
+  end
+
   create_table "followers", force: :cascade do |t|
     t.bigint "follower_id"
     t.bigint "following_id"
@@ -276,6 +296,13 @@ ActiveRecord::Schema.define(version: 2021_08_01_151108) do
     t.datetime "active_until"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "channel"
+    t.string "status"
+    t.string "gateway_response"
+    t.string "customer_code"
+    t.string "currency"
+    t.string "reference"
+    t.bigint "amount"
     t.index ["user_id"], name: "index_plan_subscriptions_on_user_id"
   end
 
@@ -317,6 +344,11 @@ ActiveRecord::Schema.define(version: 2021_08_01_151108) do
     t.string "instagram_url"
     t.string "linkedin_url"
     t.text "perk_subscriptions", default: [], array: true
+    t.boolean "subscribed_to_plan"
+    t.string "plan_subscription_id"
+    t.string "plan"
+    t.integer "status"
+    t.string "interval"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

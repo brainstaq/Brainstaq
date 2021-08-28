@@ -2,34 +2,21 @@ class RegistrationsController < Devise::RegistrationsController
   
   private
   
-      def sign_up_params
-        params.require(:user).permit(:email, :password, :last_name, :first_name, :username, :country, :password_confirmation)
-      end
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :username, :country, :password_confirmation)
+  end
 
-      def account_update_params
-        params.require(:user).permit(:id, :first_name, :last_name, :image, :image_url, :username, :country, :website, :phone, :gender, :bio, :email, :password, :password_confirmation, :current_password, :facebook_url, :twitter_url, :instagram_url, :linkedin_url)
-      end
+  def account_update_params
+    params.require(:user).permit(:id, :first_name, :last_name, :image, :image_url, :username, :country, :website, :phone, :gender, :bio, :email, :password, :password_confirmation, :current_password, :facebook_url, :twitter_url, :instagram_url, :linkedin_url)
+  end
 
-      def after_sign_up_path_for(resource)
-        plans_path
-      end
+  def after_sign_up_path_for(resource)
+    new_plan_subscription_path
+  end
       
-      def after_update_path_for(resource)
-        profile_path(current_user.username)
-      end
-
-      # def destroy
-      #   current_user.delete(params[:user])
-      #   redirect_to root_path
-      # end
-
-      # def destroy
-      #   resource.delete
-      #   Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-      #   set_flash_message :notice, :destroyed
-      #   yield resource if block_given?
-      #   respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
-      # end
+  def after_update_path_for(resource)
+    profile_path(current_user.username)
+  end
 end
    
 

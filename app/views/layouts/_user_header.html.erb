@@ -13,10 +13,13 @@
           <%= link_to 'Dashboard', dashboard_path(current_user.full_name), class: 'nav-link para-font' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Messages", conversations_path, class: 'text-white nav-link para-font' %>
+          <%= link_to 'Discover', ideas_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Tools', '#', class: 'nav-link' %>
+          <%#= link_to "Messages", conversations_path, class: 'text-white nav-link para-font' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Pricing', new_plan_subscription_path, class: 'nav-link' %>
         </li>
       </ul>
 
@@ -28,9 +31,9 @@
     
       <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
         <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded', placeholder: 'Search' %>
-      <% end %> 
+      <% end %>
 
-      <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", style: "font-size: 24px;"), new_idea_path %> 
+      <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", style: "font-size: 24px;"), new_idea_path %>  
            
         <div class="navbar-text float-right mr-5">
           <div class="dropdown ml-1">
@@ -44,10 +47,11 @@
             <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
               style = "font-size: 15px; color: #000 !important; font-weight: bold; background-color: #F7F9F9  !important;">
-              <%= current_user.full_name %>
+              <%= current_user.first_name %>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
               <%= link_to "Profile", profile_path(current_user.username) , class: "dropdown-item" %>
+              <%= link_to "Messages", conversations_path, class: "dropdown-item" %>
               <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log Out", destroy_user_session_url, :method => 'delete', class: "dropdown-item" %>
             </div>

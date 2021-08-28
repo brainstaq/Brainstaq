@@ -46,4 +46,12 @@ class ApplicationController < ActionController::Base
       dashboard_path(@user.full_name)
     end
   end
+
+  def after_plan_subscription_path_for(resource)
+    if @user == 'admin'
+      rails_admin_path
+    else
+      dashboard_path(@user.full_name)
+    end
+  end
 end

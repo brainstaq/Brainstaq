@@ -12,7 +12,16 @@
         <h2 style="font-family: Arial;" class="mb-2">Bring your ideas to life with <span> Brainstaq!</span></h2>
         <h3 style="margin-top: 0px; font-family: Arial; font-size: 24px;">Create, analyze and manage your business documents</h3>
         <div>
-      		<%= link_to 'GET STARTED', '#', class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
+      		
+          <% if user_signed_in? && current_user.subscribed_to_plan? %>
+            <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
+            <%= link_to 'EXPLORE TOOLS', '#', class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
+          <% elsif user_signed_in? %>
+            <%= link_to 'SETUP ENTERPRISE', new_plan_subscription_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
+          <% else %>
+            <%= link_to 'GET STARTED', new_user_registration_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
+          <% end %>
+          
         </div>
       </div>
       

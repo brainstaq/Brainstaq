@@ -1,0 +1,188 @@
+class PlanSubscriptionsController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create]
+  
+  def details
+    @res = PlanSubscription.find(params[:id])
+  end
+
+  def callback
+    res = 0;
+    @paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_SECRET_KEY'])
+   
+    transaction_reference = params[:trxref]
+    transactions = PaystackTransactions.new(@paystackObj)
+    result = transactions.verify(transaction_reference)
+    if result['data']['status'] == "success"
+      @res = result['data']
+      @customer = result['data']['customer']
+      current_user.update(status: 1 )
+      # if current_user.plan_subscription.interval == "monthly"
+      #   res = 30
+      # elsif current_user.plan_subscription.interval == "annually"
+      #   res = 365
+      # end
+
+      if current_user.subscribed_to_plan?
+        if current_user.plan_subscriptions.last.expires_on > Date.today
+          rem = (current_user.plan_subscriptions.last.expires_on - Date.today).to_s.split('/')
+          offset = rem[0].to_i + res
+
+          @plan_subscription = current_user.plan_subscriptions.create(
+            amount: (@res['amount'].to_f)/100,
+            channel: @res['channel'], 
+            reference: @res['reference'], 
+            status: "success", 
+            gateway_response: @res['gateway_response'],
+            currency: @res['currency'], 
+            status: @res['status'], 
+            expires_on: Date.today + offset.days,
+            created_at: Time.now, 
+            updated_at: Time.now
+          )
+
+          redirect_to details_plan_subscriptions_path(@plan_subscription), notice: 'Your Subscription Upgrade was successful.'
+        else
+          @plan_subscription = current_user.plan_subscriptions.create(
+            amount: (@res['amount'].to_f)/100,
+            channel: @res['channel'], 
+            reference: @res['reference'], 
+            status: "success", 
+            gateway_response: @res['gateway_response'],
+            currency: @res['currency'], 
+            status: @res['status'], 
+            expires_on: Date.today + res.days,
+            created_at: Time.now, updated_at: Time.now
+          )
+
+          redirect_to details_plan_subscription_path(@plan_subscription), notice: 'Your Subscription was successful.'
+        end
+    
+      else
+
+        @plan_subscription =  current_user.plan_subscription.create(
+          amount: (@res['amount'].to_f)/100,
+          channel: @res['channel'], 
+          reference: @res['reference'], 
+          status: "success", 
+          gateway_response: @res['gateway_response'],
+          currency: @res['currency'], 
+          status: @res['status'], 
+          expires_on: Date.today + res.days,
+          created_at: Time.now, 
+          updated_at: Time.now
+        )
+        redirect_to details_plan_subscriptions_path(@plan_subscription), notice: 'Your Subscription was successful.'
+      end    
+   
+  else
+    redirect_to new_plan_subscription_path, notice: 'Payment Failed. Please try again'
+  end
+end
+
+
+  # def success
+  #   if params[:reference].present?
+
+  #     paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])
+
+  #     plan_subscriptions = PaystackSubscriptions.new(paystackObj)
+  #     result = plan_subscriptions.create(
+
+  #       :customer => current_user.email,
+  #       :plan => "PLN_xc9vnk0qixif2m1", #plan id
+  #       :amount => 50000 #in KOBO
+  #     )
+
+  #    u = current_user
+  #    u.subscribed_to_plan = true
+  #    u.subscription_code = code
+  #    u.email_token = token
+  #    u.save!
+    
+  #   else
+  #     redirect_to new_plan_subscription_path, notice: "Error Making Payment, Try Again"
+  #   end
+  # end
+
+  def index
+    @plan_subscription = PlanSubscription.all
+  end
+
+  def new
+    @paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_SECRET_KEY'])
+    page_number = 1
+    plans = PaystackPlans.new(@paystackObj)
+    result = plans.list(page_number)  #Optional `page_number` parameter,  50 items per page
+    @plans_list = result['data']
+    @plan_subscription = PlanSubscription.new
+  end
+
+  def upgrade
+    @paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_SECRET_KEY'])
+    page_number = 1
+    plans = PaystackPlans.new(@paystackObj)
+    result = plans.list(page_number)  #Optional `page_number` parameter,  50 items per page
+    @plans_list = result['data']
+    @plan_subscription = PlanSubscription.new
+  end
+
+  def edit
+  end
+
+  # POST /plan_subscriptions or /plan_subscriptions.json
+  def create
+    paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])
+
+    # current_user.update(interval: params[:interval])
+    new
+    transactions = PaystackTransactions.new(@paystackObj)
+    result = transactions.initializeTransaction(
+      :reference => "#{current_user.id}__#{rand.to_s[2..10]}",
+      :amount => 50000,
+      :email => current_user.email,
+    )
+    auth_url = result['data']['authorization_url']
+    redirect_to auth_url
+  end
+
+  # def create
+  #   paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])
+
+  #   current_user.update(interval: params[:interval])
+  #   new
+  #   subscriptions = PaystackSubscriptions.new(paystackObj)
+  #   result = subscriptions.create(
+  #     :customer => current_user.email,
+  #     :plan => "PLN_xc9vnk0qixif2m1",
+  #     :amount => 50000,
+  #   )
+  #   auth_url = result['data']['authorization_url']
+  #   redirect_to auth_url
+  # end
+
+  def disable
+    paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])
+    plan_subscriptions = PaystackSubscriptions.new(paystackObj)
+    result = subscriptions.disable(
+        :code => "12328833",
+        :token => "EWFWKFJWE" #user email token
+      )
+  end
+
+  def enable
+    paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])
+    plan_subscriptions = PaystackSubscriptions.new(paystackObj)
+    result = subscriptions.enable(
+        :code => "12328833",
+        :token => "EWFWKFJWE" #user email token
+      )
+  end
+
+  private 
+
+  def verify_sub
+    if current_user.subscribed_to_plan == true 
+      redirect_to root_path
+    end
+  end
+end

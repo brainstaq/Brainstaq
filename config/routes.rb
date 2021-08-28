@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :enterprises
   resources :plan_subscriptions
   resources :donors
   mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
@@ -71,6 +72,21 @@ Rails.application.routes.draw do
       get 'followers' => 'follows#follower'
     end
   end
+
+  resources :plan_subscriptions
+
+  resources :plan_subscriptions do
+    member do
+      get 'details'
+    end
+  end
+  
+  #post 'web' => "retracts#web"
+  #get 'callback' => "plan_subscriptions#callback"
+  #get 'upgrade' => "plan_subscriptions#upgrade"
+
+  get 'plan_subscriptions/success'
+  get 'transactions/success'
 
   post 'paystack/receive_webhooks', to: 'paystack#webhook'
 

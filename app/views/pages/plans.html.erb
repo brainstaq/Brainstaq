@@ -46,7 +46,7 @@
       </div>
 
 			<div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade" id="pills-conversations" role="tabpanel" aria-labelledby="pills-conversations-tab">  
+        <div class="tab-pane show active fade" id="pills-conversations" role="tabpanel" aria-labelledby="pills-conversations-tab">  
 					<div id="mail" class="tab justify-content-center">
             <div class="row align-items-center">
               <div class="col-lg-4 col-md-12">
@@ -55,19 +55,32 @@
                   <div class="price-header">
                     <div class="price-value">
                       <h2><span>₦</span>0</h2>
-                      <span>Monthly Package</span>
+                      <span><br></span>
                     </div>
                     <h3 class="price-title">Free</h3> 
                   </div>
-                  <%= link_to "Get Started", "#", class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                  
+                  <% if user_signed_in? %>
+                    <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
+                    <%= link_to "Subscribed", '#', class: "btn btn3 disabled rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                  <% else %>
+                    <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                  <% end %>
+
                   <div class="price-list">
                   <ul class="list-unstyled">
-                    <li>15 Analytics Compaign</li>
-                    <li>Unlimited Site licenses</li>
-                    <li>1 Database</li>
-                    <li>10 Free Optimization</li>
-                    <li>Html5 + Css3</li>
-                    <li>24/7 Customer Support</li>
+                    <li>Share Unlimited Ideas</li>
+                    <li>Raise Funds</li>
+                    <li><s>Enterprise Setup</s></li>
+                    <li><s>Business Plans</s></li>
+                    <li><s>Financial Models</s></li>
+                    <li><s>Business Proposals</s></li>
+                    <li><s>Pitch Decks</s></li>
+                    <li><s>Create & Manage Invoices</s></li>
+                    <li><s>Create & Manage Letterheads</s></li>
+                    <li><s>Project Management</s></li>
+                    <li><s>Marketplace</s></li>
+                    <li><s>24/7 Customer Support</s></li>
                   </ul>
                 </div>
               </div>
@@ -82,14 +95,27 @@
                   </div>
                   <h3 class="price-title">Startup</h3> 
                 </div>
-                <%= link_to "Choose Plan", "#", class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                
+                <% if user_signed_in? %>
+                    <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
+                    <%= link_to "Choose Plan", new_plan_subscription_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                  <% else %>
+                    <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                  <% end %>
+                
                 <div class="price-list">
                   <ul class="list-unstyled">
-                    <li>15 Analytics Compaign</li>
-                    <li>Unlimited Site licenses</li>
-                    <li>1 Database</li>
-                    <li>10 Free Optimization</li>
-                    <li>Html5 + Css3</li>
+                    <li>Share Unlimited Ideas</li>
+                    <li>Raise Funds</li>
+                    <li>1 Enterprise Setup</li>
+                    <li>1 Business Plan</li>
+                    <li>1 Financial Model</li>
+                    <li>1 Business Proposal</li>
+                    <li>1 Pitch Deck</li>
+                    <li>Limited Invoices</li>
+                    <li>Limited Letterheads</li>
+                    <li><s>Project Management</s></li>
+                    <li><s>Marketplace</s></li>
                     <li>24/7 Customer Support</li>
                   </ul>
                 </div>
@@ -105,14 +131,27 @@
                   </div>
                   <h3 class="price-title">Enterprise</h3> 
                 </div>
-                <%= link_to "Choose Plan", "#", class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+
+                <% if user_signed_in? %>
+                  <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
+                  <%= link_to "Choose Plan", new_plan_subscription_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                <% else %>
+                  <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                <% end %>
+                
                 <div class="price-list">
                   <ul class="list-unstyled">
-                    <li>15 Analytics Compaign</li>
-                    <li>Unlimited Site licenses</li>
-                    <li>1 Database</li>
-                    <li>10 Free Optimization</li>
-                    <li>Html5 + Css3</li>
+                    <li>Share Unlimited Ideas</li>
+                    <li>Raise Funds</li>
+                    <li>2 Enterprise Setups</li>
+                    <li>2 Business Plans</li>
+                    <li>2 Financial Models</li>
+                    <li>2 Business Proposals</li>
+                    <li>2 Pitch Decks</li>
+                    <li>Unlimited Invoices</li>
+                    <li>Unlimited Letterheads</li>
+                    <li>Project Management</li>
+                    <li>Marketplace</li>
                     <li>24/7 Customer Support</li>
                   </ul>
                 </div>
@@ -138,15 +177,28 @@
                 </div>
 								<h3 class="price-title">Startup</h3> 
               </div>
-              <%= link_to "Choose Plan", "#", class: "btn rounded btn2 text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              
+              <% if user_signed_in? %>
+                <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
+                <%= link_to "Choose Plan", new_plan_subscription_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              <% else %>
+                <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              <% end %>
+              
               <div class="price-list">
                 <ul class="list-unstyled">
-                  <li>15 Analytics Compaign</li>
-                  <li>Unlimited Site licenses</li>
-                  <li>1 Database</li>
-                  <li>10 Free Optimization</li>
-                  <li>Html5 + Css3</li>
-                  <li>24/7 Customer Support</li>
+                    <li>Share Unlimited Ideas</li>
+                    <li>Raise Funds</li>
+                    <li>1 Enterprise Setup</li>
+                    <li>1 Business Plan</li>
+                    <li>1 Financial Model</li>
+                    <li>1 Business Proposal</li>
+                    <li>1 Pitch Deck</li>
+                    <li>Limited Invoices</li>
+                    <li>Limited Letterheads</li>
+                    <li><s>Project Management</s></li>
+                    <li><s>Marketplace</s></li>
+                    <li>24/7 Customer Support</li>
                 </ul>
               </div>
             </div>
@@ -161,15 +213,28 @@
                 </div>
 								<h3 class="price-title">Enterprise</h3> 
               </div>
-              <%= link_to "Choose Plan", "#", class: "btn rounded btn2 text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              
+              <% if user_signed_in? %>
+                <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
+                <%= link_to "Choose Plan", new_plan_subscription_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              <% else %>
+                <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              <% end %>
+              
               <div class="price-list">
                 <ul class="list-unstyled">
-                  <li>15 Analytics Compaign</li>
-                  <li>Unlimited Site licenses</li>
-                  <li>1 Database</li>
-                  <li>10 Free Optimization</li>
-                  <li>Html5 + Css3</li>
-                  <li>24/7 Customer Support</li>
+                    <li>Share Unlimited Ideas</li>
+                    <li>Raise Funds</li>
+                    <li>2 Enterprise Setups</li>
+                    <li>2 Business Plans</li>
+                    <li>2 Financial Models</li>
+                    <li>2 Business Proposals</li>
+                    <li>2 Pitch Decks</li>
+                    <li>Unlimited Invoices</li>
+                    <li>Unlimited Letterheads</li>
+                    <li>Project Management</li>
+                    <li>Marketplace</li>
+                    <li>24/7 Customer Support</li>
                 </ul>
               </div>
             </div>
@@ -560,11 +625,6 @@
   -o-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); 
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }
-.price-table:hover{
-  -webkit-box-shadow: 0px 20px 50px 0px rgba(153, 153, 153, 0.5); 
-  -moz-box-shadow: 0px 20px 50px 0px rgba(153, 153, 153, 0.5); 
-  box-shadow: 0px 20px 50px 0px rgba(153, 153, 153, 0.5);
-}
 
 .btn2::before {
   content: attr(data-text); 
@@ -575,6 +635,60 @@
   transition: all 0.3s cubic-bezier(0.75, 0, 0.125, 1) 0s; 
   width: 100%; 
   padding: 12px 0;
+}
+
+.btn3 {
+  padding: 12px 25px;
+  /* font-weight: 500;  */
+  color: #1c1d3e; 
+  overflow: hidden; 
+  border-radius: 7px; 
+  border: none; 
+  position: relative; 
+  z-index: 9; 
+  transition: none !important; 
+  box-shadow: 0px 0px 15px 0px rgba(72,73,121,0.15);
+  background: rgb(0,128,0) !important; 
+  background: linear-gradient(90deg, rgba(0,91,234,1) 0%, rgba(37,117,252,1) 80%);  
+  color: #ffffff;
+}
+.btn3.focus, .btn3:focus{
+  box-shadow: none;
+}
+.btn3:hover {
+  transform: none !important;
+}
+
+.btn3 span {
+  display: inline-block; 
+  opacity: 0; 
+  -webkit-transform: translate3d(10, 10px, 0); 
+  -moz-transform: translate3d(10, 10px, 0); 
+  -ms-transform: translate3d(10, 10px, 0); 
+  -o-transform: translate3d(10, 10px, 0); 
+  transform: translate3d(10, 10px, 0);
+  -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); 
+  -moz-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); 
+  -o-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); 
+  transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.btn3::before {
+  content: attr(data-text); 
+  height: 100%; 
+  left: 0; 
+  position: absolute; 
+  top: 0; 
+  transition: all 0.3s cubic-bezier(0.75, 0, 0.125, 1) 0s; 
+  width: 100%; 
+  padding: 12px 0;
+}
+
+
+.price-table:hover{
+  -webkit-box-shadow: 0px 20px 50px 0px rgba(153, 153, 153, 0.5); 
+  -moz-box-shadow: 0px 20px 50px 0px rgba(153, 153, 153, 0.5); 
+  box-shadow: 0px 20px 50px 0px rgba(153, 153, 153, 0.5);
 }
 
 .price-table:hover{

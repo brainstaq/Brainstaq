@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     #   self.user_rating = (self.ideas.count + self.comments.count)
     # end
 
+    def subscribed_to_plan?
+      plan_subscription_id
+    end
+
     def create
       @users = User.create(params.require(:user))
       session[:user_id] = @user.id

@@ -2,9 +2,9 @@ class User < ApplicationRecord
   attr_accessor :login 
 
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable 
+         :recoverable, :rememberable, :validatable, :trackable 
 
   mount_uploader :image, ImageUploader
 
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_one :plan_subscription
 
   has_many :ideas, dependent: :destroy
-  # has_many :ideas, :through => :donations, :source => :idea
+  has_many :enterprises, dependent: :destroy
   has_many :donations, through: :ideas
   has_many :comments, dependent: :destroy
 
@@ -71,6 +71,10 @@ class User < ApplicationRecord
 
   def donated_amount
     self.donated_amount = @donation.sum(:amount).to_f / 100
+  end
+
+  def subscribed_to_plan?
+    plan_subscription_id?
   end
 
   after_create :setup_plan_subscription

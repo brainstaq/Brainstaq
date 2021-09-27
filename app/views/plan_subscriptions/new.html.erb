@@ -64,8 +64,10 @@
                     <h3 class="price-title">Free</h3> 
                   </div>
                   
-                  <% if user_signed_in? %>
+                  <% if user_signed_in? && !current_user.subscribed_to_plan?%>
                     <%= link_to "Subscribed", '#', class: "btn btn3 disabled rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                  <% elsif user_signed_in? && current_user.subscribed_to_plan? %>
+                    <%= link_to "Choose Plan", new_user_registration_path, class: "btn btn2 disabled rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
                   <% else %>
                     <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
                   <% end %>
@@ -99,11 +101,13 @@
                   <h3 class="price-title">Startup</h3> 
                 </div>
                 
-                <% if user_signed_in? %>
-                    <%= link_to "Choose Plan", plan_subscriptions_path(:code => ['plan_code'], :interval => ['interval']), method: :post, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
-                  <% else %>
-                    <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
-                  <% end %>
+                <% if user_signed_in? && current_user.subscribed_to_plan? %>
+                  <%= link_to "Subscribed", '#', class: "btn btn3 disabled rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                <% elsif user_signed_in? && !current_user.subscribed_to_plan? %>
+                  <%= link_to "Choose Plan", plan_subscriptions_path(:code => ['plan_code'], :interval => ['interval']), method: :post, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                <% else %>
+                  <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+                <% end %>
                 
                 <div class="price-list">
                   <ul class="list-unstyled">
@@ -123,7 +127,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-12 md-mt-5">
+            <%
+=begin%>
+ <div class="col-lg-4 col-md-12 md-mt-5">
               <div class="price-table">
                 <div class="price-inside">Enterprise</div>
                 <div class="price-header">
@@ -158,7 +164,9 @@
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> 
+<%
+=end%>
           </div>
 			  </div>
       </div><!-- End of conversation tab-->
@@ -180,9 +188,10 @@
 								<h3 class="price-title">Startup</h3> 
               </div>
               
-              <% if user_signed_in? %>
-                <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
-                <%= link_to "Choose Plan", new_plan_subscription_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              <% if user_signed_in? && current_user.subscribed_to_plan? %>
+                <%= link_to "Subscribed", '#', class: "btn btn3 disabled rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
+              <% elsif user_signed_in? && !current_user.subscribed_to_plan? %>
+                <%= link_to "Choose Plan", plan_subscriptions_path(:code => ['plan_code'], :interval => ['interval']), method: :post, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
               <% else %>
                 <%= link_to "Get Started", new_user_registration_path, class: "btn btn2 rounded text-white mb-3", style: "font-size: 14px; font-weight: bold;" %>
               <% end %>
@@ -205,7 +214,9 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-12 md-mt-5">
+          <%
+=begin%>
+ <div class="col-lg-4 col-md-12 md-mt-5">
             <div class="price-table">
               <div class="price-inside">Enterprise</div>
               <div class="price-header">
@@ -240,7 +251,9 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> 
+<%
+=end%>
         </div>
 		  </div>
 		</div>
@@ -249,7 +262,7 @@
 </section>
 </div>  
 
-  <%= submit_tag "Pay","data-paystack" => "submit"  %>
+  <%#= submit_tag "Pay","data-paystack" => "submit"  %>
 <% end %>
 
 <style>

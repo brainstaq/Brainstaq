@@ -31,6 +31,43 @@ class PlanSubscriptionsController < ApplicationController
   def new
     
   end
+
+  def show
+    res = 0
+    @paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])
+    transaction_reference = params[:trxref]
+    transactions = PaystackTransactions.new(@paystackObj)
+    result = transactions.verify(transaction_reference)
+    @res = result['data']
+    @customer = result['data']['customer']
+    
+    if @res['status'] == "success"
+      user = current_user.email 
+      user.update(status: 1 )
+  
+        
+      if user.interval == "monthly"
+        res = 30
+      elsif user == "annually"
+        res = 365
+      end
+        
+  
+      user.plan_subscriptions.create(
+        amount: (@res['amount'].to_f)/100,
+        channel: @res['channel'], 
+        reference: @res['reference'], 
+        gateway_response: @res['gateway_response'], 
+        status: "success", 
+        gateway_response: @res['gateway_response'],
+        currency: @res['currency'], 
+        status: @res['status'], 
+        expires_on: Date.today + res.days,
+        created_at: Time.now, 
+        updated_at: Time.now
+      )
+    end
+  end
   
   def create
     paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])

@@ -160,7 +160,7 @@ Rails.application.routes.draw do
         end
       end
 
-      post 'paystack/receive_webhooks', to: 'paystack#webhook'
+      #post 'paystack/receive_webhooks', to: 'paystack#webhook'
     end
   end
 

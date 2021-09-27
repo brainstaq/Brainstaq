@@ -28,7 +28,7 @@
 
   <body>
 
-    <% if user_signed_in? && current_user.subscribed_to_plan? %>
+ <% if user_signed_in? && current_user.subscribed_to_plan? %>
       <%= render partial: "layouts/subscribed_header" %>
     <% elsif user_signed_in? %>
       <%= render partial: "layouts/user_header" %>
@@ -38,6 +38,23 @@
     <%= render partial: "layouts/flash" %>
     <%= yield %>
     <%= intro_tags %>
-    <%= render partial: "layouts/footer" %>
+    <%= render partial: "layouts/footer" %> 
+
+    <%
+=begin%>
+ <% if !user_signed_in? || !current_user.subscribed_to_plan? %>
+      <%= render partial: "layouts/header" %>
+    <% elsif user_signed_in? %>
+      <%= render partial: "layouts/subscribed_header" %>
+    <% end %>
+    <%= render partial: "layouts/flash" %>
+    <%= yield %>
+    <%= intro_tags %>
+    <% if !user_signed_in? || !current_user.subscribed_to_plan? %>
+      <%= render partial: "layouts/footer" %>
+    <% end %> 
+<%
+=end%>
+    
   </body>
 </html>

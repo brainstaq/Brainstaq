@@ -10,10 +10,24 @@
     <div class="collapse navbar-collapse" id="navbarCollapse" >
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <%= link_to 'Discover', ideas_path, class: 'nav-link' %>
+          <%= link_to ideas_path, class: "text-secondary mt-2 mb-0", title: "Discover", style: "font-size: 16px;" do %>
+            <i class="fa fa-th-large"></i><br>
+          <span class="nav-icon-text" style="font-size: 14px;"> Discover</span>
+          <%end%>
         </li>
+
         <li class="nav-item">
-          <%= link_to 'Pricing', new_plan_subscription_path, class: 'nav-link' %>
+          <%= link_to "#", class: "text-secondary mt-2 mb-0", title: "Marketplace", style: "font-size: 16px;" do %>
+            <i class="fa fa-shopping-cart"></i><br>
+          <span class="nav-icon-text" style="font-size: 14px;"> Marketplace</span>
+          <%end%>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to new_plan_subscription_path, class: "text-secondary mt-2 mb-0", title: "Pricing", style: "font-size: 16px;" do %>
+            <i class="fa fa-credit-card"></i><br>
+          <span class="nav-icon-text" style="font-size: 14px;"> Pricing</span>
+          <%end%>
         </li>
       </ul>
 
@@ -28,9 +42,26 @@
       <% end %>
       
       <div class="navbar-text float-right mr-5">
-        <%= link_to "CREATE ACCOUNT", new_user_registration_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
-        <%= link_to "LOGIN", new_user_session_path, class: "btn rounded mr-1 text-white", style: "font-size: 14px; font-weight: bold;" %>
+        <%= link_to "SIGN UP", new_user_registration_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
+        <%= link_to "LOG IN", new_user_session_path, class: "btn rounded mr-1 text-white", style: "font-size: 14px; font-weight: bold;" %>
       </div>
     </div>
   </div>
 </nav>
+
+<style>
+.nav-icon-text {
+  display: block;
+  font-size: 14px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: -5px;
+  margin-bottom: -10px !important;
+  text-align: center;
+}
+
+.nav-item {
+  margin-top: -10px !important;
+  text-align: center;
+}
+</style>

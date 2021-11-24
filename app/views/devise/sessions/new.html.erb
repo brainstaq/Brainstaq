@@ -1,45 +1,4 @@
 <% content_for :title, "Log In" %>
 
-<article class="card-body mx-auto" style="max-width: 400px; padding-top: 150px;">
-  <header class="section-header mb-5">
-    <h3>Log <span class="text-primary"> In</span></h3>
-  </header>
-  
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <small><%= render "devise/shared/error_messages", resource: resource %></small>
 
-
-  <!-- form-group -->
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-      </div>
-      <%= f.text_field :login, autofocus: true, class: "form-control", placeholder: "Email or Username" %>
-    </div>
-    <!-- form-group end -->
- 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-lock"></i></span>
-      </div>
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <div class="checkbox">
-          <label><%= f.check_box :remember_me %> Remember me</label>
-        </div>
-      </div>
-    </div>
-    <% end %>
-    <!-- form-group -->                                      
-
-    <div class="form-group actions">
-      <%= f.submit "Log In", class: "btn btn-block text-white" %>
-    </div>
-    <p class="text-center">Don't have an account?<%= render "devise/shared/links" %></p>                                                            
-  <% end %>
-  </article>
 

@@ -58,6 +58,8 @@ gem 'omniauth', '~> 1.9', '>= 1.9.1'
 
 gem 'rave_ruby'
 gem 'pg'
+gem 'shufflejs-rails'
+
 
 gem "fog-aws"
 gem 'activerecord', '~> 6.0', '>= 6.0.3.2'

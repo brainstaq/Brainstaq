@@ -1,151 +1,111 @@
-<footer id="footer" class="section-bg mt-5">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="row">
-                <div class="col-sm-6">
-                  <div class="footer-info">
-                    <h3>About <br><span class="text-primary">Brainstaq</span></h3>
-                    <p style="font-size: 14px;">Brainstaq empowers innovative African ideas and encourage development. Share, validate, and market your ideas, projects, insights and inspiration and attract cofounders and investors by engaging the power of the crowd.</p>
-                  </div>
+<!-- start footer -->
+<footer class="bg-light-gray has-shapes has-bg-brash bg-brash-top " style="background-image: url(<%=image_path "footer.svg" %>)">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7 col-md-12">
+				<div class="text-center pb-60">
+					<h3 class="section-title">Join 300+ businesses using <strong class="text-primary">Brainstaq.</strong></h3>
 
-                  <div class="footer-newsletter">
-                    <% if cookies[:saved_subscriber] %>
-                      Thanks for signing up!
-                    <% else %>
-                      <h4>Subscribe</h4>
-                        <p>Subscribe to be kept in the loop of amazing offers from Brainstaq. We will not share your email with the public without your consent.</p>
-                        <%= form_for Subscriber.new do |f| %>
-                          <%= f.email_field :email, placeholder: "Enter your email" %><%= f.submit "Subscribe", style: "font-weight: bold;" %>
-                        <% end %>
-                    <% end %>
-                  </div>
+          <%= link_to new_user_registration_path, 'data-toggle' => "modal", 'data-target' => "#signup-modal", class: "btn btn-primary has-icon" do %>Create Free Account
+            <span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+          <% end %>
 
-                </div>
-
-                <div class="col-sm-6">
-                  <div class="footer-links">
-                    <h4>Platform</h4>
-                    <ul>
-                      <li><%= link_to 'About', pages_about_path, class: 'para-font' %></li>
-                      <li><%= link_to 'Pricing', plans_path, class: 'para-font' %></li>
-                      <li><%= link_to 'Career', pages_career_path, class: 'para-font' %></li>
-                      <li><%= link_to 'Help', pages_help_path, class: 'para-font' %></li>
-                      <li><%= link_to 'Terms of Service', pages_terms_path, class: 'para-font' %></li>
-					            <li><%= link_to 'Privacy Policy', pages_privacy_path, class: 'para-font' %></li>
-				           	</ul>
-                  </div>
-                  
-                  
-                  <div class="footer-links">
-                    <h4>Contact Us</h4>
-                    <p>
-                      86, Airport Road, Effurun,<br>
-                      Delta State. Nigeria<br> 
-                      <% if user_signed_in? %>
-                        <%= phone_to "0706 182 8205", "Call us", country_code: "234" %> |
-                        <%= mail_to "brainstaq@gmail.com", "Email us" %><br>
-                      <% end %>
-                    </p>
-                  </div>
-
-                  <div class="social-links">
-                    <a href="https://twitter.com/Brainstaq" target="_blank" title="https://twitter.com/Brainstaq" class="twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://web.facebook.com/brainstaq" target="_blank" title="https://web.facebook.com/brainstaq" class="facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/brainstaqng/" target="_blank" title="https://www.instagram.com/brainstaqng/" class="instagram"><i class="fab fa-instagram"></i></a>
-                    <!-- <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a> -->
-                  </div>
-                </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="form">
-              
-              <h4>Leave a Message</h4>
-              <p>If you've got any question, complain or you want to suggest a feature that 
-                you would like to be implemented, drop us a message using the form below.
-              </p>
-              <%= form_for :contact, url: contact_index_path do |f| %>
-                <div class="form-group">
-                  <%= f.text_field  :name, required: true, class: "form-control", placeholder: "Your Name" %>
-                </div>
-
-                <div class="form-group">
-                  <%= f.text_field :email, required: true, class: "form-control", placeholder: "Your E-mail Address" %>
-                </div>
-                <div class="form-group">
-                  <%= f.text_field :subject, required: true, class: "form-control", placeholder: "Subject" %>
-                </div>
-                <div class="form-group mb-3">
-                  <%= f.text_area :message,
-                    rows: 8,
-                    cols: 40,
-                    required: true,
-                    class: "form-control",
-                    placeholder: "Your Message"%>
-                </div>
-
-                <div>
-                  <%= f.hidden_field :nickname %>
-                </div>
-
-                <div id="sendmessage">Your message has been sent. Thank you!</div>
-                <div id="errormessage"></div>
-                
-                <div class="text-center">
-                  <% if user_signed_in? %>
-                    <%= f.submit 'Send Message', class: 'btn btn-primary text-white btn-block', style: "font-weight: bold;" %>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="border-bottom"></div>
+			</div>
+		</div>
+		<div class="row pt-60 pb-60">
+			<div class="col-lg-4 col-md-6">
+				<div class="pr-0 pr-lg-4">
+          <%= link_to (image_tag 'logoccc.png', class:"mb-25" ), root_path %>
+					<p>
+          Brainstaq empowers innovative African ideas and encourage development. Share, validate, and market your ideas, 
+          projects, insights and inspiration and attract cofounders and investors by engaging the power of the crowd.
+          </p>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md col-sm-6">
+				<div class="pl-0 pl-md-3 mt-5 mt-md-0">
+					<h5 class="font-weight-600 mb-20">Platform</h5>
+					<ul class="list-unstyled footer-links">
+            <li><%= link_to 'About', about_path, class: 'text-decoration-none' %></li>
+						<li><%= link_to 'Features', "#", class: 'text-decoration-none' %></li>
+						<li><%= link_to 'How it Works', "#", class: 'text-decoration-none' %></li>
+						<li><%= link_to 'Pricing', new_plan_subscription_path, class: 'text-decoration-none' %></li>
+            <li><%= link_to 'Career', career_path, class: 'text-decoration-none' %></li>
+            
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md col-sm-6">
+				<div class="pl-0 pl-md-3 mt-5 mt-md-0">
+					<h5 class="font-weight-600 mb-20">Support</h5>
+					<ul class="list-unstyled footer-links">
+						<li><%= link_to 'FAQs', "#", class: 'text-decoration-none' %></li>
+            <li><%= link_to 'Help', help_path, class: "text-decoration-none" %></li>
+						<li><%= link_to 'Terms of Service', terms_path, class: 'text-decoration-none' %></li>
+						<li><%= link_to 'Privacy Policy', privacy_path, class: 'text-decoration-none' %></li>
+						<li><%= link_to 'Contact', "#", class: 'text-decoration-none' %></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+      <% if cookies[:saved_subscriber] %>
+        Thanks for signing up!
+      <% else %>
+				<div class="pl-0 pl-lg-4 mt-5 mt-lg-0">
+					<h5 class="font-weight-600 mb-3">Subscribe</h5>
+						<p>Subscribe to be kept in the loop of amazing offers from Brainstaq. 
+              We will not share your email with the public without your consent.
+            </p>
+          
+            <%= form_for Subscriber.new do |f| %>
+              <div class="input-group mt-30">
+                <%= f.email_field :email, placeholder: "Enter your email address", class: "form-control bg-gray" %>
+                <div class="input-group-append ml-0">
+                  <%= f.submit 'Submit', class: "btn btn-primary" do %>
+                    <span class="icon">
+                      <svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30.7071 8.70808C31.0976 8.31756 31.0976 7.68439 30.7071 7.29387L24.3431 0.929909C23.9526 0.539384 
+                        23.3195 0.539384 22.9289 0.929909C22.5384 1.32043 22.5384 1.9536 22.9289 2.34412L28.5858 8.00098L22.9289 
+                        13.6578C22.5384 14.0484 22.5384 14.6815 22.9289 15.072C23.3195 15.4626 23.9526 15.4626 24.3431 15.072L30.7071 
+                        8.70808ZM0 9.00098H30V7.00098H0V9.00098Z" fill="white"/>
+                      </svg>
+                    </span>
                   <% end %>
-                </div>  
-              <% end %>
-            </div>
+                </div>
+              </div>
+            <% end %>
           </div>
+        <% end %>
         </div>
       </div>
     </div>
+	<div class="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="block border-top text-center content">
+            Copyright &copy; <strong>Brainstaq</strong>.
+            <%= Time.now.year %> 
+            All rights reserved | KOBU Innovative Solutions
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="container">
-      <div class="copyright">
-        Copyright &copy; <strong>Brainstaq</strong>.
-        <%= Time.now.year %> 
-        All rights reserved | KOBU Innovative Solutions
-      </div>
-    </div>
-</footer><!-- #footer -->
+	<div class="shape-1 shape-xs bg-primary rounded-circle"></div>
+	<div class="shape-2 shape-sm-2 bg-tertiary rounded-circle"></div>
+	<div class="shape-3 shape-sm bg-secondary rounded-circle"></div>
+	<div class="shape-4 shape-xs-2 bg-tertiary rounded-circle"></div>
+	<div class="shape-5 shape-sm-2 bg-secondary rounded-circle"></div>
+	<div class="shape-6 shape-sm-2 bg-primary rounded-circle"></div>
+</footer>
+<!-- end footer -->
 
-<!-- <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a> -->
-<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
-
-<style>
-  .back-to-top {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    display: none;
-    background: #007bff;
-    color: #fff;
-    transition: background 0.5s;
-    z-index: 11;
-  }  
-</style>
-<script>
-  $(document).ready(function(){
-	$(window).scroll(function () {
-			if ($(this).scrollTop() > 50) {
-				$('#back-to-top').fadeIn();
-			} else {
-				$('#back-to-top').fadeOut();
-			}
-		});
-		// scroll body to 0px on click
-		$('#back-to-top').click(function () {
-			$('body,html').animate({
-				scrollTop: 0
-			}, 1500);
-			return false;
-		});
-});
-</script>
+<!-- start scroll to top -->
+<a href="#top" class="btn btn-primary scroll-to-top-btn smooth-scroll position-fixed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><path id="Layer" fill="currentColor" d="M7.2 19.2L15.2 11.2C15.68 10.71 16.43 10.68 16.96 11.08L17.08 11.2L25.08 19.2L23.2 21.08L16.14 14.02L9.08 21.08L7.2 19.2Z"/></svg></a>
+<!-- end scroll to top -->

@@ -1,67 +1,245 @@
-<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
-  <div class="container-fluid">  
-    <div class="navbar-brand py-0 mx-0" style="width: 500px;">
-      <%= link_to (image_tag 'logo.png', style:"width:150px; height: 50px;"), root_path %>
-      <button class="navbar-toggler py-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<!-- start of header -->
+<header class="header-nav position-relative bg-light-gray" id="top" data-spy="scroll" data-target="#navbar-spy">
+  <div class="container">
+    <nav class="navbar navbar-expand-xl navbar-light px-0">
+      <%= link_to (image_tag 'logo.png', class:"img-fluid navbar-brand p-0", style:"width:150px; height: 50px;"), root_path %>
+      <!-- logo -->
+
+      <button class="navbar-toggler bg-white rounded-0 p-0" type="button" data-toggle="collapse" data-target="#navlinks" aria-controls="navlinks" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="nav-toggle-icon" viewBox="0 0 100 100" width="40" onclick="this.classList.toggle('active')"><path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" /><path class="line middle" d="m 70,50 h -40" /><path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" /></svg>
       </button>
-    </div> 
-  
-    <div class="collapse navbar-collapse" id="navbarCollapse" >
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to ideas_path, class: "text-secondary mt-2 mb-0", title: "Discover", style: "font-size: 16px;" do %>
-            <i class="fa fa-th-large"></i><br>
-          <span class="nav-icon-text" style="font-size: 14px;"> Discover</span>
-          <%end%>
-        </li>
+      <!-- mobile-nav control button -->
 
-        <li class="nav-item">
-          <%= link_to "#", class: "text-secondary mt-2 mb-0", title: "Marketplace", style: "font-size: 16px;" do %>
-            <i class="fa fa-shopping-cart"></i><br>
-          <span class="nav-icon-text" style="font-size: 14px;"> Marketplace</span>
-          <%end%>
-        </li>
+      <div class="collapse navbar-collapse" id="navlinks">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="how-it-works.html">Tour</a>
+          </li>
+          <li class="nav-item dropdown @@pricing">
+            <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mr-1">Discover</span>
+              <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.06L7.94 0L4.5 3.44L1.06 0L0 1.06L4.5 5.56L9 1.06Z" fill="currentColor"/></svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to ideas_path, title: "Enterprises", class: "text-decoration-none" do %>
+                  <span class="nav-link dropdown-item @@pricingOne">Brands</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to ideas_path, title: "Projects", class: "text-decoration-none" do %>
+                  <span class="nav-link dropdown-item @@pricingTwo">Projects</span>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item @@about">
+            <%= link_to new_plan_subscription_path, title: "Pricing", class: "text-decoration-none" do %>
+              <span class="nav-link">Pricing</span>
+            <% end %>
+          </li>
+          <li class="nav-item @@about">
+            <%= link_to "#", title: "Support", class: "text-decoration-none" do %>
+              <span class="nav-link">Support</span>
+            <% end %>
+          </li>
+        </ul>
 
-        <li class="nav-item">
-          <%= link_to new_plan_subscription_path, class: "text-secondary mt-2 mb-0", title: "Pricing", style: "font-size: 16px;" do %>
-            <i class="fa fa-credit-card"></i><br>
-          <span class="nav-icon-text" style="font-size: 14px;"> Pricing</span>
-          <%end%>
-        </li>
-      </ul>
+        <form id="demo-2">
+          <input type="search">
+        </form>
 
-      <%# if cookies[:moon] %>
-        <%#= button_to 'Light', sun_path, method: :get, class: "btn-sm btn-light rounded-pill mr-2" %>
-      <%# else %>
-        <%#= button_to 'Dark', moon_path, method: :get, class: "btn-sm btn-dark rounded-pill mr-2" %>
-      <%# end %>
+        <%= form_with url: search_path, method: :get, local: true, :html => { :type => 'search', :id => 'demo-2'} do |form| %>
+          <%= form.text_field :query, value: params[:query], :html => { :type => 'search', :id => 'demo-2'} do %>
+            <path d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"></path>
+          <% end %>
+        <% end %>
 
-      <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
-        <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded', placeholder: 'Search' %>
-      <% end %>
-      
-      <div class="navbar-text float-right mr-5">
-        <%= link_to "SIGN UP", new_user_registration_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
-        <%= link_to "LOG IN", new_user_session_path, class: "btn rounded mr-1 text-white", style: "font-size: 14px; font-weight: bold;" %>
+        
+
+        <div class="navbar-button">
+          <%= link_to "Sign Up", new_user_registration_path, 'data-toggle' => "modal", 'data-target' => "#signup-modal", class: "btn btn-sm btn-outline-primary" %>
+          <%= link_to new_user_session_path, data: {toggle: "modal", target: "#signin-modal"}, class: "btn btn-sm btn-link pr-xl-0" do %>Log In
+            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+            </svg>
+          <% end %>
+        </div>
       </div>
-    </div>
+      <!-- nav links -->
+    </nav>
   </div>
-</nav>
+</header>
 
-<style>
-.nav-icon-text {
-  display: block;
-  font-size: 14px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: -5px;
-  margin-bottom: -10px !important;
-  text-align: center;
-}
+<!-- signup-modal -->
+	<div class="modal fade rounded" id="signup-modal" tabindex="-1" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	    <div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title font-weight-bold p-3">Sign up now</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body p-3 p-sm-4">
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <small><%= render "devise/shared/error_messages", resource: resource %></small>
+						<div class="form-group mb-20 col-12">
+							<label class="text-black-200 h6 font-weight-600 mb-2" for="fname">First Name*</label>
+              <%= f.text_field :first_name, required: true, class: "form-control shadow-none", placeholder: "First Name" %>
+							<p class="font-weight-bold invalid-feedback">Your first name is required!</p>
+						</div>
+						<div class="form-group mb-20 col-12">
+							<label class="text-black-200 h6 font-weight-600 mb-2" for="lname">Last Name*</label>
+              <%= f.text_field :last_name, required: true, class: "form-control shadow-none", placeholder: "Last Name" %>
+							<p class="font-weight-bold invalid-feedback">Your last name is required!</p>
+						</div>
+						<div class="form-group mb-20 col-12">
+							<label class="text-black-200 h6 font-weight-600 mb-2" for="username">Username*</label>
+              <%= f.text_field :username, required: true, class: "form-control shadow-none", placeholder: "Username" %>
+							<p class="font-weight-bold invalid-feedback">Username is required!</p>
+						</div>
+						<div class="form-group mb-20 col-12">
+							<label class="text-black-200 h6 font-weight-600 mb-2" for="country">Country*</label>
+              <%= f.select(:country, options_for_select([
+              # ['Algeria', 'Algeria'],
+              # ['Angola', 'Angola'],
+              # ['Benin', 'Benin'],
+              # ['Botswana'],
+              # ['Burkina Faso'],
+              # ['Burundi'],
+              # ['Cape Verde'],
+              # ['Cameroon'],
+              # ['Central African Republic (CAR)'],
+              # ['Chad'],
+              # ['Comoros'],
+              # ['Republic of the Congo'],
+              # ['Democratic Republic of Congo'],
+              # ["Cote d'Ivoire"],
+              # ['Djibouti'],
+              # ['Egypt'],
+              # ['Equatorial Guinea'],
+              # ['Eritrea'],
+              # ['Eswatini'],
+              # ['Ethiopia'],
+              # ['Gabon'],
+              # ['Gambia'],
+              # ['Ghana'],
+              # ['Guinea'],
+              # ['Guinea-Bissau'],
+              # ['Kenya'],
+              # ['Lesotho'],
+              # ['Liberia'],
+              # ['Libya'],
+              # ['Madagascar'],
+              # ['Malawi'],
+              # ['Mali'],
+              # ['Mauritania'],
+              # ['Mauritius'],
+              # ['Morocco'],
+              # ['Mozambique'],
+              # ['Namibia'],
+              # ['Niger'],
+              ['Nigeria']
+              # ['Rwanda'],
+              # ['Sao Tome and Principe'],
+              # ['Senegal'],
+              # ['Seychelles'],
+              # ['Sierra Leone'],
+              # ['Somalia'],
+              # ['South Africa'],
+              # ['South Sudan'],
+              # ['Sudan'],
+              # ['Tanzania'],
+              # ['Togo'],
+              # ['Tunisia'],
+              # ['Uganda'],
+              # ['Zambia'],
+              # ['Zimbabwe']
+              ]), {}, :class => 'form-control shadow-none') %>
+            
+						<p class="font-weight-bold invalid-feedback">Country is required!</p>
+						</div>
+        		<div class="form-group mb-20 col-12">
+							<label class="text-black-200 h6 font-weight-600 mb-2" for="email2">Email Address*</label>
+              <%= f.email_field :email, required: true, class: "form-control shadow-none", placeholder: "Email Address" %>
+							<p class="font-weight-bold invalid-feedback">Your email is required!</p>
+						</div>
+						<div class="form-group mb-20 col-12">
+							<label class="text-black-200 h6 font-weight-600 mb-2" for="password">Password*</label>
+              <%= f.password_field :password, class: "form-control shadow-none", placeholder: "Enter Password" %>
+							<p class="font-weight-bold invalid-feedback">Your password is required!</p>
+						</div>
+						<div class="form-group mb-20 col-12">
+							<label class="text-black-200 h6 font-weight-600 mb-2" for="repassword">Retype Password*</label>
+							<%= f.password_field :password_confirmation, class: "form-control shadow-none", placeholder: "Retype Password" %>
+							<p class="font-weight-bold invalid-feedback">Please retype your password.</p>
+						</div>
+						<div class="form-group col-12">
+							<small>By signing up, you agree to Brainstaq's
+								<a class="para-font" href="terms.html">Terms of Service</a> and
+								<a class="para-font" href="privacy.html">Privacy Policy</a>
+							</small>
+						</div>
+						<div class="form-group col-12">
+              <%= f.submit "Sign Up", class: "btn btn-primary w-100" %>
+						</div>
+            <p class="text-center">Have an account? 
+              <%= link_to "Log In", new_user_session_path, data: {toggle: "modal", target: "#signin-modal"} %>
+            </p>
+					<% end %>
+				</div>
+	    </div>
+	  </div>
+	</div>
+	<!-- signup-modal -->
 
-.nav-item {
-  margin-top: -10px !important;
-  text-align: center;
-}
-</style>
+  <!-- login-modal -->
+	<div class="modal fade rounded" id="signin-modal" tabindex="-1" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable mx-auto" style="max-width:400px">
+	    <div class="modal-content">
+		  <div class="modal-header">
+		    <h4 class="modal-title font-weight-bold p-3">Welcome back</h4>
+		    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+		    </button>
+		  </div>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+        <small><%= render "devise/shared/error_messages", resource: resource %></small>
+          <div class="modal-body p-3 p-sm-4">
+    
+          <div class="form-group mb-20 col-12">
+            <label class="text-black-200 h6 font-weight-600 mb-2" for="email">Email Address*</label>
+            <%= f.text_field :login, autofocus: true, class: "form-control shadow-none", placeholder: "Email or Username" %>
+          </div>
+
+          <div class="form-group mb-20 col-12">
+            <label class="text-black-200 h6 font-weight-600 mb-2" for="passwordSignIn">Password*</label>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control shadow-none", placeholder: "Password" %>
+          </div>
+          
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group col-12">
+              <div class="input-group-prepend">
+                <div class="checkbox">
+                  <label><%= f.check_box :remember_me %> Remember me</label>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          
+          <div class="modal-footer form-group col-12">
+            <%= f.submit "Log In", class: "btn btn-primary w-100" %>
+          </div>
+          <div class="col-12">
+            <p class="text-center">Don't have an account?<%= render "devise/shared/links" %></p>
+            </p>
+          </div>
+			  </div>
+      <% end %>
+	  </div>
+	</div>
+  </div>
+  <!-- login-modal -->
+<!-- end of header -->

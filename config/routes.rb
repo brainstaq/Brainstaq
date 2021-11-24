@@ -36,19 +36,17 @@ Rails.application.routes.draw do
 
   post '/users/:username/follow', to: "users#follow", as: "follow_user"
   post '/users/:username/unfollow', to: "users#unfollow", as: "unfollow_user"
-  
-  # get 'user/followers', to: "users#followers", as: "user_followers"
-  # get 'user/followees', to: "users#followees", as: "user_followees"
 
-  #get '/moon', to: 'application#moon', as: 'moon'
-  #get '/sun', to: 'application#sun', as: 'sun'
-
-  get 'pages/about'
-  get '/plans' => 'pages#plans'
-  get 'pages/career'
-  get 'pages/help'
-  get 'pages/terms' 
-  get 'pages/privacy'
+  get '/about' => 'pages#about'
+  get '/pricing' => 'plan_subscription#new'
+  get '/career' => 'pages#career'
+  get '/faqs' => 'pages#faq'
+  get '/features' => 'pages#features'
+  get '/how-it-works' => 'pages#how-it-works'
+  get '/contact' => 'pages#contact'
+  get '/help' => 'pages#help'
+  get '/terms' => 'pages#terms'
+  get '/privacy' => 'pages#privacy'
 
   get 'search' => 'search#index'
 

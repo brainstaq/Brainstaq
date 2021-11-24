@@ -10,6 +10,7 @@
 //= require local-time
 //= require tinymce
 //= require social-share-buttons
+//= require shuffle
 //= require_tree .
 
 require("@rails/ujs").start()
@@ -17,12 +18,18 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
+require("pesky_scrolly_stuff")
 
 var jQuery = require("jquery");
 
 // import jQuery from "jquery";
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
+
+require("slick-carousel")
+
+import "slick-carousel/slick/slick.scss"
+import "slick-carousel/slick/slick-theme.scss"
 
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
@@ -70,4 +77,10 @@ function validateFiles(inputFile) {
   };
 }
 
+document.addEventListener("turbolinks:load", function() {
+  $('.scroller').slick()
+})
+
+
+// script.js
 

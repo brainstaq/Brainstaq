@@ -6,25 +6,21 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # def moon
-  #   cookies[:moon] = {
-  #     value: 'dark mode on'
-  #   }
-  #   if @user_signed_in
-  #     redirect_to dashboard_path
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
-
-  # def sun
-  #   cookies.delete(:moon)
-  #   if @user_signed_in
-  #     redirect_to dashboard_path
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
+  helper_method :resource_name, :resource, :devise_mapping, :resource_class
+  def resource_name
+    :user
+  end
+  
+  def resource
+    @resource ||= User.new
+  end
+  def resource_class
+    User
+  end
+  
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
 
 
   protected

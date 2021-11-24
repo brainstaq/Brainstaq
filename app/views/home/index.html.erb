@@ -1,226 +1,483 @@
-<% content_for :title, "Share and Discover Disruptive Ideas" %>
+<% content_for :title, "The Best Business Manangement Platform" %>
 
+  <!-- start of preloader -->
+  <div class="preloader position-fixed d-flex align-items-center justify-content-center position-relative" id="top" data-spy="scroll" data-target="#navbar-spy">
+    <div class="block">
+      <div class="loader-image mb-20">
+        <%= image_tag 'preloader.png' %>
+      </div>
+      <div class="loader-text">
+        <span class="mb-0">Welcome to</span>
+        <span class="text-uppercase text-primary">Brainstaq</span>
+      </div>
+    </div>
+  </div>
+  <!-- end of preloader -->
 
-<!--==========================
-    Intro Section
-============================-->
-<section id="intro" class="clearfix">
-  <div class="container d-flex h-100">
-    <div class="row justify-content-center align-self-center">
-      <div class="col-md-6 intro-info order-md-first order-last">
-        <h4 style="margin-top: 150px; font-family: Arial; font-size: 14px;" class="mb-2">SETUP YOUR BUSINESS</h4>
-        <h2 style="font-family: Arial;" class="mb-2">Bring your ideas to life with <span> Brainstaq!</span></h2>
-        <h3 style="margin-top: 0px; font-family: Arial; font-size: 24px;">Create, analyze and manage your business documents</h3>
-        <div>
-      		
-          <% if user_signed_in? && current_user.subscribed_to_plan? %>
-            <%#= button_to 'Get Started', plan_subscriptions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
-            <%= link_to 'EXPLORE TOOLS', '#', class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
-          <% elsif user_signed_in? %>
-            <%= link_to 'SETUP ENTERPRISE', new_plan_subscription_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
-          <% else %>
-            <%= link_to 'GET STARTED', new_user_registration_path, class: "btn rounded text-white", style: "font-size: 14px; font-weight: bold;" %>
-          <% end %>
-          
+  <!-- start of banner -->
+  <section class="banner bg-cover-bottom has-shapes bg-light-gray has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)" data-aos="fade-in" data-aos-delay="150">
+	  <div class="container h-100">
+	    <div class="d-block d-lg-flex no-gutters align-items-center h-100">
+		    <div class="col-12 col-xl-8 col-lg-8 order-lg-1">
+		      <div class="banner-image has-shapes mb-4 mb-md-5 mb-lg-0">
+					<%= image_tag 'banner-shot.png', class: "img-fluid" %>
+
+					<div class="shape-lg bg-tertiary rounded-circle"></div>
+					<div class="shape-md bg-primary rounded-circle"></div>
+					<div class="shape-sm bg-secondary rounded-circle"></div>
+				</div>
+		  </div>
+		  <div class="col-xl-5 col-lg-6 order-lg-0">
+		    <h2 class="h2 mb-20">Take control of your business <strong class="text-primary">with Brainstaq!</strong></h2>
+		    <p>Set up your enterprise, create, analyze and manage your business documents</p>
+
+				<form action="#" method="post" class="needs-validation mt-30" novalidate>
+					<div class="input-group d-block d-sm-flex">
+						<div class="input-group-append">
+							<a href="about.html" class="btn btn-primary has-icon">Learn More
+								<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+							</a>
+						</div>
+					</div>
+				</form>
+
+				<div class="divider-text mt-25 mb-25"><span class="bg-light-gray">OR</span></div>
+				<a href="#!" class="btn btn-outline-secondary d-flex align-items-center justify-content-center">
+				<%= image_tag 'google.png', class: "mr-2 img-fluid" %>Sign Up With Google</a>
+        
+			</div>
+		</div>
+		<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
+		<div class="shape-3 shape-sm-2 bg-primary rounded-circle"></div>
+		<div class="shape-4 shape-sm-2 bg-primary rounded-circle"></div>
+		<div class="shape-5 shape-xs bg-secondary rounded-circle"></div>
+		<div class="shape-6 shape-xs bg-tertiary rounded-circle"></div>
+		<div class="shape-7 shape-xs-2 bg-tertiary rounded-circle"></div>
+		<div class="shape-8 shape-xs-2 bg-primary rounded-circle"></div>
+	</section>
+  <!-- end of banner -->
+
+	<!-- start of brand-carousel -->
+	<section class="section-padding overflow-hidden">
+		<div class="container">
+		  <div class="row justify-content-center">
+		    <div class="col-lg-6 col-md-9 text-center mb-40">
+			  <h2 class="section-title">Top <strong class="text-primary">Brands</strong></h2>
+			  <p>We celebrate innovative brands and projects with the potential to disrupt ecosystems in Africa </p>
+		  </div>
+		  <div class="col-md-12" data-aos="fade-left">
+				<div class="brand-carousel">
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '01-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '02-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '03-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '04-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '05-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '06-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '02-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '04-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '03-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '01-colored.png', class: "img-fluid" %></div>
+					<div class="brand-item d-flex align-items-center justify-content-center">
+						<%= image_tag '05-colored.png', class: "img-fluid" %></div>
+			  </div>
+		  </div>
+		</div>
+  </section>
+  <!-- end of brand-carousel -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mt-4 p-4">
+          <div class="d-flex flex-row justify-content-between align-items-center">
+            <%= image_tag 'preloader.png', style: "width:40px; height:50px;" %>
+            <small class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> Nigeria</small>
+          </div>
+          <h5 class="mb-2"><a href="#" class="text-decoration-none text-dark"> KOBU Solar</a></h5>
+          <p class="text-muted mt-2"> Our elite teams build apps, responsive websites, bots any digital product that interacts with users for the world's leading companies. </p>
+          <div class="d-flex flex-row justify-content-between mt-3">
+            <div class="d-flex flex-row justify-content-center">
+              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-facebook mr-2 ml-0"></i></a>
+              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-instagram mr-2 ml-0"></i></a>
+              <a href="#" class="text-decoration-none text-dark"><i class="fas fa-globe"></i></a>
+            </div>
+            <small class="pt-2">
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </small>
+          </div>
         </div>
       </div>
-      
-      <div class="col-lg-4 ml-auto form-box" data-aos="fade-up" data-aos-delay="500" style="margin-top: 100px; margin-bottom: 50px;">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <small><%= render "devise/shared/error_messages", resource: resource %></small>
-          
-          <h5 class="text-center" style="font-size: 16px;">Take Control of Your Business<br>
-            <span class="text-black" style="font-weight: bold; font-size: 22px;" > Sign Up Now!</span>
-          </h5>
-          
-          <div class="form-group">
-            <%= f.text_field :last_name, required: true, class: "form-control", placeholder: "Last Name" %>
-          </div>
-          
-          <div class="form-group">
-            <%= f.text_field :first_name, required: true, class: "form-control", placeholder: "First Name" %>
-          </div>
 
-          <div class="form-group">
-            <%= f.text_field :username, required: true, class: "form-control", placeholder: "Username" %>
+      <div class="col-md-4">
+        <div class="card mt-4 p-4">
+          <div class="d-flex flex-row justify-content-between align-items-center">
+            <%= image_tag 'preloader.png', style: "width:40px; height:50px;" %>
+            <small class="text-muted"><i class="ti-location-pin mr-1"></i> Nigeria</small>
           </div>
+          <h5 class="mb-2"><a href="#" class="text-decoration-none text-dark"> KOBU Solar</a></h5>
+          <p class="text-muted mt-2"> Our elite teams build apps, responsive websites, bots any digital product that interacts with users for the world's leading companies. </p>
+          <div class="d-flex flex-row justify-content-between mt-3">
+            <div class="d-flex flex-row justify-content-center">
+              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-facebook mr-2 ml-0"></i></a>
+              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-instagram mr-2 ml-0"></i></a>
+              <a href="#" class="text-decoration-none text-dark"><i class="fas fa-globe"></i></a>
+            </div>
+            <small class="pt-2">
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </small>
+          </div>
+        </div>
+      </div>
 
-          <div class="form-group">
-            <%= f.select :country, options_for_select([
-            # ['Algeria'],
-            # ['Angola'],
-            # ['Benin'],
-            # ['Botswana'],
-            # ['Burkina Faso'],
-            # ['Burundi'],
-            # ['Cape Verde'],
-            # ['Cameroon'],
-            # ['Central African Republic (CAR)'],
-            # ['Chad'],
-            # ['Comoros'],
-            # ['Republic of the Congo'],
-            # ['Democratic Republic of Congo'],
-            # ["Cote d'Ivoire"],
-            # ['Djibouti'],
-            # ['Egypt'],
-            # ['Equatorial Guinea'],
-            # ['Eritrea'],
-            # ['Eswatini'],
-            # ['Ethiopia'],
-            # ['Gabon'],
-            # ['Gambia'],
-            # ['Ghana'],
-            # ['Guinea'],
-            # ['Guinea-Bissau'],
-            # ['Kenya'],
-            # ['Lesotho'],
-            # ['Liberia'],
-            # ['Libya'],
-            # ['Madagascar'],
-            # ['Malawi'],
-            # ['Mali'],
-            # ['Mauritania'],
-            # ['Mauritius'],
-            # ['Morocco'],
-            # ['Mozambique'],
-            # ['Namibia'],
-            # ['Niger'],
-            ['Nigeria']
-            # ['Rwanda'],
-            # ['Sao Tome and Principe'],
-            # ['Senegal'],
-            # ['Seychelles'],
-            # ['Sierra Leone'],
-            # ['Somalia'],
-            # ['South Africa'],
-            # ['South Sudan'],
-            # ['Sudan'],
-            # ['Tanzania'],
-            # ['Togo'],
-            # ['Tunisia'],
-            # ['Uganda'],
-            # ['Zambia'],
-            # ['Zimbabwe']
-            ]), {}, :class => 'form-control' %>
+      <div class="col-md-4">
+        <div class="card mt-4 p-4">
+          <div class="d-flex flex-row justify-content-between align-items-center">
+            <%= image_tag 'preloader.png', style: "width:40px; height:50px;" %>
+            <small class="text-muted"><i class="fa fa-location-pin mr-1"></i> Nigeria</small>
           </div>
-
-          <div class="form-group">
-            <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email Address" %>
+          <h5 class="mb-2"><a href="#" class="text-decoration-none text-dark"> KOBU Solar</a></h5>
+          <p class="text-muted mt-2"> Our elite teams build apps, responsive websites, bots any digital product that interacts with users for the world's leading companies. </p>
+          <div class="d-flex flex-row justify-content-between mt-3">
+            <div class="d-flex flex-row justify-content-center">
+              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-facebook mr-2 ml-0"></i></a>
+              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-instagram mr-2 ml-0"></i></a>
+              <a href="#" class="text-decoration-none text-dark"><i class="fas fa-globe"></i></a>
+            </div>
+            <small class="pt-2">
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </small>
           </div>
-
-          <div class="form-group">
-            <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
-          </div>
-
-          <div class="form-group mb-2">
-            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password" %>
-          </div>
-          
-          <small>By signing up, you agree to Brainstaq's 
-            <%= link_to 'Terms of Service', 'pages/terms', class: 'para-font' %> and
-            <%= link_to 'Privacy Policy', 'pages/privacy', class: 'para-font' %> 
-          </small>
-
-          <div class="field captcha mt-2 form-group">
-            <%#= recaptcha_tags %>
-          </div>
-          
-          <div class="form-group"  style="margin-top: 10px; margin-bottom: 0px">
-            <%= f.submit "CREATE ACCOUNT", class: "btn btn-block text-white", style: "font-weight: bold;" %>
-          </div>
-        <% end %>
-      </div><!-- col end-->
-    </div><!-- row end-->
-  </div><!-- container end-->
-</section><!-- #intro -->
-
-<!--==========================
-  Trending Ideas Section
-============================-->
-<main id="main">
-  <section id="why-us" class="mb-0">
-    <div class="container-fluid">  
-      <header class="section-header mt-3">
-        <h3>Trending<span class="text-primary"> Ideas</span></h3>
-        <p style="font-size: 18px;">We celebrate innovative ideas and projects with the 
-          potential to disrupt ecosystems in Africa
-        </p>
-      </header>
+        </div>
+      </div>
     </div>
-     
-    <%= render partial: "layouts/ideas", locals: { ideas: @ideas} %>
-    
     <div class="row justify-content-center mt-5">
-      <div class="col-7 text-center"> 
-        <% if @page > 0 %>
-          <%= link_to 'Prev', root_path(page: @page - 1), class: "btn rounded text-white mr-1" %>
-        <% end %>
-        <% if @ideas.count >= 3 %>
-          <%= link_to 'Next', root_path(page: @page + 1), class: "btn rounded text-white ml-1" %>
-        <% end %>
+      <div class="col-7 text-center">
+        <a href="enterprises.html" class="btn btn-primary has-icon">View More
+          <span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+        </a>
       </div>
     </div>
-  </section>
-  <%= render partial: "layouts/counter" %>
-  <%= render partial: "layouts/cta" %>
+  </div>
 
-  <!--==========================
-    Features Section
-  ============================-->
-  <section id="features">
-    <div class="container">
-      <header class="section-header mt-0">
-        <h3 style="margin-bottom: 0px;">What<span class="text-primary"> Brainstaq</span> can do for you</h3>
-        <p style="font-size: 18px; margin-top: 0px;">Explore Brainstaq features</p>
-      </header>
-      <div class="row feature-item">
-        <div class="col-lg-6 wow fadeInUp">
-          <%= image_tag 'features-1.svg', class: "img-fluid" %>
-        </div>
-        <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-          <h4 class="text-primary" style="font-size: 18px; margin-bottom: 0px;">Entrepreneurs</h4>
-          <h4 style="margin-top: 0px;">Seize the opportunities Brainstaq presents</h4>
-          <p>
-            Without adequate finances and funding, most of the ideas that can 
-            change the African narrative are rarely able to break out from 
-            being just an idea, let alone grow into a tangible business.
-          </p>
-          <p>
-            <li>Share your ideas, creations or insights</li>
-            <li>Get positive validations</li>
-            <li>Build a team and,</li>  
-            <li>Raise funds</li>
-          </p>
-        </div>
-      </div>
+  <!-- start of how-it-works tab -->
+	<section class="section-padding how-it-works-tab mt-5 pt-0 overflow-hidden">
+	  <div class="container">
+	    <div class="row justify-content-center">
+		    <div class="col-lg-6 col-md-9 text-center mt-5">
+		      <h2 class="section-title">How <strong class="text-primary">it Works</strong></h2>
+		      <p>Brainstaq provides the tools to help create and manage business documents like business plans, financial models, proposals, pitch decks, invoices, and raise funds via crowdfunding.</p>
+		    </div>
+		    <div class="col-lg-11">
+				<ul class="nav nav-pills justify-content-center mb-20" id="pills-tab" role="tablist">
+					<li class="nav-item mb-20" role="presentation">
+					  <a class="nav-link active" id="pill-management-tab" data-toggle="pill" href="#management-tab" role="tab" aria-controls="management-tab" aria-selected="true">
+						  <i class="circle-shape"></i>Setup Enterprise
+					  </a>
+					</li>
+					<li class="nav-item mb-20" role="presentation">
+					  <a class="nav-link" id="pill-chat-tab" data-toggle="pill" href="#chat-tab" role="tab" aria-controls="chat-tab" aria-selected="false">
+						  <i class="circle-shape"></i>Business Plan
+					  </a>
+					</li>
+					<li class="nav-item mb-20" role="presentation">
+					  <a class="nav-link" id="pill-analytics-tab" data-toggle="pill" href="#analytics-tab" role="tab" aria-controls="analytics-tab" aria-selected="false">
+						  <i class="circle-shape"></i>Social Ads
+					  </a>
+					</li>
+					<li class="nav-item mb-20" role="presentation">
+					  <a class="nav-link" id="pill-collaboration-tab" data-toggle="pill" href="#collaboration-tab" role="tab" aria-controls="collaboration-tab" aria-selected="false">
+						  <i class="circle-shape"></i>Crowdfunding
+					  </a>
+					</li>
+				</ul>
+		    <div class="tab-content" id="pills-tabContent" data-aos="fade-in">
+			    <div class="tab-pane fade show active" id="management-tab" role="tabpanel" aria-labelledby="pill-management-tab">
+			      <div class="row align-items-center">
+							<div class="col-lg-8 anim-to-top">
+								<%= image_tag 'how-it-works-1.jpg', class: "img-fluid rounded-lg shadow" %>
+							</div>
+							<div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
+								<h2 class="section-title">Setup <strong class="text-primary">Enterprise</strong></h2>
+								<p class="mb-30">Easily setup your enterprise on Brainstaq, and get instant access to a complete suite of business tools and documents already generated uniquely for your business.</p>
+								<a href="how-it-works.html" class="btn btn-primary has-icon">View More
+									<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+								</a>
+							</div>
+			      </div>
+			    </div>
+			    <div class="tab-pane fade" id="chat-tab" role="tabpanel" aria-labelledby="pill-chat-tab">
+			      <div class="row align-items-center">
+							<div class="col-lg-8 anim-to-top">
+								<%= image_tag '03.png', class: "img-fluid rounded-lg shadow" %>
+							</div>
+							<div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
+								<h2 class="section-title">Business <strong class="text-primary">Plan</strong></h2>
+								<p class="mb-30">Create and manage your business plan, financial models, and other documents, and make informed decisions in real-time. </p>
+									<a href="how-it-works.html" class="btn btn-primary has-icon">View More
+										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+									</a>
+								</div>
+							</div>
+						</div>
+			      <div class="tab-pane fade" id="analytics-tab" role="tabpanel" aria-labelledby="pill-analytics-tab">
+							<div class="row align-items-center">
+								<div class="col-lg-8 anim-to-top">
+									<%= image_tag '04.png', class: "img-fluid rounded-lg shadow" %>
+								</div>
+								<div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
+									<h2 class="section-title">Social <strong class="text-primary">Ads</strong></h2>
+									<p class="mb-30">Create and schedule social ads on major social media platforms like Facebook, Instagram, WhatsApp, Twitter and LinkedIn</p>
+									<a href="how-it-works.html" class="btn btn-primary has-icon">View More
+										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+									</a>
+								</div>
+							</div>
+						</div>
+			      <div class="tab-pane fade" id="collaboration-tab" role="tabpanel" aria-labelledby="pill-collaboration-tab">
+				      <div class="row align-items-center">
+				        <div class="col-lg-8 anim-to-top">
+				          <%= image_tag 'how-it-works-1.jpg', class: "img-fluid rounded-lg shadow" %>
+				        </div>
+				        <div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
+				          <h2 class="section-title">Crowd<strong class="text-primary">funding</strong></h2>
+									<p class="mb-30">Share, validate, and market your ideas, projects, insights and inspiration and attract funding by engaging the power of the crowd.</p>
+									<a href="how-it-works.html" class="btn btn-primary has-icon">View More
+										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+									</a>
+				        </div>
+			        </div>
+			      </div>
+		      </div>
+		    </div>
+	    </div>
+	  </div>
+	</section>
+	<!-- end of how-it-works tab -->
 
-      <div class="row feature-item mt-5 pt-5">
-        <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
-          <%= image_tag 'features-2.svg', class: "img-fluid" %>
-        </div>
+	<!-- start section -->
+	<section id="why-us" class="section-padding how-it-works-tab pt-0 overflow-hidden wow fadeIn mb-0">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 col-md-9 text-center mt-5 mb-5">
+					<h2 class="section-title">Trending <strong class="text-primary">Projects</strong></h2>
+					<p>We celebrate innovative ideas and projects with the potential to disrupt ecosystems in Africa.</p>
+				</div>
+			</div>
+		</div>
 
-        <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-          <h4 class="text-primary" style="font-size: 18px; margin-bottom: 0px;">Startups</h4>
-          <h4 style="margin-top: 0px;">Brainstaq empowers disruptive African ideas!</h4>
+    <%= render partial: "layouts/ideas", locals: { ideas: @ideas} %>
+		
+	</div>
+	<div class="row justify-content-center mt-4">
+		<div class="col-7 text-center">
+      <a href="projects.html" class="btn btn-primary has-icon">View More
+        <span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+      </a>
+		</div>
+	</div>
+</section>
+<!-- end section -->
 
-          <p>
-            We believe every African entrepreneur should have the tools to create the 
-            solutions of tomorrow. And Brainstaq makes this easier! 
-            With our user-friendly ideas-sharing and crowdfunding platform, 
-            African entrepreneurs can start, nurture and grow their desired businesses 
-            sustainably. 
-          </p>
-          <p>
-            <li>Create and manage business documents</li>
-            <li>Manage deals and contacts</li>
-            <li>Reach your preferred audience</li>  
-            <li>Explore our marketplace</li>
-          </p>
-        </div>  
-      </div>
-    </div>
-  </section>
-  
-  <%= render partial: "layouts/faq" %>
-  
-</main>
+	<!-- start of growth-rate -->
+	<section class="section-padding pb-50" style="margin-top: -100px;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-xl-10">
+					<div class="row align-items-center">
+						<div class="col-lg-6">
+							<h2 class="section-title" style="margin-top: -80px;">Seize the opportunities that <strong class="text-primary">Brainstaq presents</strong></h2>
+							<p class="border-bottom pb-30 mr-0 mr-lg-5">Without the right tools and adequate funding, most small businesses are rarely able to break out from being just an idea.</p>
+							<div class="has-colored-text growth-rate-counter">
+								<div class="d-inline-block block-sm mr-30 mt-30">
+									<h2 class="has-text-color font-weight-bold">
+									<span class="jsCounter" data-count="24">0</span>+</h2>
+									<p class="mt-10">Brands</p>
+								</div>
+									<div class="d-inline-block block mr-30 mt-30">
+										<h2 class="has-text-color font-weight-bold">
+										<span class="jsCounter" data-count="40">0</span>+</h2>
+										<p class="mt-10">Projects</p>
+									</div>
+									<div class="d-inline-block block mt-30">
+										<h2 class="has-text-color font-weight-bold">
+										<span class="jsCounter" data-count="300">0</span>+</h2>
+										<p class="mt-10">Users</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 mt-5 mt-lg-0">
+								<div class="row colored-icon-box">
+									<div class="col-sm-6" data-aos="fade-up">
+										<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+											<i class="fas fa-chart-area icon"></i>
+											<h4 class="font-weight-bold text-black-200">Create Accurate Financial Models</h4>
+										</div>
+									</div>
+									<div class="col-sm-6" data-aos="fade-up" data-aos-delay="100">
+										<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+											<i class="fas fa-share-alt-square icon"></i>
+											<h4 class="font-weight-bold text-black-200">Social Media Integration</h4>
+										</div>
+									</div>
+									<div class="col-sm-6" data-aos="fade-up" data-aos-delay="200">
+										<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+											<i class="fas fa-chart-line icon" aria-hidden="true"></i>
+											<h4 class="font-weight-bold text-black-200">Real-time Business Insights</h4>
+										</div>
+									</div>
+									<div class="col-sm-6" data-aos="fade-up" data-aos-delay="300">
+										<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+											<i class="fas fa-shield-alt icon"></i>
+											<h4 class="font-weight-bold text-black-200">Security You Can Trust</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<!-- end of growth-rate -->
+
+	<!-- start of image-info -->
+	<section class="section-padding image-info-section has-shapes bg-light-gray has-bg-brash bg-brash-y" style="background-image: url(#{image_path "section-top.svg"})", url(images/brushes/section-bottom.svg);">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8 col-md-7">
+					<div class="has-shapes">
+						<%= image_tag '03.png', class: "img-fluid py-4 my-2" %>
+
+						<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
+						<div class="shape-2 shape-xs-2 bg-tertiary rounded-circle"></div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-5">
+					<h2 class="section-title">Validate Your Ideas. <strong class="text-primary">Raise Funds.</strong></h2>
+					<p>Share your ideas and projects with family and friends. Ideas are validated by the community and the general public by interacting with the ideas.
+					Positive validations increase a project's ‘Relevance Bar’.</p>
+				</div>
+			</div>
+		</div>
+		<div class="shape-3 shape-xs-2 bg-secondary rounded-circle"></div>
+		<div class="shape-4 shape-sm-2 bg-tertiary rounded-circle"></div>
+		<div class="shape-5 shape-sm bg-primary rounded-circle"></div>
+		<div class="shape-6 shape-xs bg-secondary rounded-circle"></div>
+		<div class="shape-7 shape-xs-2 bg-tertiary rounded-circle"></div>
+	</section>
+	<!-- end of image-info -->
+
+	<!-- start of testimonials-carousel -->
+	<section class="section-padding pt-0 testimonials-section has-shapes" style="margin-top: 60px;">
+	<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 col-md-9 text-center mb-30">
+					<h2 class="section-title">What Our<strong class="text-primary"> Clients Say</strong></h2>
+					<p>Lorem ipsum sadip dolor sit amet, consetetur sadip scing elitr, diam nonumy eirmod tempor invi duntut labore et dolore magna aliquyam erat, sed diam</p>
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="testimonials-carousel">
+					<div class="testimonials-item bg-white">
+						<div class="block border rounded bg-white">
+							<svg class="icon mb-15" width="25" height="20" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.75001 35L13.75 35C15.8203 35 17.5 33.3203 17.5 31.25L17.5 21.25C17.5 19.1797 15.8203 17.5 13.75 17.5L7.50001 17.5L7.50001 12.5C7.50001 9.74219 9.74219 7.5 12.5 7.5L13.125 7.5C14.1641 7.5 15 6.66406 15 5.625L15 1.875C15 0.83594 14.1641 2.25865e-06 13.125 2.34949e-06L12.5 2.40413e-06C5.59375 3.00789e-06 5.05862e-06 5.59375 5.66238e-06 12.5L7.30156e-06 31.25C7.48255e-06 33.3203 1.6797 35 3.75001 35ZM26.25 35L36.25 35C38.3203 35 40 33.3203 40 31.25L40 21.25C40 19.1797 38.3203 17.5 36.25 17.5L30 17.5L30 12.5C30 9.74219 32.2422 7.5 35 7.5L35.625 7.5C36.6641 7.5 37.5 6.66406 37.5 5.625L37.5 1.875C37.5 0.835938 36.6641 2.91637e-07 35.625 3.82475e-07L35 4.37114e-07C28.0937 1.04088e-06 22.5 5.59375 22.5 12.5L22.5 31.25C22.5 33.3203 24.1797 35 26.25 35Z" fill="currentColor"/></svg>
+							<p class="h4 text-black-300 font-weight-light">Lorem ipsum dolor sit amet, kasd gubergren, seatakimata dolores et rebum stetclita</p>
+							<%= image_tag 'arrow.png' %>
+						</div>
+						<div class="user-info d-flex align-items-center mt-30">
+							<%= image_tag '04.jpg', class: "d-inline rounded-circle mr-3" %>
+							<div class="pt-1">
+								<h5 class="font-weight-bold">Angela Okoro</h5>
+								<p>CEO, Angular Corporation</p>
+							</div>
+						</div>
+					</div>
+					<!-- testimonials-item -->
+					<div class="testimonials-item bg-white">
+						<div class="block border rounded bg-white">
+							<svg class="icon mb-15" width="25" height="20" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.75001 35L13.75 35C15.8203 35 17.5 33.3203 17.5 31.25L17.5 21.25C17.5 19.1797 15.8203 17.5 13.75 17.5L7.50001 17.5L7.50001 12.5C7.50001 9.74219 9.74219 7.5 12.5 7.5L13.125 7.5C14.1641 7.5 15 6.66406 15 5.625L15 1.875C15 0.83594 14.1641 2.25865e-06 13.125 2.34949e-06L12.5 2.40413e-06C5.59375 3.00789e-06 5.05862e-06 5.59375 5.66238e-06 12.5L7.30156e-06 31.25C7.48255e-06 33.3203 1.6797 35 3.75001 35ZM26.25 35L36.25 35C38.3203 35 40 33.3203 40 31.25L40 21.25C40 19.1797 38.3203 17.5 36.25 17.5L30 17.5L30 12.5C30 9.74219 32.2422 7.5 35 7.5L35.625 7.5C36.6641 7.5 37.5 6.66406 37.5 5.625L37.5 1.875C37.5 0.835938 36.6641 2.91637e-07 35.625 3.82475e-07L35 4.37114e-07C28.0937 1.04088e-06 22.5 5.59375 22.5 12.5L22.5 31.25C22.5 33.3203 24.1797 35 26.25 35Z" fill="currentColor"/></svg>
+							<p class="h4 text-black-300 font-weight-light">Lorem ipsum dolor sit amet, kasd gubergren, seatakimata dolores et rebum stetclita</p>
+							<%= image_tag 'arrow.png' %>
+						</div>
+						<div class="user-info d-flex align-items-center mt-30">
+							<%= image_tag '05.jpg', class: "d-inline rounded-circle mr-3" %>
+							<div class="pt-1">
+								<h5 class="font-weight-bold">Cosmos Mark</h5>
+								<p>CEO, Angular Corporation</p>
+							</div>
+						</div>
+					</div>
+					<!-- testimonials-item -->
+					<div class="testimonials-item bg-white">
+						<div class="block border rounded bg-white">
+							<svg class="icon mb-15" width="25" height="20" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.75001 35L13.75 35C15.8203 35 17.5 33.3203 17.5 31.25L17.5 21.25C17.5 19.1797 15.8203 17.5 13.75 17.5L7.50001 17.5L7.50001 12.5C7.50001 9.74219 9.74219 7.5 12.5 7.5L13.125 7.5C14.1641 7.5 15 6.66406 15 5.625L15 1.875C15 0.83594 14.1641 2.25865e-06 13.125 2.34949e-06L12.5 2.40413e-06C5.59375 3.00789e-06 5.05862e-06 5.59375 5.66238e-06 12.5L7.30156e-06 31.25C7.48255e-06 33.3203 1.6797 35 3.75001 35ZM26.25 35L36.25 35C38.3203 35 40 33.3203 40 31.25L40 21.25C40 19.1797 38.3203 17.5 36.25 17.5L30 17.5L30 12.5C30 9.74219 32.2422 7.5 35 7.5L35.625 7.5C36.6641 7.5 37.5 6.66406 37.5 5.625L37.5 1.875C37.5 0.835938 36.6641 2.91637e-07 35.625 3.82475e-07L35 4.37114e-07C28.0937 1.04088e-06 22.5 5.59375 22.5 12.5L22.5 31.25C22.5 33.3203 24.1797 35 26.25 35Z" fill="currentColor"/></svg>
+							<p class="h4 text-black-300 font-weight-light">Lorem ipsum dolor sit amet, kasd gubergren, seatakimata dolores et rebum stetclita</p>
+							<%= image_tag 'arrow.png' %>
+						</div>
+						<div class="user-info d-flex align-items-center mt-30">
+							<%= image_tag '06.jpg', class: "d-inline rounded-circle mr-3" %>
+							<div class="pt-1">
+								<h5 class="font-weight-bold">Tanko Jenny</h5>
+								<p>CEO, Angular Corporation</p>
+							</div>
+						</div>
+					</div>
+					<!-- testimonials-item -->
+					<div class="testimonials-item bg-white">
+						<div class="block border rounded bg-white">
+							<svg class="icon mb-15" width="25" height="20" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.75001 35L13.75 35C15.8203 35 17.5 33.3203 17.5 31.25L17.5 21.25C17.5 19.1797 15.8203 17.5 13.75 17.5L7.50001 17.5L7.50001 12.5C7.50001 9.74219 9.74219 7.5 12.5 7.5L13.125 7.5C14.1641 7.5 15 6.66406 15 5.625L15 1.875C15 0.83594 14.1641 2.25865e-06 13.125 2.34949e-06L12.5 2.40413e-06C5.59375 3.00789e-06 5.05862e-06 5.59375 5.66238e-06 12.5L7.30156e-06 31.25C7.48255e-06 33.3203 1.6797 35 3.75001 35ZM26.25 35L36.25 35C38.3203 35 40 33.3203 40 31.25L40 21.25C40 19.1797 38.3203 17.5 36.25 17.5L30 17.5L30 12.5C30 9.74219 32.2422 7.5 35 7.5L35.625 7.5C36.6641 7.5 37.5 6.66406 37.5 5.625L37.5 1.875C37.5 0.835938 36.6641 2.91637e-07 35.625 3.82475e-07L35 4.37114e-07C28.0937 1.04088e-06 22.5 5.59375 22.5 12.5L22.5 31.25C22.5 33.3203 24.1797 35 26.25 35Z" fill="currentColor"/></svg>
+							<p class="h4 text-black-300 font-weight-light">Lorem ipsum dolor sit amet, kasd gubergren, seatakimata dolores et rebum stetclita</p>
+							<%= image_tag 'arrow.png' %>
+						</div>
+						<div class="user-info d-flex align-items-center mt-30">
+              <%= image_tag '04.jpg', class: "d-inline rounded-circle mr-3" %>
+							<div class="pt-1">
+								<h5 class="font-weight-bold">Ejiro Sheila</h5>
+								<p>CEO, Angular Corporation</p>
+							</div>
+						</div>
+					</div>
+					<!-- testimonials-item -->
+				</div>
+			</div>
+			<!-- <div class="col-md-12">
+				<div class="mt-50 text-center">
+					<a href="testimonials.html" class="btn btn-primary has-icon">View All Testimonials
+						<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+					</a>
+				</div>
+			</div> -->
+		</div>
+	</div>
+
+	<div class="shape-1 shape-sm bg-secondary rounded-circle d-none d-sm-block"></div>
+	<div class="shape-2 shape-sm bg-primary rounded-circle d-none d-sm-block"></div>
+	<div class="shape-3 shape-sm bg-tertiary rounded-circle d-none d-sm-block"></div>
+	<div class="shape-4 shape-sm bg-secondary rounded-circle d-none d-sm-block"></div>
+	<div class="shape-5 shape-xs bg-primary rounded-circle d-none d-sm-block"></div>
+	<div class="shape-6 shape-xs-2 bg-tertiary rounded-circle d-none d-sm-block"></div>
+</section>
+<!-- end of testimonials-carousel -->

@@ -21,12 +21,14 @@ class EnterprisesController < ApplicationController
 
   # GET /enterprises/1 or /enterprises/1.json
   def show
+    @enterprise = Enterprise.find(params[:id]) 
+    render :show
   end
 
   # GET /enterprises/new
   def new
-    #@enterprise = Enterprise.new
-    @enterprise = current_user.enterprises.build
+    @enterprise = Enterprise.new
+    #@enterprise = current_user.enterprises.build
   end
 
   # GET /enterprises/1/edit
@@ -82,6 +84,6 @@ class EnterprisesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def enterprise_params
-      params.require(:enterprise).permit(:status, :name,:logo,:remove_logo, :logo_cache, :enterprise_category, :address, :email, :phone_number, :country, :state, :city, :info)
+      params.require(:enterprise).permit(:status, :name,:image,:remove_image, :image_cache, :enterprise_category, :address, :email, :phone_number, :country, :state, :city, :info)
     end
 end

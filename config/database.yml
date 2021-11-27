@@ -8,14 +8,16 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: sircliffjoe
+  username: kobu
   password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
   database: brainstaq_app_development
-  username: sircliffjoe
+  username: kobu
   password: <%= ENV['DB_PASSWORD'] %>
+
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,11 +25,11 @@ development:
 test:
   <<: *default
   database: brainstaq_app_test
-  username: sircliffjoe
+  username: kobu
   password: <%= ENV['DB_PASSWORD'] %>
 
 production:
   <<: *default
   database: brainstaq_app_production
-  username: sircliffjoe
+  username: kobu
   password: <%= ENV['DB_PASSWORD'] %>

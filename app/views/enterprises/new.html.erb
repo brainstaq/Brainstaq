@@ -1,5 +1,10 @@
-<h1>New Enterprise</h1>
 
-<%= render 'form', enterprise: @enterprise %>
-
-<%= link_to 'Back', enterprises_path %>
+<div class="row container-fluid">
+  <header class="section-header mb-5" style="padding-top: 150px;">
+      <h3 class="text-center">Create <span class="text-primary">Enterprise</span></h3>
+  </header>
+  <div class="container-fluid mb-5" style="margin-left: -10px; margin-right: -20px;">
+    <%= render 'form', enterprise: @enterprise %>
+  </div>
+  <%= link_to 'Back', enterprises_path %>
+</div>

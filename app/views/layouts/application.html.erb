@@ -21,12 +21,6 @@
 
   <body>
     <% if user_signed_in? && current_user.subscribed_to_plan? %>
-      <%= render partial: "layouts/subscribed_header" %>
-      <%= render partial: "layouts/flash" %>
-      <%= yield %>
-      <%= intro_tags %>
-      <%= render partial: "layouts/user_footer" %>
-    <% elsif user_signed_in? %>
       <%= render partial: "layouts/user_header" %>
       <%= render partial: "layouts/flash" %>
       <%= yield %>

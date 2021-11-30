@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_27_001001) do
+ActiveRecord::Schema.define(version: 2021_11_28_120806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,9 +148,14 @@ ActiveRecord::Schema.define(version: 2021_11_27_001001) do
     t.index ["user_id"], name: "index_donors_on_user_id"
   end
 
+  create_table "enterprise_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "enterprises", force: :cascade do |t|
     t.string "name"
-    t.string "enterprise_category"
     t.string "address"
     t.string "email"
     t.bigint "phone_number"
@@ -165,6 +170,7 @@ ActiveRecord::Schema.define(version: 2021_11_27_001001) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "category_id"
     t.index ["slug"], name: "index_enterprises_on_slug", unique: true
   end
 

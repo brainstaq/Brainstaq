@@ -17,68 +17,60 @@
  
  */
 
- @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
- 
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 //  @import "home.scss";
- @import "style.scss";
- @import "slick-carousel/slick/slick.scss";
- @import "slick-carousel/slick/slick-theme.scss";
-
+@import "style.scss";
+@import "slick-carousel/slick/slick.scss";
+@import "slick-carousel/slick/slick-theme.scss";
 //  @import "pages.scss";
-
-//  @import "dashboard.scss";
-
 //  @import "responsive.scss";
- 
- @import "ionicons";
-
+@import "ionicons";
 //  @import "social-share-button";
-
 //  $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 //  @import '@fortawesome/fontawesome-free/scss/fontawesome';
 //  @import '@fortawesome/fontawesome-free/scss/solid';
 //  @import '@fortawesome/fontawesome-free/scss/regular';
 //  @import '@fortawesome/fontawesome-free/scss/brands';
 //  @import '@fortawesome/fontawesome-free/scss/v4-shims';
-
- .flash-message {
-  &.error {
-    border: solid 2px #900;
-    background-color: red;
-  }
-  &.notice {
-    border: solid 2px #26722D;
-    background-color: green;
-  }
-  color: white;
-  z-index: 999;
-  position: fixed;
-  font-weight: bold;
-  width: 20%;
-  margin-top: 50px;
-  margin-left: 40%;
-  text-align: center;
-  p {
-    font-size: 80%;
-    margin: 15px 0;
-  }
+.flash-message {
+    &.error {
+        border: solid 2px #900;
+        background-color: red;
+    }
+    &.notice {
+        border: solid 2px #26722D;
+        background-color: green;
+    }
+    color: white;
+    z-index: 999;
+    position: fixed;
+    font-weight: bold;
+    width: 20%;
+    margin-top: 50px;
+    margin-left: 40%;
+    text-align: center;
+    p {
+        font-size: 80%;
+        margin: 15px 0;
+    }
 }
 
 .scroller {
-  div {
-    text-align: center;
-    font-size: 30px;
-  }
+    div {
+        text-align: center;
+        font-size: 30px;
+    }
 }
 
-.slick-prev::before, .slick-next::before {
-  color: #000;
+.slick-prev::before,
+.slick-next::before {
+    color: #000;
 }
 
 .slick-next {
-  right: -5px;
+    right: -5px;
 }
 
 .slick-prev {
-  left: -5px;
+    left: -5px;
 }

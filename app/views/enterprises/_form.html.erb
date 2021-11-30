@@ -17,7 +17,7 @@
   </div>
 
   <div class="col-sm-12 form-group">
-    <%= form.label :enterprise_category, class: "text-primary", style: "font-size: 18px;" %>
+    <%= form.label :brand_category, class: "text-primary", style: "font-size: 18px;" %>
     <%= form.collection_select(:category_id, Category.all, :id, :name, 
         {prompt: 'What category does your idea fall into?'}, class: "form-control") %>
   </div>

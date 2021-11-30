@@ -36,6 +36,8 @@ Category.create!([
   {name: "Other"}
 ])
 
+
+
 # Country.create!([
 #   {name: "Algeria"},
 #   {name: "Angola"},

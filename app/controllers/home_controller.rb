@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
   IDEAS_PER_PAGE = 3
+  ENTERPRISES_PER_PAGE = 3
 
   def active?
     status == "active"
@@ -17,6 +18,8 @@ class HomeController < ApplicationController
     @next_page = @page + 1 unless Idea.count < 9
     @prev_page = @page - 1 unless @page == 0
     @ideas = Idea.all.offset(@page*IDEAS_PER_PAGE).limit(IDEAS_PER_PAGE).sort_by { |idea| idea.impressions.size.to_i}.reverse
+
+    @enterprises = Enterprise.all
     
     @users = User.all
   end

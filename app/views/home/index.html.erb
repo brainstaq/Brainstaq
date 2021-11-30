@@ -51,119 +51,33 @@
 			  <h2 class="section-title">Top <strong class="text-primary">Brands</strong></h2>
 			  <p>We celebrate innovative brands and projects with the potential to disrupt ecosystems in Africa </p>
 		  </div>
-		  <div class="col-md-12" data-aos="fade-left">
-				<div class="brand-carousel">
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '01-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '02-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '03-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '04-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '05-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '06-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '02-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '04-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '03-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '01-colored.png', class: "img-fluid" %></div>
-					<div class="brand-item d-flex align-items-center justify-content-center">
-						<%= image_tag '05-colored.png', class: "img-fluid" %></div>
-			  </div>
-		  </div>
+      
+        <div class="col-md-12" data-aos="fade-left">
+          <div class="brand-carousel">
+            <% @enterprises.each do |enterprise| %>
+              <div class="brand-item d-flex align-items-center justify-content-center">
+                <%= image_tag enterprise.image_url, class: "img-fluid" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
 		</div>
   </section>
   <!-- end of brand-carousel -->
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mt-4 p-4">
-          <div class="d-flex flex-row justify-content-between align-items-center">
-            <%= image_tag 'preloader.png', style: "width:40px; height:50px;" %>
-            <small class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> Nigeria</small>
-          </div>
-          <h5 class="mb-2"><a href="#" class="text-decoration-none text-dark"> KOBU Solar</a></h5>
-          <p class="text-muted mt-2"> Our elite teams build apps, responsive websites, bots any digital product that interacts with users for the world's leading companies. </p>
-          <div class="d-flex flex-row justify-content-between mt-3">
-            <div class="d-flex flex-row justify-content-center">
-              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-facebook mr-2 ml-0"></i></a>
-              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-instagram mr-2 ml-0"></i></a>
-              <a href="#" class="text-decoration-none text-dark"><i class="fas fa-globe"></i></a>
-            </div>
-            <small class="pt-2">
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card mt-4 p-4">
-          <div class="d-flex flex-row justify-content-between align-items-center">
-            <%= image_tag 'preloader.png', style: "width:40px; height:50px;" %>
-            <small class="text-muted"><i class="ti-location-pin mr-1"></i> Nigeria</small>
-          </div>
-          <h5 class="mb-2"><a href="#" class="text-decoration-none text-dark"> KOBU Solar</a></h5>
-          <p class="text-muted mt-2"> Our elite teams build apps, responsive websites, bots any digital product that interacts with users for the world's leading companies. </p>
-          <div class="d-flex flex-row justify-content-between mt-3">
-            <div class="d-flex flex-row justify-content-center">
-              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-facebook mr-2 ml-0"></i></a>
-              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-instagram mr-2 ml-0"></i></a>
-              <a href="#" class="text-decoration-none text-dark"><i class="fas fa-globe"></i></a>
-            </div>
-            <small class="pt-2">
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card mt-4 p-4">
-          <div class="d-flex flex-row justify-content-between align-items-center">
-            <%= image_tag 'preloader.png', style: "width:40px; height:50px;" %>
-            <small class="text-muted"><i class="fa fa-location-pin mr-1"></i> Nigeria</small>
-          </div>
-          <h5 class="mb-2"><a href="#" class="text-decoration-none text-dark"> KOBU Solar</a></h5>
-          <p class="text-muted mt-2"> Our elite teams build apps, responsive websites, bots any digital product that interacts with users for the world's leading companies. </p>
-          <div class="d-flex flex-row justify-content-between mt-3">
-            <div class="d-flex flex-row justify-content-center">
-              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-facebook mr-2 ml-0"></i></a>
-              <a href="#" class="text-decoration-none text-dark"><i class="fab fa-instagram mr-2 ml-0"></i></a>
-              <a href="#" class="text-decoration-none text-dark"><i class="fas fa-globe"></i></a>
-            </div>
-            <small class="pt-2">
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </small>
-          </div>
-        </div>
-      </div>
+    <div class="row"> 
+      <%= render partial: "layouts/enterprises", locals: { enterprises: @enterprises} %>
     </div>
     <div class="row justify-content-center mt-5">
       <div class="col-7 text-center">
-        <a href="enterprises.html" class="btn btn-primary has-icon">View More
-          <span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
-        </a>
-      </div>
+        <%= link_to enterprises_path, class: "btn btn-primary has-icon" do %>View More
+          <span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
+          xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473
+          21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 
+          15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+        <% end %>
+		  </div>
     </div>
   </div>
 

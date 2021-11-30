@@ -15,24 +15,24 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.min.css' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <%#= yield :recaptcha_js %>
   </head>
 
   <body>
-    <% if user_signed_in? && current_user.subscribed_to_plan? %>
+    <% if user_signed_in? %>
       <%= render partial: "layouts/user_header" %>
       <%= render partial: "layouts/flash" %>
       <%= yield %>
       <%= intro_tags %>
-      <%= render partial: "layouts/user_footer" %>
+      <%= render partial: "layouts/footer", locals: { users: @users} %>
     <% else %>
       <%= render partial: "layouts/header" %>
       <%= render partial: "layouts/flash" %>
       <%= yield %>
       <%= intro_tags %>
-      <%= render partial: "layouts/footer" %>
+      <%= render partial: "layouts/footer", locals: { users: @users} %>
     <% end %>
+    
   </body>
 
 </html>

@@ -22,7 +22,7 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <%= link_to ideas_path, title: "Enterprises", class: "text-decoration-none" do %>
+                <%= link_to enterprises_path, title: "Brands", class: "text-decoration-none" do %>
                   <span class="nav-link dropdown-item @@pricingOne">Brands</span>
                 <% end %>
               </li>
@@ -46,7 +46,7 @@
         </ul>
 
       <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
-        <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2 rounded', placeholder: 'Search' %>
+        <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-3 rounded-pill', placeholder: 'Search' %>
       <% end %>
 
         <div class="navbar-button">
@@ -74,7 +74,7 @@
 					</button>
 				</div>
 				<div class="modal-body p-3 p-sm-4">
-					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true}) do |f| %>
             <small><%= render "devise/shared/error_messages", resource: resource %></small>
 						<div class="form-group mb-20 col-12">
 							<label class="text-black-200 h6 font-weight-600 mb-2" for="fname">First Name*</label>
@@ -225,7 +225,8 @@
             <%= f.submit "Log In", class: "btn btn-primary w-100" %>
           </div>
           <div class="col-12">
-            <p class="text-center">Don't have an account?<%= render "devise/shared/links" %></p>
+            <p class="text-center">Don't have an account? <%= link_to "Sign up", new_registration_path(resource_name) %><br>
+            <%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-center" %>
             </p>
           </div>
 			  </div>

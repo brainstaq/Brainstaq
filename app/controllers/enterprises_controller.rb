@@ -1,12 +1,26 @@
 class EnterprisesController < ApplicationController
   skip_before_action :verify_authenticity_token
-  #before_action :set_enterprise, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [ :index, :show]
 
   before_action :set_enterprise, only: [:activate_enterprise, :deactivate_enterprise, :show, :edit, :update, :destroy]
 
+  ENTERPRISES_PER_PAGE = 9
+
   # GET /enterprises or /enterprises.json
   def index
-    @enterprises = Enterprise.all
+  # @enterprises = Enterprise.all
+    if params[:category].blank?
+      @page = params.fetch(:page, 0).to_i 
+      @next_page = @page + 1 if Enterprise.count >= 9
+      @prev_page = @page - 1 if @page < 0
+      @enterprises = Enterprise.offset(@page*ENTERPRISES_PER_PAGE).limit(ENTERPRISES_PER_PAGE).order(created_at: :desc)
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @page = params.fetch(:page, 0).to_i 
+      @next_page = @page + 1 if Enterprise.count >= 9
+      @prev_page = @page - 1 if @page < 0
+      @enterprises = Enterprise.where(category_id: @category_id).offset(@page*ENTERPRISES_PER_PAGE).limit(ENTERPRISES_PER_PAGE).order(created_at: :desc)
+    end
   end
 
   def activate_enterprise
@@ -22,7 +36,6 @@ class EnterprisesController < ApplicationController
   # GET /enterprises/1 or /enterprises/1.json
   def show
     @enterprise = Enterprise.find(params[:id]) 
-    render :show
   end
 
   # GET /enterprises/new
@@ -84,6 +97,7 @@ class EnterprisesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def enterprise_params
-      params.require(:enterprise).permit(:status, :name,:image,:remove_image, :image_cache, :enterprise_category, :address, :email, :phone_number, :country, :state, :city, :info)
+      params.require(:enterprise).permit(:status, :name, :image, :remove_image, :image_cache, :category_id, :user_id, 
+        :address, :email, :phone_number, :country, :state, :city, :info)
     end
 end

@@ -31,7 +31,7 @@ class IdeasController < ApplicationController
     @comment.idea_id = @idea.id
     donation = Donation.includes(:idea).where(idea_id: params[:id])
     @donation = Donation.new
-    donors_count = donation.count
+    @donors_count = donation.count
     @donors = @idea.donations
     @donated_amount = @idea.donations.sum(:amount)
     render :show

@@ -1,91 +1,129 @@
 <% content_for :title, "Search" %>
 
-<header class="section-header mb-5" style="padding-top: 150px;">
-  <h3>Search <span class="text-primary">Results</span></h3>
-</header>
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+    <div class="container h-100">
+        <div class="row d-flex align-items-center h-100">
+            <div class="col-md-12 text-center">
+                <h2 class="h1 font-weight-bold">Search</h2>
+                <nav class="mt-15" aria-label="breadcrumb">
+                    <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+                        <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
+                        <li class="breadcrumb-item text-primary" aria-current="page">Search</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
 
-<div class="container">
-  <div class="row ng-scope">
-    <div class="col-md-12 col-md-pull-3">
-      <% c = 0 %>
-      
-      <% @ideas.each do |idea| %>
-          <section class="search-result-item">
-            <a class="image-link" href="<%= idea_url(idea) %>">
-              <% if idea.image.present? %>
-                <%=image_tag idea.image_url(:thumb), class: "image", style: "width: 200px; height: 200px;" %>
-              <% end %>
-            </a>
-            <div class="search-result-item-body">
-              <div class="row">
-                <div class="col-sm-9">
-                  <h4 class="search-result-item-heading">
-                    <%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %>
-                  </h4>
-                  <p class="info usr-cnt"><%= idea.category.name %></p>
-                
-                  <a class="text-dark description" href="<%= idea_url(idea) %>">
-                    <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
-                  </a>
-                </div>
-                <div class="col-sm-3 text-align-center">
-                  <p class="value3 mt-sm"></p>
-                  <p class="value3 mt-sm"></p>
-                  <p class="info text-muted mb-0"><span class="fa fa-filter text-primary mr-1"></span> 
-                    <%= "#{idea.relevance_bar}%" %> Relevance
-                  </p>
-                  <p class="fs-mini info text-muted mb-0"><span class="fa fa-eye text-primary mr-1"></span> 
-                    <%= pluralize(idea.impressionist_count, 'View') %>
-                  </p>
-                  <p class="fs-mini info text-muted mb-3"><span class="fa fa-heart text-primary mr-1"></span> 
-                    <%= pluralize(idea.get_likes.size, 'Like') %>
-                  </p>
-                  <%= link_to 'View More', idea, class: 'btn btn-primary btn-info btn-sm' %>
-                </div>
-              </div>
-            </div>
-          </section>
-          <% c = c + 1 %>
-        <% end %>
-      
-      <% @users.each do |user| %>
-          <section class="search-result-item">
-            <a class="image-link" href="<%= profile_path(user.username, @user) %>">
-              <% if user.image.url %>
-                <%=image_tag (user.image_url), class: "image", style: "width: 200px; height: 210px;" %>
-              <% else %>
-                <%= image_tag 'avatar.png', class: "image", style: "width: 200px; height: 210px;" %>
-              <% end %>
-            </a>
-            <div class="search-result-item-body">
-              <div class="row">
-                <div class="col-sm-9">
-                  <h4 class="search-result-item-heading">
-                    <%= link_to user.full_name, profile_path(user.username, @user), class: 'text-dark' %>
-                  </h4>
-                  <p class="info usr-cnt"><%= user.country %></p>
-                  <p class="description"><%= user.bio %></p>
-                </div>
-                <div class="col-sm-3 text-align-center">
-                  <p class="value3 mt-sm"></p>
-                  <p class="fs-mini info text-muted mb-"><%= (user.ideas.count) %> Ideas Shared</p>
-                  <%= link_to 'View More', profile_path(user.username, @user), class: 'btn btn-primary btn-info btn-sm' %>
-                </div>
-              </div>
-            </div>
-          </section>
-          <% c = c + 1 %>
-        <% end %>
-        <p class="search-results-count" style="position: absolute; top: -50px;">Showing <%= pluralize(c, 'result') %> containing your search!</p>  
+    <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+    <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+    <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+    <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+    <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+    <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+    <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+    <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<main id="main">
+  <section class="section-padding pb-0" data-aos="fade-in" data-aos-delay="150">
+    <div class="container">  
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-9 text-center mb-40">
+          <h2 class="section-title">Search <strong><span class="text-primary">Results</span></strong></h2>
+          <p style="font-size: 18px;">
+            Discover and follow creative and innovative business ideas and projects across Africa
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+
+    <div class="container">
+      <div class="row ng-scope">
+        <div class="col-md-12 col-md-pull-3">
+          <% c = 0 %>
+          
+          <% @ideas.each do |idea| %>
+              <section class="search-result-item">
+                <a class="image-link" href="<%= idea_url(idea) %>">
+                  <% if idea.image.present? %>
+                    <%=image_tag idea.image_url, class: "image", style: "width: 200px; height: 200px;" %>
+                  <% end %>
+                </a>
+                <div class="search-result-item-body">
+                  <div class="row">
+                    <div class="col-sm-9">
+                      <h4 class="search-result-item-heading">
+                        <%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %>
+                      </h4>
+                      <p class="info usr-cnt"><%= idea.category.name %></p>
+                    
+                      <a class="text-dark description" href="<%= idea_url(idea) %>">
+                        <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
+                      </a>
+                    </div>
+                    <div class="col-sm-3 text-align-center">
+                      <p class="value3 mt-sm"></p>
+                      <p class="value3 mt-sm"></p>
+                      <p class="info text-muted mb-0"><span class="fa fa-filter text-primary mr-1"></span> 
+                        <%= "#{idea.relevance_bar}%" %> Relevance
+                      </p>
+                      <p class="fs-mini info text-muted mb-0"><span class="fa fa-eye text-primary mr-1"></span> 
+                        <%= pluralize(idea.impressionist_count, 'View') %>
+                      </p>
+                      <p class="fs-mini info text-muted mb-3"><span class="fa fa-heart text-primary mr-1"></span> 
+                        <%= pluralize(idea.get_likes.size, 'Like') %>
+                      </p>
+                      <%= link_to 'View More', idea, class: 'btn btn-primary btn-info btn-sm' %>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <% c = c + 1 %>
+            <% end %>
+          
+          <% @users.each do |user| %>
+              <section class="search-result-item">
+                <a class="image-link" href="<%= profile_path(user.username, @user) %>">
+                  <% if user.image.url %>
+                    <%=image_tag (user.image_url), class: "image", style: "width: 200px; height: 210px;" %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "image", style: "width: 200px; height: 210px;" %>
+                  <% end %>
+                </a>
+                <div class="search-result-item-body">
+                  <div class="row">
+                    <div class="col-sm-9">
+                      <h4 class="search-result-item-heading">
+                        <%= link_to user.full_name, profile_path(user.username, @user), class: 'text-dark' %>
+                      </h4>
+                      <p class="info usr-cnt"><%= user.country %></p>
+                      <p class="description"><%= user.bio %></p>
+                    </div>
+                    <div class="col-sm-3 text-align-center">
+                      <p class="value3 mt-sm"></p>
+                      <p class="fs-mini info text-muted mb-"><%= (user.ideas.count) %> Ideas Shared</p>
+                      <%= link_to 'View More', profile_path(user.username, @user), class: 'btn btn-primary btn-info btn-sm' %>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <% c = c + 1 %>
+            <% end %>
+            <p class="search-results-count" style="position: absolute; top: -50px;">Showing <%= pluralize(c, 'result') %> containing your search!</p>  
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <style>
-    body {
+    /* body {
       margin-top:20px;
       background-color: #eee;
-    }
+    } */
 
     .search-result-categories>li>a {
       color: #b6b6b6;

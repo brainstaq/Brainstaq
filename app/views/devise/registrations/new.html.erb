@@ -1,138 +1,174 @@
 <% content_for :title, "Create Account" %>
 
-<article class="card-body mx-auto" style="max-width: 400px; padding-top: 150px;">
-  <header class="section-header mb-5 clearfix">
-    <h3>Create <span class="text-primary"> Account</span></h3>
-  </header>
-  <!-- <p>
-    <a href="#" class="btn btn-block btn-twitter"><i class="fab fa-twitter"></i>   Login via Twitter</a>
-    <a href="#" class="btn btn-block btn-facebook"><i class="fab fa-facebook-f"></i>   Login via facebook</a>
-  </p>
-  <p class="divider-text">
-    <span class="bg-light">OR</span>
-  </p> -->
- 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<small><%= render "devise/shared/error_messages", resource: resource %></small>
-
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-user"></i></span>
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Sign Up</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Sign Up</li>
+          </ol>
+        </nav>
+      </div>
     </div>
-    <%= f.text_field :last_name, required: true, class: "form-control", placeholder: "Last Name" %>
   </div>
 
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-user"></i></span>
-    </div>
-    <%= f.text_field :first_name, required: true, class: "form-control", placeholder: "First Name" %>
-  </div>
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
 
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+<main id="main">
+  <section class="section-padding pb-0" data-aos="fade-in" data-aos-delay="150">
+    <div class="container">  
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-9 text-center mb-40">
+          <h2 class="section-title">Create <strong><span class="text-primary">Account</span></strong></h2>
+          <p style="font-size: 18px;">
+            Experience all of Brainstaq. It takes less than a minute to create an account!</p>
+        </div>
+      </div>
     </div>
-    <%= f.text_field :username, required: true, class: "form-control", placeholder: "Username" %>
-  </div>
-  
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-    </div>
-    <%= f.select(:country, options_for_select([
-    # ['Algeria', 'Algeria'],
-    # ['Angola', 'Angola'],
-    # ['Benin', 'Benin'],
-    # ['Botswana'],
-    # ['Burkina Faso'],
-    # ['Burundi'],
-    # ['Cape Verde'],
-    # ['Cameroon'],
-    # ['Central African Republic (CAR)'],
-    # ['Chad'],
-    # ['Comoros'],
-    # ['Republic of the Congo'],
-    # ['Democratic Republic of Congo'],
-    # ["Cote d'Ivoire"],
-    # ['Djibouti'],
-    # ['Egypt'],
-    # ['Equatorial Guinea'],
-    # ['Eritrea'],
-    # ['Eswatini'],
-    # ['Ethiopia'],
-    # ['Gabon'],
-    # ['Gambia'],
-    # ['Ghana'],
-    # ['Guinea'],
-    # ['Guinea-Bissau'],
-    # ['Kenya'],
-    # ['Lesotho'],
-    # ['Liberia'],
-    # ['Libya'],
-    # ['Madagascar'],
-    # ['Malawi'],
-    # ['Mali'],
-    # ['Mauritania'],
-    # ['Mauritius'],
-    # ['Morocco'],
-    # ['Mozambique'],
-    # ['Namibia'],
-    # ['Niger'],
-    ['Nigeria']
-    # ['Rwanda'],
-    # ['Sao Tome and Principe'],
-    # ['Senegal'],
-    # ['Seychelles'],
-    # ['Sierra Leone'],
-    # ['Somalia'],
-    # ['South Africa'],
-    # ['South Sudan'],
-    # ['Sudan'],
-    # ['Tanzania'],
-    # ['Togo'],
-    # ['Tunisia'],
-    # ['Uganda'],
-    # ['Zambia'],
-    # ['Zimbabwe']
-    ]), {}, :class => 'form-control') %>
-  </div>
-  
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-    </div>
-    <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email Address" %>
-  </div>
 
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-lock"></i></span>
-    </div>
-    <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
-  </div>
-  
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fa fa-lock"></i></span>
-    </div>
-    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password" %>
-  </div>
-  <p>
-    <small>By signing up, you agree to Brainstaq's 
-      <%= link_to 'Terms of Service', pages_terms_path, class: 'para-font' %> and
-      <%= link_to 'Privacy Policy', pages_privacy_path, class: 'para-font' %>
-    </small>
-  </p>
+    <article class="card-body mx-auto" style="max-width: 400px; padding-top: 30px;">
+      <p>
+        <a href="#" class="btn btn-primary w-100 btn-twitter mb-2"><i class="fab fa-twitter"></i>   Login via Twitter</a>
+        <a href="#" class="btn btn-primary w-100 btn-facebook"><i class="fab fa-facebook-f"></i>   Login via facebook</a>
+      </p>
+      <p class="divider-text">
+        <span class="bg-light">OR</span>
+      </p>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <small><%= render "devise/shared/error_messages", resource: resource %></small>
 
-  <div class="field mb-3 ml-4">
-    <%#= recaptcha_tags %>
-  </div>
-  
-  <div class="form-group actions">
-    <%= f.submit "Create Account", class: "btn btn-block text-white" %>
-  </div>
-  <p class="text-center">Have an account?<%= render "devise/shared/links" %></p>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+        </div>
+        <%= f.text_field :last_name, required: true, class: "form-control", placeholder: "Last Name" %>
+      </div>
 
-  <% end %>
-</article>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+        </div>
+        <%= f.text_field :first_name, required: true, class: "form-control", placeholder: "First Name" %>
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+        </div>
+        <%= f.text_field :username, required: true, class: "form-control", placeholder: "Username" %>
+      </div>
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+        </div>
+        <%= f.select(:country, options_for_select([
+        # ['Algeria', 'Algeria'],
+        # ['Angola', 'Angola'],
+        # ['Benin', 'Benin'],
+        # ['Botswana'],
+        # ['Burkina Faso'],
+        # ['Burundi'],
+        # ['Cape Verde'],
+        # ['Cameroon'],
+        # ['Central African Republic (CAR)'],
+        # ['Chad'],
+        # ['Comoros'],
+        # ['Republic of the Congo'],
+        # ['Democratic Republic of Congo'],
+        # ["Cote d'Ivoire"],
+        # ['Djibouti'],
+        # ['Egypt'],
+        # ['Equatorial Guinea'],
+        # ['Eritrea'],
+        # ['Eswatini'],
+        # ['Ethiopia'],
+        # ['Gabon'],
+        # ['Gambia'],
+        # ['Ghana'],
+        # ['Guinea'],
+        # ['Guinea-Bissau'],
+        # ['Kenya'],
+        # ['Lesotho'],
+        # ['Liberia'],
+        # ['Libya'],
+        # ['Madagascar'],
+        # ['Malawi'],
+        # ['Mali'],
+        # ['Mauritania'],
+        # ['Mauritius'],
+        # ['Morocco'],
+        # ['Mozambique'],
+        # ['Namibia'],
+        # ['Niger'],
+        ['Nigeria']
+        # ['Rwanda'],
+        # ['Sao Tome and Principe'],
+        # ['Senegal'],
+        # ['Seychelles'],
+        # ['Sierra Leone'],
+        # ['Somalia'],
+        # ['South Africa'],
+        # ['South Sudan'],
+        # ['Sudan'],
+        # ['Tanzania'],
+        # ['Togo'],
+        # ['Tunisia'],
+        # ['Uganda'],
+        # ['Zambia'],
+        # ['Zimbabwe']
+        ]), {}, :class => 'form-control') %>
+      </div>
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+        </div>
+        <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email Address" %>
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        </div>
+        <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
+      </div>
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        </div>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password" %>
+      </div>
+      <p>
+        <small>By signing up, you agree to Brainstaq's 
+          <%= link_to 'Terms of Service', terms_path, class: 'para-font' %> and
+          <%= link_to 'Privacy Policy', privacy_path, class: 'para-font' %>
+        </small>
+      </p>
+
+      <div class="field mb-3 ml-4">
+        <%#= recaptcha_tags %>
+      </div>
+      
+      <div class="form-group actions">
+        <%= f.submit "Create Account", class: "btn btn-primary w-100" %>
+      </div>
+      <p class="text-center">Have an account?<%= render "devise/shared/links" %></p>
+
+      <% end %>
+    </article>
+  </section>
+</main>

@@ -20,7 +20,7 @@ window.$ = window.jQuery = jQuery;
 //= require_tree .
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+    //require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
@@ -34,18 +34,6 @@ import "slick-carousel/slick/slick-theme.scss"
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
 
-// Back to top button
-$(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-        $('.back-to-top').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
-    }
-});
-$('.back-to-top').click(function() {
-    $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
-    return false;
-});
 
 setTimeout(function() {
     $('.flash-message').fadeOut('fast');

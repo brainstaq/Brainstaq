@@ -5,15 +5,22 @@
           <div class="col-md-4">
             <div class="card mt-4 p-4">
               <div class="d-flex flex-row justify-content-between align-items-center">
-                <%#= image_tag 'preloader.png', style: "width:40px; height:50px;" %>
                 <a href="<%= enterprise_url(enterprise) %>">
-                  <%= image_tag enterprise.image_url, width:'40px', height:'50px' if enterprise.image.present?  %>
+                  <%= image_tag enterprise.image_url, width:'flex', height:'50px' if enterprise.image.present?  %>
                 </a>
                 <small class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> <%= enterprise.country %></small>
+                <span class="idea-category" style="font-size: 12px; font-weight: bold;">
+                  <% if enterprise.category %>
+                    <%= enterprise.category.name %>
+                  <% else %>
+                    <%= 'General' %>
+                  <% end %>
+                </span>
               </div>
 
               <p class="text-muted mt-2 mb-2">
-                <a href="<%= enterprise_url(enterprise) %>" class="text-decoration-none text-dark"> 
+                <a href="<%= enterprise_url(enterprise) %>" class="text-decoration-none text-dark">
+                  <h3 class="mb-1"><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark', style: "font-weight: bold;" %></h3> 
                   <%= truncate(sanitize(enterprise.info, tags: []), length: 120) %>
                 </a>
               </p>

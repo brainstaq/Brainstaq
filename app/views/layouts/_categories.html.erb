@@ -2,11 +2,22 @@
   <button class="btn btn-primary" style="font-size: 14px;" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sort by Category
   </button>
-  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
-    <% Category.all.each do |category| %>
-      <li>
-        <%= link_to category.name, ideas_path(category: category.name), class: "dropdown-item" %>
-      </li>
-    <% end %>      
-  </div>
+
+  <% if current_page?(ideas_path) %>  
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+      <% Category.all.each do |category| %>
+        <li>
+          <%= link_to category.name, ideas_path(category: category.name), class: "dropdown-item" %>
+        </li>
+      <% end %>      
+    </div>
+  <% elsif current_page?(enterprises_path) %>
+    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+      <% Category.all.each do |category| %>
+        <li>
+          <%= link_to category.name, enterprises_path(category: category.name), class: "dropdown-item" %>
+        </li>
+      <% end %>      
+    </div>
+  <% end %>
 </div>

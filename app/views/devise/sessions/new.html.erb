@@ -1,4 +1,78 @@
 <% content_for :title, "Log In" %>
 
+<% content_for :title, "Create Account" %>
+
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Login</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Login</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+
+<main id="main">
+  <section class="section-padding pb-0" data-aos="fade-in" data-aos-delay="150">
+    <div class="container">  
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-9 text-center mb-0">
+          <h2 class="section-title">Welcome <strong><span class="text-primary">Back!</span></strong></h2>
+        </div>
+      </div>
+    </div>
+
+    <article class="card-body mx-auto" style="max-width: 400px; padding-top: 30px;">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+        <small><%= render "devise/shared/error_messages", resource: resource %></small>
+          <div class="modal-body p-3 p-sm-4">
+    
+          <div class="form-group mb-20 col-12">
+            <label class="text-black-200 h6 font-weight-600 mb-2" for="email">Email Address*</label>
+            <%= f.text_field :login, autofocus: true, class: "form-control shadow-none", placeholder: "Email or Username" %>
+          </div>
+
+          <div class="form-group mb-20 col-12">
+            <label class="text-black-200 h6 font-weight-600 mb-2" for="passwordSignIn">Password*</label>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control shadow-none", placeholder: "Password" %>
+          </div>
+          
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group col-12">
+              <div class="input-group-prepend">
+                <div class="checkbox">
+                  <label><%= f.check_box :remember_me %> Remember me</label>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          
+          <div class="modal-footer form-group col-12">
+            <%= f.submit "Log In", class: "btn btn-primary w-100" %>
+          </div>
+          <div class="col-12">
+            <p class="text-center">Don't have an account?<%= render "devise/shared/links" %></p>
+          </div>
+			  </div>
+      <% end %>
+    </article>
+  </section>
+</main>
+
 
 

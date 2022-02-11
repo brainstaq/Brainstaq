@@ -42,6 +42,7 @@ gem 'impressionist'
 gem 'acts_as_votable'
 gem 'uglifier', '~> 4.2', require: 'uglifier'
 gem 'omniauth-google-oauth2'
+#gem wicked_pdf
 
 # local ENV var
 gem 'figaro', '~> 1.2'

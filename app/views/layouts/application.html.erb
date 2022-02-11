@@ -24,9 +24,9 @@
     <%= yield %>
     <%= intro_tags %>
     
-    <% unless user_signed_in? %>
+    <%# unless user_signed_in? %>
       <%= render partial: "layouts/footer", locals: { users: @users} %>
-    <% end %>
+    <%# end %>
   </body>
 </html>
 

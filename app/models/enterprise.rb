@@ -1,6 +1,7 @@
 class Enterprise < ApplicationRecord
   enum status: [:inactive, :active]
-	validates :name, :info, :address, :email, :phone_number, :country, :category, :image, presence: true
+	validates :name, :info, :address, :email, :phone_number, :country, :category, :image, :website_url, 
+  :facebook_url, :twitter_url, :instagram_url, presence: true
   after_validation :set_slug, only: [:create, :update]
 
   default_scope { order(created_at: :desc)}

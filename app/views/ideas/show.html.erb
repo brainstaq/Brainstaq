@@ -28,7 +28,7 @@
 <!-- end of page-header -->
 
 <main style="padding-top: 150px; background-color: #fff;">
-  <div class="container-fluid col-lg-10">
+  <div class="container-fluid col-lg-10" style="margin-bottom: 100px;">
     <div class="row">
       <div class="col-md-6">
         <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%', height:'80%' if @idea.image.present? %>
@@ -275,4 +275,5 @@
       </div>
     </div>
   </div>
+  <%= render partial: "layouts/cta" %>
 </main>

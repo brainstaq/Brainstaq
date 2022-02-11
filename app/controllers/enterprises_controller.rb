@@ -98,6 +98,7 @@ class EnterprisesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def enterprise_params
       params.require(:enterprise).permit(:status, :name, :image, :remove_image, :image_cache, :category_id, :user_id, 
-        :address, :email, :phone_number, :country, :state, :city, :info)
+        :address, :email, :phone_number, :country, :state, :city, :info, :facebook_url, 
+        :twitter_url, :instagram_url, :website_url)
     end
 end

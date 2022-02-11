@@ -1,6 +1,6 @@
 class Idea < ApplicationRecord 
   validates :title, :description, :overview, :impact, :donation_goal, :end_date, :category, :image, presence: true
-  validates :end_date, not_in_past: true
+  validate :not_in_past
   validates :category, presence: true
   after_validation :set_slug, only: [:create, :update]
 
@@ -32,6 +32,12 @@ class Idea < ApplicationRecord
 
   def to_param
     "#{id}-#{slug}"
+  end
+
+  def not_in_past
+    if self.end_date.past?
+      errors.add(:expiry_date, 'can not be in the past')
+    end
   end
 
   def impressionist_count

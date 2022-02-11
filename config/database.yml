@@ -8,13 +8,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: kobu
+  username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
   database: brainstaq_app_development
-  username: kobu
+  username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>
 
   host: localhost
@@ -25,11 +25,11 @@ development:
 test:
   <<: *default
   database: brainstaq_app_test
-  username: kobu
+  username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>
 
 production:
   <<: *default
   database: brainstaq_app_production
-  username: kobu
+  username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>

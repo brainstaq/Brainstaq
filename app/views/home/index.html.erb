@@ -20,26 +20,30 @@
 				<form action="#" method="post" class="needs-validation mt-30" novalidate>
 					<div class="input-group d-block d-sm-flex">
 						<div class="input-group-append">
-							<a href="about.html" class="btn btn-primary has-icon">Learn More
-								<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
-							</a>
+							
+
+							<%= link_to about_path, class: "btn btn-primary has-icon" do %>Learn More
+								<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
+								xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473
+								21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 
+								15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+							<% end %>
 						</div>
 					</div>
 				</form>
 
-				<div class="divider-text mt-25 mb-25"><span class="bg-light-gray">OR</span></div>
-				<a href="#!" class="btn btn-outline-secondary d-flex align-items-center justify-content-center">
-				<%= image_tag 'google.png', class: "mr-2 img-fluid" %>Sign Up With Google</a>
-        
+				<div class="divider-text mt-25 mb-25"><span class="bg-light-gray">OR GET STARTED</span></div>
+					<a href="#!" class="btn btn-outline-secondary d-flex align-items-center justify-content-center">
+					<%= image_tag 'google.png', class: "mr-2 img-fluid" %>Sign Up With Google</a>
+				</div>
 			</div>
-		</div>
-		<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
-		<div class="shape-3 shape-sm-2 bg-primary rounded-circle"></div>
-		<div class="shape-4 shape-sm-2 bg-primary rounded-circle"></div>
-		<div class="shape-5 shape-xs bg-secondary rounded-circle"></div>
-		<div class="shape-6 shape-xs bg-tertiary rounded-circle"></div>
-		<div class="shape-7 shape-xs-2 bg-tertiary rounded-circle"></div>
-		<div class="shape-8 shape-xs-2 bg-primary rounded-circle"></div>
+			<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
+			<div class="shape-3 shape-sm-2 bg-primary rounded-circle"></div>
+			<div class="shape-4 shape-sm-2 bg-primary rounded-circle"></div>
+			<div class="shape-5 shape-xs bg-secondary rounded-circle"></div>
+			<div class="shape-6 shape-xs bg-tertiary rounded-circle"></div>
+			<div class="shape-7 shape-xs-2 bg-tertiary rounded-circle"></div>
+			<div class="shape-8 shape-xs-2 bg-primary rounded-circle"></div>
 	</section>
   <!-- end of banner -->
 
@@ -48,9 +52,9 @@
 		<div class="container">
 		  <div class="row justify-content-center">
 		    <div class="col-lg-6 col-md-9 text-center mb-40">
-			  <h2 class="section-title">Top <strong class="text-primary">Brands</strong></h2>
-			  <p>We celebrate innovative brands and projects with the potential to disrupt ecosystems in Africa </p>
-		  </div>
+					<h2 class="section-title">Top <strong class="text-primary">Brands</strong></h2>
+					<p>We celebrate innovative brands and projects with the potential to disrupt ecosystems in Africa </p>
+		  	</div>
       
         <div class="col-md-12" data-aos="fade-left">
           <div class="brand-carousel">
@@ -396,15 +400,4 @@
 </section>
 <!-- end of testimonials-carousel -->
 
-<% unless user_signed_in? %>
-  <div class="row justify-content-center">
-    <div class="col-lg-7 col-md-12">
-      <div class="text-center pb-40 mt-5">
-        <h3 class="section-title">Join 300+ businesses using <strong class="text-primary">Brainstaq.</strong></h3>
-        <%= link_to new_user_registration_path, 'data-toggle' => "modal", 'data-target' => "#signup-modal", class: "btn btn-primary has-icon" do %>Create Free Account
-          <span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render partial: "layouts/cta" %>

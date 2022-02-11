@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   resources :contact, only: [:create]
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {
     registrations: 'registrations',
-    confirmations: 'confirmations'
+    confirmations: 'confirmations',
+    omniauth_callbacks: 'omniauth_callbacks'
   }
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'

@@ -39,9 +39,12 @@
 
     <article class="card-body mx-auto" style="max-width: 400px; padding-top: 30px;">
       <p>
-        <a href="#" class="btn btn-primary w-100 btn-twitter mb-2"><i class="fab fa-twitter"></i>  Sign Up with Twitter</a>
-        <a href="#" class="btn btn-primary w-100 btn-facebook mb-2"><i class="fab fa-facebook-f"></i>   Sign Up with Facebook</a>
-        <a href="#" class="btn btn-primary w-100 btn-google"><i class="fab fa-google"></i>   Sign Up with Google</a>
+        <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+						<span class="btn btn-outline-primary w-100 mb-2">
+							<i class="fab fa-google"></i> Sign up with Google
+						</span>
+					<% end %>
+      
       </p>
       <p class="divider-text mb-2 mt-2">
         <span class="bg-light">OR</span>

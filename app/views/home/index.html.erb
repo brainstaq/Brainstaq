@@ -33,8 +33,11 @@
 				</form>
 
 				<div class="divider-text mt-25 mb-25"><span class="bg-light-gray">OR GET STARTED</span></div>
-					<a href="#!" class="btn btn-outline-secondary d-flex align-items-center justify-content-center">
-					<%= image_tag 'google.png', class: "mr-2 img-fluid" %>Sign Up With Google</a>
+				  <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+						<span class="btn btn-outline-primary w-100 mb-2">
+							<i class="fab fa-google"></i> Sign up with Google
+						</span>
+					<% end %>
 				</div>
 			</div>
 			<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
@@ -85,7 +88,7 @@
         <% end %>
 		  </div>
     </div>
-  </div>
+  </div> 
 
   <!-- start of how-it-works tab -->
 	<section class="section-padding how-it-works-tab mt-5 pt-0 overflow-hidden">

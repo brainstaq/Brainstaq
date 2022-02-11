@@ -41,10 +41,10 @@ gem 'social-share-button'
 gem 'impressionist'
 gem 'acts_as_votable'
 gem 'uglifier', '~> 4.2', require: 'uglifier'
+gem 'omniauth-google-oauth2'
 
 # local ENV var
 gem 'figaro', '~> 1.2'
-
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'rails_admin_rollincode', '~> 1.0'
 

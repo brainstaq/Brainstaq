@@ -41,6 +41,17 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
         <small><%= render "devise/shared/error_messages", resource: resource %></small>
 
+        <p>
+          <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+            <span class="btn btn-outline-primary w-100 mb-2">
+              <i class="fab fa-google"></i> Login with Google
+            </span>
+          <% end %>
+        </p>
+        <p class="divider-text mb-2 mt-2">
+          <span class="bg-light">OR</span>
+        </p>
+
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fa fa-envelope"></i></span>

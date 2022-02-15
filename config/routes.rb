@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :business_plans
   resources :enterprises
   resources :plan_subscriptions
   resources :donors

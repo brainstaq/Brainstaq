@@ -1,0 +1,17 @@
+<%= form_with(model: business_plan) do |form| %>
+  <% if business_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(business_plan.errors.count, "error") %> prohibited this business_plan from being saved:</h2>
+
+      <ul>
+        <% business_plan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

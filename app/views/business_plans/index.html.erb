@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Business Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @business_plans.each do |business_plan| %>
+      <tr>
+        <td><%= link_to 'Show', business_plan %></td>
+        <td><%= link_to 'Edit', edit_business_plan_path(business_plan) %></td>
+        <td><%= link_to 'Destroy', business_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Business Plan', new_business_plan_path %>

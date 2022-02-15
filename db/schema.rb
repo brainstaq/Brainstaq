@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_203008) do
+ActiveRecord::Schema.define(version: 2022_02_14_235813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,27 @@ ActiveRecord::Schema.define(version: 2022_02_11_203008) do
     t.datetime "started_at"
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
+  end
+
+  create_table "business_plans", force: :cascade do |t|
+    t.text "executive_summary"
+    t.text "products_and_services"
+    t.text "industry_analysis"
+    t.text "competition"
+    t.text "swot"
+    t.text "operations"
+    t.text "marketing"
+    t.text "financial"
+    t.text "appendices"
+    t.text "milestones"
+    t.text "vision"
+    t.text "mision"
+    t.text "objectives"
+    t.text "valur_proposition"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_business_plans_on_enterprise_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -385,6 +406,7 @@ ActiveRecord::Schema.define(version: 2022_02_11_203008) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "business_plans", "enterprises"
   add_foreign_key "donors", "users"
   add_foreign_key "perks", "ideas"
 end

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :resource_name, :resource, :devise_mapping, :resource_class
+  
   def resource_name
     :user
   end
@@ -39,7 +40,7 @@ class ApplicationController < ActionController::Base
     if @user == 'admin'
       rails_admin_path
     else
-      dashboard_path(@user.username)
+      dashboard_path(@user)
     end
   end
 

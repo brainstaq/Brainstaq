@@ -79,15 +79,6 @@
     <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
   </div>
 
-  <div class="col-sm-12">
-    <%= form.label :logo, class: "text-primary", style: "font-size: 18px;" %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="col-sm-12">
-    <%= form.hidden_field :image_cache %>
-  </div>
-
   <div class="field">
     <%= form.label :info %>
     <%= form.text_field :info %>
@@ -96,6 +87,15 @@
   <div class="field">
     <%= form.label :city %>
     <%= form.text_field :city %>
+  </div>
+
+  <div class="col-sm-12">
+    <%= form.label :logo, class: "text-primary", style: "font-size: 18px;" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="col-sm-12">
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div class="actions">

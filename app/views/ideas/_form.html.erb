@@ -15,17 +15,17 @@
   <div class="idea-form container col-lg-8">
     <div class="row m-auto">
       <div class="col-sm-12 form-group">
-        <%= form.label :idea_title, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.label :project_title, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_field :title, :readonly => form.object.persisted?, maxlength: "23", class: "form-control", placeholder: "What would you call your idea?"  %>
       </div>
       <div class="col-sm-12 form-group">
-        <%= form.label :idea_category, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.label :project_category, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.collection_select(:category_id, Category.all, :id, :name, 
             {prompt: 'What category does your idea fall into?'}, class: "form-control") %>
       </div>
 
       <div class="form-group col-sm-12">
-        <%= form.label :idea_description, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.label :project_description, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.text_area :description, class: "form-control tinymce", placeholder: "How would you describe your idea in 5 sentences?"%>
         <%= tinymce %>
       </div> 
@@ -67,7 +67,7 @@
       </div>
     
       <div class="col-sm-12">
-        <%= form.label :idea_image, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.label :project_image, class: "text-primary", style: "font-size: 18px;" %>
         <%= form.file_field :image %>
       </div>
             
@@ -93,15 +93,15 @@
           <% end %>
     
           <div data-target="nested-form.add_perk">
-            <%= link_to "Add Amount", "#", data: { action: "nested-form#add_association" }, class: "btn rounded text-primary" %>
+            <%= link_to "Add Amount", "#", data: { action: "nested-form#add_association" }, class: "btn rounded btn-primary" %>
           </div>
         </div>
       </div>
     
     </div>
     <div class="form-group col-sm-12 m-0" style="padding-left: 15px; padding-right: 30px; padding-bottom: 130px;">
-      <%= form.submit class: "actions btn rounded text-primary float-right" %>
-      <%= link_to 'Back', :back, class: "btn rounded text-primary"  %>
+      <%= form.submit class: "actions btn rounded btn-primary float-right" %>
+      <%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %>
     </div>
   </div>
 <% end %>

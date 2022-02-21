@@ -36,6 +36,11 @@ class EnterprisesController < ApplicationController
   # GET /enterprises/1 or /enterprises/1.json
   def show
     @enterprise = Enterprise.find(params[:id]) 
+    @business_plan = BusinessPlan.new
+    # @business_plan = @enterprise.business_plan
+    # # @business_plan.enterprise_id = @enterprise.id
+
+    render :show
   end
 
   # GET /enterprises/new

@@ -1,6 +1,39 @@
-<h1>Editing Enterprise</h1>
+<% content_for :title, "Edit Brand" %>
+
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+      <div class="row d-flex align-items-center h-100">
+          <div class="col-md-12 text-center">
+              <h2 class="h1 font-weight-bold">Edit Brand</h2>
+              <nav class="mt-15" aria-label="breadcrumb">
+                  <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+                      <li class="breadcrumb-item"><%= link_to "Brands", enterprises_path, class: "text-black-300" %></li>
+                      <li class="breadcrumb-item text-primary" aria-current="page">Edit Brand</li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
 
 <%= render 'form', enterprise: @enterprise %>
 
-<%= link_to 'Show', @enterprise %> |
-<%= link_to 'Back', enterprises_path %>
+<div class="idea-form container col-lg-8 mt-0">
+  <div class="row m-auto">
+    <div class="form-group col-sm-12 m-0" style="padding-left: 15px; padding-right: 30px; padding-bottom: 100px;">
+      <%= link_to 'View Brand', @enterprise, class: "btn btn-primary rounded" %>
+    </div>
+  </div>
+</div>

@@ -11,94 +11,101 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="idea-form container col-lg-8", style= "margin-top: 100px;">
+    <div class="row m-auto">
+      <div class="col-sm-12 form-group">
+        <%= form.label :brand_name, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :name, :readonly => form.object.persisted?, maxlength: "23", class: "form-control", placeholder: "Enter brand name"  %>
+      </div>
 
-  <div class="col-sm-12 form-group">
-    <%= form.label :brand_category, class: "text-primary", style: "font-size: 18px;" %>
-    <%= form.collection_select(:category_id, Category.all, :id, :name, 
-        {prompt: 'What category does your idea fall into?'}, class: "form-control") %>
-  </div>
+      <div class="col-sm-12 form-group">
+        <%= form.label :brand_category, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.collection_select(:category_id, Category.all, :id, :name, 
+        {prompt: 'Select brand category'}, class: "form-control") %>
+      </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+      <div class="form-group col-sm-12">
+        <%= form.label :brand_info, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :info, class: "form-control tinymce", placeholder: "About your brand"%>
+        <%= tinymce %>
+      </div> 
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+      <div class="form-group col-sm-12">
+        <%= form.label :address, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :address, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= tinymce %>
+      </div>
 
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
-  </div>
+      <div class="form-group col-sm-12">
+        <%= form.label :email, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :email, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= tinymce %>
+      </div>
 
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
+      <div class="form-group col-sm-12">
+        <%= form.label :phone_number, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :phone_number, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= tinymce %>
+      </div>
+      
+      <div class="form-group col-sm-12">
+        <%= form.label :country, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :country, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= tinymce %>
+      </div>
+      
+      <div class="form-group col-sm-12">
+        <%= form.label :state, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :state, class: "form-control tinymce", placeholder: "How are you solving this problem?"%>
+        <%= tinymce %>
+      </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
-  </div>
+      <div class="form-group col-sm-12">
+        <%= form.label :city, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :city, class: "form-control tinymce", placeholder: "How would your idea impact the world?"%>
+        <%= tinymce %>
+      </div>
 
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fas fa-globe"></i></span>
+      <div class="form-group col-sm-12">
+        <%= form.label :website, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :website_url, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :facebook_url, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :twitter_url, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :instagram_url, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
+      </div>
+    
+      <div class="col-sm-12">
+        <%= form.label :brand_logo, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.file_field :image %>
+      </div>
+            
+      <div class="col-sm-12">
+        <%= form.hidden_field :image_cache %>
+      </div>
+
+      <br>
+      <hr/>
+  
     </div>
-    <%= form.text_field :website_url, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
-  </div>
-
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fab fa-facebook"></i></span>
+    <div class="form-group col-sm-12 m-0" style="padding-left: 15px; padding-right: 30px; padding-bottom: 60px;">
+      <%= form.submit 'Create Brand', class: "actions btn rounded btn-primary float-right" %>
+       <%= link_to 'Back', enterprises_path, class: "btn btn-secondary rounded" %>
     </div>
-    <%= form.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
-  </div>
-
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fab fa-twitter"></i></span>
-    </div>
-    <%= form.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
-  </div>
-
-  <div class="form-group input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><i class="fab fa-instagram"></i></span>
-    </div>
-    <%= form.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :info %>
-    <%= form.text_field :info %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="col-sm-12">
-    <%= form.label :logo, class: "text-primary", style: "font-size: 18px;" %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="col-sm-12">
-    <%= form.hidden_field :image_cache %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
 <% end %>

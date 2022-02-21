@@ -48,11 +48,17 @@
                     </a>
                   </div>
 				          <div class="post-st">
-				            <ul>
-                      <%= link_to fa_icon("edit", title: "New Idea", class: "text-primary mr-2 ml-2", 
-                      style: "font-size: 24px;"), new_idea_path %>
-				            </ul>
+										<div class="dropdown">
+        						<button class="btn-sm btn-primary dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Create
+          						<span class="caret"></span>
+										</button>
+        						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+											<li><%= link_to "New Brand", new_enterprise_path, role: "menuitem" %></li>
+											<li><%= link_to "New Project", new_idea_path, role: "menuitem presentation", tabindex: "-1" %></li>
+										</ul>
+									</div>
 			            </div>
+
                 </div>
                 <% @ideas.each do |idea|  %>
                 <div class="posts-section">
@@ -318,8 +324,7 @@ nav ul li a,
 .user-info a,
 .suggestion-usd > span i,
 .view-more > a,
-.tags-sec ul li a,
-.post-st ul li a,
+.tags-sec ul li a, ul li a,
 .ed-opts > a,
 .bk-links li a,
 .like-com li a,
@@ -958,16 +963,13 @@ main {
 }
 .post-st ul li {
 	display: inline-block;
-	margin-right: 6px;
 }
 .post-st ul li:last-child {
 	margin-right: 0;
 }
 .post-st ul li a {
-	color: #b2b2b2;
-	font-size: 16px;
+	font-size: 12px;
 	display: inline-block;
-	background-color: #e5e5e5;
 	height: 40px;
 	padding: 0 15px;
 	line-height: 40px;

@@ -36,7 +36,7 @@
               <div class="col-lg-3 pd-right-none no-pd">      
                 <div class="main-left-sidebar">
                   <div class="user_profile">
-                    <div class="user-pro-img">
+                    <div class="user-pro-img mt-3">
                       <% if @user.image.url %>
                         <%=image_tag @user.image.url, style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                       <% else %>
@@ -362,11 +362,17 @@
                       </div><!--posts-section end-->
                     <% end %>
 									</div><!--product-feed-tab end-->
+
 									<div class="product-feed-tab current" id="info-dd">
-										
+										<%# if @user.ideas.count < 1 %>
+                      <p>No teams to display!</p>
+                    <%# end %>	
 									</div><!--product-feed-tab end-->
-									<div class="product-feed-tab" id="my-bids">
 									
+									<div class="product-feed-tab" id="my-bidss">
+										<%# if @user.ideas.count < 1 %>
+                      <p>No campaigns to display!</p>
+                    <%# end %>
 									</div><!--product-feed-tab end-->
                 </div><!--main-ws-sec end-->
               </div>
@@ -4658,120 +4664,6 @@ a:hover {
 }
 .fl-right {
 	float: right;
-}
-
-
-/* ========== widget-feat ========= */
-
-.widget-feat {
-	padding: 25px 20px;
-}
-.widget-feat ul {
-	float: left;
-	width: 100%;
-}
-.widget-feat ul li {
-	float: left;
-	width: 25%;
-	text-align: center;
-}
-.widget-feat ul li i {
-	display: block;
-	font-size: 18px;
-	margin-bottom: 9px;
-}
-.widget-feat ul li span {
-	display: block;
-	color: #686868;
-	font-size: 16px;
-	font-weight: 500;
-}
-.widget-feat ul li i.fa-heart {
-	color: #53d690;
-}
-.widget-feat ul li i.fa-comment {
-	color: #007bff;
-}
-.widget-feat ul li i.fa-share-alt {
-	color: #51a5fb;
-}
-.widget-feat ul li i.fa-eye {
-	color: #00b540;
-}
-
-/*------------------------------------------------
-/*------------------------------------------------
-
-Dropdown Menu
-
-*/
-
-/* Toggle Notification Switch */
-
-.toggle-switch{
-  text-align: right;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  bottom: -5px;
-}
-
-.toggle-switch .switch{
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  margin-top: 9px;
-}
-
-.toggle-switch .switch input{
-  display:none;
-}
-
-.toggle-switch .slider{
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #f2f2f2;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.toggle-switch .slider:before{
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider{
-  background-color: #007bff;
-}
-
-input:focus + .slider{
-  box-shadow: 0 0 1px #007bff;
-}
-
-input:checked + .slider:before{
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-.slider.round{
-  border-radius: 34px;
-}
-
-.slider.round:before{
-  border-radius: 50%;
 }
 
 .btn  {

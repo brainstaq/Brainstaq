@@ -1,8 +1,10 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  resources :business_plans
-  resources :enterprises
+  resources :enterprises, shallow: true do
+    resources :business_plans
+  end
+
   resources :plan_subscriptions
   resources :donors
   mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
@@ -16,16 +18,20 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+  
   resources :donations
   resources :contact, only: [:create]
+  
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {
     registrations: 'registrations',
     confirmations: 'confirmations',
     omniauth_callbacks: 'omniauth_callbacks'
   }
+  
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
+  
   resources :ideas, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :comments
     member do

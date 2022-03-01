@@ -2,13 +2,11 @@
   <% if idea.errors.any? %>
     <div id="error_explanation" class="text-center text-danger">
       <h4>Oops! You've got <%= pluralize(idea.errors.count, "error") %></h4>
-
       <ul>
         <% idea.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
-
     </div>
   <% end %>
 

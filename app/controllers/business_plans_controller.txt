@@ -1,0 +1,58 @@
+class BusinessPlansController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_business_plan, only: %i[ show edit update destroy ]
+  before_action :set_enterprise
+  #before_action :set_user
+
+  def new
+    # @enterprise = Enterprise.find(params[:enterprise_id])
+    @business_plan = BusinessPlan.new
+    # @business_plan = @enterprise.business_plans.build
+  end
+
+  def edit
+    @business_plan = BusinessPlan.find(params[:id])
+  end
+
+  def create
+    @business_plan = BusinessPlan.new(@business_plan_params)
+    @business_plan.user_id = current_user.id if current_user #assigns logged in user's ID to business plan
+
+    @enterprise = Enterprise.find(params[:enterprise_id]) #finds the enterprise with the associated enterprise_id
+    @business_plan = @enterprise.business_plans.create(business_plan_params) # creates the business plan on the enterprise passing in params
+
+    @business_plan.save!
+    
+    redirect_to enterprise_path(@business_plan.enterprise), notice: 'Business plan was successfully created'
+  end
+
+  def update
+    @business_plan.update(business_plan_params)
+    redirect_to enterprise_path(@business_plan.enterprise), notice: 'Business plan was successfully updated'
+  end
+
+  def destroy
+    @business_plan.destroy
+    redirect_to enterprise_path(@business_plan.enterprise), notice: 'Business plan was successfully deleted'
+  end
+
+  private
+    def set_business_plan
+      @business_plan = BusinessPlan.find(params[:id])
+    end
+
+    # def set_enterprise
+    #   @enterprise = Enterprise.find(params[:id])
+    # end
+
+    # def set_user
+    #   @user = User.find_by_id(params[:id])
+    # end
+
+    def business_plan_params
+      params.require(:business_plan).permit(:executive_summary, :products_and_services, 
+        :industry_analysis, :competition, :swot, :operations, :user_id, :enterprise_id, 
+        :marketing, :financial, :appendices, :milestones, :vision, :mision, :objectives, 
+        :valur_proposition)
+    end
+end

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;display=swap");
 h1,
 .h1 {
-    font-size: 46px;
+    font-size: 40px;
     line-height: 56px;
 }
 
@@ -2185,7 +2185,7 @@ a.text-black-400:hover {
 
 .header-nav .nav-item .nav-link {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     color: #222222 !important;
     padding-left: 17px !important;
     padding-right: 17px !important;
@@ -2313,6 +2313,7 @@ a.text-black-400:hover {
     border: 0;
     margin-top: 0;
     padding: 0 8px;
+    min-width: 60px !important;
 }
 
 .dropdown-submenu {
@@ -2324,8 +2325,8 @@ a.text-black-400:hover {
 
 .dropdown-item {
     padding: 6px 12px;
-    font-weight: 600;
-    font-size: 15px;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .sub-dropdown.active,
@@ -3250,10 +3251,11 @@ a.text-black-400:hover {
     position: relative;
     margin-bottom: 30px;
 }
-
+ 
 .testimonials-section .testimonials-item .block {
     position: relative;
     padding: 30px;
+    margin: 5px;
     padding-bottom: 25px;
 }
 
@@ -4334,28 +4336,19 @@ input::-webkit-search-cancel-button {
     display: none;
 }
 
-input[type=search] {
-    background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-    border: none;
-    padding: 9px 10px 9px 42px;
-    margin-right: 10px;
-    width: 55px;
-    -webkit-border-radius: 10em;
-    -moz-border-radius: 10em;
-    border-radius: 10em;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-}
-
-input[type=search]:focus {
-    width: 130px;
-    background-color: none;
-    border-color: none;
-    -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-    -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-    box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-}
+// input[type=search] {
+//     background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+//     border: none;
+//     padding: 9px 10px 9px 42px;
+//     margin-right: 10px;
+//     width: 55px;
+//     -webkit-border-radius: 10em;
+//     -moz-border-radius: 10em;
+//     border-radius: 10em;
+//     -webkit-transition: all .5s;
+//     -moz-transition: all .5s;
+//     transition: all .5s;
+// }
 
 input:-moz-placeholder {
     color: #999;

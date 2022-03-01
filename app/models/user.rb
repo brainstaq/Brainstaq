@@ -10,6 +10,9 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validate :image_size_validation
+
+  include PublicActivity::Model
+  tracked only: [:create]
   
   #has_secure_password
 

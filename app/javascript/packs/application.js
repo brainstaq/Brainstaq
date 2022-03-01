@@ -34,7 +34,6 @@ import "slick-carousel/slick/slick-theme.scss"
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
 
-
 setTimeout(function() {
     $('.flash-message').fadeOut('fast');
 }, 5000);

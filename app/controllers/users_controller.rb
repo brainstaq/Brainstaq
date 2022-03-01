@@ -57,15 +57,6 @@ class UsersController < ApplicationController
       @ideas = @user.ideas
     end
 
-    # def show
-    #   @donor = User.find_by_id params[:id]
-    #   @idea = Idea.find_by_id params[:idea]
-    #   @donations = Donation.all
-    #   @ideas = Idea.all
-    #   @donations = Idea.find_by_id params[:idea]
-    # end
-
-
     def set_user
       @user = User.find_by_username(params[:username])
     end

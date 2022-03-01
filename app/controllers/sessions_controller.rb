@@ -8,5 +8,7 @@ class Users::SessionsController < Devise::SessionsController
     yield resource if block_given?
     respond_with(resource, serialize_options(resource))
   end
+  # POST /resource/sign_in
+  
   
 end

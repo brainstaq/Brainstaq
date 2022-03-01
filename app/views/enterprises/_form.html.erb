@@ -1,4 +1,4 @@
-<%= form_with(model: enterprise) do |form| %>
+<%= form_with(model: enterprise, local: true) do |form| %>
   <% if enterprise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(enterprise.errors.count, "error") %> prohibited this enterprise from being saved:</h2>
@@ -15,7 +15,8 @@
     <div class="row m-auto">
       <div class="col-sm-12 form-group">
         <%= form.label :brand_name, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :name, :readonly => form.object.persisted?, maxlength: "23", class: "form-control", placeholder: "Enter brand name"  %>
+        <%= form.text_field :name, :readonly => form.object.persisted?, maxlength: "23", 
+        class: "form-control", placeholder: "Enter brand name"  %>
       </div>
 
       <div class="col-sm-12 form-group">
@@ -32,37 +33,37 @@
 
       <div class="form-group col-sm-12">
         <%= form.label :address, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :address, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= form.text_field :address, class: "form-control tinymce", placeholder: "Brand address"%>
         <%= tinymce %>
       </div>
 
       <div class="form-group col-sm-12">
         <%= form.label :email, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :email, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= form.text_field :email, class: "form-control tinymce", placeholder: "Brand email address"%>
         <%= tinymce %>
       </div>
 
       <div class="form-group col-sm-12">
         <%= form.label :phone_number, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :phone_number, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= form.text_field :phone_number, class: "form-control tinymce", placeholder: "Enter phone number"%>
         <%= tinymce %>
       </div>
       
       <div class="form-group col-sm-12">
         <%= form.label :country, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :country, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+        <%= form.text_field :country, class: "form-control tinymce", placeholder: "Enter country"%>
         <%= tinymce %>
       </div>
       
       <div class="form-group col-sm-12">
         <%= form.label :state, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :state, class: "form-control tinymce", placeholder: "How are you solving this problem?"%>
+        <%= form.text_field :state, class: "form-control tinymce", placeholder: "Enter state"%>
         <%= tinymce %>
       </div>
 
       <div class="form-group col-sm-12">
         <%= form.label :city, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :city, class: "form-control tinymce", placeholder: "How would your idea impact the world?"%>
+        <%= form.text_field :city, class: "form-control tinymce", placeholder: "Enter city"%>
         <%= tinymce %>
       </div>
 

@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
     if @user == 'admin'
       rails_admin_path
     else
-      dashboard_path(@user)
+      dashboard_path(@user.full_name)
     end
   end
 

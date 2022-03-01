@@ -1,0 +1,37 @@
+  <% unless @enterprise.business_plans.present?  %>
+    <p>You don't have any business plan. <%= link_to "Create one", new_enterprise_business_plan_path(@enterprise) %> now!</p>
+  <% else %>
+    <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
+    Business Plan for <%= @enterprise.name.titleize %>
+  </h3>
+  <small class="text-center mb-5">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+    on <%#= local_time(@enterprise.business_plans.created_at) %>
+  </small>
+  
+  <%= image_tag @enterprise.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'80%', height:'80%' if @enterprise.image.present? %>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Executive Summary</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.executive_summary %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Problem</h4>
+  <p class="mt-2 mb-0">
+    <%#= sanitize @idea.challenges %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Solution</h4>
+  <p class="mt-2 mb-0">
+    <%#= sanitize @idea.overview %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Impact</h4>
+  <p class="mt-2 mb-0">
+    <%#= sanitize @idea.impact %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Funding Goal</h4>
+  <p class="mt-2 mb-0">
+    <%#= number_to_currency(@idea.donation_goal, :unit => "₦") %>
+  </p>
+  <% end %>

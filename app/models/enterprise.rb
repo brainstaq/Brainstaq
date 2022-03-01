@@ -1,20 +1,26 @@
 class Enterprise < ApplicationRecord
   enum status: [:inactive, :active]
 	validates :name, :info, :address, :email, :phone_number, :country, :category, :image, :website_url, 
-  :facebook_url, :twitter_url, :instagram_url, presence: true
+  :facebook_url, :twitter_url, :instagram_url, :user_id, presence: true
   after_validation :set_slug, only: [:create, :update]
 
   default_scope { order(created_at: :desc)}
 
   validate :image_size_validation
 	mount_uploader :image, ImageUploader
+
+  # extend FriendlyId
+  # friendly_id :name, use: :slugged
+
+  # include PublicActivity::Model
+  # tracked
 	
   belongs_to :user
   belongs_to :category
 
   has_many_attached :images, dependent: :destroy
   has_many :line_items, inverse_of: :order
-  has_one :business_plan, dependent: :destroy
+  has_many :business_plans, dependent: :destroy
 
   def set_slug
     self.slug = name.to_s.parameterize

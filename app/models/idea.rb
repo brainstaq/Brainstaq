@@ -1,8 +1,15 @@
 class Idea < ApplicationRecord 
-  validates :title, :description, :overview, :impact, :donation_goal, :end_date, :category, :image, presence: true
+  validates :title, :description, :overview, :impact, :donation_goal, :end_date, :category, 
+  :image, presence: true
   validate :not_in_past
   validates :category, presence: true
   after_validation :set_slug, only: [:create, :update]
+
+  # extend FriendlyId
+  # friendly_id :name, use: :slugged
+
+  # include PublicActivity::Model
+  # tracked
 
   default_scope { order(created_at: :desc)}
   

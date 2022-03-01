@@ -1,17 +1,119 @@
-<%= form_with(model: business_plan) do |form| %>
+<%= form_for [@business_plan.enterprise, @business_plan] do |form| %>
   <% if business_plan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(business_plan.errors.count, "error") %> prohibited this business_plan from being saved:</h2>
-
+    <div id="error_explanation" class="text-center text-danger">
+      <h4>Oops! You've got <%= pluralize(business_plan.errors.count, "error") %></h4>
       <ul>
-        <% business_plan.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% business_plan.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="idea-form container col-lg-8", style= "margin-top: 100px;">
+    <div class="row m-auto">
+      <div class="col-sm-12 form-group">
+        <%= form.label :executive_summary, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :executive_summary, class: "form-control tinymce", placeholder: "Enter executive summary"  %>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :vision, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :vision, placeholder: "Enter your Brand vision", class: "form-control tinymce" %>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :mission, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :mission, placeholder: "Enter your Brand mission", class: "form-control tinymce" %>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :objectives, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :objectives, placeholder: "List your Brand objectives", class: "form-control tinymce" %>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :value_proposition, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :value_proposition, placeholder: "Enter your value proposition", class: "form-control tinymce" %>
+        <%= tinymce %>
+      </div>
+
+      <div class="field">
+        <%= form.hidden_field :enterprise_id %>
+      </div>
+    
+      <div class="col-sm-12">
+        <%= form.label :brand_logo, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.file_field :image %>
+      </div>
+            
+      <div class="col-sm-12">
+        <%#= form.hidden_field :image_cache %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :products_and_services, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :products_and_services, class: "form-control tinymce", placeholder: "Describe your products and services"%>
+        <%= tinymce %>
+      </div> 
+
+      <div class="form-group col-sm-12">
+        <%= form.label :industry_analysis, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :industry_analysis, class: "form-control tinymce", placeholder: "Enter industry analysis"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :competition, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :competition, class: "form-control tinymce", placeholder: "Describe your competitors and the competition"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :SWOT, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :swot, class: "form-control tinymce", placeholder: "Enter SWOT Analysis"%>
+        <%= tinymce %>
+      </div>
+      
+      <div class="form-group col-sm-12">
+        <%= form.label :operations_plan, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :operations, class: "form-control tinymce", placeholder: "Describe your operations plan"%>
+        <%= tinymce %>
+      </div>
+      
+      <div class="form-group col-sm-12">
+        <%= form.label :marketing_plan, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :marketing, class: "form-control tinymce", placeholder: "Describe your marketing plan"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :financial_plan, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :financial, class: "form-control tinymce", placeholder: "What is your financial plan?"%>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :appendices, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :appendices, placeholder: "Enter appendices", class: "form-control tinymce" %>
+        <%= tinymce %>
+      </div>
+
+      <div class="form-group col-sm-12">
+        <%= form.label :milestones, class: "text-primary", style: "font-size: 18px;" %>
+        <%= form.text_area :milestones, placeholder: "Enter your milestones", class: "form-control tinymce" %>
+        <%= tinymce %>
+      </div>
+      <br>
+      <hr/>
+    </div>
+    <div class="form-group col-sm-12 m-0" style="padding-left: 15px; padding-right: 30px; padding-bottom: 60px;">
+      <%= form.submit 'Create Business Plan', class: "actions btn rounded btn-primary float-right" %>
+       <%= link_to "Cancel", :back, class: "btn btn-secondary rounded" %>
+    </div>
   </div>
 <% end %>

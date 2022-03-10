@@ -22,15 +22,13 @@ class EnterprisesController < ApplicationController
   end
 
   def show
-    # @enterprise = Enterprise.find(params[:id])
-    # @business_plan = BusinessPlan.new
-    # @business_plans = @enterprise.business_plans
-    # @business_plan.enterprise_id = @enterprise.id
-    # @business_plan.user_id = @enterprise.id
-    # @business_plan.user_id = current_user.id if user_signed_in? && current_user.id == @enterprise.user_id
+    @enterprise = Enterprise.find(params[:id])
+    @business_plan = BusinessPlan.new
+    @business_plan = @enterprise.business_plan
+    @business_plan.enterprise_id = @enterprise.id
 
-    # render :show
-    @business_plan = @enterprise.business_plans.build
+    render :show
+    # @business_plan = @enterprise.business_plan.build
   end
 
   # GET /enterprises/new

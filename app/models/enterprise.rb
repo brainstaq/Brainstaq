@@ -20,7 +20,7 @@ class Enterprise < ApplicationRecord
 
   has_many_attached :images, dependent: :destroy
   has_many :line_items, inverse_of: :order
-  has_many :business_plans, dependent: :destroy
+  has_one :business_plan, dependent: :destroy
 
   def set_slug
     self.slug = name.to_s.parameterize

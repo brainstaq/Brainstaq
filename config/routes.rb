@@ -1,10 +1,13 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  resources :enterprises, shallow: true do
-    resources :business_plans
-  end
 
+  root to: "home#index"
+
+  resources :enterprises do
+    resources :business_plan, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
+  
   resources :plan_subscriptions
   resources :donors
   mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
@@ -12,8 +15,6 @@ Rails.application.routes.draw do
   
   resources :follows
   resources :subscribers, only: [:create, :new, :index]
-  
-  root to: "home#index"
   
   resources :conversations do
     resources :messages

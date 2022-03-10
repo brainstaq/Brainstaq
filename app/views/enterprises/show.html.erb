@@ -64,20 +64,14 @@
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> New
                   </button>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="font-size: 12px;">
-                    <%= link_to "Business Plan", new_enterprise_business_plan_path(@business_plan.enterprise, @business_plan), class: "dropdown-item" %>
-                    <%= link_to "Project", new_idea_path, class: "dropdown-item" %>
-                    <%= link_to "Brand", new_enterprise_path, class: "dropdown-item" %>
-                    <%= link_to "Project", new_idea_path, class: "dropdown-item" %>
+                    <%= link_to "Business Plan", new_business_plan_path, class: "dropdown-item" %>
+                    <%= link_to "Pitch Deck", new_idea_path, class: "dropdown-item" %>
+                    <%= link_to "Company Profile", new_enterprise_path, class: "dropdown-item" %>
+                    <%= link_to "Invoice", new_idea_path, class: "dropdown-item" %>
                   </div>
                 </div>
           <% end %>
         <% end %>
-        <ul class="list-group list-group-horizontal-sm mt-4" style="font-size: 12px;">
-          <li class="list-group-item"></span> Business Plans (<%= @enterprise.business_plans.size %>)</li>
-          <li class="list-group-item"><span class="fa fa-eye text-primary"></span> Pitch Deck</li>
-          <li class="list-group-item"><span class="fa fa-heart text-primary"></span> Company Profile</li>
-          <li class="list-group-item"><span class="fa fa-filter text-primary"></span> Invoice</li>
-        </ul>
         <div class="d-flex flex-row justify-content-between mt-3">
           <div class="d-flex flex-row justify-content-center">
             <div class="social-links mt-2">
@@ -138,13 +132,12 @@
             <div class="tab-pane fade show active" id="business-plan" role="tabpanel" aria-labelledby="business-plan-tab">
               <div class="card card-body mt-5">
                 <%= render partial: 'business_plans/business_plan' %>
-                <%# link_to "Create New", new_enterprise_business_plan_path %>  
               </div>
             </div>
           
             <div class="tab-pane fade" id="pitch-deck" role="tabpanel" aria-labelledby="pitch-deck-tab">
               <div class="card card-body mt-5">
-                <% unless @enterprise.business_plans.present?  %>
+                <% unless @enterprise.business_plan.present?  %>
                   <p>You don't have any pitch deck. <%= link_to "Create one", '#' %> now!</p>
                 <% else %>
                   <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
@@ -159,7 +152,7 @@
             
             <div class="tab-pane fade" id="company-profile" role="tabpanel" aria-labelledby="company-profile-tab">
               <div class="card card-body mt-5">
-                <% unless @enterprise.business_plans.present?  %>
+                <% unless @enterprise.business_plan.present?  %>
                   <p>You don't have any company profile. <%= link_to "Create one", "#" %> now!</p>
                 <% else %>
                   <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
@@ -173,7 +166,7 @@
             </div>
             <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
               <div class="card card-body mt-5">
-              <% unless @enterprise.business_plans.present?  %>
+              <% unless @enterprise.business_plan.present?  %>
                   <p>You don't have any invoice. <%= link_to "Create one", "#" %> now!</p>
                 <% else %>
                   <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">

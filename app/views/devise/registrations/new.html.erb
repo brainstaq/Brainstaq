@@ -143,18 +143,24 @@
         <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email Address" %>
       </div>
 
-      <div class="form-group input-group">
+      <div class="form-group input-group" data-controller="toggle">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fa fa-lock"></i></span>
         </div>
-        <%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
+        <%= f.password_field :password, class: "form-control form__element unhide", "data-target": "toggle.unhide", placeholder: "Enter Password" %>
+        <div class="input-group-prepend">
+          <span class="input-group-text"><a class="show" data-target="toggle.show" data-action="click->toggle#password">show</a></span>
+        </div>
       </div>
       
-      <div class="form-group input-group">
+      <div class="form-group input-group" data-controller="toggle">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fa fa-lock"></i></span>
         </div>
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Repeat Password" %>
+        <%= f.password_field :password_confirmation, class: "form-control form__element unhide", "data-target": "toggle.unhide", placeholder: "Repeat Password" %>
+        <div class="input-group-prepend">
+          <span class="input-group-text"><a class="show" data-target="toggle.show" data-action="click->toggle#password">show</a></span>
+        </div>
       </div>
       <p>
         <small>By signing up, you agree to Brainstaq's 

@@ -2,5 +2,5 @@
 
 <%= render 'form', business_plan: @business_plan %>
 
-<%= link_to 'Show', @business_plan %> |
-<%= link_to 'Back', business_plans_path %>
+<%= link_to 'Show', [@enterprise, @business_plan] %> |
+<%= link_to 'Back', enterprise_business_plans_path(@enterprise) %>

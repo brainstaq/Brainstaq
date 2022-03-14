@@ -24,7 +24,7 @@ class EnterprisesController < ApplicationController
   def show
     @enterprise = Enterprise.find(params[:id])
     @business_plan = BusinessPlan.new
-    @business_plan = @enterprise.business_plan
+    @business_plans = @enterprise.business_plans
     @business_plan.enterprise_id = @enterprise.id
 
     render :show
@@ -33,8 +33,9 @@ class EnterprisesController < ApplicationController
 
   # GET /enterprises/new
   def new
-    # @enterprise = Enterprise.new
+    @enterprise = Enterprise.new
     @enterprise = current_user.enterprises.build
+    @user = current_user
   end
 
   # GET /enterprises/1/edit
@@ -43,7 +44,6 @@ class EnterprisesController < ApplicationController
 
   # POST /enterprises or /enterprises.json
   def create
-    # @enterprise = Enterprise.find(params[:enterprise_id])
     @enterprise = current_user.enterprises.build(enterprise_params)
 
     respond_to do |format|

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :enterprises do
-    resources :business_plan, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :business_plans
   end
   
   resources :plan_subscriptions

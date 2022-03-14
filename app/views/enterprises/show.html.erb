@@ -59,15 +59,28 @@
                 enterprise_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
               <%= link_to fa_icon("edit", title: "Edit Brand", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
                 edit_enterprise_path(@enterprise) %>
-                <div class="dropdown float-right text-primary" style="font-size: 20px;">
+                
+                <div class="dropdown float-right text-primary" style="font-size: 14px;">
                   <button class="dropdown-toggle btn btn-primary" href="#" role="button" id="dropdownMenuButton" 
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> New
                   </button>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="font-size: 12px;">
-                    <%= link_to "Business Plan", new_business_plan_path, class: "dropdown-item" %>
-                    <%= link_to "Pitch Deck", new_idea_path, class: "dropdown-item" %>
-                    <%= link_to "Company Profile", new_enterprise_path, class: "dropdown-item" %>
-                    <%= link_to "Invoice", new_idea_path, class: "dropdown-item" %>
+                    <%= link_to "Business Plan", new_enterprise_business_plan_path(@enterprise), class: "dropdown-item" %>
+                    <%= link_to "Pitch Deck", '#', class: "dropdown-item" %>
+                    <%= link_to "Company Profile", '#', class: "dropdown-item" %>
+                    <%= link_to "Invoice", '#', class: "dropdown-item" %>
+                  </div>
+                </div>
+
+                <div class="dropdown float-right text-primary mr-2" style="font-size: 14px;">
+                  <button class="dropdown-toggle btn btn-primary" href="#" role="button" id="dropdownMenuButton" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> View
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="font-size: 12px;">
+                    <%= link_to "Business Plans", enterprise_business_plans_path(@enterprise), class: "dropdown-item" %>
+                    <%= link_to "Pitch Decks", new_idea_path, class: "dropdown-item" %>
+                    <%= link_to "Company Profiles", new_enterprise_path, class: "dropdown-item" %>
+                    <%= link_to "Invoices", new_idea_path, class: "dropdown-item" %>
                   </div>
                 </div>
           <% end %>
@@ -108,78 +121,70 @@
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
           </small>
+
         </div>
       </div>
 
-      <% if user_signed_in? && current_user.id == @enterprise.user_id %>
         <div class="col-lg-8 mt-5">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link title-blk active" id="business-plan-tab" data-toggle="tab" href="#business-plan" role="tab" aria-controls="details" aria-selected="true">Business Plan</a>
+              <a class="nav-link title-blk active" id="business-plan-tab" data-toggle="tab" href="#business-plan" role="tab" aria-controls="details" aria-selected="true">About Brand</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link title-blk" id="pitch-deck-tab" data-toggle="tab" href="#pitch-deck" role="tab" aria-controls="comments" aria-selected="false">Pitch Deck</a>
+              <a class="nav-link title-blk" id="pitch-deck-tab" data-toggle="tab" href="#pitch-deck" role="tab" aria-controls="comments" aria-selected="false">Products/Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link title-blk" id="company-profile-tab" data-toggle="tab" href="#company-profile" role="tab" aria-controls="support" aria-selected="false">Company Profile</a>
+              <a class="nav-link title-blk" id="company-profile-tab" data-toggle="tab" href="#company-profile" role="tab" aria-controls="support" aria-selected="false">Portfolio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link title-blk" id="invoice-tab" data-toggle="tab" href="#invoice" role="tab" aria-controls="support" aria-selected="false">Invoice</a>
+              <a class="nav-link title-blk" id="invoice-tab" data-toggle="tab" href="#invoice" role="tab" aria-controls="support" aria-selected="false">Contact</a>
             </li>
           </ul>
 
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="business-plan" role="tabpanel" aria-labelledby="business-plan-tab">
               <div class="card card-body mt-5">
-                <%= render partial: 'business_plans/business_plan' %>
+                <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
+                  About <%= @enterprise.name.titleize %>
+                </h3>
+                <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+                  on <%= local_time(@enterprise.updated_at) %>
+                </small>
               </div>
             </div>
           
             <div class="tab-pane fade" id="pitch-deck" role="tabpanel" aria-labelledby="pitch-deck-tab">
               <div class="card card-body mt-5">
-                <% unless @enterprise.business_plan.present?  %>
-                  <p>You don't have any pitch deck. <%= link_to "Create one", '#' %> now!</p>
-                <% else %>
-                  <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
-                    Pitch Deck for <%= @enterprise.name.titleize %>
-                  </h3>
-                  <small class="text-center">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
-                    on <%= local_time(@enterprise.created_at) %>
-                  </small>
-                <% end %>
+                <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
+                  Products/Services for <%= @enterprise.name.titleize %>
+                </h3>
+                <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+                  on <%= local_time(@enterprise.updated_at) %>
+                </small>
               </div>
             </div>
             
             <div class="tab-pane fade" id="company-profile" role="tabpanel" aria-labelledby="company-profile-tab">
               <div class="card card-body mt-5">
-                <% unless @enterprise.business_plan.present?  %>
-                  <p>You don't have any company profile. <%= link_to "Create one", "#" %> now!</p>
-                <% else %>
-                  <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
-                    Company Profile for <%= @enterprise.name.titleize %>
-                  </h3>
-                  <small class="text-center">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
-                    on <%= local_time(@enterprise.created_at) %>
-                  </small>
-                <% end %>
+                <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
+                  Portfolio for <%= @enterprise.name.titleize %>
+                </h3>
+                <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+                  on <%= local_time(@enterprise.updated_at) %>
+                </small>
               </div>
             </div>
             <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
               <div class="card card-body mt-5">
-              <% unless @enterprise.business_plan.present?  %>
-                  <p>You don't have any invoice. <%= link_to "Create one", "#" %> now!</p>
-                <% else %>
-                  <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
-                    Invoice for <%= @enterprise.name.titleize %>
-                  </h3>
-                  <small class="text-center">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
-                    on <%= local_time(@enterprise.created_at) %>
-                  </small>
-                <% end %>
+                <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
+                  Contact for <%= @enterprise.name.titleize %>
+                </h3>
+                <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+                  on <%= local_time(@enterprise.updated_at) %>
+                </small>
               </div>
             </div>
           </div>
-        <% end %>
       </div>
     </div>
     <% unless user_signed_in? %>

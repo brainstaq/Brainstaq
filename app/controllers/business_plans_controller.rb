@@ -17,7 +17,7 @@ class BusinessPlansController < ApplicationController
   end
 
   def show
-    @business_plan = @enterprise.business_plan
+    @business_plan = BusinessPlan.find(params[:id])
   end
 
   def create

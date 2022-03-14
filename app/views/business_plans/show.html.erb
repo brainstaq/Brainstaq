@@ -1,4 +1,113 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, "Business Plan" %>
 
-<%= link_to 'Edit', edit_enterprise_business_plan_path(@enterprise, @business_plan) %> |
-<%= link_to 'Back', enterprise_business_plans_path(@enterprise) %>
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Business Plan for <%= @enterprise.name.titleize %></h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Business Plans", enterprise_business_plans_path(@enterprise), class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Business Plan</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<div class="idea-form container col-lg-8", style= "margin-top: 100px;">
+  <small class="text-center mb-5">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+    on <%= local_time(@business_plan.created_at) %>
+  </small>
+
+  <div class="container-fluid col-lg-6 text-right float-right">
+    <% if user_signed_in? && current_user.id == @enterprise.user_id %>
+        <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
+        enterprise_business_plan_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to fa_icon("edit", title: "Edit Business Plan", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+        edit_enterprise_business_plan_path(@enterprise) %>
+    <% end %>
+  </div>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Executive Summary</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.executive_summary %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Vision</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.vision %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Mission</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.mission %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Objectives</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.objectives %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Value Proposition</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.value_proposition %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Products and Services</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.products_and_services %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Industry Analysis</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.industry_analysis %>
+  </p>
+
+    <h4 class="mb-0 mt-3" style="font-weight: bold;">Competition</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.competition %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">SWOT</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.swot %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Operations Plan</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.operations %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Marketing Plan</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.marketing %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Financial Plan</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.financial %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Appendices</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.appendices %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Milestones</h4>
+  <p class="mt-2 mb-0">
+    <%= @business_plan.milestones %>
+  </p>
+</div>

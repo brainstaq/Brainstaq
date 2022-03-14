@@ -37,6 +37,12 @@
     </div>
   </section>
 
+  <% unless @enterprise.business_plans.present?  %>
+    <p class="text-center mb-5">You don't have any business plan. 
+      <%= link_to "Create one", new_enterprise_business_plan_path(@enterprise) %> now!
+    </p>
+  <% else %>
+
   <% @business_plans.each do |business_plan| %>
   <div class="justify-content-center">
     <div class="container">
@@ -51,7 +57,7 @@
                       <div class="avatar avatar-blue mr-3"><%= business_plan.id %></div>
 
                       <div class="">
-                        <p class="font-weight-bold mb-0"><%= business_plan.enterprise.name %></p>
+                        <p class="font-weight-bold mb-0"><%= link_to (business_plan.enterprise.name).titleize, enterprise_business_plan_path(@enterprise, business_plan) %></p>
                         <p class="text-muted mb-0">Updated on<%= local_time(business_plan.updated_at)%></p>
                       </div>
                     </div>
@@ -77,6 +83,7 @@
       </div>
     </div>
   </div>
+  <% end %>
   <% end %>
 </main>
 

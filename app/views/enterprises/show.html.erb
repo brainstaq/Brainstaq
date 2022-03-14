@@ -53,8 +53,7 @@
           <%= truncate(sanitize(@enterprise.info, tags: []), length: 300) %>
         </p>
 
-        <% if user_signed_in? %>
-          <% if current_user.id == @enterprise.user_id %>
+        <% if user_signed_in? && current_user.id == @enterprise.user_id %>
             <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
                 enterprise_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
               <%= link_to fa_icon("edit", title: "Edit Brand", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
@@ -83,7 +82,6 @@
                     <%= link_to "Invoices", new_idea_path, class: "dropdown-item" %>
                   </div>
                 </div>
-          <% end %>
         <% end %>
         <div class="d-flex flex-row justify-content-between mt-3">
           <div class="d-flex flex-row justify-content-center">
@@ -128,21 +126,21 @@
         <div class="col-lg-8 mt-5">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link title-blk active" id="business-plan-tab" data-toggle="tab" href="#business-plan" role="tab" aria-controls="details" aria-selected="true">About Brand</a>
+              <a class="nav-link title-blk active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About Brand</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link title-blk" id="pitch-deck-tab" data-toggle="tab" href="#pitch-deck" role="tab" aria-controls="comments" aria-selected="false">Products/Services</a>
+              <a class="nav-link title-blk" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="false">Products/Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link title-blk" id="company-profile-tab" data-toggle="tab" href="#company-profile" role="tab" aria-controls="support" aria-selected="false">Portfolio</a>
+              <a class="nav-link title-blk" id="portfolio-tab" data-toggle="tab" href="#portfolio" role="tab" aria-controls="portfolio" aria-selected="false">Portfolio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link title-blk" id="invoice-tab" data-toggle="tab" href="#invoice" role="tab" aria-controls="support" aria-selected="false">Contact</a>
+              <a class="nav-link title-blk" id="team-tab" data-toggle="tab" href="#team" role="tab" aria-controls="team" aria-selected="false">Team</a>
             </li>
           </ul>
 
           <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="business-plan" role="tabpanel" aria-labelledby="business-plan-tab">
+            <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
               <div class="card card-body mt-5">
                 <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
                   About <%= @enterprise.name.titleize %>
@@ -150,38 +148,55 @@
                 <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
                   on <%= local_time(@enterprise.updated_at) %>
                 </small>
+                <div class="mt-5">
+                  <%= sanitize @enterprise.info %>
+                </div>
               </div>
             </div>
           
-            <div class="tab-pane fade" id="pitch-deck" role="tabpanel" aria-labelledby="pitch-deck-tab">
+            <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
               <div class="card card-body mt-5">
                 <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
-                  Products/Services for <%= @enterprise.name.titleize %>
+                  <%= @enterprise.name.titleize %> Products/Services
                 </h3>
                 <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
                   on <%= local_time(@enterprise.updated_at) %>
                 </small>
+                <h5 class="mt-5">Our Products</h5>
+                <div class="mt-1">
+                  <%= sanitize @enterprise.products %>
+                </div>
+                <h5 class="mt-3">Our Services</h5>
+                <div class="mt-1">
+                  <%= sanitize @enterprise.services %>
+                </div>
               </div>
             </div>
             
-            <div class="tab-pane fade" id="company-profile" role="tabpanel" aria-labelledby="company-profile-tab">
+            <div class="tab-pane fade" id="portfolio" role="tabpanel" aria-labelledby="portfolio-tab">
               <div class="card card-body mt-5">
                 <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
-                  Portfolio for <%= @enterprise.name.titleize %>
+                  <%= @enterprise.name.titleize %> Portfolio 
                 </h3>
                 <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
                   on <%= local_time(@enterprise.updated_at) %>
                 </small>
+                <div class="mt-5">
+                  <%= sanitize @enterprise.portfolio %>
+                </div>
               </div>
             </div>
-            <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
+            <div class="tab-pane fade" id="team" role="tabpanel" aria-labelledby="team-tab">
               <div class="card card-body mt-5">
                 <h3 class="mt-2 mb-2 text-center" style="font-size: 20px; font-weight: bold;">
-                  Contact for <%= @enterprise.name.titleize %>
+                  <%= @enterprise.name.titleize %> Team
                 </h3>
                 <small class="text-center">Updated by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
                   on <%= local_time(@enterprise.updated_at) %>
                 </small>
+                <div class="mt-5">
+                  <%= sanitize @enterprise.team %>
+                </div>
               </div>
             </div>
           </div>

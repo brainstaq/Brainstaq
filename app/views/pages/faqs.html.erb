@@ -1,0 +1,119 @@
+<% content_for :title, "About" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">About</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">About</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+
+<div class="row container-fluid">
+<header class="section-header mb-5" style="padding-top: 150px;">
+    <h3>About <span class="text-primary">Brainstaq</span></h3>
+  </header>
+  
+  <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
+    <div id="about">
+      <div class="row about-container">
+        <div class="col-lg-6 content order-lg-1 order-2">
+          <p>
+            We see initiatives, projects, and businesses starting up here and there, 
+            especially in Africa, only to disappear quickly due to lack of funds. 
+            Those that are resilient enough soon become difficult to sustain over a period of time. 
+            Without adequate finances and funding, most of the ideas that can change the 
+            African narrative are rarely able to break out from being just an idea, 
+            let alone grow into a tangible business.
+          </p>
+          <p style="font-weight: bold; color: gray; font-size: 18px;">This is the problem which Brainstaq solves!</p>
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="fas fa-globe-africa"></i></div>
+              <h4 class="title">Our Mission</h4>
+              <p class="description">Brainstaq is on a mission to help empower creative and innovative ideas and encourage development among African startups and small businesses.</p>
+            </div>
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="far fa-handshake fa-lg"></i></div>
+              <h4 class="title">What We Are</h4>
+              <p class="description">
+                It is an online community to share, validate, and market your 
+                ideas, projects, insights and inspiration and attract cofounders and investors by 
+                engaging the power of the crowd.
+              </p>
+            </div>
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fas fa-project-diagram fa-lg"></i></div>
+              <h4 class="title">What We Do</h4>
+              <p class="description">
+                Brainstaq provide the tools to validate your idea, amplify 
+                your reach, enhance collaboration and source for funding for your projects, all in 
+                full transparency.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+            <%= image_tag 'about-1.jpg', class: "img-fluid ml-5 mt-5"%>
+          </div>
+        </div>
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp">
+            <%= image_tag 'join-the-movement.jpg', class: "img-fluid"%>
+          </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+            <h4>Join the Movement</h4>
+            <p>
+              We want all those ideas to have a chance to grow and give them a fighting chance to 
+              reach their true potential.
+            </p>
+            <p>
+              We believe every African should have the tools to create the solutions of tomorrow.
+            </p>
+            <p> 
+              And we are dedicating ourselves to make that happen!
+            </p>
+          </div>
+        </div>
+
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
+            <%= image_tag 'goals.jpg', class: "img-fluid", style: "margin-top: -35px;"%>
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+            <h4>Our goals for the next 5 years are:</h4>
+            <ul>
+              <li><span>&#8212;</span> Empower 10,000 innovative ideas and projects</li>
+              <li><span>&#8212;</span> Encourage innovation and development in Africa</li>
+              <li><span>&#8212;</span> Help 500 Brainers get cofounders in Africa</li>
+              <li><span>&#8212;</span> Fund 1000 projects</li>
+            </ul>
+          </div>
+        </div>
+        <div class="contact-details">
+          <strong>Contact us:</strong> <%= mail_to 'brainstaq@gmail.com' %><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .row {
+      clear: both;
+    }
+  </style>

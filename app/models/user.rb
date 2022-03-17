@@ -11,8 +11,8 @@ class User < ApplicationRecord
 
   validate :image_size_validation
 
-  include PublicActivity::Model
-  tracked only: [:create]
+  # include PublicActivity::Model
+  # tracked only: [:create]
   
   #has_secure_password
 

@@ -43,7 +43,7 @@ gem 'acts_as_votable'
 gem 'uglifier', '~> 4.2', require: 'uglifier'
 gem 'omniauth-google-oauth2'
 #gem wicked_pdf
-gem 'public_activity', '~> 1.6', '>= 1.6.4'
+# gem 'public_activity', '~> 1.6', '>= 1.6.4'
 
 # local ENV var
 gem 'figaro', '~> 1.2'

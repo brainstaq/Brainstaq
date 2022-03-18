@@ -1,4 +1,4 @@
-class User::SessionsController < Devise::SessionsController
+class SessionsController < Devise::SessionsController
   respond_to :html, :js
   .....
 

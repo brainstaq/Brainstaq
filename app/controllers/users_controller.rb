@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     def index
       @ideas = Idea.all.order(created_at: :desc).take(15)
+      @enterprises = Enterprise.all.order(created_at: :desc).take(15)
       @users = User.find_by_username params[:username]
 
       following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)

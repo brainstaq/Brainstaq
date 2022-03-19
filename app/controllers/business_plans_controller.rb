@@ -25,7 +25,7 @@ class BusinessPlansController < ApplicationController
 
     respond_to do |format|
       if @business_plan.save
-        format.html { redirect_to enterprise_business_plans_path(@enterprise), notice: "Business plan was successfully created" }
+        format.html { redirect_to enterprise_business_plan_path(@enterprise), notice: "Business plan was successfully created" }
         format.json { render :show, status: :created, location: @business_plan }
       else
         format.html { render :new }

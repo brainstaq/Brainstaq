@@ -25,7 +25,7 @@ class BusinessPlansController < ApplicationController
 
     respond_to do |format|
       if @business_plan.save
-        format.html { redirect_to enterprise_business_plan_path(@enterprise), notice: "Business plan was successfully created" }
+        format.html { redirect_to enterprise_business_plans_path(@enterprise), notice: "Business plan was successfully created" }
         format.json { render :show, status: :created, location: @business_plan }
       else
         format.html { render :new }
@@ -37,7 +37,7 @@ class BusinessPlansController < ApplicationController
   def update
     respond_to do |format|
       if @business_plan.update(business_plan_params)
-        format.html { redirect_to enterprise_business_plan_path(@enterprise), notice: "Business plan was successfully updated" }
+        format.html { redirect_to enterprise_business_plans_path(@enterprise), notice: "Business plan was successfully updated" }
         format.json { render :show, status: :ok, location: @business_plan }
       else
         format.html { render :edit }
@@ -66,7 +66,7 @@ class BusinessPlansController < ApplicationController
 
   def business_plan_params
     params.require(:business_plan).permit(:executive_summary, :products_and_services, 
-      :industry_analysis, :competition, :swot, :operations, :enterprise_id, :user_id, 
+      :industry_analysis, :competition, :swot, :operations, :enterprise_id, 
       :marketing, :financial, :appendices, :milestones, :vision, :mission, :objectives, 
       :value_proposition)
   end

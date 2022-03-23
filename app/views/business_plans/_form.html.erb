@@ -1,4 +1,4 @@
-<%= form_with model: @business_plans do |form| %>
+<%= form_for ([@enterprise, @business_plan]) do |form| %>
   <% if business_plan.errors.any? %>
     <div id="error_explanation" class="text-center text-danger">
       <h4>Oops! You've got <%= pluralize(business_plan.errors.count, "error") %></h4>

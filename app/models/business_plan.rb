@@ -4,6 +4,6 @@ class BusinessPlan < ApplicationRecord
   :milestones, :vision, :mission, :objectives, :value_proposition, presence: true
 
   belongs_to :enterprise
-  belongs_to :user
+  # belongs_to :user
 
 end

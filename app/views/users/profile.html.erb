@@ -131,7 +131,7 @@
                       </div>
                       
                       <div>
-                        <p style="font-size: 12px; font-weight: bold;">User Rating</p>
+                        <p style="font-size: 12px;">User Rating</p>
                       </div>
                     </div><!--star-descp end-->
                     
@@ -173,9 +173,13 @@
                   </div><!--user-tab-sec end-->
                
                   <div class="product-feed-tab mb-3" id="feed-dd">
-                    <% if @user.ideas.count < 1 %>
-                      <p>No projects to display!</p>
+                    
+										<% if @user.ideas.count < 1 %>
+											<p class="text-center mb-5">No projects to display. 
+      									<%= link_to "Create one", new_idea_path(@idea) %> now!
+    									</p>
                     <% end %>
+
                     <% @user.ideas.each do |idea| %>
                       <div class="posts-section">
                         <div class="post-bar">
@@ -299,7 +303,9 @@
 
 									<div class="product-feed-tab current" id="saved-jobs">
 										<% if @user.enterprises.count < 1 %>
-                      <p>No brands to display!</p>
+                      <p class="text-center mb-5">No brands to display. 
+      									<%= link_to "Create one", new_enterprise_path(@enterprise) %> now!
+    									</p>
                     <% end %>
                     <% @user.enterprises.each do |enterprise| %>
                       <div class="posts-section">

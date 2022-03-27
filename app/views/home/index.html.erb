@@ -31,15 +31,18 @@
 						</div>
 					</div>
 				</form>
-
-				<div class="divider-text mt-25 mb-25"><span class="bg-light-gray">OR GET STARTED</span></div>
-				  <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+				<% unless user_signed_in? %>
+					<div class="divider-text mt-25 mb-25">
+						<span class="bg-light-gray">OR GET STARTED</span>
+					</div>
+			  	<%= link_to user_google_oauth2_omniauth_authorize_path do %>
 						<span class="btn btn-outline-primary w-100 mb-2">
 							<i class="fab fa-google"></i> Sign up with Google
 						</span>
-					<% end %>
-				</div>
+					<% end %>	
+				<% end %>
 			</div>
+		</div>
 			<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
 			<div class="shape-3 shape-sm-2 bg-primary rounded-circle"></div>
 			<div class="shape-4 shape-sm-2 bg-primary rounded-circle"></div>

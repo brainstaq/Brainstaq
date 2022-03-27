@@ -10,6 +10,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validate :image_size_validation
+  validates :bio, length: { maximum: 180 }
 
   # include PublicActivity::Model
   # tracked only: [:create]

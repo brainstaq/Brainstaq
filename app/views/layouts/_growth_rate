@@ -1,0 +1,64 @@
+<!-- start of growth-rate -->
+	<section class="section-padding pb-50" style="margin-top:10px;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-xl-10">
+					<div class="row align-items-center">
+						<div class="col-lg-6">
+							<h2 class="section-title" style="margin-top: -80px;">Seize the opportunities <strong class="text-primary">Brainstaq presents</strong></h2>
+							<p class="border-bottom pb-30 mr-0 mr-lg-5">Without the right tools and adequate funding, most small businesses are rarely able to break out from being just an idea.</p>
+							<div class="has-colored-text growth-rate-counter">
+								<div class="d-inline-block block-sm mr-30 mt-30">
+									<h2 class="has-text-color font-weight-bold">
+									  <span class="jsCounter" data-count="24">0</span>+
+                  </h2>
+									<p class="mt-10">Brands</p>
+								</div>
+								<div class="d-inline-block block mr-30 mt-30">
+									<h2 class="has-text-color font-weight-bold">
+										<span class="jsCounter" data-count="40">0</span>+
+                  </h2>
+									<p class="mt-10">Projects</p>
+								</div>
+								<div class="d-inline-block block mt-30">
+									<h2 class="has-text-color font-weight-bold">
+										<span class="jsCounter" data-count="300">0</span>+
+                  </h2>
+								  <p class="mt-10">Users</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 mt-5 mt-lg-0">
+							<div class="row colored-icon-box">
+								<div class="col-sm-6" data-aos="fade-up">
+									<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+										<i class="fas fa-chart-area icon"></i>
+										<h4 class="font-weight-bold text-black-200">Create Accurate Financial Models</h4>
+									</div>
+								</div>
+								<div class="col-sm-6" data-aos="fade-up" data-aos-delay="100">
+									<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+										<i class="fas fa-share-alt-square icon"></i>
+										<h4 class="font-weight-bold text-black-200">Social Media Integration</h4>
+									</div>
+								</div>
+								<div class="col-sm-6" data-aos="fade-up" data-aos-delay="200">
+									<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+										<i class="fas fa-chart-line icon" aria-hidden="true"></i>
+										<h4 class="font-weight-bold text-black-200">Real-time Business Insights</h4>
+									</div>
+								</div>
+								<div class="col-sm-6" data-aos="fade-up" data-aos-delay="300">
+									<div class="icon-box text-center shadow px-3 px-md-5 px-lg-2 py-5 mb-30">
+										<i class="fas fa-shield-alt icon"></i>
+										<h4 class="font-weight-bold text-black-200">Security You Can Trust</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end of growth-rate -->

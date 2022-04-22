@@ -42,8 +42,10 @@
         <% else %>
         <div class="collapse navbar-collapse" id="navlinks">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="how-it-works.html">Tour</a>
+            <li class="nav-item @@about">
+              <%= link_to how_it_works_path, title: "Tour", class: "text-decoration-none" do %>
+                <span class="nav-link">Tour</span>
+              <% end %>
             </li>
             <li class="nav-item dropdown @@pricing">
               <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,7 +71,7 @@
               <% end %>
             </li>
             <li class="nav-item @@about">
-              <%= link_to "#", title: "Support", class: "text-decoration-none" do %>
+              <%= link_to help_path, title: "Support", class: "text-decoration-none" do %>
                 <span class="nav-link">Support</span>
               <% end %>
             </li>
@@ -164,9 +166,3 @@
   </div>
   <!-- end of header -->
 </header>
-
-<%# <style>
-  .dropdown{
-    width: 60px;
-  } 
-</style> %>

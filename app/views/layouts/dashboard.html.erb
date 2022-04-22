@@ -21,11 +21,11 @@
   </head>
 
   <body>
-    <%= render partial: "layouts/user_header" %>
-    <%= render partial: "layouts/flash" %>
-    <%= yield %>
-    <%= intro_tags %>
-    <%= render partial: "layouts/user_footer" %>
+		<%# <%= render partial: "layouts/user_header", locals: { users: @users} %>
+		<%= render partial: "layouts/flash" %>
+		<%= yield %>
+		<%= intro_tags %>
+		<%= render partial: "layouts/user_footer", locals: { users: @users} %>	
+		
   </body>
-
 </html>

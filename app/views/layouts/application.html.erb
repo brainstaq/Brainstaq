@@ -8,9 +8,13 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
   	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <%= tinymce_assets %>
+		<%= tinymce_assets %>
+		<%= stylesheet_pack_tag 'uikit' %>
     <script type="text/javascript" src="/assets/tinymce.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <%= favicon_link_tag asset_path('favicon.ico') %>
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.min.css' %>
@@ -19,14 +23,18 @@
   </head>
 
   <body>
-    <%= render partial: "layouts/header", locals: { users: @users} %>
-    <%= render partial: "layouts/flash" %>
-    <%= yield %>
-    <%= intro_tags %>
-    
-    <%# unless user_signed_in? %>
-      <%= render partial: "layouts/footer", locals: { users: @users} %>
-    <%# end %>
+		<%= render partial: "layouts/header", locals: { users: @users} %>
+		<%= render partial: "layouts/flash" %>
+		<%= yield %>
+		<%= intro_tags %>
+		<%# if user_signed_in?%>
+		<%#= render partial: "layouts/user_footer", locals: { users: @users} %>
+	<%# else %>
+		<%= render partial: "layouts/footer", locals: { users: @users} %>
+	<%# end %>
+
+		
+		
   </body>
 </html>
 

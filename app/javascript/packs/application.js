@@ -19,6 +19,7 @@ window.$ = window.jQuery = jQuery;
 //= require shuffle
 //= require_tree .
 
+
 require("@rails/ujs").start()
     //require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -68,5 +69,22 @@ document.addEventListener("turbolinks:load", function() {
     $('.scroller').slick()
 })
 
+$(function() {
+    $('#slider2').slick({
+        autoplay: true,
+        autoplaySpeed: 4000,
+        slidesToShow: 3, //Number of slides to display
+        slidesToScroll: 3, //Number of slides switched by scrolling
+  
+        //If you want to make it responsive, also describe the following
+        responsive: [{
+          breakpoint: 768, //The following settings with a screen width of 768px
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          }
+        }]
+    });
+  });
 
 // script.js

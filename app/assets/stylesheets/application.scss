@@ -21,9 +21,9 @@
 @import "style.scss";
 @import "slick-carousel/slick/slick.scss";
 @import "slick-carousel/slick/slick-theme.scss";
-//@import "pages.scss";
-//@import "responsive.scss";
-// @import "dashboard.scss";
+
+// @import "pages.scss";
+// @import "responsive.scss";
 @import "ionicons";
 //  @import "social-share-button";
 //  $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
@@ -74,3 +74,13 @@
 .slick-prev {
     left: -5px;
 }
+
+.slick-next {
+	right: 10px !important;
+	z-index: 100;
+ }
+
+.slick-prev {
+	left: 10px !important;
+  z-index: 100;
+ }

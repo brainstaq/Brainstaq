@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # layout 'dashboard'
+    # layout 'dashboard'
     before_action :authenticate_user!
     before_action :set_user, only: [:profile, :index, :delete]
     impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]

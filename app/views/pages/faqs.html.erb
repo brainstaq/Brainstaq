@@ -1,15 +1,15 @@
-<% content_for :title, "About" %>
+<% content_for :title, "FAQs" %>
 
 <!-- start of page-header -->
 <section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
   <div class="container h-100">
     <div class="row d-flex align-items-center h-100">
       <div class="col-md-12 text-center">
-        <h2 class="h1 font-weight-bold">About</h2>
+        <h2 class="h1 font-weight-bold">FAQs</h2>
         <nav class="mt-15" aria-label="breadcrumb">
           <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
             <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
-            <li class="breadcrumb-item text-primary" aria-current="page">About</li>
+            <li class="breadcrumb-item text-primary" aria-current="page">FAQs</li>
           </ol>
         </nav>
       </div>
@@ -26,92 +26,153 @@
   <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
 </section>
 
-<div class="row container-fluid">
-<header class="section-header mb-5" style="padding-top: 150px;">
-    <h3>About <span class="text-primary">Brainstaq</span></h3>
-  </header>
-  
-  <div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
-    <div id="about">
-      <div class="row about-container">
-        <div class="col-lg-6 content order-lg-1 order-2">
-          <p>
-            We see initiatives, projects, and businesses starting up here and there, 
-            especially in Africa, only to disappear quickly due to lack of funds. 
-            Those that are resilient enough soon become difficult to sustain over a period of time. 
-            Without adequate finances and funding, most of the ideas that can change the 
-            African narrative are rarely able to break out from being just an idea, 
-            let alone grow into a tangible business.
-          </p>
-          <p style="font-weight: bold; color: gray; font-size: 18px;">This is the problem which Brainstaq solves!</p>
-            <div class="icon-box wow fadeInUp">
-              <div class="icon"><i class="fas fa-globe-africa"></i></div>
-              <h4 class="title">Our Mission</h4>
-              <p class="description">Brainstaq is on a mission to help empower creative and innovative ideas and encourage development among African startups and small businesses.</p>
+<!-- start of terms-&-condition-section -->
+<section class="section-padding" data-aos="fade-in" data-aos-delay="150">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <ul class="nav nav-tabs tabs-navbar border-0">
+                    <li class="nav-item">
+                      <a class="nav-link border-0 mr-4 mr-sm-5 px-0 py-3 h4 font-weight-600" href="terms.html">Terms & Condition</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link border-0 mr-4 mr-sm-5 px-0 py-3 h4 font-weight-600" href="privacy.html">Privacy Policy</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link border-0 px-0 py-3 h4 font-weight-600 active" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
             </div>
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
-              <div class="icon"><i class="far fa-handshake fa-lg"></i></div>
-              <h4 class="title">What We Are</h4>
-              <p class="description">
-                It is an online community to share, validate, and market your 
-                ideas, projects, insights and inspiration and attract cofounders and investors by 
-                engaging the power of the crowd.
-              </p>
-            </div>
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fas fa-project-diagram fa-lg"></i></div>
-              <h4 class="title">What We Do</h4>
-              <p class="description">
-                Brainstaq provide the tools to validate your idea, amplify 
-                your reach, enhance collaboration and source for funding for your projects, all in 
-                full transparency.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-            <%= image_tag 'about-1.jpg', class: "img-fluid ml-5 mt-5"%>
-          </div>
+            <div class="col-lg-10 my-2 my-lg-0 mt-sm-0"><div class="border-bottom"></div></div>
         </div>
-        <div class="row about-extra">
-          <div class="col-lg-6 wow fadeInUp">
-            <%= image_tag 'join-the-movement.jpg', class: "img-fluid"%>
-          </div>
-          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-            <h4>Join the Movement</h4>
-            <p>
-              We want all those ideas to have a chance to grow and give them a fighting chance to 
-              reach their true potential.
-            </p>
-            <p>
-              We believe every African should have the tools to create the solutions of tomorrow.
-            </p>
-            <p> 
-              And we are dedicating ourselves to make that happen!
-            </p>
-          </div>
-        </div>
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-10 mt-40">
+                <div class="accordion accordionFAQ mb-40" id="accordionFAQone">
+                    <h3 class="text-black-200 font-weight-bold mb-10">How to start with Copper?</h3>
+                    <div class="card border-0 border-bottom">
+                        <div class="card-header border-0 bg-transparent py-0" id="FAQoneHeadingOne">
+                            <h4 class="py-4" data-toggle="collapse" data-target="#FAQoneCollapseOne" aria-expanded="true" aria-controls="FAQoneCollapseOne">
+                                <i class="accordion-arrow ti-angle-down"></i>
+                                How can I integrate Copper to my current tool stack?
+                            </h4>
+                        </div>
+                    
+                        <div id="FAQoneCollapseOne" class="collapse show" aria-labelledby="FAQoneHeadingOne" data-parent="#accordionFAQone">
+                            <div class="card-body pt-2">
+                                <div class="mb-15">
+                                    <p class="font-weight-600 mb-2">Service Provided As:</p>
+                                    <p>The Service is provided for free during this pilot project, and is provided "as is" with no warranty. Conclude will provide User support for the Service, however; Conclude is not committed to any level of service or availability of the Service. A further description of the Service and our user support is available at the Site.</p>
+                                </div>
+                                <div>
+                                    <p class="font-weight-600 mb-2">Company Liability:</p>
+                                    <p>If you enter into this agreement on behalf of a company, you hereby agree that the company is responsible under this Agreement for all actions and omissions conducted by its designated users of the Service.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-header border-0 bg-transparent py-0" id="FAQoneHeadingTwo">
+                            <h4 class="py-4" data-toggle="collapse" data-target="#FAQoneCollapseTwo" aria-expanded="false" aria-controls="FAQoneCollapseTwo">
+                                <i class="accordion-arrow ti-angle-down"></i>
+                                How can I use Copper with cloud documents?
+                            </h4>
+                        </div>
 
-        <div class="row about-extra">
-          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
-            <%= image_tag 'goals.jpg', class: "img-fluid", style: "margin-top: -35px;"%>
-          </div>
+                        <div id="FAQoneCollapseTwo" class="collapse" aria-labelledby="FAQoneHeadingTwo" data-parent="#accordionFAQone">
+                            <div class="card-body pt-2">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion accordionFAQ mb-40" id="accordionFAQtwo">
+                    <h3 class="text-black-200 font-weight-bold mb-10">How to customize Copper?</h3>
+                    <div class="card border-0 border-bottom">
+                        <div class="card-header border-0 bg-transparent py-0" id="FAQtwoHeadingOne">
+                            <h4 class="py-4" data-toggle="collapse" data-target="#FAQtwoCollapseOne" aria-expanded="false" aria-controls="FAQtwoCollapseOne">
+                                <i class="accordion-arrow ti-angle-down"></i>
+                                How can I integrate Copper to my current tool stack?
+                            </h4>
+                        </div>
+                    
+                        <div id="FAQtwoCollapseOne" class="collapse" aria-labelledby="FAQtwoHeadingOne" data-parent="#accordionFAQtwo">
+                            <div class="card-body pt-2">
+                                <div class="mb-15">
+                                    <p class="font-weight-600 mb-2">Service Provided As:</p>
+                                    <p>The Service is provided for free during this pilot project, and is provided "as is" with no warranty. Conclude will provide User support for the Service, however; Conclude is not committed to any level of service or availability of the Service. A further description of the Service and our user support is available at the Site.</p>
+                                </div>
+                                <div>
+                                    <p class="font-weight-600 mb-2">Company Liability:</p>
+                                    <p>If you enter into this agreement on behalf of a company, you hereby agree that the company is responsible under this Agreement for all actions and omissions conducted by its designated users of the Service.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-header border-0 bg-transparent py-0" id="FAQtwoHeadingTwo">
+                            <h4 class="py-4" data-toggle="collapse" data-target="#FAQtwoCollapseTwo" aria-expanded="false" aria-controls="FAQtwoCollapseTwo">
+                                <i class="accordion-arrow ti-angle-down"></i>
+                                How can I use Copper with cloud documents?
+                            </h4>
+                        </div>
 
-          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-            <h4>Our goals for the next 5 years are:</h4>
-            <ul>
-              <li><span>&#8212;</span> Empower 10,000 innovative ideas and projects</li>
-              <li><span>&#8212;</span> Encourage innovation and development in Africa</li>
-              <li><span>&#8212;</span> Help 500 Brainers get cofounders in Africa</li>
-              <li><span>&#8212;</span> Fund 1000 projects</li>
-            </ul>
-          </div>
+                        <div id="FAQtwoCollapseTwo" class="collapse" aria-labelledby="FAQtwoHeadingTwo" data-parent="#accordionFAQtwo">
+                            <div class="card-body pt-2">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion accordionFAQ" id="accordionFAQthree">
+                    <h3 class="text-black-200 font-weight-bold mb-10">How to resume subscription?</h3>
+                    <div class="card border-0 border-bottom">
+                        <div class="card-header border-0 bg-transparent py-0" id="FAQthreeHeadingOne">
+                            <h4 class="py-4" data-toggle="collapse" data-target="#FAQthreeCollapseOne" aria-expanded="false" aria-controls="FAQthreeCollapseOne">
+                                <i class="accordion-arrow ti-angle-down"></i>
+                                How can I integrate Copper to my current tool stack?
+                            </h4>
+                        </div>
+                    
+                        <div id="FAQthreeCollapseOne" class="collapse" aria-labelledby="FAQthreeHeadingOne" data-parent="#accordionFAQthree">
+                            <div class="card-body pt-2">
+                                <div class="mb-15">
+                                    <p class="font-weight-600 mb-2">Service Provided As:</p>
+                                    <p>The Service is provided for free during this pilot project, and is provided "as is" with no warranty. Conclude will provide User support for the Service, however; Conclude is not committed to any level of service or availability of the Service. A further description of the Service and our user support is available at the Site.</p>
+                                </div>
+                                <div>
+                                    <p class="font-weight-600 mb-2">Company Liability:</p>
+                                    <p>If you enter into this agreement on behalf of a company, you hereby agree that the company is responsible under this Agreement for all actions and omissions conducted by its designated users of the Service.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-header border-0 bg-transparent py-0" id="FAQthreeHeadingtwo">
+                            <h4 class="py-4" data-toggle="collapse" data-target="#FAQthreeCollapsetwo" aria-expanded="false" aria-controls="FAQthreeCollapsetwo">
+                                <i class="accordion-arrow ti-angle-down"></i>
+                                How do I get back to Copper and resume my subscription?
+                            </h4>
+                        </div>
+
+                        <div id="FAQthreeCollapsetwo" class="collapse" aria-labelledby="FAQthreeHeadingtwo" data-parent="#accordionFAQthree">
+                            <div class="card-body pt-2">
+                                <div class="mb-15">
+                                    <p class="font-weight-600 mb-2">Service Provided As:</p>
+                                    <p>The Service is provided for free during this pilot project, and is provided "as is" with no warranty. Conclude will provide User support for the Service, however; Conclude is not committed to any level of service or availability of the Service. A further description of the Service and our user support is available at the Site.</p>
+                                </div>
+                                <div>
+                                    <p class="font-weight-600 mb-2">Company Liability:</p>
+                                    <p>If you enter into this agreement on behalf of a company, you hereby agree that the company is responsible under this Agreement for all actions and omissions conducted by its designated users of the Service.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="contact-details">
-          <strong>Contact us:</strong> <%= mail_to 'brainstaq@gmail.com' %><br>
-        </div>
-      </div>
     </div>
-  </div>
+</section>
+<!-- end of terms-&-condition-section -->
   <style>
     .row {
       clear: both;

@@ -106,7 +106,8 @@
                           <%= idea.category.name %>
                         <% else %>
                           <%= 'General' %>
-                        <% end %></li>
+                        <% end %>
+												</li>
                       </ul>
                     </div>
                     <div class="job_descp">
@@ -115,21 +116,18 @@
                         <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
                           <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
                             <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
-                            <!-- | Exp: <%#= idea.end_date %> -->
                           </small>
                         </span>
                       <% elsif idea.relevance_bar.to_i < 75 %>
                         <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
                           <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
                             <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
-                            <!-- | Exp: <%#= idea.end_date %> -->
                           </small>
                         </span>
                       <% elsif idea.relevance_bar.to_i > 75 %>
                         <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
                           <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
                             <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
-                            <!-- | Exp: <%#= idea.end_date %> -->
                           </small>
                         </span>
                       <% end %>
@@ -228,8 +226,8 @@
   .main-left-sidebar {
     position: absolute;
     position: -webkit-sticky;
-    position: sticky;
-    top: 80px;
+    /* position: sticky; */
+    /* top: 80px; */
   }
 
   /* ================================================================================== 
@@ -276,9 +274,6 @@ q:before, q:after {
 	content: none;
 }
 
-// button {
-// 	outline: none;
-// }
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -459,7 +454,7 @@ main {
 .main-left-sidebar {
 	float: left;
 	width: 100%;
-	margin-top: -20px;
+	margin-top: 0px;
 	padding-left: 0px;
 }
 .full-width {
@@ -470,6 +465,7 @@ main {
 	border-left: 1px solid #e5e5e5;
 	border-right: 1px solid #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
 }
 .username-dt {
 	float: left;
@@ -558,9 +554,16 @@ main {
 .sd-title {
 	float: left;
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	border-bottom: 1px solid #e5e5e5;
 	position: relative;
+}
+
+.sd-title h3 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
 }
 
 .sd-title i {
@@ -621,8 +624,6 @@ main {
 	background-color: #007bff;
 	color: #fff;
 }
-
-
 
 /* =================== main-ws-sec ================== */
 
@@ -736,13 +737,6 @@ main {
 	margin-top: 2px;
 	margin-right: 6px;
 }
-/*.post_topbar i {
-	position: absolute;
-	top: 20px;
-	right: 5px;
-	color: #b2b2b2;
-	font-size: 30px;
-}*/
 .epi-sec {
 	width: 100%;
 	margin-bottom: 15px;
@@ -786,20 +780,6 @@ main {
 .bk-links li i.la-envelope {
 	background-color: #007bff;
 }
-.bid_now {
-	color: #fff;
-	background-color: #51a5fb;
-	text-transform: capitalize;
-	display: inline-block;
-	height: 30px;
-	padding: 0 10px;
-	line-height: 30px;
-	position: relative;
-	top: -3px;
-}
-.bid_now:hover {
-	color: #fff;	
-}
 
 
 /* ============== job_descp ============ */
@@ -815,6 +795,7 @@ main {
 	font-size: 18px !important;
 	font-weight: 600;
   margin-bottom: 20px;
+	margin-top: 10px;
   float: left;
 }
 
@@ -1025,12 +1006,7 @@ main {
 	border-bottom: 1px solid #e4e4e4;
 }
 
-
-
-
 /* =============== right-sidebar ============= */
-
-
 .widget {
 	float: left;
 	width: 100%;
@@ -1089,9 +1065,6 @@ main {
 .sign_link > a:hover {
 	color: #007bff;
 }
-
-
-
 
 footer {
 	float: left;

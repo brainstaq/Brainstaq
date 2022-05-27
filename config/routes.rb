@@ -3,10 +3,6 @@ require "sidekiq/web"
 Rails.application.routes.draw do
 
   root to: "home#index"
-
-  resources :enterprises do
-    resources :business_plans
-  end
   
   resources :plan_subscriptions
   resources :donors
@@ -33,6 +29,10 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   
+  resources :enterprises, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
+    resources :business_plans
+  end
+
   resources :ideas, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :comments
     member do
@@ -61,9 +61,7 @@ Rails.application.routes.draw do
 
   get 'profile/:username' => 'users#profile', as: :profile
 
-  get '/dashboard' => 'users#index'
-
-
+  get 'dashboard/:full_name' => 'users#index', as: :dashboard
 
   # Routes for blog
   # match '/blog',        to: 'blog_posts#index', as: :blog_posts, via: :get

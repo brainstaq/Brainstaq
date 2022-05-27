@@ -13,7 +13,7 @@ Intro.configure do
 
   # admin account for accessing backstage, default by SecureRandom#urlsafe_base64
   self.admin_username = ENV['INTRO_APP_ADMIN_USERNAME'] || "Sircliffjoe"
-  self.admin_password = ENV['INTRO_APP_ADMIN_PASSWORD'] || "Brainstaq2020!"
+  self.admin_password = ENV['INTRO_APP_ADMIN_PASSWORD'] || "Brainstaq.2020!!"
 
   # admin_authenticate_account will override authenticate_acount process for backstage, it should return boolean
   # self.admin_authenticate_account = -> { current_user.try(:has_admin_role?) }

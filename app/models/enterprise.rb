@@ -24,6 +24,8 @@ class Enterprise < ApplicationRecord
   has_many :line_items, inverse_of: :order
   has_many :business_plans, dependent: :destroy
 
+  private
+
   def set_slug
     self.slug = name.to_s.parameterize
   end

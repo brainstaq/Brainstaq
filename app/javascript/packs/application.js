@@ -35,6 +35,12 @@ import "slick-carousel/slick/slick-theme.scss"
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
 
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("/worker.js")
+   })
+}
+
 setTimeout(function() {
     $('.flash-message').fadeOut('fast');
 }, 5000);

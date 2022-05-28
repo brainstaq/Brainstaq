@@ -69,6 +69,8 @@ gem 'activerecord', '~> 6.0', '>= 6.0.3.2'
 gem 'ahoy_matey'
 gem 'pagy', '~> 4.10', '>= 4.10.1'
 
+# gem 'webpacker-pwa', group: :development
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

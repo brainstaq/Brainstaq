@@ -1,210 +1,236 @@
 <% content_for :title, "Edit Settings" %>
 
-<header class="section-header mb-5" style="padding-top: 100px;">
-  <h3>Edit <span class="text-primary">Account</span></h3>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+      <div class="row d-flex align-items-center h-100">
+          <div class="col-md-12 text-center">
+              <h2 class="h1 font-weight-bold">Edit Account</h2>
+              <nav class="mt-15" aria-label="breadcrumb">
+                  <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+                      <li class="breadcrumb-item"><%= link_to "Profile", profile_path(current_user.username), class: "text-black-300" %></li>
+                      <li class="breadcrumb-item text-primary" aria-current="page">Edit Account</li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<header class="section-header mb-5" style="padding-top: 80px;">
+  <%# <h3>Edit <span class="text-primary">Account</span></h3> %>
 </header>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-<small><%= render "devise/shared/error_messages", resource: resource %></small>
+  <small><%= render "devise/shared/error_messages", resource: resource %></small>
 
-<section class="profile-account-setting">
-  <div class="container col-md-6">  
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-user"></i></span>
+  <section class="profile-account-setting">
+    <div class="container">  
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+        </div>
+        <%= f.text_field :last_name, :readonly => f.object.persisted?, placeholder: "Last Name", class: "form-control" %>
       </div>
-      <%= f.text_field :last_name, :readonly => f.object.persisted?, placeholder: "Last Name", class: "form-control" %>
-    </div>
-    
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-user"></i></span>
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+        </div>
+        <%= f.text_field :first_name, :readonly => f.object.persisted?, placeholder: "First Name", class: "form-control" %>
       </div>
-      <%= f.text_field :first_name, :readonly => f.object.persisted?, placeholder: "First Name", class: "form-control" %>
-    </div>
-    
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
-      </div>
-      <%= f.text_field :username, :readonly => f.object.persisted?, placeholder: "Username", class: "form-control" %>
-    </div>
-
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text" style="font-weight: bold;">S.</span>
-      </div>
-      <%= f.select :gender, %w{Male Female}, {}, :prompt => 'Select', class: 'form-control' %>
-    </div>
-
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+        </div>
+        <%= f.text_field :username, :readonly => f.object.persisted?, placeholder: "Username", class: "form-control" %>
       </div>
 
-      <% if @user.country %>
-        <%= f.text_field :country, value: "#{@user.country}", :class => 'form-control' %>
-      <% else %>
-        <%= f.select :country, options_for_select([
-          ['Algeria'],
-          ['Angola'],
-          ['Benin'],
-          ['Botswana'],
-          ['Burkina Faso'],
-          ['Burundi'],
-          ['Cape Verde'],
-          ['Cameroon'],
-          ['Central African Republic (CAR)'],
-          ['Chad'],
-          ['Comoros'],
-          ['Republic of the Congo'],
-          ['Democratic Republic of Congo'],
-          ["Cote d'Ivoire"],
-          ['Djibouti'],
-          ['Egypt'],
-          ['Equatorial Guinea'],
-          ['Eritrea'],
-          ['Eswatini (formerly Swaziland)'],
-          ['Ethiopia'],
-          ['Gabon'],
-          ['Gambia'],
-          ['Ghana'],
-          ['Guinea'],
-          ['Guinea-Bissau'],
-          ['Kenya'],
-          ['Lesotho'],
-          ['Liberia'],
-          ['Libya'],
-          ['Madagascar'],
-          ['Malawi'],
-          ['Mali'],
-          ['Mauritania'],
-          ['Mauritius'],
-          ['Morocco'],
-          ['Mozambique'],
-          ['Namibia'],
-          ['Niger'],
-          ['Nigeria'],
-          ['Rwanda'],
-          ['Sao Tome and Principe'],
-          ['Senegal'],
-          ['Seychelles'],
-          ['Sierra Leone'],
-          ['Somalia'],
-          ['South Africa'],
-          ['South Sudan'],
-          ['Sudan'],
-          ['Tanzania'],
-          ['Togo'],
-          ['Tunisia'],
-          ['Uganda'],
-          ['Zambia'],
-          ['Zimbabwe']
-        ]), {}, :class => 'form-control' %>
-      <% end %>
-    </div>        
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" style="font-weight: bold;">S.</span>
+        </div>
+        <%= f.select :gender, %w{Male Female}, {}, :prompt => 'Select', class: 'form-control' %>
+      </div>
 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
-      </div>
-      <%= f.number_field :phone, placeholder: "Phone Number", class: "form-control" %>
-    </div>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+        </div>
 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-info-circle"></i></span>
-      </div>
-      <%= f.text_area :bio, placeholder: "Enter a brief description of yourself", class: "form-control" %>
-    </div>
+        <% if @user.country %>
+          <%= f.text_field :country, value: "#{@user.country}", :class => 'form-control' %>
+        <% else %>
+          <%= f.select :country, options_for_select([
+            ['Algeria'],
+            ['Angola'],
+            ['Benin'],
+            ['Botswana'],
+            ['Burkina Faso'],
+            ['Burundi'],
+            ['Cape Verde'],
+            ['Cameroon'],
+            ['Central African Republic (CAR)'],
+            ['Chad'],
+            ['Comoros'],
+            ['Republic of the Congo'],
+            ['Democratic Republic of Congo'],
+            ["Cote d'Ivoire"],
+            ['Djibouti'],
+            ['Egypt'],
+            ['Equatorial Guinea'],
+            ['Eritrea'],
+            ['Eswatini (formerly Swaziland)'],
+            ['Ethiopia'],
+            ['Gabon'],
+            ['Gambia'],
+            ['Ghana'],
+            ['Guinea'],
+            ['Guinea-Bissau'],
+            ['Kenya'],
+            ['Lesotho'],
+            ['Liberia'],
+            ['Libya'],
+            ['Madagascar'],
+            ['Malawi'],
+            ['Mali'],
+            ['Mauritania'],
+            ['Mauritius'],
+            ['Morocco'],
+            ['Mozambique'],
+            ['Namibia'],
+            ['Niger'],
+            ['Nigeria'],
+            ['Rwanda'],
+            ['Sao Tome and Principe'],
+            ['Senegal'],
+            ['Seychelles'],
+            ['Sierra Leone'],
+            ['Somalia'],
+            ['South Africa'],
+            ['South Sudan'],
+            ['Sudan'],
+            ['Tanzania'],
+            ['Togo'],
+            ['Tunisia'],
+            ['Uganda'],
+            ['Zambia'],
+            ['Zimbabwe']
+          ]), {}, :class => 'form-control' %>
+        <% end %>
+      </div>        
 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fas fa-globe"></i></span>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
+        </div>
+        <%= f.number_field :phone, placeholder: "Phone Number", class: "form-control" %>
       </div>
-      <%= f.text_field :website, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
-    </div>
 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fab fa-facebook"></i></span>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-info-circle"></i></span>
+        </div>
+        <%= f.text_area :bio, placeholder: "Enter a brief description of yourself", class: "form-control" %>
       </div>
-      <%= f.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
-    </div>
 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fab fa-twitter"></i></span>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-globe"></i></span>
+        </div>
+        <%= f.text_field :website, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
       </div>
-      <%= f.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
-    </div>
 
-        <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fab fa-facebook"></i></span>
+        </div>
+        <%= f.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
       </div>
-      <%= f.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
-    </div>
-    
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fab fa-linkedin"></i></span>
-      </div>
-      <%= f.text_field :linkedin_url, placeholder: "Enter your Linkedin profile link... e.g https://linkedin.com/profile", class: "form-control" %>
-    </div>
-    
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-lock"></i></span>
-      </div>
-      <%= f.password_field :current_password, placeholder: "Enter your current password to confirm your changes", class: "form-control" %>
-    </div>
 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fab fa-twitter"></i></span>
+        </div>
+        <%= f.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
       </div>
-      <%= f.password_field :password, placeholder: "Enter New Password", class: "form-control" %>
-    </div>
 
-    <div class="form-group input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+        </div>
+        <%= f.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
       </div>
-      <%= f.password_field :password_confirmation, placeholder: "Confirm New Password", class: "form-control" %>
-    </div>
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fab fa-linkedin"></i></span>
+        </div>
+        <%= f.text_field :linkedin_url, placeholder: "Enter your Linkedin profile link... e.g https://linkedin.com/profile", class: "form-control" %>
+      </div>
+      
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        </div>
+        <%= f.password_field :current_password, placeholder: "Enter your current password to confirm your changes", class: "form-control" %>
+      </div>
 
- 
-    <div class="container ml-2">
-      <% if @user.image_url %>
-        <%= image_tag @user.image_url, style: "width: 32px;", class: "rounded-circle mr-2" %>
-      <% else %>
-        <%= image_tag 'avatar.png', style: "width: 32px;", class: "rounded-circle mr-2" %>
-      <% end %>
-      <p><small>Change Profile Photo (100x100)</small></p>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        </div>
+        <%= f.password_field :password, placeholder: "Enter New Password", class: "form-control" %>
+      </div>
+
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        </div>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm New Password", class: "form-control" %>
+      </div>
+
+  
+      <div class="container">
+        <% if @user.image_url %>
+          <%= image_tag @user.image_url, style: "width: 32px;", class: "rounded-circle mr-2" %>
+        <% else %>
+          <%= image_tag 'avatar.png', style: "width: 32px;", class: "rounded-circle mr-2" %>
+        <% end %>
+        <p><small>Change Profile Photo (100x100)</small></p>
+      </div>
       <div class="cpp-fiel">
-        <%= f.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes }, class: "form-control" %>
+        <%= f.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes } %>
+      </div>
+
+      <div class="form-group save-stngs mt-4">
+        <%= f.submit "Update Account", class: "btn btn-primary rounded mb-4 float-right" %>
+        <%= link_to "Cancel", :back, class: "btn btn-secondary rounded" %>
+      </div><!--save-stngs end-->
+      
+      <% end %>
+      <div class="acc-setting mb-5 mt-4", style= "font-size: 14px;">
+        <h3 style= "color: red;">Delete Account</h3>
+          <p class="mb-0">We are not happy to see you go. <br>Deleting your account 
+            would delete all of your conversations and also remove you of Brainstaq's mailing list 
+            and every other correspondences. <br> This action cannot be reversed.</p>
+                    
+          <div class="save-stngs mt-4">
+            <%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger rounded text-white" %>
+          </div><!--save-stngs end-->
+        </div><!--acc-setting end-->
       </div>
     </div>
-    <div class="save-stngs">
-      <ul>
-        <li><%= f.submit "Update Account", class: "btn rounded text-white" %></li>
-        <li><%= link_to "Cancel", :back, class: "btn rounded text-white" %></li>
-      </ul>
-    </div><!--save-stngs end-->
-    <% end %>
-    <div class="acc-setting mb-5", style= "font-size: 14px;">
-      <h3 style= "color: red;">Delete Account</h3>
-        <p class="ml-4 mb-0">We are not happy to see you go. <br>Deleting your account 
-          would delete all of your conversations and also remove you of Brainstaq's mailing list 
-          and every other correspondences. <br> This action cannot be reversed.</p>
-                  
-        <div class="save-stngs">
-          <ul>
-            <li><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn rounded text-white" %></li>
-          </ul>
-        </div><!--save-stngs end-->
-      </div><!--acc-setting end-->
-    </div>
-  </div>
-</section>
+  </section>

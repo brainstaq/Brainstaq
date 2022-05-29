@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   def career
   end
 
-  def help
-  end
+  # def help
+  # end
 
   def terms
   end

@@ -228,11 +228,11 @@
 							  			<h3>Upload Logo</h3>
 							  			<div class="requests-list">
 							  				<div class="request-details">
-							  					<div class="noty-user-img">
+							  					<div class="noty-user-img ml-3">
 							  						<% if @enterprise.image_url %>
 															<%= image_tag @enterprise.image_url, style: "width: 100px; height: 50px;" %>
 														<% else %>
-															<%= image_tag 'avatar.png', style: "width: 100px; height: 50px;" %>
+															<%= image_tag 'home17.jpg', style: "width: 100px; height: 50px;" %>
 														<% end %>
 							  					</div>
 							  					<div class="request-info">
@@ -244,6 +244,9 @@
 							  							<li><%= form.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes } %></li>
 							  						</ul>
 							  					</div><!--accept-feat end-->
+													<div class="col-sm-12">
+        										<%= form.hidden_field :image_cache %>
+      										</div>
 													<div class="save-stngs pd2">
 														<ul>
                               <li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>

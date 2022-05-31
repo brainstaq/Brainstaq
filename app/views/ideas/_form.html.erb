@@ -1,3 +1,4 @@
+
 <%= form_with(model: idea, local: true, multipart: true) do |form| %>
   <% if idea.errors.any? %>
     <div id="error_explanation" class="text-center text-danger">
@@ -10,96 +11,578 @@
     </div>
   <% end %>
 
-  <div class="idea-form container col-lg-8">
-    <div class="row m-auto">
-      <div class="col-sm-12 form-group">
-        <%= form.label :project_title, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :title, :readonly => form.object.persisted?, maxlength: "23", class: "form-control", placeholder: "What would you call your idea?"  %>
-      </div>
-      <div class="col-sm-12 form-group">
-        <%= form.label :project_category, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.collection_select(:category_id, Category.all, :id, :name, 
-            {prompt: 'What category does your idea fall into?'}, class: "form-control") %>
-      </div>
+  <section class="profile-account-setting">
+		<div class="container">
+			<div class="account-tabs-setting">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="acc-leftbar">
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true">Project Details</a>
+								<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Project Description</a>
+								<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Problems</a>
+								<a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">Solution</a>
+								<a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">Impact</a>
+                <a class="nav-item nav-link" id="nav-team-tab" data-toggle="tab" href="#nav-team" role="tab" aria-controls="nav-team" aria-selected="false">Project Funding</a>
+                <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo" aria-selected="false">Project Image</a>
+                <a class="nav-item nav-link" id="nav-donation-tab" data-toggle="tab" href="#nav-donation" role="tab" aria-controls="nav-donation" aria-selected="false">Donation Category</a>
+								</div>
+							</div><!--acc-leftbar end-->
+						</div>
+						<div class="col-lg-9">
+							<div class="tab-content" id="nav-tabContent">
+								<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
+									<div class="acc-setting">
+										<h3>Project Details</h3>
+											<div class="cp-field">
+												<h5>Project Title</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :title, :readonly => form.object.persisted?, maxlength: "23", 
+                          class: "form-control", placeholder: "What would you call your idea?"  %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Project Category</h5>
+												<div class="cpp-fiel">
+													<%= form.collection_select(:category_id, Category.all, :id, :name, 
+                          {prompt: 'What category does your idea fall into?'}, class: "form-control") %>
+												</div>
+											</div>
+											<div class="save-stngs">
+												<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+									</div><!--acc-setting end-->
+								</div>
 
-      <div class="form-group col-sm-12">
-        <%= form.label :project_description, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :description, class: "form-control tinymce", placeholder: "How would you describe your idea in 5 sentences?"%>
-        <%= tinymce %>
-      </div> 
+							  	<div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+							  		<div class="acc-setting">
+							  			<h3>Project Description</h3>
+							  			
+											<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :description, class: "form-control tinymce", placeholder: "How would you describe your idea in 5 sentences?"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+							  		</div><!--acc-setting end-->
+							  	</div>
+							  	
+									<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
+							  		<div class="acc-setting">
+										<h3>Problems</h3>
+										
+											<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :challenges, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+									</div><!--acc-setting end-->
+							  	</div>
+							  	
+							  	<div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+							  		<div class="acc-setting">
+							  			<h3>Solutions</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :overview, class: "form-control tinymce", placeholder: "How are you solving this problem?"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
 
-      <div class="form-group col-sm-12">
-        <%= form.label :problem, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :challenges, class: "form-control tinymce", placeholder: "How would you describe the problem your idea is solving?"%>
-        <%= tinymce %>
-      </div>
-      
-      <div class="form-group col-sm-12">
-        <%= form.label :solution, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :overview, class: "form-control tinymce", placeholder: "How are you solving this problem?"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :impact, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :impact, class: "form-control tinymce", placeholder: "How would your idea impact the world?"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :funding_goal_in_Naira, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :donation_goal, :readonly => form.object.persisted?, class: "form-control tinymce", placeholder: "How much would it cost to implement your idea?"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :campaign_expiry_date, class: "text-primary", style: "font-size: 18px;" %>
-        
-          <%= form.date_field :end_date, :readonly => form.object.persisted?, class: "form-control tinymce", placeholder: "How much time do you need to raise the funding you need?"%>
-      
-        <%= tinymce %>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
-      </div>
+							  	<div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
+							  		<div class="acc-setting">
+							  			<h3>Impact</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :impact, class: "form-control tinymce", placeholder: "How would your idea impact the world?"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-team" role="tabpanel" aria-labelledby="nav-team-tab">
+							  		<div class="acc-setting">
+							  			<h3>Project Funding</h3>
+							  			<div class="cp-field">
+												<h5>Funding Goal (Naira)</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :donation_goal, :readonly => form.object.persisted?, class: "form-control tinymce", placeholder: "How much would it cost to implement your idea?"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Campaign Expiry Date</h5>
+												<div class="cpp-fiel">
+													<%= form.date_field :end_date, :readonly => form.object.persisted?, class: "form-control tinymce", placeholder: "How much time do you need to raise the funding you need?"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+                      <div class="field">
+                        <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-logo" role="tabpanel" aria-labelledby="nav-logo-tab">
+							  		<div class="acc-setting">
+							  			<h3>Project Image</h3>
+							  			<div class="requests-list">
+							  				<div class="request-details">
+							  					<div class="noty-user-img ml-3">
+							  						<% if @idea.image_url %>
+															<%= image_tag @idea.image_url, style: "width: 100px; height: 50px;" %>
+														<% else %>
+															<%= image_tag 'home17.jpg', style: "width: 100px; height: 50px;" %>
+														<% end %>
+							  					</div>
+							  					<div class="request-info">
+							  						<%# <h3>Change Brand Logo</h3> %>
+							  						<%# <span>Change Brand Logo</span> %>
+							  					</div>
+							  					<div class="accept-feat">
+							  						<ul>
+							  							<li><%= form.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes } %></li>
+							  						</ul>
+							  					</div><!--accept-feat end-->
+													<div class="col-sm-12">
+        										<%= form.hidden_field :image_cache %>
+      										</div>
+													<div class="save-stngs pd2">
+														<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+														</ul>
+													</div><!--save-stngs end-->
+							  				</div><!--request-detailse end-->
+							  			</div><!--requests-list end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-donation" role="tabpanel" aria-labelledby="nav-donation-tab">
+							  		<div class="acc-setting">
+							  			<h3>Donation Category</h3>
+							  			<div data-controller="nested-form">
+                        <template data-target='nested-form.template'>
+                          <%= form.fields_for :perks, Perk.new, child_index: 'TEMPLATE_RECORD' do |perk| %>
+                            <%= render 'perk_fields', form: perk %>
+                          <% end %>
+                        </template>
     
-      <div class="col-sm-12">
-        <%= form.label :project_image, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.file_field :image %>
-      </div>
-            
-      <div class="col-sm-12">
-        <%= form.hidden_field :image_cache %>
-      </div>
-
-      <br>
-      <hr/>
-      
-      <div class="col-sm-12 form-group">
-        <h3>Donation Categories</h3>
-    
-        <div data-controller="nested-form">
-          <template data-target='nested-form.template'>
-            <%= form.fields_for :perks, Perk.new, child_index: 'TEMPLATE_RECORD' do |perk| %>
-              <%= render 'perk_fields', form: perk %>
-            <% end %>
-          </template>
-    
-          <%= form.fields_for :perks do |perk| %>
-            <%= render 'perk_fields', form: perk %>
-          <% end %>
-    
-          <div data-target="nested-form.add_perk">
-            <%= link_to "Add Amount", "#", data: { action: "nested-form#add_association" }, class: "btn rounded btn-primary" %>
-          </div>
-        </div>
-      </div>
-    
-    </div>
-    <div class="form-group col-sm-12 m-0" style="padding-left: 15px; padding-right: 30px; padding-bottom: 130px;">
-      <%= form.submit class: "actions btn rounded btn-primary float-right" %>
-      <%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %>
-    </div>
-  </div>
+                        <%= form.fields_for :perks do |perk| %>
+                          <%= render 'perk_fields', form: perk %>
+                        <% end %>
+                  
+                        <div data-target="nested-form.add_perk">
+                          <%= link_to "Add Amount", "#", data: { action: "nested-form#add_association" }, class: "btn rounded btn-primary ml-4 mt-3" %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Project', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</div><!--account-tabs-setting end-->
+			</div>
+	</section>
 <% end %>
+
+<style>
+.acc-leftbar {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+}
+.acc-leftbar .nav-tabs > a {
+	float: left;
+	width: 100%;
+	background: none;
+	padding: 18px 20px;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	border-left: 0;
+	border-right: 0;
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+}
+.nav-tabs {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a:last-child {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a i {
+	padding-right: 15px;
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+	font-weight: 700;
+	width: 40px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	background-color: inherit;
+	color: #0070C0;
+	border-color: inherit;
+}
+.acc-setting {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	-webkit-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+}
+.acc-setting form {
+	float: left;
+	width: 100%;
+}
+.acc-setting > h3 {
+	float: left;
+	width: 100%;
+	color: #000000;
+	font-weight: 600;
+	font-size: 18px;
+	text-transform: capitalize;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 17px 20px;
+}
+.notbar {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
+	position: relative;
+}
+.notbar h4 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.notbar p {
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	width: 75%;
+}
+.toggle-btn {
+	position: absolute;
+	top: 35px;
+	right: 20px	;
+}
+.save-stngs {
+	float: left;
+	width: 100%;
+	padding: 30px 20px 50px 20px;
+}
+.save-stngs.pd2 {
+	padding: 25px 20px 42px 20px;
+}
+.save-stngs.pd3 {
+	padding: 25px 20px 25px 20px;
+}
+.save-stngs ul li {
+	display: inline-block;
+	margin-right: 17px;
+}
+.save-stngs ul li button {
+	display: inline-block;
+	color: #000000;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 22px;
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+}
+.save-stngs ul li button:hover {
+	background-color: #e44d3a;
+	color: #fff;
+	border-color: transparent;
+}
+.profile-bx-details {
+	float: left;
+	width: 100%;
+	padding: 30px 7px 30px 7px;
+}
+.profile-bx-details .row .col-lg-3 {
+	padding: 0 7px;
+}
+.profile-bx-info {
+	float: left;
+	width: 100%;
+	background-color: #f2f2f2;
+	padding: 20px;
+	border: 1px solid #e5e5e5;
+}
+.pro-bx {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 10px;
+}
+.bx-info {
+	float: left;
+	margin-top: 7px;
+	padding-left: 15px;
+}
+.bx-info h3 {
+	color: #e44d3a;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}	
+.bx-info h5 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.pd-left-20 {
+	padding-left: 20px;
+	padding-right: 0;
+}
+.pd-left-15 {
+	padding-left: 15px;
+	padding-right: 0;
+}
+.pd-left-right {
+	padding-left: 15px;
+	padding-right: 20px;
+}
+.profile-bx-info > p {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+	line-height: 22px;
+	padding-top: 3px;
+}
+.pro-work-status {
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+}
+.pro-work-status h4 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+.cp-field {
+	float: left;
+	width: 100%;
+	margin-top: 29.4px;
+	padding: 0 20px;
+}
+.cp-field h5 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.cp-field h5 a {
+	color: #000;
+}
+.cpp-fiel {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.cp-field input {
+	height: 40px;
+	padding: 0 40px;
+}
+.cp-field input,
+.cp-field textarea {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+}
+.cp-field textarea {
+	padding: 20px;
+	height: 115px;	
+}
+.cpp-fiel i {
+	position: absolute;
+	top: 12px;
+	left: 15px;
+	color: #b2b2b2;
+	font-size: 16px;
+}
+.cp-field > p {
+	float: left;
+	width: 100%;
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: 5px;
+}
+.notifications-list {
+	float: left;
+	width: 100%;
+}
+.notfication-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.notfication-details:last-child {
+	border-bottom: 0;
+}
+.noty-user-img {
+	float: left;
+	width: 35px;
+}
+.noty-user-img img {
+	width: 100%;
+}
+.notification-info {
+	float: left;
+	width: auto;
+	padding-left: 10px;
+}
+.notification-info h3 {
+	color: #686868;
+	font-size: 14px;
+	font-weight: 600;
+	border: 0;
+	padding: 0;
+	margin-bottom: 6px;
+}
+.notification-info h3 a {
+	color: #000000;
+	font-size: 16px;
+	display: inline-block;
+}
+.notification-info > span {
+	display: inline-block;
+	color: #b2b2b2;
+	font-size: 12px;
+	font-weight: 600;
+}
+.requests-list {
+	float: left;
+	width: 100%;
+	padding-bottom: 0;
+}
+.request-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.request-details:last-child {
+	border-bottom: 0;
+}
+.request-info {
+	float: left;
+	padding-left: 10px;
+}
+.request-info h3 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0;
+	border: 0;
+	margin-bottom: 3px;
+}
+.request-info span {
+	color: #686868;
+	font-size: 12px;
+	display: inline-block;
+}
+.accept-feat {
+	float: right;
+}
+.accept-feat ul li {
+	display: inline-block;
+}
+.accept-feat ul li button {
+	cursor: pointer;
+}
+.accept-req {
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #51a5fb;
+	height: 30px;
+	padding: 0 20px;
+	font-weight: 600;
+	border: 0;
+	border: 1px solid #51a5fb;
+}
+.close-req {
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #e5e5e5;
+	background: inherit;
+	color: #b2b2b2;
+	margin-left: 7px;
+}
+.close-req i {
+	font-weight: 600;
+}
+</style>

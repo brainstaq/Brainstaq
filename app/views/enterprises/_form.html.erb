@@ -1,8 +1,12 @@
+
+<header class="section-header mb-5" style="padding-top: 50px;"></header>
+
 <%= form_with(model: enterprise, local: true) do |form| %>
   <% if enterprise.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(enterprise.errors.count, "error") %> prohibited this enterprise from being saved:</h2>
-
+      <h2><%= pluralize(enterprise.errors.count, "error") %> 
+        prohibited this enterprise from being saved:
+      </h2>
       <ul>
         <% enterprise.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,126 +15,607 @@
     </div>
   <% end %>
 
-  <div class="idea-form container col-lg-8", style= "margin-top: 100px;">
-    <div class="row m-auto">
-      <div class="col-sm-12 form-group">
-        <%= form.label :brand_name, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :name, :readonly => form.object.persisted?, maxlength: "23", 
-        class: "form-control", placeholder: "Enter brand name"  %>
-      </div>
+  <section class="profile-account-setting">
+		<div class="container">
+			<div class="account-tabs-setting">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="acc-leftbar">
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true">Brand Details</a>
+								<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Social Profiles</a>
+								<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Products</a>
+								<a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">Services</a>
+								<a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">Portfolio</a>
+                <a class="nav-item nav-link" id="nav-team-tab" data-toggle="tab" href="#nav-team" role="tab" aria-controls="nav-team" aria-selected="false">Team</a>
+                <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo" aria-selected="false">Brand Logo</a>
+								</div>
+							</div><!--acc-leftbar end-->
+						</div>
+						<div class="col-lg-9">
+							<div class="tab-content" id="nav-tabContent">
+								<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
+									<div class="acc-setting">
+										<h3>Brand Details</h3>
+											<div class="cp-field">
+												<h5>Brand Name</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :name, :readonly => form.object.persisted?, maxlength: "23", 
+                          class: "form-control", placeholder: "Enter brand name"  %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Brand Category</h5>
+												<div class="cpp-fiel">
+													<%= form.collection_select(:category_id, Category.all, :id, :name, 
+                          {prompt: 'Select brand category'}, class: "form-control") %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>About Brand</h5>
+												<div class="cpp-fiel">
+													<%= form.text_area :info, class: "form-control tinymce", placeholder: "About your brand"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="cp-field">
+											  <h5>Address</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :address, class: "form-control tinymce", placeholder: "Brand address"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Email Address</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :email, class: "form-control tinymce", placeholder: "Brand email address"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Phone Number</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :phone_number, class: "form-control tinymce", placeholder: "Enter phone number"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Country</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :country, class: "form-control tinymce", placeholder: "Enter country"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+                      <div class="cp-field">
+												<h5>State</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :state, class: "form-control tinymce", placeholder: "Enter state"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+      								<div class="cp-field">
+												<h5>City</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :city, class: "form-control tinymce", placeholder: "Enter city"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs">
+												<ul>
+													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+									</div><!--acc-setting end-->
+								</div>
 
-      <div class="col-sm-12 form-group">
-        <%= form.label :brand_category, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.collection_select(:category_id, Category.all, :id, :name, 
-        {prompt: 'Select brand category'}, class: "form-control") %>
-      </div>
+							  	<div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+							  		<div class="acc-setting">
+							  			<h3>Social Profiles</h3>
+							  			
+											<div class="cp-field">
+												<h5>Business Website</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :website_url, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Facebook</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Twitter</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Instagram</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
+												</div>
+											</div>
+                      <div class="field">
+                        <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+							  		</div><!--acc-setting end-->
+							  	</div>
+							  	
+									<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
+							  		<div class="acc-setting">
+										<h3>Products</h3>
+										
+											<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :products, class: "form-control tinymce", placeholder: "Describe your products"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+									</div><!--acc-setting end-->
+							  	</div>
+							  	
+							  	<div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+							  		<div class="acc-setting">
+							  			<h3>Services</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :services, class: "form-control tinymce", placeholder: "Describe your services"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
 
-      <div class="form-group col-sm-12">
-        <%= form.label :brand_info, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :info, class: "form-control tinymce", placeholder: "About your brand"%>
-        <%= tinymce %>
-      </div> 
-
-      <div class="form-group col-sm-12">
-        <%= form.label :address, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :address, class: "form-control tinymce", placeholder: "Brand address"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :email, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :email, class: "form-control tinymce", placeholder: "Brand email address"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :phone_number, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :phone_number, class: "form-control tinymce", placeholder: "Enter phone number"%>
-        <%= tinymce %>
-      </div>
-      
-      <div class="form-group col-sm-12">
-        <%= form.label :country, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :country, class: "form-control tinymce", placeholder: "Enter country"%>
-        <%= tinymce %>
-      </div>
-      
-      <div class="form-group col-sm-12">
-        <%= form.label :state, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :state, class: "form-control tinymce", placeholder: "Enter state"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :city, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :city, class: "form-control tinymce", placeholder: "Enter city"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :website, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :website_url, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :facebook_url, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :twitter_url, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :instagram_url, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
-      </div>
-
-      <div class="field">
-        <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
-      </div>
-    
-      <div class="col-sm-12">
-        <%= form.label :brand_logo, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.file_field :image %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :products, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :products, class: "form-control tinymce", placeholder: "Describe your products"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :services, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :services, class: "form-control tinymce", placeholder: "Describe your services"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :portfolio, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :portfolio, class: "form-control tinymce", placeholder: "Enter brand portfolio"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :team, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :team, class: "form-control tinymce", placeholder: "Describe your team"%>
-        <%= tinymce %>
-      </div>
-            
-      <div class="col-sm-12">
-        <%= form.hidden_field :image_cache %>
-      </div>
-
-      <br>
-      <hr/>
-  
-    </div>
-    <div class="form-group col-sm-12 m-0" style="padding-left: 15px; padding-right: 30px; padding-bottom: 60px;">
-      <%= form.submit 'Create Brand', class: "actions btn rounded btn-primary float-right" %>
-       <%= link_to 'Back', :back, class: "btn btn-secondary rounded" %>
-    </div>
-  </div>
+							  	<div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
+							  		<div class="acc-setting">
+							  			<h3>Portfolio</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :portfolio, class: "form-control tinymce", placeholder: "Enter brand portfolio"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-team" role="tabpanel" aria-labelledby="nav-team-tab">
+							  		<div class="acc-setting">
+							  			<h3>Team</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :team, class: "form-control tinymce", placeholder: "Describe your team"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-logo" role="tabpanel" aria-labelledby="nav-logo-tab">
+							  		<div class="acc-setting">
+							  			<h3>Upload Logo</h3>
+							  			<div class="requests-list">
+							  				<div class="request-details">
+							  					<div class="noty-user-img">
+							  						<% if @enterprise.image_url %>
+															<%= image_tag @enterprise.image_url, style: "width: 100px; height: 50px;" %>
+														<% else %>
+															<%= image_tag 'avatar.png', style: "width: 100px; height: 50px;" %>
+														<% end %>
+							  					</div>
+							  					<div class="request-info">
+							  						<%# <h3>Change Brand Logo</h3> %>
+							  						<%# <span>Change Brand Logo</span> %>
+							  					</div>
+							  					<div class="accept-feat">
+							  						<ul>
+							  							<li><%= form.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes } %></li>
+							  						</ul>
+							  					</div><!--accept-feat end-->
+													<div class="save-stngs pd2">
+														<ul>
+                              <li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
+													    <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+														</ul>
+													</div><!--save-stngs end-->
+							  				</div><!--request-detailse end-->
+							  			</div><!--requests-list end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</div><!--account-tabs-setting end-->
+			</div>
+	</section>
 <% end %>
+
+<style>
+.acc-leftbar {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+}
+.acc-leftbar .nav-tabs > a {
+	float: left;
+	width: 100%;
+	background: none;
+	padding: 18px 20px;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	border-left: 0;
+	border-right: 0;
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+}
+.nav-tabs {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a:last-child {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a i {
+	padding-right: 15px;
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+	font-weight: 700;
+	width: 40px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	background-color: inherit;
+	color: #0070C0;
+	border-color: inherit;
+}
+.acc-setting {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	-webkit-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+}
+.acc-setting form {
+	float: left;
+	width: 100%;
+}
+.acc-setting > h3 {
+	float: left;
+	width: 100%;
+	color: #000000;
+	font-weight: 600;
+	font-size: 18px;
+	text-transform: capitalize;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 17px 20px;
+}
+.notbar {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
+	position: relative;
+}
+.notbar h4 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.notbar p {
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	width: 75%;
+}
+.toggle-btn {
+	position: absolute;
+	top: 35px;
+	right: 20px	;
+}
+.save-stngs {
+	float: left;
+	width: 100%;
+	padding: 30px 20px 50px 20px;
+}
+.save-stngs.pd2 {
+	padding: 25px 20px 42px 20px;
+}
+.save-stngs.pd3 {
+	padding: 25px 20px 25px 20px;
+}
+.save-stngs ul li {
+	display: inline-block;
+	margin-right: 17px;
+}
+.save-stngs ul li button {
+	display: inline-block;
+	color: #000000;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 22px;
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+}
+.save-stngs ul li button:hover {
+	background-color: #e44d3a;
+	color: #fff;
+	border-color: transparent;
+}
+.profile-bx-details {
+	float: left;
+	width: 100%;
+	padding: 30px 7px 30px 7px;
+}
+.profile-bx-details .row .col-lg-3 {
+	padding: 0 7px;
+}
+.profile-bx-info {
+	float: left;
+	width: 100%;
+	background-color: #f2f2f2;
+	padding: 20px;
+	border: 1px solid #e5e5e5;
+}
+.pro-bx {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 10px;
+}
+.bx-info {
+	float: left;
+	margin-top: 7px;
+	padding-left: 15px;
+}
+.bx-info h3 {
+	color: #e44d3a;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}	
+.bx-info h5 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.pd-left-20 {
+	padding-left: 20px;
+	padding-right: 0;
+}
+.pd-left-15 {
+	padding-left: 15px;
+	padding-right: 0;
+}
+.pd-left-right {
+	padding-left: 15px;
+	padding-right: 20px;
+}
+.profile-bx-info > p {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+	line-height: 22px;
+	padding-top: 3px;
+}
+.pro-work-status {
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+}
+.pro-work-status h4 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+.cp-field {
+	float: left;
+	width: 100%;
+	margin-top: 29.4px;
+	padding: 0 20px;
+}
+.cp-field h5 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.cp-field h5 a {
+	color: #000;
+}
+.cpp-fiel {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.cp-field input {
+	height: 40px;
+	padding: 0 40px;
+}
+.cp-field input,
+.cp-field textarea {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+}
+.cp-field textarea {
+	padding: 20px;
+	height: 115px;	
+}
+.cpp-fiel i {
+	position: absolute;
+	top: 12px;
+	left: 15px;
+	color: #b2b2b2;
+	font-size: 16px;
+}
+.cp-field > p {
+	float: left;
+	width: 100%;
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: 5px;
+}
+.notifications-list {
+	float: left;
+	width: 100%;
+}
+.notfication-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.notfication-details:last-child {
+	border-bottom: 0;
+}
+.noty-user-img {
+	float: left;
+	width: 35px;
+}
+.noty-user-img img {
+	width: 100%;
+}
+.notification-info {
+	float: left;
+	width: auto;
+	padding-left: 10px;
+}
+.notification-info h3 {
+	color: #686868;
+	font-size: 14px;
+	font-weight: 600;
+	border: 0;
+	padding: 0;
+	margin-bottom: 6px;
+}
+.notification-info h3 a {
+	color: #000000;
+	font-size: 16px;
+	display: inline-block;
+}
+.notification-info > span {
+	display: inline-block;
+	color: #b2b2b2;
+	font-size: 12px;
+	font-weight: 600;
+}
+.requests-list {
+	float: left;
+	width: 100%;
+	padding-bottom: 0;
+}
+.request-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.request-details:last-child {
+	border-bottom: 0;
+}
+.request-info {
+	float: left;
+	padding-left: 10px;
+}
+.request-info h3 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0;
+	border: 0;
+	margin-bottom: 3px;
+}
+.request-info span {
+	color: #686868;
+	font-size: 12px;
+	display: inline-block;
+}
+.accept-feat {
+	float: right;
+}
+.accept-feat ul li {
+	display: inline-block;
+}
+.accept-feat ul li button {
+	cursor: pointer;
+}
+.accept-req {
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #51a5fb;
+	height: 30px;
+	padding: 0 20px;
+	font-weight: 600;
+	border: 0;
+	border: 1px solid #51a5fb;
+}
+.close-req {
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #e5e5e5;
+	background: inherit;
+	color: #b2b2b2;
+	margin-left: 7px;
+}
+.close-req i {
+	font-weight: 600;
+}
+</style>

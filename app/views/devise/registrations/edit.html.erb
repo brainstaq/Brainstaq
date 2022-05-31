@@ -1,53 +1,49 @@
 <% content_for :title, "Edit Settings" %>
 
-
 <!-- start of page-header -->
 <section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
   <div class="container h-100">
-      <div class="row d-flex align-items-center h-100">
-          <div class="col-md-12 text-center">
-              <h2 class="h1 font-weight-bold">Edit Account</h2>
-              <nav class="mt-15" aria-label="breadcrumb">
-                  <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
-                      <li class="breadcrumb-item"><%= link_to "Profile", profile_path(current_user.username), class: "text-black-300" %></li>
-                      <li class="breadcrumb-item text-primary" aria-current="page">Edit Account</li>
-                  </ol>
-              </nav>
-          </div>
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Edit Account</h2>
+          <nav class="mt-15" aria-label="breadcrumb">
+            <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+              <li class="breadcrumb-item"><%= link_to "Profile", profile_path(current_user.username), class: "text-black-300" %></li>
+              <li class="breadcrumb-item text-primary" aria-current="page">Edit Account</li>
+            </ol>
+          </nav>
+        </div>
       </div>
-  </div>
-
-  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
-  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
-  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
-  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
-  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
-  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
-  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
-  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+    </div>
+		<div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+		<div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+		<div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+		<div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+		<div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+		<div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+		<div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+		<div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+	</div>
 </section>
 <!-- end of page-header -->
 
-<header class="section-header mb-5" style="padding-top: 50px;">
-  <%# <h3>Edit <span class="text-primary">Account</span></h3> %>
-</header>
+<header class="section-header mb-5" style="padding-top: 50px;"></header>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <small><%= render "devise/shared/error_messages", resource: resource %></small>
-
-<section class="profile-account-setting">
-			<div class="container">
-				<div class="account-tabs-setting">
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="acc-leftbar">
-								<div class="nav nav-tabs" id="nav-tab" role="tablist">
-								    <a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true">Personal Details</a>
-								    <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Social Profiles</a>
-								    <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Change Password</a>
-								    <a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">Upload Photo</a>
-								    <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">Delete Account</a>
-								  </div>
+  <section class="profile-account-setting">
+		<div class="container">
+			<div class="account-tabs-setting">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="acc-leftbar">
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true">Personal Details</a>
+								<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Social Profiles</a>
+								<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Change Password</a>
+								<a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">Upload Photo</a>
+								<a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">Delete Account</a>
+								</div>
 							</div><!--acc-leftbar end-->
 						</div>
 						<div class="col-lg-9">
@@ -55,120 +51,190 @@
 								<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
 									<div class="acc-setting">
 										<h3>Personal Details</h3>
-										<form>
 											<div class="cp-field">
+												<h5>Last Name</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="old-password" placeholder="Last Name">
+													<%= f.text_field :last_name, :readonly => f.object.persisted?, placeholder: "Last Name", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>First Name</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="new-password" placeholder="First Name">
+													<%= f.text_field :first_name, :readonly => f.object.persisted?, placeholder: "First Name", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Username</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Username">
+													<%= f.text_field :username, :readonly => f.object.persisted?, placeholder: "Username", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+											  <h5>Gender</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Gender">
+													<%= f.select :gender, %w{Male Female}, {}, :prompt => 'Select', class: 'form-control' %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Country</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Country">
+													<% if @user.country %>
+														<%= f.text_field :country, value: "#{@user.country}", :class => 'form-control' %>
+													<% else %>
+														<%= f.select :country, options_for_select([
+															['Algeria'],
+															['Angola'],
+															['Benin'],
+															['Botswana'],
+															['Burkina Faso'],
+															['Burundi'],
+															['Cape Verde'],
+															['Cameroon'],
+															['Central African Republic (CAR)'],
+															['Chad'],
+															['Comoros'],
+															['Republic of the Congo'],
+															['Democratic Republic of Congo'],
+															["Cote d'Ivoire"],
+															['Djibouti'],
+															['Egypt'],
+															['Equatorial Guinea'],
+															['Eritrea'],
+															['Eswatini (formerly Swaziland)'],
+															['Ethiopia'],
+															['Gabon'],
+															['Gambia'],
+															['Ghana'],
+															['Guinea'],
+															['Guinea-Bissau'],
+															['Kenya'],
+															['Lesotho'],
+															['Liberia'],
+															['Libya'],
+															['Madagascar'],
+															['Malawi'],
+															['Mali'],
+															['Mauritania'],
+															['Mauritius'],
+															['Morocco'],
+															['Mozambique'],
+															['Namibia'],
+															['Niger'],
+															['Nigeria'],
+															['Rwanda'],
+															['Sao Tome and Principe'],
+															['Senegal'],
+															['Seychelles'],
+															['Sierra Leone'],
+															['Somalia'],
+															['South Africa'],
+															['South Sudan'],
+															['Sudan'],
+															['Tanzania'],
+															['Togo'],
+															['Tunisia'],
+															['Uganda'],
+															['Zambia'],
+															['Zimbabwe']
+														]), {}, :class => 'form-control' %>
+													<% end %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Phone Number</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Phone Number">
+													<%= f.number_field :phone, placeholder: "Phone Number", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Bio</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Bio">
+													<%= f.text_area :bio, placeholder: "Enter a brief description of yourself", class: "form-control" %>
 												</div>
 											</div>
 											<div class="save-stngs">
 												<ul>
-													<li><button type="submit">Update Account</button></li>
-													<li><button type="submit">Cancel</button></li>
+													<li><%= f.submit "Update Account", class: "btn btn-primary" %></li>
+													<li><%= link_to "Cancel", :back, class: "btn btn-secondary" %></li>
 												</ul>
 											</div><!--save-stngs end-->
-										</form>
+										
 									</div><!--acc-setting end-->
 								</div>
 
 							  	<div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
 							  		<div class="acc-setting">
 							  			<h3>Social Profiles</h3>
-							  			<form>
+							  			
 											<div class="cp-field">
+												<h5>Website</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="old-password" placeholder="Enter your website... e.g http://example.com">
+													<%= f.text_field :website, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Facebook</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="new-password" placeholder="Enter your Facebook profile link... e.g https://facebook.com/profile-name">
+													<%= f.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Twitter</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Enter your Twitter profile link... e.g https://twitter.com/profile-name">
+													<%= f.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Instagram</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Enter your Instagram profile link... e.g https://instagram.com/profile-name">
+													<%= f.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
+												<h5>Linkedin</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Enter your Linkedin profile link... e.g https://linkedin.com/in/profile-name">
+													<%= f.text_field :linkedin_url, placeholder: "Enter your Linkedin profile link... e.g https://linkedin.com/profile", class: "form-control" %>
 												</div>
 											</div>
 											<div class="save-stngs pd2">
 												<ul>
-													<li><button type="submit">Update Account</button></li>
-													<li><button type="submit">Cancel</button></li>
+													<li><%= f.submit "Update Account", class: "btn btn-primary" %></li>
+													<li><%= link_to "Cancel", :back, class: "btn btn-secondary" %></li>
 												</ul>
 											</div><!--save-stngs end-->
-										</form>
+										
 							  		</div><!--acc-setting end-->
 							  	</div>
 							  	
 									<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
 							  		<div class="acc-setting">
 										<h3>Change Password</h3>
-										<form>
+										
 											<div class="cp-field">
-												<h5>Old Password</h5>
+												<h5>Current Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="old-password" placeholder="Old Password">
+													<%= f.password_field :current_password, placeholder: "Enter your current password to confirm your changes", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>New Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="new-password" placeholder="New Password">
+													<%= f.password_field :password, placeholder: "Enter New Password", class: "form-control" %>
 												</div>
 											</div>
 											<div class="cp-field">
-												<h5>Repeat Password</h5>
+												<h5>Confirm New Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Confirm Password">
+													<%= f.password_field :password_confirmation, placeholder: "Confirm New Password", class: "form-control" %>
 												</div>
 											</div>
 											<div class="save-stngs pd2">
 												<ul>
-													<li><button type="submit">Update Account</button></li>
-													<li><button type="submit">Cancel</button></li>
+													<li><%= f.submit "Update Account", class: "btn btn-primary" %></li>
+													<li><%= link_to "Cancel", :back, class: "btn btn-secondary" %></li>
 												</ul>
 											</div><!--save-stngs end-->
-										</form>
+										
 									</div><!--acc-setting end-->
 							  	</div>
 							  	
@@ -178,7 +244,11 @@
 							  			<div class="requests-list">
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="http://via.placeholder.com/35x35" alt="">
+							  						<% if @user.image_url %>
+															<%= image_tag @user.image_url, style: "width: 32px;", class: "rounded-circle mr-2" %>
+														<% else %>
+															<%= image_tag 'avatar.png', style: "width: 32px;", class: "rounded-circle mr-2" %>
+														<% end %>
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Change Profile Photo</h3>
@@ -186,13 +256,13 @@
 							  					</div>
 							  					<div class="accept-feat">
 							  						<ul>
-							  							<li><button type="submit" class="accept-req">Browse</button></li>
+							  							<li><%= f.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes } %></li>
 							  						</ul>
 							  					</div><!--accept-feat end-->
 													<div class="save-stngs pd2">
 														<ul>
-															<li><button type="submit">Update Account</button></li>
-															<li><button type="submit">Cancel</button></li>
+													<li><%= f.submit "Update Account", class: "btn btn-primary" %></li>
+													<li><%= link_to "Cancel", :back, class: "btn btn-secondary" %></li>
 														</ul>
 													</div><!--save-stngs end-->
 							  				</div><!--request-detailse end-->
@@ -203,7 +273,7 @@
 							  	<div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
 							  		<div class="acc-setting">
 										<h3 class="text-danger">Delete Account</h3>
-										<form>
+										
 											<div class="cp-field">
 												<p>We are not happy to see you go. Deleting your account would delete all
 												of your conversations and also remove you of Brainstaq's mailing list and 
@@ -211,10 +281,10 @@
 											</div>
 											<div class="save-stngs pd3">
 												<ul>
-													<li><button type="submit">Delete Account</button></li>
+													<%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger rounded text-white" %>
 												</ul>
 											</div><!--save-stngs end-->
-										</form>
+										
 									</div><!--acc-setting end-->
 							  	</div>
 							</div>
@@ -267,7 +337,7 @@
 }
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 	background-color: inherit;
-	color: #e44d3a;
+	color: #0070C0;
 	border-color: inherit;
 }
 .acc-setting {

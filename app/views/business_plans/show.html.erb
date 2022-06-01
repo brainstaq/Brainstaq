@@ -43,71 +43,71 @@
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Executive Summary</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.executive_summary %>
+    <%= sanitize @business_plan.executive_summary %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Vision</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.vision %>
+    <%= sanitize @business_plan.vision %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Mission</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.mission %>
+    <%= sanitize @business_plan.mission %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Objectives</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.objectives %>
+    <%= sanitize @business_plan.objectives %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Value Proposition</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.value_proposition %>
+    <%= sanitize @business_plan.value_proposition %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Products and Services</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.products_and_services %>
+    <%= sanitize @business_plan.products_and_services %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Industry Analysis</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.industry_analysis %>
+    <%= sanitize @business_plan.industry_analysis %>
   </p>
 
     <h4 class="mb-0 mt-3" style="font-weight: bold;">Competition</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.competition %>
+    <%= sanitize @business_plan.competition %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">SWOT</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.swot %>
+    <%= sanitize @business_plan.swot %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Operations Plan</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.operations %>
+    <%= sanitize @business_plan.operations %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Marketing Plan</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.marketing %>
+    <%= sanitize @business_plan.marketing %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Financial Plan</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.financial %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Appendices</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.appendices %>
+    <%= sanitize @business_plan.financial %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Milestones</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.milestones %>
+    <%= sanitize @business_plan.milestones %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Appendices</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @business_plan.appendices %>
   </p>
 </div>

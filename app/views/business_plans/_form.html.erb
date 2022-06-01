@@ -1,3 +1,5 @@
+<header class="section-header mb-5" style="padding-top: 50px;"></header>
+
 <%= form_for ([@enterprise, @business_plan]) do |form| %>
   <% if business_plan.errors.any? %>
     <div id="error_explanation" class="text-center text-danger">
@@ -10,101 +12,625 @@
     </div>
   <% end %>
 
-  <div class="idea-form container col-lg-8", style= "margin-top: 100px;">
-    <div class="row m-auto">
-      <div class="col-sm-12 form-group">
-        <%= form.label :executive_summary, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :executive_summary, class: "form-control tinymce", placeholder: "Enter executive summary"  %>
-        <%= tinymce %>
-      </div>
+  <section class="profile-account-setting">
+		<div class="container">
+			<div class="account-tabs-setting">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="acc-leftbar">
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-summary-tab" data-toggle="tab" href="#nav-summary" role="tab" aria-controls="nav-summary" aria-selected="true">Executive Summary</a>
+								<a class="nav-item nav-link" id="nav-vision-tab" data-toggle="tab" href="#nav-vision" role="tab" aria-controls="nav-vision" aria-selected="false">Vision, Mission & Objectives</a>
+								<a class="nav-item nav-link" id="nav-value-tab" data-toggle="tab" href="#nav-value" role="tab" aria-controls="nav-value" aria-selected="false">Value Proposition</a>
+                <a class="nav-item nav-link" id="nav-products-tab" data-toggle="tab" href="#nav-products" role="tab" aria-controls="nav-products" aria-selected="false">Products and Services</a>
+                <a class="nav-item nav-link" id="nav-industry-tab" data-toggle="tab" href="#nav-industry" role="tab" aria-controls="nav-industry" aria-selected="false">Industry Analysis</a>
+                <a class="nav-item nav-link" id="nav-competition-tab" data-toggle="tab" href="#nav-competition" role="tab" aria-controls="nav-competition" aria-selected="false">Competition</a>
+                <a class="nav-item nav-link" id="nav-swot-tab" data-toggle="tab" href="#nav-swot" role="tab" aria-controls="nav-swot" aria-selected="false">SWOT Analysis</a>
+								<a class="nav-item nav-link" id="nav-operations-tab" data-toggle="tab" href="#nav-operations" role="tab" aria-controls="nav-operations" aria-selected="false">Operations Plan</a>
+								<a class="nav-item nav-link" id="nav-marketing-tab" data-toggle="tab" href="#nav-marketing" role="tab" aria-controls="nav-marketing" aria-selected="false">Marketing Plan</a>
+								<a class="nav-item nav-link" id="nav-financial-tab" data-toggle="tab" href="#nav-financial" role="tab" aria-controls="nav-financial" aria-selected="false">Financial Plan</a>
+								<a class="nav-item nav-link" id="nav-milestones-tab" data-toggle="tab" href="#nav-milestones" role="tab" aria-controls="nav-milestones" aria-selected="false">Milestones</a>
+                <a class="nav-item nav-link" id="nav-appendices-tab" data-toggle="tab" href="#nav-appendices" role="tab" aria-controls="nav-appendices" aria-selected="false">Appendices</a>
+								</div>
+							</div><!--acc-leftbar end-->
+						</div>
+						<div class="col-lg-9">
+							<div class="tab-content" id="nav-tabContent">
+								<div class="tab-pane fade show active" id="nav-summary" role="tabpanel" aria-labelledby="nav-summary-tab">
+									<div class="acc-setting">
+										<h3>Executive Summary</h3>
+											<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :executive_summary, class: "form-control tinymce", placeholder: "Enter executive summary"  %>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs">
+												<ul>
+													<li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+									</div><!--acc-setting end-->
+								</div>
 
-      <div class="form-group col-sm-12">
-        <%= form.label :vision, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :vision, placeholder: "Enter your Brand vision", class: "form-control tinymce" %>
-        <%= tinymce %>
-      </div>
+							  	<div class="tab-pane fade" id="nav-vision" role="tabpanel" aria-labelledby="nav-vision-tab">
+							  		<div class="acc-setting">
+							  			<h3>Vision, Mission & Objectives</h3>	
+											<div class="cp-field">
+												<h5>Vision</h5>
+												<div class="cpp-fiel">
+													<%= form.text_area :vision, placeholder: "Enter your Brand vision", class: "form-control tinymce" %>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Mission</h5>
+												<div class="cpp-fiel">
+													<%= form.text_area :mission, placeholder: "Enter your Brand mission", class: "form-control tinymce" %>
+                          <%= tinymce %>
+												</div>
+											</div>
+                      <div class="cp-field">
+												<h5>Objectives</h5>
+												<div class="cpp-fiel">
+													<%= form.text_area :objectives, placeholder: "List your Brand objectives", class: "form-control tinymce" %>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										
+							  		</div><!--acc-setting end-->
+							  	</div>
+							  		
+							  	<div class="tab-pane fade" id="nav-value" role="tabpanel" aria-labelledby="nav-value-tab">
+							  		<div class="acc-setting">
+							  			<h3>Value Proposition</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :value_proposition, placeholder: "Enter your value proposition", class: "form-control tinymce" %>
+                          <%= tinymce %>
+												</div>
+											</div>
+                      <div class="field">
+                        <%= form.hidden_field :enterprise_id %>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
 
-      <div class="form-group col-sm-12">
-        <%= form.label :mission, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :mission, placeholder: "Enter your Brand mission", class: "form-control tinymce" %>
-        <%= tinymce %>
-      </div>
+							  	<div class="tab-pane fade" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab">
+							  		<div class="acc-setting">
+							  			<h3>Products & Services</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :products_and_services, class: "form-control tinymce", placeholder: "Describe your products and services"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-industry" role="tabpanel" aria-labelledby="nav-industry-tab">
+							  		<div class="acc-setting">
+							  			<h3>Industry Analysis</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_area :industry_analysis, class: "form-control tinymce", placeholder: "Enter industry analysis"%>
+                          <%= tinymce %>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-competition" role="tabpanel" aria-labelledby="nav-competition-tab">
+							  		<div class="acc-setting">
+							  			<h3>Competition</h3>
+                      <div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :competition, class: "form-control tinymce", placeholder: "Describe your competitors and the competition"%>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+                      <div class="save-stngs pd2">
+                        <ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                        </ul>
+                      </div><!--save-stngs end-->
+                    </div><!--acc-setting end-->
+                  </div>
 
-      <div class="form-group col-sm-12">
-        <%= form.label :objectives, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :objectives, placeholder: "List your Brand objectives", class: "form-control tinymce" %>
-        <%= tinymce %>
-      </div>
+                  <div class="tab-pane fade" id="nav-swot" role="tabpanel" aria-labelledby="nav-swot-tab">
+							  		<div class="acc-setting">
+							  			<h3>SWOT Analysis</h3>
+							  			<div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :swot, class: "form-control tinymce", placeholder: "Enter SWOT Analysis"%>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  
+                  <div class="tab-pane fade" id="nav-operations" role="tabpanel" aria-labelledby="nav-operations-tab">
+							  		<div class="acc-setting">
+							  			<h3>Operations Plan</h3>
+							  			<div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :operations, class: "form-control tinymce", placeholder: "Describe your operations plan"%>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  
+                  <div class="tab-pane fade" id="nav-marketing" role="tabpanel" aria-labelledby="nav-marketing-tab">
+							  		<div class="acc-setting">
+							  			<h3>Marketing Plan</h3>
+							  			<div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :marketing, class: "form-control tinymce", placeholder: "Describe your marketing plan"%>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  
+                  <div class="tab-pane fade" id="nav-financial" role="tabpanel" aria-labelledby="nav-financial-tab">
+							  		<div class="acc-setting">
+							  			<h3>Financial Plan</h3>
+							  			<div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :financial, class: "form-control tinymce", placeholder: "What is your financial plan?"%>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
 
-      <div class="form-group col-sm-12">
-        <%= form.label :value_proposition, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :value_proposition, placeholder: "Enter your value proposition", class: "form-control tinymce" %>
-        <%= tinymce %>
-      </div>
+                  <div class="tab-pane fade" id="nav-milestones" role="tabpanel" aria-labelledby="nav-milestones-tab">
+							  		<div class="acc-setting">
+							  			<h3>Milestones</h3>
+							  			<div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :milestones, placeholder: "Enter your milestones", class: "form-control tinymce" %>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
 
-      <div class="field">
-        <%= form.hidden_field :enterprise_id %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :products_and_services, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :products_and_services, class: "form-control tinymce", placeholder: "Describe your products and services"%>
-        <%= tinymce %>
-      </div> 
-
-      <div class="form-group col-sm-12">
-        <%= form.label :industry_analysis, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :industry_analysis, class: "form-control tinymce", placeholder: "Enter industry analysis"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :competition, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :competition, class: "form-control tinymce", placeholder: "Describe your competitors and the competition"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :SWOT, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :swot, class: "form-control tinymce", placeholder: "Enter SWOT Analysis"%>
-        <%= tinymce %>
-      </div>
-      
-      <div class="form-group col-sm-12">
-        <%= form.label :operations_plan, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :operations, class: "form-control tinymce", placeholder: "Describe your operations plan"%>
-        <%= tinymce %>
-      </div>
-      
-      <div class="form-group col-sm-12">
-        <%= form.label :marketing_plan, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :marketing, class: "form-control tinymce", placeholder: "Describe your marketing plan"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :financial_plan, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :financial, class: "form-control tinymce", placeholder: "What is your financial plan?"%>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :appendices, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :appendices, placeholder: "Enter appendices", class: "form-control tinymce" %>
-        <%= tinymce %>
-      </div>
-
-      <div class="form-group col-sm-12">
-        <%= form.label :milestones, class: "text-primary", style: "font-size: 18px;" %>
-        <%= form.text_area :milestones, placeholder: "Enter your milestones", class: "form-control tinymce" %>
-        <%= tinymce %>
-      </div>
-      <br>
-      <hr/>
-    </div>
-    <div class="form-group col-sm-12 m-0" style="padding-left: 15px; padding-right: 30px; padding-bottom: 60px;">
-      <%= form.submit 'Create Business Plan', class: "actions btn rounded btn-primary float-right" %>
-       <%= link_to "Cancel", :back, class: "btn btn-secondary rounded" %>
-    </div>
-  </div>
+                  <div class="tab-pane fade" id="nav-appendices" role="tabpanel" aria-labelledby="nav-appendices-tab">
+							  		<div class="acc-setting">
+							  			<h3>Appendices</h3>
+							  			<div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :appendices, placeholder: "Enter appendices", class: "form-control tinymce" %>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</div><!--account-tabs-setting end-->
+			</div>
+	</section>
 <% end %>
+
+<style>
+.acc-leftbar {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+}
+.acc-leftbar .nav-tabs > a {
+	float: left;
+	width: 100%;
+	background: none;
+	padding: 18px 20px;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	border-left: 0;
+	border-right: 0;
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+}
+.nav-tabs {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a:last-child {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a i {
+	padding-right: 15px;
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+	font-weight: 700;
+	width: 40px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	background-color: inherit;
+	color: #0070C0;
+	border-color: inherit;
+}
+.acc-setting {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	-webkit-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+}
+.acc-setting form {
+	float: left;
+	width: 100%;
+}
+.acc-setting > h3 {
+	float: left;
+	width: 100%;
+	color: #000000;
+	font-weight: 600;
+	font-size: 18px;
+	text-transform: capitalize;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 17px 20px;
+}
+.notbar {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
+	position: relative;
+}
+.notbar h4 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.notbar p {
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	width: 75%;
+}
+.toggle-btn {
+	position: absolute;
+	top: 35px;
+	right: 20px	;
+}
+.save-stngs {
+	float: left;
+	width: 100%;
+	padding: 30px 20px 50px 20px;
+}
+.save-stngs.pd2 {
+	padding: 25px 20px 42px 20px;
+}
+.save-stngs.pd3 {
+	padding: 25px 20px 25px 20px;
+}
+.save-stngs ul li {
+	display: inline-block;
+	margin-right: 17px;
+}
+.save-stngs ul li button {
+	display: inline-block;
+	color: #000000;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 22px;
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+}
+.save-stngs ul li button:hover {
+	background-color: #e44d3a;
+	color: #fff;
+	border-color: transparent;
+}
+.profile-bx-details {
+	float: left;
+	width: 100%;
+	padding: 30px 7px 30px 7px;
+}
+.profile-bx-details .row .col-lg-3 {
+	padding: 0 7px;
+}
+.profile-bx-info {
+	float: left;
+	width: 100%;
+	background-color: #f2f2f2;
+	padding: 20px;
+	border: 1px solid #e5e5e5;
+}
+.pro-bx {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 10px;
+}
+.bx-info {
+	float: left;
+	margin-top: 7px;
+	padding-left: 15px;
+}
+.bx-info h3 {
+	color: #e44d3a;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}	
+.bx-info h5 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.pd-left-20 {
+	padding-left: 20px;
+	padding-right: 0;
+}
+.pd-left-15 {
+	padding-left: 15px;
+	padding-right: 0;
+}
+.pd-left-right {
+	padding-left: 15px;
+	padding-right: 20px;
+}
+.profile-bx-info > p {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+	line-height: 22px;
+	padding-top: 3px;
+}
+.pro-work-status {
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+}
+.pro-work-status h4 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+.cp-field {
+	float: left;
+	width: 100%;
+	margin-top: 29.4px;
+	padding: 0 20px;
+}
+.cp-field h5 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.cp-field h5 a {
+	color: #000;
+}
+.cpp-fiel {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.cp-field input {
+	height: 40px;
+	padding: 0 40px;
+}
+.cp-field input,
+.cp-field textarea {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+}
+.cp-field textarea {
+	padding: 20px;
+	height: 115px;	
+}
+.cpp-fiel i {
+	position: absolute;
+	top: 12px;
+	left: 15px;
+	color: #b2b2b2;
+	font-size: 16px;
+}
+.cp-field > p {
+	float: left;
+	width: 100%;
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: 5px;
+}
+.notifications-list {
+	float: left;
+	width: 100%;
+}
+.notfication-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.notfication-details:last-child {
+	border-bottom: 0;
+}
+.noty-user-img {
+	float: left;
+	width: 35px;
+}
+.noty-user-img img {
+	width: 100%;
+}
+.notification-info {
+	float: left;
+	width: auto;
+	padding-left: 10px;
+}
+.notification-info h3 {
+	color: #686868;
+	font-size: 14px;
+	font-weight: 600;
+	border: 0;
+	padding: 0;
+	margin-bottom: 6px;
+}
+.notification-info h3 a {
+	color: #000000;
+	font-size: 16px;
+	display: inline-block;
+}
+.notification-info > span {
+	display: inline-block;
+	color: #b2b2b2;
+	font-size: 12px;
+	font-weight: 600;
+}
+.requests-list {
+	float: left;
+	width: 100%;
+	padding-bottom: 0;
+}
+.request-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.request-details:last-child {
+	border-bottom: 0;
+}
+.request-info {
+	float: left;
+	padding-left: 10px;
+}
+.request-info h3 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0;
+	border: 0;
+	margin-bottom: 3px;
+}
+.request-info span {
+	color: #686868;
+	font-size: 12px;
+	display: inline-block;
+}
+.accept-feat {
+	float: right;
+}
+.accept-feat ul li {
+	display: inline-block;
+}
+.accept-feat ul li button {
+	cursor: pointer;
+}
+.accept-req {
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #51a5fb;
+	height: 30px;
+	padding: 0 20px;
+	font-weight: 600;
+	border: 0;
+	border: 1px solid #51a5fb;
+}
+.close-req {
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #e5e5e5;
+	background: inherit;
+	color: #b2b2b2;
+	margin-left: 7px;
+}
+.close-req i {
+	font-weight: 600;
+}
+</style>

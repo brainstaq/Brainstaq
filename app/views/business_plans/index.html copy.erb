@@ -1,0 +1,309 @@
+<% content_for :title, "Business Plans" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Business Plans</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to 'Brand', [@enterprise], class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Business Plans</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<!-- <div class="row justify-content-center align-self-center"> -->
+<main id="main">
+  <section class="section-padding pb-0" data-aos="fade-in" data-aos-delay="150">
+    <div class="site-section ideas-entry-wrap mt-0" style="margin-top: 0px;" data-aos="fade" data-aos-delay="100">
+      <div class="container mb-0">
+        <%= link_to 'New Business Plan', new_enterprise_business_plan_path(@enterprise), class: "btn btn-primary float-right" %>
+      </div>
+    </div>
+  </section>
+
+  <% unless @enterprise.business_plans.present?  %>
+    <p class="text-center mb-5">You don't have any business plan. 
+      <%= link_to "Create one", new_enterprise_business_plan_path(@enterprise) %> now!
+    </p>
+  <% else %>
+
+  <% @business_plans.each do |business_plan| %>
+  <div class="justify-content-center">
+    <div class="container">
+      <div class="row py-0">
+        <div class="col-12">
+          <table id="example" class="table table-hover responsive nowrap" style="width:100%">
+            <tbody>
+              <tr>
+                <td>
+                  <a href="#">
+                    <div class="d-flex align-items-center">
+                      <div class="avatar avatar-blue mr-3"><%= business_plan.id %></div>
+
+                      <div class="">
+                        <p class="font-weight-bold mb-0"><%= link_to (business_plan.enterprise.name).titleize, enterprise_business_plan_path(@enterprise, business_plan) %></p>
+                        <p class="text-muted mb-0">Updated on <%= local_time(business_plan.updated_at)%></p>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <div class="dropdown-toggle" role="button" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="top"
+                        title="Actions"></i>
+                    </div>
+                    
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                      <%= link_to "Edit", edit_enterprise_business_plan_path(@enterprise, business_plan), class: "dropdown-item" %>
+                      <%= link_to 'Delete', [@enterprise, business_plan], method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item text-danger" %>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</main>
+
+<style>
+
+.table {
+  border-spacing: 0 0.85rem !important;
+}
+
+.table .dropdown {
+  display: inline-block;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+  margin-bottom: 10px;
+  border: none;
+}
+
+/* .table thead tr,
+.table thead th {
+  border: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+} */
+
+.table td {
+  background: #ebf1f1;
+}
+
+.table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  line-height: 3rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: transparent;
+  position: relative;
+  text-align: center;
+  color: #868e96;
+  font-weight: 700;
+  vertical-align: bottom;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.avatar-sm {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.83333rem;
+  line-height: 1.5;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.avatar-blue {
+  background-color: #c8d9f1;
+  color: #467fcf;
+}
+
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > td:first-child:before,
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > th:first-child:before {
+  top: 28px;
+  left: 14px;
+  border: none;
+  box-shadow: none;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child {
+  padding-left: 48px;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+  width: 100%;
+}
+
+table.dataTable > tbody > tr.child span.dtr-title {
+  min-width: 50%;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
+  padding: 0.75rem 1rem 0.125rem;
+}
+
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_filter label {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    margin-top: 1rem;
+  }
+}
+
+.btn-icon {
+  background: #fff;
+}
+.btn-icon .bx {
+  font-size: 20px;
+}
+
+.btn .bx {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.dropdown-menu {
+  padding: 0.25rem 0;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+}
+
+.badge {
+  padding: 0.5em 0.75em;
+}
+
+.badge-success-alt {
+  background-color: #d7f2c2;
+  color: #7bd235;
+}
+
+.table a {
+  color: #212529;
+}
+
+.table a:hover,
+.table a:focus {
+  text-decoration: none;
+}
+
+table.dataTable {
+  margin-top: 12px !important;
+}
+
+.icon > .bx {
+  display: block;
+  min-width: 1.5em;
+  min-height: 1.5em;
+  text-align: center;
+  font-size: 1.0625rem;
+}
+
+.btn {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+}
+
+.avatar-blue {
+      background-color: #c8d9f1;
+      color: #467fcf;
+    }
+
+    .avatar-pink {
+      background-color: #fcd3e1;
+      color: #f66d9b;
+    }
+</style>
+
+<script>
+  $(document).ready(function() {
+  $("#example").DataTable({
+    aaSorting: [],
+    responsive: true,
+
+    columnDefs: [
+      {
+        responsivePriority: 1,
+        targets: 0
+      },
+      {
+        responsivePriority: 2,
+        targets: -1
+      }
+    ]
+  });
+
+  $(".dataTables_filter input")
+    .attr("placeholder", "Search here...")
+    .css({
+      width: "300px",
+      display: "inline-block"
+    });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+</script>

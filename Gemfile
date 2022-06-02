@@ -42,7 +42,9 @@ gem 'impressionist'
 gem 'acts_as_votable'
 gem 'uglifier', '~> 4.2', require: 'uglifier'
 gem 'omniauth-google-oauth2'
-#gem wicked_pdf
+gem 'wicked_pdf'
+gem "wkhtmltopdf-binary", group: :development
+gem "wkhtmltopdf-heroku", group: :production
 # gem 'public_activity', '~> 1.6', '>= 1.6.4'
 
 # local ENV var

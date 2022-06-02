@@ -38,6 +38,8 @@
         enterprise_business_plan_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
         <%= link_to fa_icon("edit", title: "Edit Business Plan", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
         edit_enterprise_business_plan_path(@enterprise) %>
+        <%= link_to fa_icon("file", title: "Download", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+        enterprise_business_plans_path(format: :pdf) %>
     <% end %>
   </div>
 

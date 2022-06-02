@@ -7,6 +7,22 @@ class BusinessPlansController < ApplicationController
   def index
     @business_plans = @enterprise.business_plans
   end
+
+  def download
+    @business_plan = BusinessPlan.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        render :pdf => "#{@business_plan.enterprise.name}",
+               :layout => "pdf",
+               :template => "pdf/download_templates",
+               :margin => { :top => 10, :bottom => 10, :left => 10, :right => 10},
+               :viewport_size => '1280x1024',
+               disposition: 'attachment'
+      end
+    end
+  end
   
   def new
     @business_plan = @enterprise.business_plans.build

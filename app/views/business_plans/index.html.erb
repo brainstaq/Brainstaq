@@ -27,10 +27,10 @@
 </section>
 <!-- end of page-header -->
 
-<section class="section-padding pb-0" data-aos="fade-in" data-aos-delay="150">
+<section class="section-padding pb-0" style="margin-top: -40px !important; margin-bottom: -20px !important;" data-aos="fade-in" data-aos-delay="150">
   <div class="site-section ideas-entry-wrap mt-0" style="margin-top: 0px;" data-aos="fade" data-aos-delay="100">
     <div class="container mb-0">
-      <%= link_to 'New Business Plan', new_enterprise_business_plan_path(@enterprise), class: "btn btn-primary float-right mr-5" %>
+      <%= link_to 'New Business Plan', new_enterprise_business_plan_path(@enterprise), class: "btn btn-primary float-right mr-5 mb-0 mt-0" %>
     </div>
   </div>
 </section>
@@ -41,7 +41,7 @@
   </p>
 <% else %>
 
-<section class="cards-wrapper">
+<section class="cards-wrapper mb-5" style="margin-top: -40px !important;">
   <% @business_plans.each do |business_plan| %>
     <div class="card-grid-space">
       <div class="card" href="" style="background-color: #0070C0;">
@@ -96,7 +96,7 @@ a {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 3rem;
   padding: 4rem;
-  margin: 0 auto;
+  margin: -50px auto;
   width: max-content;
 }
 
@@ -138,7 +138,6 @@ a {
 .card p {
   font-size: 10px;
   margin-top: 0.5em;
-  margin-bottom: 20px;
   line-height: 2em;
 }
 
@@ -149,6 +148,7 @@ a {
 .card .tags .tag {
   font-size: 0.75em;
   background: black;
+  margin-top: 30px;
   border-radius: 0.3rem;
   padding: 0 0.5em;
   margin-right: 0.5em;

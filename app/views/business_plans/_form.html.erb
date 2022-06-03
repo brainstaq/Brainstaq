@@ -28,6 +28,7 @@
                 <a class="nav-item nav-link" id="nav-swot-tab" data-toggle="tab" href="#nav-swot" role="tab" aria-controls="nav-swot" aria-selected="false">SWOT Analysis</a>
 								<a class="nav-item nav-link" id="nav-operations-tab" data-toggle="tab" href="#nav-operations" role="tab" aria-controls="nav-operations" aria-selected="false">Operations Plan</a>
 								<a class="nav-item nav-link" id="nav-marketing-tab" data-toggle="tab" href="#nav-marketing" role="tab" aria-controls="nav-marketing" aria-selected="false">Marketing Plan</a>
+								<a class="nav-item nav-link" id="nav-management-tab" data-toggle="tab" href="#nav-management" role="tab" aria-controls="nav-management" aria-selected="false">Management Plan</a>
 								<a class="nav-item nav-link" id="nav-financial-tab" data-toggle="tab" href="#nav-financial" role="tab" aria-controls="nav-financial" aria-selected="false">Financial Plan</a>
 								<a class="nav-item nav-link" id="nav-milestones-tab" data-toggle="tab" href="#nav-milestones" role="tab" aria-controls="nav-milestones" aria-selected="false">Milestones</a>
                 <a class="nav-item nav-link" id="nav-appendices-tab" data-toggle="tab" href="#nav-appendices" role="tab" aria-controls="nav-appendices" aria-selected="false">Appendices</a>
@@ -38,7 +39,18 @@
 							<div class="tab-content" id="nav-tabContent">
 								<div class="tab-pane fade show active" id="nav-summary" role="tabpanel" aria-labelledby="nav-summary-tab">
 									<div class="acc-setting">
-										<h3>Executive Summary</h3>
+										<h3>Executive Summary
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													The Executive Summary is a brief of all the contents of the business plan. 
+													It should be written in such a way that whoever reads it would get the 
+													essence of the entire business plan. It should cover every part of the 
+													business plan.
+												</p>
+											</details>
+										</h3>
+										
 											<div class="cp-field">
 												<div class="cpp-fiel">
 													<%= form.text_area :executive_summary, class: "form-control tinymce", placeholder: "Enter executive summary"  %>
@@ -59,21 +71,54 @@
 							  		<div class="acc-setting">
 							  			<h3>Vision, Mission & Objectives</h3>	
 											<div class="cp-field">
-												<h5>Vision</h5>
+												<h5>Vision
+													<details>
+														<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+														<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														The Vision Statement is a statement of what you want your company to 
+														become in the future. You may state the time frame for attaining the 
+														vision. The vision must be inspiring to drive you to higher and higher 
+														performances in the business.
+														</p>
+													</details>
+												</h5>
 												<div class="cpp-fiel">
 													<%= form.text_area :vision, placeholder: "Enter your Brand vision", class: "form-control tinymce" %>
                           <%= tinymce %>
 												</div>
 											</div>
 											<div class="cp-field">
-												<h5>Mission</h5>
+												<h5>Mission
+													<details>
+														<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+														<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+															The Mission Statement is simply the statement of the purpose for which 
+															the business is set up and is trying to achieve, its reason for 
+															existing that indicates the problem the company's product will solve 
+															and the market. 
+														</p>
+													</details>
+												</h5>
 												<div class="cpp-fiel">
 													<%= form.text_area :mission, placeholder: "Enter your Brand mission", class: "form-control tinymce" %>
                           <%= tinymce %>
 												</div>
 											</div>
                       <div class="cp-field">
-												<h5>Objectives</h5>
+												<h5>Objectives
+													<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													This is a list of what you want to achieve with the business over a defined 
+													period. Most importantly, your business objectives must be SMART:
+													Specific – target a specific area for improvement or initiation.
+													Measurable – quantify or at least suggest an indicator of progress.
+													Attainable – specify who will do it.
+													Realistic – state what results can realistically be achieved, given available resources.
+													Time bound – specify when the result(s) will be.
+												</p>
+											</details>
+												</h5>
 												<div class="cpp-fiel">
 													<%= form.text_area :objectives, placeholder: "List your Brand objectives", class: "form-control tinymce" %>
                           <%= tinymce %>
@@ -91,7 +136,21 @@
 							  		
 							  	<div class="tab-pane fade" id="nav-value" role="tabpanel" aria-labelledby="nav-value-tab">
 							  		<div class="acc-setting">
-							  			<h3>Value Proposition</h3>
+							  			<h3>Value Proposition
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													This is a promise of value to be delivered and acknowledged. 
+													It is what gives the target market an expectation of what benefits will 
+													be delivered and experienced from the product or service. It could be:
+													- It could be reduction in time
+													- Reduction in cost
+													- Enhancement of health
+													- It could be enhancement of efficiency in the customers’ business or 
+													life, etc.
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
 												<div class="cpp-fiel">
 													<%= form.text_area :value_proposition, placeholder: "Enter your value proposition", class: "form-control tinymce" %>
@@ -112,7 +171,15 @@
 
 							  	<div class="tab-pane fade" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab">
 							  		<div class="acc-setting">
-							  			<h3>Products & Services</h3>
+							  			<h3>Products & Services
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													In this section, you should describe the products and/or services that 
+													would deliver the value proposed to customers.
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
 												<div class="cpp-fiel">
 													<%= form.text_area :products_and_services, class: "form-control tinymce", placeholder: "Describe your products and services"%>
@@ -129,7 +196,23 @@
 							  	</div>
                   <div class="tab-pane fade" id="nav-industry" role="tabpanel" aria-labelledby="nav-industry-tab">
 							  		<div class="acc-setting">
-							  			<h3>Industry Analysis</h3>
+							  			<h3>Industry Analysis
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Here, you are expected to conduct a thorough research on the market. 
+													You need to:
+													- State the industry or the sector of the economy (health, agriculture, construction, manufacturing, etc.) in which your business is playing
+													- State the key features or peculiarities of the industry that make it viable or demonstrate growth potential.
+													- State the actions of government that support the growth of the industry
+													- State the market you intend to serve
+													- State the major players in the industry
+													- State the size of the market (volume and value, where possible)
+													- State the segments of the market – the different customer groups
+													- State the specific group your product or service is meant for
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
 												<div class="cpp-fiel">
 													<%= form.text_area :industry_analysis, class: "form-control tinymce", placeholder: "Enter industry analysis"%>
@@ -146,7 +229,20 @@
 							  	</div>
                   <div class="tab-pane fade" id="nav-competition" role="tabpanel" aria-labelledby="nav-competition-tab">
 							  		<div class="acc-setting">
-							  			<h3>Competition</h3>
+							  			<h3>Competition
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													- State your major (direct and indirect) competitors
+													- Describe their product and service offers.
+													- State their competitive advantages or disadvantages
+													- The customer segments they are focusing on
+													- State the probability of new entrants
+													- State the potential new competitor/market entrants
+													- State if the barriers they must overcome to enter the market is high or low.
+												</p>
+											</details>
+											</h3>
                       <div class="cp-field">
                         <div class="cpp-fiel">
                           <%= form.text_area :competition, class: "form-control tinymce", placeholder: "Describe your competitors and the competition"%>
@@ -164,7 +260,33 @@
 
                   <div class="tab-pane fade" id="nav-swot" role="tabpanel" aria-labelledby="nav-swot-tab">
 							  		<div class="acc-setting">
-							  			<h3>SWOT Analysis</h3>
+							  			<h3>SWOT Analysis
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													STRENGTHS:
+													State your areas of strengths – skills/expertise, financial resources and 
+													unique selling point. State any existing patents, intellectual property, 
+													partnerships, collaborations and technical support you currently have or 
+													will soon secure, and how they contribute to your strength. 
+													State any awards and recognitions achieved that can make your brand stronger.
+													WEAKNESSES:
+													State your weaknesses, both internally and externally – such as new 
+													untested product, weak brand, low level of adoption by target market, etc.
+													OPPORTUNITIES:
+													State the opportunities in the business environment that will assist the 
+													performance and growth of your business. Consider the political, economic, 
+													social, technological, legal/regulatory and physical environmental factors 
+													(PESTLE) in your community, country, that may influence your business.
+													THREATS:
+													State the threats, challenges and risks that you have to deal with.
+													State how you will enhance your strength and use it for competitive 
+													advantage. State how you can reduce your weaknesses.
+													State how you can exploit the opportunities.
+													State how you can reduce the threats, risk and challenges.
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
                         <div class="cpp-fiel">
                           <%= form.text_area :swot, class: "form-control tinymce", placeholder: "Enter SWOT Analysis"%>
@@ -182,7 +304,25 @@
                   
                   <div class="tab-pane fade" id="nav-operations" role="tabpanel" aria-labelledby="nav-operations-tab">
 							  		<div class="acc-setting">
-							  			<h3>Operations Plan</h3>
+							  			<h3>Operations Plan
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													This is the section where you:
+													- State the patents and permits/licenses you require to operate
+													- State material resources (such as raw materials, physical assets, 
+													  human resources and other inputs) and how you obtain – by direct 
+														purchase, by suppliers, by buying agents, outsourcing, etc. include 
+														the equipment needed to manufacture the products or produce the service
+													- State other key resources (including intangibles like certification or 
+														new knowledge) you require
+													- Describe how you will deliver the product or service to the customer 
+														(from production point to consumption point)
+													- State your suppliers, and your expected method of relationship with them, 
+														as well as your key distributors and/or agents (if any)
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
                         <div class="cpp-fiel">
                           <%= form.text_area :operations, class: "form-control tinymce", placeholder: "Describe your operations plan"%>
@@ -200,7 +340,28 @@
                   
                   <div class="tab-pane fade" id="nav-marketing" role="tabpanel" aria-labelledby="nav-marketing-tab">
 							  		<div class="acc-setting">
-							  			<h3>Marketing Plan</h3>
+							  			<h3>Marketing Plan
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													The marketing plan is one of the most important sections of a business plan. 
+													Here, you should:
+													- State how you will make the customers aware of your product or service – be as specific as possible by digital, social media, TV, radio, newsprint, etc.
+													- State how you will promote your product or services – by trade fairs, 
+													  TV talk shows and appearances, radio talk shows focus meetings, strategic 
+													  presentations, etc.
+													- Describe the pricing strategy for your products or services and the 
+													  assumptions you have made.
+													- Will there be any incentives that will make them switch from current 
+													  providers or buy the products/services anew – discounts, credit facilities; 
+													  and where possible, describe the effect of the incentives on your cash flow and profitability
+													- State how you ensure that credit customers (if any) will pay
+													- State the channels by which you will get the services to the customers: 
+													  e-market place (on the Internet or any other electronic means), 
+														department stores/supermarkets, distributors, wholesalers, sales agents, etc.
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
                         <div class="cpp-fiel">
                           <%= form.text_area :marketing, class: "form-control tinymce", placeholder: "Describe your marketing plan"%>
@@ -216,9 +377,67 @@
 							  		</div><!--acc-setting end-->
 							  	</div>
                   
-                  <div class="tab-pane fade" id="nav-financial" role="tabpanel" aria-labelledby="nav-financial-tab">
+                  <div class="tab-pane fade" id="nav-management" role="tabpanel" aria-labelledby="nav-management-tab">
 							  		<div class="acc-setting">
-							  			<h3>Financial Plan</h3>
+							  			<h3>Management Plan
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Functions:
+													State and describe the functions you need to perform to run the business:
+													-	Production/ Inventory Management
+													-	Admin/Facility management
+													-	Human Resources
+													-	Finance/accounts
+													-	Marketing/Sales
+													-	Other functions
+													Qualifications/Expertise:
+													-	State briefly the qualification and expertise of staff required to perform the functions
+													-	State the calibre of staff who will be (or are currently) responsible for the function such as production manager, personnel manager, accountant and marketing Manager
+													-	The roles and responsibilities you hold in the business
+													Organizational Structure to show the coordination and relationship lines between and within the functions.
+												</p>
+											</details>
+											</h3>
+							  			<div class="cp-field">
+                        <div class="cpp-fiel">
+                          <%= form.text_area :management, class: "form-control tinymce", placeholder: "What is your management plan?"%>
+                          <%= tinymce %>
+                        </div>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+
+									<div class="tab-pane fade" id="nav-financial" role="tabpanel" aria-labelledby="nav-financial-tab">
+							  		<div class="acc-setting">
+							  			<h3>Financial Plan
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Make key assumptions on cost elements, current and future costing, financing 
+													options and revenues projections. Remembers that it is prudent to 
+													underestimate your revenue and anticipate more in costs.
+													Make revenue projections:
+													- State the products and services from which you will derive revenue - 
+													  your revenue streams
+												  - State the way you will price them
+													- State the estimated volumes of products and services to be sold for any 
+													  number of years. – year 1, year 2, year 3, etc.
+													- Determine the revenue projections for the specified number of years
+													Other financial projections that should be made are financial statements, 
+													such as:
+													- Profit and Loss projections,
+													- Cash flow projections and
+													- Balance sheet projections for the number of years.
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
                         <div class="cpp-fiel">
                           <%= form.text_area :financial, class: "form-control tinymce", placeholder: "What is your financial plan?"%>
@@ -236,7 +455,19 @@
 
                   <div class="tab-pane fade" id="nav-milestones" role="tabpanel" aria-labelledby="nav-milestones-tab">
 							  		<div class="acc-setting">
-							  			<h3>Milestones</h3>
+							  			<h3>Milestones
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Milestones and Attachments:
+													State what you need to achieve each quarter for the next 3 years and the 
+													amount required to achieve each of them. Include milestones of output - 
+													products, solutions, clients, patents, coverage area, etc. Indicate number 
+													of staff (full time and/or part time). Include expansion/growth milestones 
+													that can be tracked per quarter. Avoid bogus, exaggerated or unattainable milestones.
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
                         <div class="cpp-fiel">
                           <%= form.text_area :milestones, placeholder: "Enter your milestones", class: "form-control tinymce" %>
@@ -254,7 +485,16 @@
 
                   <div class="tab-pane fade" id="nav-appendices" role="tabpanel" aria-labelledby="nav-appendices-tab">
 							  		<div class="acc-setting">
-							  			<h3>Appendices</h3>
+							  			<h3>Appendices
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													The appendix should contain supplementary materials that are not an 
+													essential part of the business plan but which may be helpful in providing 
+													a more comprehensive understanding of the business plan.
+												</p>
+											</details>
+											</h3>
 							  			<div class="cp-field">
                         <div class="cpp-fiel">
                           <%= form.text_area :appendices, placeholder: "Enter appendices", class: "form-control tinymce" %>
@@ -278,6 +518,16 @@
 <% end %>
 
 <style>
+details {
+    padding: .3em .3em 0;
+		text-transform: initial;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .3em;
+}
+
 .acc-leftbar {
 	float: left;
 	width: 100%;

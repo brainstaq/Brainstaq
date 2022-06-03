@@ -8,21 +8,9 @@ class BusinessPlansController < ApplicationController
     @business_plans = @enterprise.business_plans
   end
 
-  def download
-    @business_plan = BusinessPlan.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json
-      format.pdf do
-        render :pdf => "#{@business_plan.enterprise.name}",
-               :layout => "pdf",
-               :template => "pdf/download_templates",
-               :margin => { :top => 10, :bottom => 10, :left => 10, :right => 10},
-               :viewport_size => '1280x1024',
-               disposition: 'attachment'
-      end
-    end
-  end
+  # def download
+  #   @business_plan = BusinessPlan.find(params[:id])
+  # end
   
   def new
     @business_plan = @enterprise.business_plans.build
@@ -34,6 +22,24 @@ class BusinessPlansController < ApplicationController
 
   def show
     @business_plan = BusinessPlan.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Business_Plan_for_#{@business_plan.enterprise.name}",
+              type: 'application/pdf',
+              layout: 'pdf.html.erb',
+              page_size: 'A4',
+              template: 'business_plans/business_plan.html.erb',
+              margin: { :top => 20, :bottom => 10, :left => 20, :right => 20},
+              viewport_size: '1280x1024',
+              lowquality: true,
+              zoom: 1,
+              dpi: 75,
+              orientation: 'Portrait',
+              disposition: 'inline'
+      end
+    end
   end
 
   def create
@@ -83,7 +89,7 @@ class BusinessPlansController < ApplicationController
   def business_plan_params
     params.require(:business_plan).permit(:executive_summary, :products_and_services, 
       :industry_analysis, :competition, :swot, :operations, :enterprise_id, 
-      :marketing, :financial, :appendices, :milestones, :vision, :mission, :objectives, 
+      :marketing, :financial, :management, :appendices, :milestones, :vision, :mission, :objectives, 
       :value_proposition)
   end
 end

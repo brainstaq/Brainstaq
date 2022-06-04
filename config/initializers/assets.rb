@@ -16,6 +16,8 @@ Rails.application.config.assets.paths << Rails.root.join('assets')
 
 Rails.application.config.assets.precompile += %w( dashboard/dashboard.scss )
 Rails.application.config.assets.precompile += %w( pdf.scss )
+Rails.application.config.assets.precompile += %w( pdf.js )
+Rails.application.config.assets.precompile += %w( number_pages.js )
 Rails.application.config.assets.precompile += %w( dashboard/dashboard.js )
 Rails.application.config.assets.precompile += %w( dashboard/dash_styles.scss )
 Rails.application.config.assets.precompile += %w( dashboard/dash_styles.js )

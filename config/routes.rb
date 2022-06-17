@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   
   resources :enterprises, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :business_plans
+    resources :team_members
+    resources :services
+    resources :portfolios
+    resources :products
   end
 
   resources :ideas, only: [:show, :index, :new, :create, :edit, :update, :destroy] do

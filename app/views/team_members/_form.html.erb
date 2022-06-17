@@ -1,15 +1,12 @@
-
 <header class="section-header mb-5" style="padding-top: 50px;"></header>
 
-<%= form_with(model: enterprise, local: true) do |form| %>
-  <% if enterprise.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(enterprise.errors.count, "error") %> 
-        prohibited this enterprise from being saved:
-      </h2>
+<%= form_for ([@enterprise, @team_member]) do |form| %>
+  <% if team_member.errors.any? %>
+    <div id="error_explanation" class="text-center text-danger">
+      <h4>Oops! You've got <%= pluralize(team_member.errors.count, "error") %></h4>
       <ul>
-        <% enterprise.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% team_member.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -22,159 +19,96 @@
 					<div class="col-lg-3">
 						<div class="acc-leftbar">
 							<div class="nav nav-tabs" id="nav-tab" role="tablist">
-								<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true">Brand Details</a>
-								<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Social Profiles</a>
-                <a class="nav-item nav-link" id="nav-logo-tab" data-toggle="tab" href="#nav-logo" role="tab" aria-controls="nav-logo" aria-selected="false">Brand Logo</a>
-								</div>
+								<a class="nav-item nav-link active" id="nav-fullname-tab" data-toggle="tab" href="#nav-fullname" role="tab" aria-controls="nav-fullname" aria-selected="true">Full Name</a>
+								<a class="nav-item nav-link" id="nav-bio-tab" data-toggle="tab" href="#nav-bio" role="tab" aria-controls="nav-bio" aria-selected="false">Bio</a>
+								<a class="nav-item nav-link" id="nav-position-tab" data-toggle="tab" href="#nav-position" role="tab" aria-controls="nav-position" aria-selected="false">Position</a>
+                <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#nav-image" role="tab" aria-controls="nav-image" aria-selected="false">Photo</a>
+                </div>
 							</div><!--acc-leftbar end-->
 						</div>
 						<div class="col-lg-9">
 							<div class="tab-content" id="nav-tabContent">
-								<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
+								<div class="tab-pane fade show active" id="nav-fullname" role="tabpanel" aria-labelledby="nav-fullname-tab">
 									<div class="acc-setting">
-										<h3>Brand Details</h3>
+										<h3>Full Name</h3>
 											<div class="cp-field">
-												<h5>Brand Name</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :name, :readonly => form.object.persisted?, maxlength: "23", 
-                          class: "form-control", placeholder: "Enter brand name"  %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>Brand Category</h5>
-												<div class="cpp-fiel">
-													<%= form.collection_select(:category_id, Category.all, :id, :name, 
-                          {prompt: 'Select brand category'}, class: "form-control") %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>About Brand</h5>
-												<div class="cpp-fiel">
-													<%= form.text_area :info, class: "form-control tinymce", placeholder: "About your brand"%>
-                          <%= tinymce %>
-												</div>
-											</div>
-											<div class="cp-field">
-											  <h5>Address</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :address, class: "form-control tinymce", placeholder: "Brand address"%>
-                          <%= tinymce %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>Email Address</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :email, class: "form-control tinymce", placeholder: "Brand email address"%>
-                          <%= tinymce %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>Phone Number</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :phone_number, class: "form-control tinymce", placeholder: "Enter phone number"%>
-                          <%= tinymce %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>Country</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :country, class: "form-control tinymce", placeholder: "Enter country"%>
-                          <%= tinymce %>
-												</div>
-											</div>
-                      <div class="cp-field">
-												<h5>State</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :state, class: "form-control tinymce", placeholder: "Enter state"%>
-                          <%= tinymce %>
-												</div>
-											</div>
-      								<div class="cp-field">
-												<h5>City</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :city, class: "form-control tinymce", placeholder: "Enter city"%>
+													<%= form.text_field :full_name, class: "form-control tinymce", placeholder: "Enter Full Name"  %>
                           <%= tinymce %>
 												</div>
 											</div>
 											<div class="save-stngs">
 												<ul>
-													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
 												</ul>
 											</div><!--save-stngs end-->
-										
 									</div><!--acc-setting end-->
 								</div>
-
-							  	<div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+							  	<div class="tab-pane fade" id="nav-bio" role="tabpanel" aria-labelledby="nav-bio-tab">
 							  		<div class="acc-setting">
-							  			<h3>Social Profiles</h3>
-							  			
+							  			<h3>Bio</h3>	
 											<div class="cp-field">
-												<h5>Business Website</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :website_url, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
+													<%= form.text_area :bio, placeholder: "Enter Bio", class: "form-control tinymce" %>
+                          <%= tinymce %>
 												</div>
 											</div>
-											<div class="cp-field">
-												<h5>Facebook</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>Twitter</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>Instagram</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
-												</div>
-											</div>
-                      <div class="field">
-                        <%= form.text_field :user_id, value: current_user.id, class: 'd-none' %>
-                      </div>
 											<div class="save-stngs pd2">
 												<ul>
-													<li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
 												</ul>
 											</div><!--save-stngs end-->
 										
 							  		</div><!--acc-setting end-->
 							  	</div>
-							  	
-                  <div class="tab-pane fade" id="nav-logo" role="tabpanel" aria-labelledby="nav-logo-tab">
+							  		
+							  	<div class="tab-pane fade" id="nav-position" role="tabpanel" aria-labelledby="nav-position-tab">
 							  		<div class="acc-setting">
-							  			<h3>Upload Logo</h3>
+							  			<h3>Position</h3>
+							  			<div class="cp-field">
+												<div class="cpp-fiel">
+													<%= form.text_field :position, placeholder: "Enter Position", class: "form-control tinymce" %>
+                          <%= tinymce %>
+												</div>
+											</div>
+                      <div class="field">
+                        <%= form.hidden_field :enterprise_id %>
+                      </div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  <div class="tab-pane fade" id="nav-image" role="tabpanel" aria-labelledby="nav-image-tab">
+							  		<div class="acc-setting">
+							  			<h3>Upload Photo</h3>
 							  			<div class="requests-list">
 							  				<div class="request-details">
-							  					<div class="noty-user-img ml-3">
-							  						<% if @enterprise.image_url %>
-															<%= image_tag @enterprise.image_url, style: "width: 100px; height: 50px;" %>
+							  					<div class="noty-user-img">
+							  						<% if @team_member.image %>
+															<%= image_tag @team_member.image, skip_pipeline: true, style: "width: 32px;", class: "rounded-circle mr-2" %>
 														<% else %>
-															<%= image_tag 'home17.jpg', style: "width: 100px; height: 50px;" %>
+															<%= image_tag 'avatar.png', style: "width: 32px;", class: "rounded-circle mr-2" %>
 														<% end %>
 							  					</div>
 							  					<div class="request-info">
-							  						<%# <h3>Change Brand Logo</h3> %>
-							  						<%# <span>Change Brand Logo</span> %>
+							  						<h3>Upload Photo</h3>
+							  						<span>100 x 100 pixels</span>
 							  					</div>
 							  					<div class="accept-feat">
 							  						<ul>
 							  							<li><%= form.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes } %></li>
 							  						</ul>
 							  					</div><!--accept-feat end-->
-													<div class="col-sm-12">
-        										<%= form.hidden_field :image_cache %>
-      										</div>
 													<div class="save-stngs pd2">
 														<ul>
-                              <li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
-													    <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                              <li><%= form.submit "Submit", class: "btn btn-primary" %></li>
+                              <li><%= link_to "Back", :back, class: "btn btn-secondary" %></li>
 														</ul>
 													</div><!--save-stngs end-->
 							  				</div><!--request-detailse end-->
@@ -190,6 +124,16 @@
 <% end %>
 
 <style>
+details {
+    padding: .3em .3em 0;
+		text-transform: initial;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .3em;
+}
+
 .acc-leftbar {
 	float: left;
 	width: 100%;

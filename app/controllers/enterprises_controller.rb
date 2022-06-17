@@ -25,6 +25,10 @@ class EnterprisesController < ApplicationController
     @enterprise = Enterprise.find(params[:id])
     @business_plan = BusinessPlan.new
     @business_plans = @enterprise.business_plans
+    @team_members = @enterprise.team_members
+    @products = @enterprise.products
+    @portfolios = @enterprise.portfolios
+    @services = @enterprise.services
     @business_plan.enterprise_id = @enterprise.id
 
     render :show

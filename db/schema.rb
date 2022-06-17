@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_231905) do
+ActiveRecord::Schema.define(version: 2022_06_05_094707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,10 +217,6 @@ ActiveRecord::Schema.define(version: 2022_06_03_231905) do
     t.string "twitter_url"
     t.string "instagram_url"
     t.string "website_url"
-    t.text "products"
-    t.text "services"
-    t.text "portfolio"
-    t.text "team"
     t.index ["slug"], name: "index_enterprises_on_slug", unique: true
     t.index ["user_id"], name: "index_enterprises_on_user_id"
   end
@@ -363,10 +359,52 @@ ActiveRecord::Schema.define(version: 2022_06_03_231905) do
     t.index ["user_id"], name: "index_plan_subscriptions_on_user_id"
   end
 
+  create_table "portfolios", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "location"
+    t.string "image"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_portfolios_on_enterprise_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_products_on_enterprise_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_services_on_enterprise_id"
+  end
+
   create_table "subscribers", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.string "full_name"
+    t.text "position"
+    t.string "image"
+    t.text "bio"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_team_members_on_enterprise_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -435,4 +473,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_231905) do
   add_foreign_key "business_plans", "enterprises"
   add_foreign_key "donors", "users"
   add_foreign_key "perks", "ideas"
+  add_foreign_key "portfolios", "enterprises"
+  add_foreign_key "products", "enterprises"
+  add_foreign_key "services", "enterprises"
+  add_foreign_key "team_members", "enterprises"
 end

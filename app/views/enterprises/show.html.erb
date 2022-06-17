@@ -167,7 +167,11 @@
                       <%= link_to "Add a Product", new_enterprise_product_path(@enterprise) %>
                     </small>
                   <% end %>
-                <% else%>
+                  <% elsif !@enterprise.products.present? %>
+                    <small class="text-center mt-5">
+                      No products to display!
+                    </small>
+                  <% else %>
                   <div class="mt-1">
                     <%= render partial: "layouts/products" %>
                   </div>
@@ -190,7 +194,11 @@
                       <%= link_to "Add a Service", new_enterprise_service_path(@enterprise) %> 
                     </small>
                   <% end %>
-                <% else%>
+                  <% elsif !@enterprise.services.present? %>
+                    <small class="text-center mt-5">
+                      No services to display!
+                    </small>
+                  <% else %>
                   <div class="mt-1">
                     <%= render partial: "layouts/services" %>
                   </div>
@@ -213,7 +221,11 @@
                       <%= link_to "Add Portfolio", new_enterprise_portfolio_path(@enterprise) %> 
                     </small>
                   <% end %>
-                <% else%>
+                  <% elsif !@enterprise.portfolios.present? %>
+                    <small class="text-center mt-5">
+                      No portfolios to display!
+                    </small>
+                  <% else %>
                   <div class="mt-1">
                     <%= render partial: "layouts/portfolio" %>
                   </div>
@@ -234,8 +246,12 @@
                     <small class="text-center">No Team Member.
                       <%= link_to "Add Team Member", new_enterprise_team_member_path(@enterprise) %> 
                     </small>
-                  <% end %>
-                <% else%>
+                    <% end %>
+                  <% elsif !@enterprise.team_members.present? %>
+                    <small class="text-center mt-5">
+                      No teams to display!
+                    </small>
+                  <% else %>
                   <div class="mt-1">
                     <%= render partial: "layouts/team_members" %>
                   </div>

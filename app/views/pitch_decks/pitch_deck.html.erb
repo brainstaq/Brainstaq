@@ -1,0 +1,94 @@
+<% content_for :title, "Pitch Deck" %>
+
+<!-- start of page-header -->
+
+<div class="col-md-12 text-center">
+  <h2 class="h1 font-weight-bold">Pitch Deck for <%= @enterprise.name.titleize %></h2>
+</div>
+<!-- end of page-header -->
+
+<div class="idea-form container col-lg-8", style= "margin-top: 100px;">
+  <small class="text-center mb-5">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+    on <%= local_time(@pitch_deck.created_at) %>
+  </small>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Introduction</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.introduction %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Elevator Pitch</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.elevator_pitch %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Mission</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.mission %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">The Problem(s)</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.problem %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">The Solution(s)</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.solution %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">How it Works</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.how_it_works %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Market Opportunity</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.market_opportunity %>
+  </p>
+
+    <h4 class="mb-0 mt-3" style="font-weight: bold;">Market Size</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.market_size %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Competitor Analysis</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.competitor_analysis %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Revenue Model</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.revenue_model %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Traction</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.traction %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Financials</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.financials %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Growth Strategy</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.growth_strategy %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Investment</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.investment %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Team</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.team %>
+  </p>
+
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Conclusion</h4>
+  <p class="mt-2 mb-0">
+    <%= sanitize @pitch_deck.conclusion %>
+  </p>
+</div>

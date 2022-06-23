@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   
   resources :enterprises, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :business_plans
+    resources :pitch_decks
     resources :team_members
     resources :services
     resources :portfolios

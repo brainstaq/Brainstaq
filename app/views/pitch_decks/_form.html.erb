@@ -1,0 +1,757 @@
+<header class="section-header mb-5"></header>
+
+<%= form_for ([@enterprise, @pitch_deck]) do |form| %>
+  <% if pitch_deck.errors.any? %>
+    <div id="error_explanation" class="text-center text-danger">
+      <h4>Oops! You've got <%= pluralize(pitch_deck.errors.count, "error") %></h4>
+      <ul>
+        <% pitch_deck.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <section class="profile-account-setting">
+		<div class="container">
+			<div class="account-tabs-setting">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="acc-leftbar">
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-introduction-tab" data-toggle="tab" href="#nav-introduction" role="tab" aria-controls="nav-introduction" aria-selected="true">Introduction</a>
+								<a class="nav-item nav-link" id="nav-offering-tab" data-toggle="tab" href="#nav-offering" role="tab" aria-controls="nav-offering" aria-selected="false">The Offering</a>
+								<a class="nav-item nav-link" id="nav-market-tab" data-toggle="tab" href="#nav-market" role="tab" aria-controls="nav-market" aria-selected="false">The Market</a>
+                <a class="nav-item nav-link" id="nav-strategies-tab" data-toggle="tab" href="#nav-strategies" role="tab" aria-controls="nav-strategies" aria-selected="false">Strategies</a>
+                <a class="nav-item nav-link" id="nav-conclusion-tab" data-toggle="tab" href="#nav-conclusion" role="tab" aria-controls="nav-conclusion" aria-selected="false">Conclusion</a>
+								</div>
+							</div><!--acc-leftbar end-->
+						</div>
+						<div class="col-lg-9">
+							<div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-introduction" role="tabpanel" aria-labelledby="nav-introduction-tab">
+                  <div class="acc-setting">
+                    <h3>Introduction</h3>	
+                    <div class="cp-field">
+                      <h5>Introduction
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                          The Vision Statement is a statement of what you want your company to 
+                          become in the future. You may state the time frame for attaining the 
+                          vision. The vision must be inspiring to drive you to higher and higher 
+                          performances in the business.
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :introduction, placeholder: "Enter introduction", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Elevator Pitch
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                            The Mission Statement is simply the statement of the purpose for which 
+                            the business is set up and is trying to achieve, its reason for 
+                            existing that indicates the problem the company's product will solve 
+                            and the market. 
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :elevator_pitch, placeholder: "Enter elevator pitch", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Mission
+                        <details>
+                      <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                      <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                        This is a list of what you want to achieve with the business over a defined 
+                        period. Most importantly, your business objectives must be SMART:
+                        Specific – target a specific area for improvement or initiation.
+                        Measurable – quantify or at least suggest an indicator of progress.
+                        Attainable – specify who will do it.
+                        Realistic – state what results can realistically be achieved, given available resources.
+                        Time bound – specify when the result(s) will be.
+                      </p>
+                    </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :mission, placeholder: "Enter mission", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="save-stngs pd2">
+                      <ul>
+                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                      </ul>
+                    </div><!--save-stngs end-->
+                  </div><!--acc-setting end-->
+                </div>
+							  		
+                <div class="tab-pane fade" id="nav-offering" role="tabpanel" aria-labelledby="nav-offering-tab">
+                  <div class="acc-setting">
+                    <h3>The Offering</h3>	
+                    <div class="cp-field">
+                      <h5>Problem
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                          The Vision Statement is a statement of what you want your company to 
+                          become in the future. You may state the time frame for attaining the 
+                          vision. The vision must be inspiring to drive you to higher and higher 
+                          performances in the business.
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :problem, placeholder: "Enter problelm(s)", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Solution
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                            The Mission Statement is simply the statement of the purpose for which 
+                            the business is set up and is trying to achieve, its reason for 
+                            existing that indicates the problem the company's product will solve 
+                            and the market. 
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :solution, placeholder: "Enter solution(s)", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>How it Works
+                        <details>
+                      <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                      <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                        This is a list of what you want to achieve with the business over a defined 
+                        period. Most importantly, your business objectives must be SMART:
+                        Specific – target a specific area for improvement or initiation.
+                        Measurable – quantify or at least suggest an indicator of progress.
+                        Attainable – specify who will do it.
+                        Realistic – state what results can realistically be achieved, given available resources.
+                        Time bound – specify when the result(s) will be.
+                      </p>
+                    </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :how_it_works, placeholder: "How it works", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="save-stngs pd2">
+                      <ul>
+                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                      </ul>
+                    </div><!--save-stngs end-->
+                  </div><!--acc-setting end-->
+                </div>
+
+                <div class="tab-pane fade" id="nav-market" role="tabpanel" aria-labelledby="nav-market-tab">
+                  <div class="acc-setting">
+                    <h3>The Market</h3>	
+                    <div class="cp-field">
+                      <h5>Market Opportunity
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                          The Vision Statement is a statement of what you want your company to 
+                          become in the future. You may state the time frame for attaining the 
+                          vision. The vision must be inspiring to drive you to higher and higher 
+                          performances in the business.
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :market_opportunity, placeholder: "Enter market opportunity", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Market Size
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                            The Mission Statement is simply the statement of the purpose for which 
+                            the business is set up and is trying to achieve, its reason for 
+                            existing that indicates the problem the company's product will solve 
+                            and the market. 
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :market_size, placeholder: "Enter market size", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Competitor Analysis
+                        <details>
+                      <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                      <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                        This is a list of what you want to achieve with the business over a defined 
+                        period. Most importantly, your business objectives must be SMART:
+                        Specific – target a specific area for improvement or initiation.
+                        Measurable – quantify or at least suggest an indicator of progress.
+                        Attainable – specify who will do it.
+                        Realistic – state what results can realistically be achieved, given available resources.
+                        Time bound – specify when the result(s) will be.
+                      </p>
+                    </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :competitor_analysis, placeholder: "Enter competitor analysis", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="save-stngs pd2">
+                      <ul>
+                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                      </ul>
+                    </div><!--save-stngs end-->
+                  </div><!--acc-setting end-->
+                </div>
+                
+                <div class="tab-pane fade" id="nav-strategies" role="tabpanel" aria-labelledby="nav-strategies-tab">
+                  <div class="acc-setting">
+                    <h3>Strategies</h3>	
+                    <div class="cp-field">
+                      <h5>Revenue Model
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                          The Vision Statement is a statement of what you want your company to 
+                          become in the future. You may state the time frame for attaining the 
+                          vision. The vision must be inspiring to drive you to higher and higher 
+                          performances in the business.
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :revenue_model, placeholder: "Enter revenue model", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Traction
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                            The Mission Statement is simply the statement of the purpose for which 
+                            the business is set up and is trying to achieve, its reason for 
+                            existing that indicates the problem the company's product will solve 
+                            and the market. 
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :traction, placeholder: "Enter traction", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Financials
+                        <details>
+                      <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                      <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                        This is a list of what you want to achieve with the business over a defined 
+                        period. Most importantly, your business objectives must be SMART:
+                        Specific – target a specific area for improvement or initiation.
+                        Measurable – quantify or at least suggest an indicator of progress.
+                        Attainable – specify who will do it.
+                        Realistic – state what results can realistically be achieved, given available resources.
+                        Time bound – specify when the result(s) will be.
+                      </p>
+                    </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :financials, placeholder: "Enter financials", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="save-stngs pd2">
+                      <ul>
+                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                      </ul>
+                    </div><!--save-stngs end-->
+                  </div><!--acc-setting end-->
+                </div>
+                
+                <div class="tab-pane fade" id="nav-conclusion" role="tabpanel" aria-labelledby="nav-conclusion-tab">
+                  <div class="acc-setting">
+                    <h3>Conclusion</h3>	
+                    <div class="cp-field">
+                      <h5>Growth Strategy
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                          The Vision Statement is a statement of what you want your company to 
+                          become in the future. You may state the time frame for attaining the 
+                          vision. The vision must be inspiring to drive you to higher and higher 
+                          performances in the business.
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :growth_strategy, placeholder: "Enter growth strategy", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Investment
+                        <details>
+                          <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                          <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                            The Mission Statement is simply the statement of the purpose for which 
+                            the business is set up and is trying to achieve, its reason for 
+                            existing that indicates the problem the company's product will solve 
+                            and the market. 
+                          </p>
+                        </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :investment, placeholder: "Enter investment", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="cp-field">
+                      <h5>Team
+                        <details>
+                      <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                      <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                        This is a list of what you want to achieve with the business over a defined 
+                        period. Most importantly, your business objectives must be SMART:
+                        Specific – target a specific area for improvement or initiation.
+                        Measurable – quantify or at least suggest an indicator of progress.
+                        Attainable – specify who will do it.
+                        Realistic – state what results can realistically be achieved, given available resources.
+                        Time bound – specify when the result(s) will be.
+                      </p>
+                    </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :team, placeholder: "Team", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+
+                    <div class="cp-field">
+                      <h5>Conclusion
+                        <details>
+                      <summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+                      <p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+                        This is a list of what you want to achieve with the business over a defined 
+                        period. Most importantly, your business objectives must be SMART:
+                        Specific – target a specific area for improvement or initiation.
+                        Measurable – quantify or at least suggest an indicator of progress.
+                        Attainable – specify who will do it.
+                        Realistic – state what results can realistically be achieved, given available resources.
+                        Time bound – specify when the result(s) will be.
+                      </p>
+                    </details>
+                      </h5>
+                      <div class="cpp-fiel">
+                        <%= form.text_area :conclusion, placeholder: "Conclusion", class: "form-control tinymce" %>
+                        <%= tinymce %>
+                      </div>
+                    </div>
+                    <div class="save-stngs pd2">
+                      <ul>
+                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                      </ul>
+                    </div><!--save-stngs end-->
+                  </div><!--acc-setting end-->
+                </div>
+							
+              </div>
+						</div>
+					</div>
+				</div><!--account-tabs-setting end-->
+			</div>
+	</section>
+<% end %>
+
+<style>
+details {
+    padding: .3em .3em 0;
+		text-transform: initial;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .3em;
+}
+
+.acc-leftbar {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+}
+.acc-leftbar .nav-tabs > a {
+	float: left;
+	width: 100%;
+	background: none;
+	padding: 18px 20px;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	border-left: 0;
+	border-right: 0;
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+}
+.nav-tabs {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a:last-child {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a i {
+	padding-right: 15px;
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+	font-weight: 700;
+	width: 40px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	background-color: inherit;
+	color: #0070C0;
+	border-color: inherit;
+}
+.acc-setting {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	-webkit-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+}
+.acc-setting form {
+	float: left;
+	width: 100%;
+}
+.acc-setting > h3 {
+	float: left;
+	width: 100%;
+	color: #000000;
+	font-weight: 600;
+	font-size: 18px;
+	text-transform: capitalize;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 17px 20px;
+}
+.notbar {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
+	position: relative;
+}
+.notbar h4 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.notbar p {
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	width: 75%;
+}
+.toggle-btn {
+	position: absolute;
+	top: 35px;
+	right: 20px	;
+}
+.save-stngs {
+	float: left;
+	width: 100%;
+	padding: 30px 20px 50px 20px;
+}
+.save-stngs.pd2 {
+	padding: 25px 20px 42px 20px;
+}
+.save-stngs.pd3 {
+	padding: 25px 20px 25px 20px;
+}
+.save-stngs ul li {
+	display: inline-block;
+	margin-right: 17px;
+}
+.save-stngs ul li button {
+	display: inline-block;
+	color: #000000;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 22px;
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+}
+.save-stngs ul li button:hover {
+	background-color: #e44d3a;
+	color: #fff;
+	border-color: transparent;
+}
+.profile-bx-details {
+	float: left;
+	width: 100%;
+	padding: 30px 7px 30px 7px;
+}
+.profile-bx-details .row .col-lg-3 {
+	padding: 0 7px;
+}
+.profile-bx-info {
+	float: left;
+	width: 100%;
+	background-color: #f2f2f2;
+	padding: 20px;
+	border: 1px solid #e5e5e5;
+}
+.pro-bx {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 10px;
+}
+.bx-info {
+	float: left;
+	margin-top: 7px;
+	padding-left: 15px;
+}
+.bx-info h3 {
+	color: #e44d3a;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}	
+.bx-info h5 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.pd-left-20 {
+	padding-left: 20px;
+	padding-right: 0;
+}
+.pd-left-15 {
+	padding-left: 15px;
+	padding-right: 0;
+}
+.pd-left-right {
+	padding-left: 15px;
+	padding-right: 20px;
+}
+.profile-bx-info > p {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+	line-height: 22px;
+	padding-top: 3px;
+}
+.pro-work-status {
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+}
+.pro-work-status h4 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+.cp-field {
+	float: left;
+	width: 100%;
+	margin-top: 29.4px;
+	padding: 0 20px;
+}
+.cp-field h5 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.cp-field h5 a {
+	color: #000;
+}
+.cpp-fiel {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.cp-field input {
+	height: 40px;
+	padding: 0 40px;
+}
+.cp-field input,
+.cp-field textarea {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+}
+.cp-field textarea {
+	padding: 20px;
+	height: 115px;	
+}
+.cpp-fiel i {
+	position: absolute;
+	top: 12px;
+	left: 15px;
+	color: #b2b2b2;
+	font-size: 16px;
+}
+.cp-field > p {
+	float: left;
+	width: 100%;
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: 5px;
+}
+.notifications-list {
+	float: left;
+	width: 100%;
+}
+.notfication-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.notfication-details:last-child {
+	border-bottom: 0;
+}
+.noty-user-img {
+	float: left;
+	width: 35px;
+}
+.noty-user-img img {
+	width: 100%;
+}
+.notification-info {
+	float: left;
+	width: auto;
+	padding-left: 10px;
+}
+.notification-info h3 {
+	color: #686868;
+	font-size: 14px;
+	font-weight: 600;
+	border: 0;
+	padding: 0;
+	margin-bottom: 6px;
+}
+.notification-info h3 a {
+	color: #000000;
+	font-size: 16px;
+	display: inline-block;
+}
+.notification-info > span {
+	display: inline-block;
+	color: #b2b2b2;
+	font-size: 12px;
+	font-weight: 600;
+}
+.requests-list {
+	float: left;
+	width: 100%;
+	padding-bottom: 0;
+}
+.request-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.request-details:last-child {
+	border-bottom: 0;
+}
+.request-info {
+	float: left;
+	padding-left: 10px;
+}
+.request-info h3 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0;
+	border: 0;
+	margin-bottom: 3px;
+}
+.request-info span {
+	color: #686868;
+	font-size: 12px;
+	display: inline-block;
+}
+.accept-feat {
+	float: right;
+}
+.accept-feat ul li {
+	display: inline-block;
+}
+.accept-feat ul li button {
+	cursor: pointer;
+}
+.accept-req {
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #51a5fb;
+	height: 30px;
+	padding: 0 20px;
+	font-weight: 600;
+	border: 0;
+	border: 1px solid #51a5fb;
+}
+.close-req {
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #e5e5e5;
+	background: inherit;
+	color: #b2b2b2;
+	margin-left: 7px;
+}
+.close-req i {
+	font-weight: 600;
+}
+</style>

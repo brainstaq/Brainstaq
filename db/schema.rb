@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_05_094707) do
+ActiveRecord::Schema.define(version: 2022_06_22_164047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -343,6 +343,30 @@ ActiveRecord::Schema.define(version: 2022_06_05_094707) do
     t.index ["idea_id"], name: "index_perks_on_idea_id"
   end
 
+  create_table "pitch_decks", force: :cascade do |t|
+    t.text "elevator_pitch"
+    t.text "mission"
+    t.text "problem"
+    t.text "competitor_analysis"
+    t.text "solution"
+    t.text "how_it_works"
+    t.text "market_opportunity"
+    t.text "market_size"
+    t.text "financials"
+    t.text "revenue_model"
+    t.text "traction"
+    t.text "growth_strategy"
+    t.integer "user_id"
+    t.text "investment"
+    t.text "team"
+    t.text "introduction"
+    t.text "conclusion"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_pitch_decks_on_enterprise_id"
+  end
+
   create_table "plan_subscriptions", force: :cascade do |t|
     t.bigint "user_id"
     t.string "plan"
@@ -473,6 +497,7 @@ ActiveRecord::Schema.define(version: 2022_06_05_094707) do
   add_foreign_key "business_plans", "enterprises"
   add_foreign_key "donors", "users"
   add_foreign_key "perks", "ideas"
+  add_foreign_key "pitch_decks", "enterprises"
   add_foreign_key "portfolios", "enterprises"
   add_foreign_key "products", "enterprises"
   add_foreign_key "services", "enterprises"

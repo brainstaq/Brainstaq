@@ -35,6 +35,10 @@ import "slick-carousel/slick/slick-theme.scss"
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
 
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+  });
+
 setTimeout(function() {
     $('.flash-message').fadeOut('fast');
 }, 5000);

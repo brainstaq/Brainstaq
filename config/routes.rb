@@ -2,6 +2,8 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
 
+  # get 'invoices/index'
+  # get 'invoices/show'
   root to: "home#index"
   
   resources :plan_subscriptions
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
     resources :services
     resources :portfolios
     resources :products
+    resources :invoices
   end
 
   resources :ideas, only: [:show, :index, :new, :create, :edit, :update, :destroy] do

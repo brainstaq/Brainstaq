@@ -16,6 +16,7 @@ Rails.application.config.assets.paths << Rails.root.join('assets')
 
 Rails.application.config.assets.precompile += %w( dashboard/dashboard.scss )
 Rails.application.config.assets.precompile += %w( pdf.scss )
+Rails.application.config.assets.precompile += %w( invoice.scss )
 Rails.application.config.assets.precompile += %w( portfolios.scss )
 Rails.application.config.assets.precompile += %w( products.scss )
 Rails.application.config.assets.precompile += %w( services.scss )

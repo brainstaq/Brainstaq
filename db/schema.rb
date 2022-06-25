@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_164047) do
+ActiveRecord::Schema.define(version: 2022_06_23_212118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -321,6 +321,36 @@ ActiveRecord::Schema.define(version: 2022_06_22_164047) do
     t.index ["ident"], name: "index_intro_tours_on_ident", unique: true
   end
 
+  create_table "invoice_items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "price"
+    t.integer "qty"
+    t.bigint "invoice_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string "from_full_name"
+    t.string "from_address"
+    t.string "from_email"
+    t.string "from_phone"
+    t.string "to_full_name"
+    t.string "to_address"
+    t.string "to_email"
+    t.string "to_phone"
+    t.string "status"
+    t.decimal "discount"
+    t.decimal "vat"
+    t.integer "user_id"
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enterprise_id"], name: "index_invoices_on_enterprise_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id"
@@ -496,6 +526,8 @@ ActiveRecord::Schema.define(version: 2022_06_22_164047) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "business_plans", "enterprises"
   add_foreign_key "donors", "users"
+  add_foreign_key "invoice_items", "invoices"
+  add_foreign_key "invoices", "enterprises"
   add_foreign_key "perks", "ideas"
   add_foreign_key "pitch_decks", "enterprises"
   add_foreign_key "portfolios", "enterprises"

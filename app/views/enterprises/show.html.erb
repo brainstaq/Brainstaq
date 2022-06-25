@@ -66,8 +66,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="font-size: 12px;">
                   <%= link_to "Business Plan", new_enterprise_business_plan_path(@enterprise), class: "dropdown-item" %>
                   <%= link_to "Pitch Deck", new_enterprise_pitch_deck_path(@enterprise), class: "dropdown-item" %>
-                  <%= link_to "Company Profile", '#new_enterprise_business_plan_path(@enterprise),', class: "dropdown-item" %>
-                  <%= link_to "Invoice", '#', class: "dropdown-item" %>
+                  <%= link_to "Invoice", new_enterprise_invoice_path(@enterprise), class: "dropdown-item" %>
                 </div>
               </div>
 
@@ -78,8 +77,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="font-size: 12px;">
                   <%= link_to "Business Plans", enterprise_business_plans_path(@enterprise), class: "dropdown-item" %>
                   <%= link_to "Pitch Decks", enterprise_pitch_decks_path(@enterprise), class: "dropdown-item" %>
-                  <%= link_to "Company Profiles", '#', class: "dropdown-item" %>
-                  <%= link_to "Invoices", '#', class: "dropdown-item" %>
+                  <%= link_to "Invoices", enterprise_invoices_path(@enterprise), class: "dropdown-item" %>
                 </div>
               </div>
         <% end %>

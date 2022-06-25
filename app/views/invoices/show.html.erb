@@ -1,0 +1,160 @@
+<% content_for :title, "Invoice" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold"> <%#= @enterprise.name.titleize %></h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%#= link_to "Invoices", enterprise_invoices_path(@enterprise), class: "text-black-300" %></li>
+            <%# <li class="breadcrumb-item text-primary" aria-current="page">Invoice</li> %>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<section class="container col-lg-8", style= "margin-top: 70px;">
+  <div class="container-fluid col-lg-6 text-right float-right">
+    <%= link_to fa_icon("chevron-circle-left", title: "Back", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+      enterprise_invoices_path(@enterprise) %>
+    <% if user_signed_in? && current_user.id == @enterprise.user_id %>
+      <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
+      enterprise_invoice_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to fa_icon("edit", title: "Edit Invoice", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+      edit_enterprise_invoice_path(@enterprise) %>
+      <%= link_to fa_icon("file", title: "Download", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+      enterprise_invoice_path(@enterprise, format: :pdf) %>
+    <% end %>
+  </div>
+</section>
+
+<div class="idea-form container col-lg-8", style= "margin-top: 150px;">
+  <div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="top">
+        <td colspan="4">
+          <table>
+            <tr>
+              <td class="title">
+                <%= image_tag @enterprise.image_url, width:'flex', height:'60px' if @enterprise.image.present?  %>
+              </td>
+
+              <td>
+                Invoice #: <b><%= @invoice.id %></b>
+                <br>
+                Created: <b><%= @invoice.created_at.strftime('%d/%m/%Y') %></b>
+                <br>
+                Due: <b><%= (@invoice.created_at + 1.month).strftime('%d/%m/%Y') %></b>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="information">
+        <td colspan="4">
+          <table>
+            <tr>
+              <td>
+                <b><%= @invoice.from_full_name %></b><br>
+                <%= @invoice.from_address %><br>
+                <i class="far fa-envelope"></i> <%= @invoice.from_email %><br>
+                <i class="fas fa-phone"></i> <%= @invoice.from_phone %>
+              </td>
+
+              <td>
+                <b><%= @invoice.to_full_name %></b><br>
+                <%= @invoice.to_address %><br>
+                <i class="far fa-envelope"></i> <%= @invoice.to_email %><br>
+                <i class="fas fa-phone"></i> <%= @invoice.to_phone %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="heading">
+        <td>Payment Method</td>
+        <td colspan="2"></td>
+        <td class="right">Bank Transfer</td>
+      </tr>
+
+      <tr class="details">
+        <td>Account Details</td>
+        <td colspan="2"></td>
+        <td class="right">See Bank Details</td>
+      </tr>
+
+      <tr class="heading">
+        <td>Item</td>
+        <td class="right">Price</td>
+        <td class="right">Qty</td>
+        <td>Total</td>
+      </tr>
+
+      <% @invoice.invoice_items.each do |invoice_item| %>
+        <tr class="item">
+          <td>
+            <%= invoice_item.name %><br>
+            <small><%= sanitize invoice_item.description %></small>
+          </td>
+
+          <td class="right">
+            <%= number_to_currency(invoice_item.price, :unit => "₦") %>
+          </td>
+
+          <td class="right">
+            x <%= invoice_item.qty %>
+          </td>
+
+          <td>
+            <%= number_to_currency(invoice_item.price * invoice_item.qty, :unit => "₦") %>
+          </td>
+        </tr>
+      <% end %>
+
+      <tr>
+        <td colspan="4"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2"></td>
+        <td><b>Subtotal</b></td>
+        <td><%= number_to_currency(@invoice.subtotal, :unit => "₦") %></td>
+      </tr>
+
+      <tr>
+        <td colspan="2"></td>
+        <td><b>Discount (<%= @invoice.discount %>%)</b></td>
+        <td>- <%= number_to_currency(@invoice.discount_calculated, :unit => "₦") %></td>
+      </tr>
+
+      <tr>
+        <td colspan="2"></td>
+        <td><b>VAT (<%= @invoice.vat %>%)</b></td>
+        <td>+ <%= number_to_currency(@invoice.vat_calculated, :unit => "₦") %></td>
+      </tr>
+
+      <tr class="heading">
+        <td colspan="2"></td>
+        <td><b>TOTAL:</b></td>
+        <td>
+            <b><%= number_to_currency(@invoice.total, :unit => "₦") %></b>
+        </td>
+      </tr>
+    </table>
+  </div>

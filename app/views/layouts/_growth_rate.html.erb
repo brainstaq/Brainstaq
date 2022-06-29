@@ -10,19 +10,20 @@
 							<div class="has-colored-text growth-rate-counter">
 								<div class="d-inline-block block-sm mr-30 mt-30">
 									<h2 class="has-text-color font-weight-bold">
-									  <span class="jsCounter" data-count="24">0</span>+
+									  <%# <span class="jsCounter" data-count="24">0</span>+ %>
+										<span class="jsCounter"><%= "#{@enterprises.count}" %></span>+
                   </h2>
 									<p class="mt-10">Brands</p>
 								</div>
 								<div class="d-inline-block block mr-30 mt-30">
 									<h2 class="has-text-color font-weight-bold">
-										<span class="jsCounter" data-count="40">0</span>+
+										<span class="jsCounter"><%= "#{@ideas.count}" %></span>+
                   </h2>
 									<p class="mt-10">Projects</p>
 								</div>
 								<div class="d-inline-block block mt-30">
 									<h2 class="has-text-color font-weight-bold">
-										<span class="jsCounter" data-count="300">0</span>+
+										<span class="jsCounter"><%= "#{@users.count}" %></span>+
                   </h2>
 								  <p class="mt-10">Users</p>
 								</div>

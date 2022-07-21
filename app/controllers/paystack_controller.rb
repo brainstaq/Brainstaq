@@ -1,43 +1,70 @@
-# Controller to handle Event.
 class PaystackController < ApplicationController
   skip_before_action :verify_authenticity_token
+  protect_from_forgery :except => :receive
+  before_action :check_allowed_ip, only: [:receive]
+
+ 
+  SECRET_KEY = ENV["PAYSTACK_PRIVATE_KEY"]
 
   def webhook
-    paystack_instance = PaystackObject.instance
-    valid_event = paystack_instance.verify_webhook_event?(request)
-
-    raise StandardError, 'Phony event - Not Paystack' unless valid_event
-    #render status: 200, plain: "Ok\n"
-    render json: {:status => 200}
+    if check_allowed_ip == true
+      request_headers = request.headers
+      payload = JSON.parse(request.body.read)
+      data = JSON.generate(payload)
+      digest = OpenSSL::Digest.new('sha512')
+      hash = OpenSSL::HMAC.hexdigest(digest, SECRET_KEY, data)
+      unless hash != request_headers["x-paystack-signature"]
+        if payload['event'] == 'charge.success' && payload['data']['status'] == 'success'
+          user = get_user(payload)
+          event_charge_date = Date.strptime(payload['data']['paid_at']).to_date
+          # if user && event_charge_date != user.account_detail.subscribe_date.to_date
+          #   if user.paystack_charges.empty? || user.paystack_charges.last.created_at.today? == false
+                # amount = payload["data"]["amount"]
+                # options = process_payload(payload, user)
+                # ProcessWebhookJob.perform_later options
+          #     head :ok
+          #   else
+          #     head :unprocessable_entity
+          #   end
+          # end
+        end
+      end
+    else
+      render status: 401, json: {
+        message: "Unauthorized"
+      }
+    end
   end
-end
 
-# PaystackObject: This class validates each request, to check 
-# If it's from Paystack or not. 
-class PaystackObject
-  include Singleton
-  attr_accessor :paystack_obj
-
-  WHITELISTED_IPS = ['52.31.139.75', '52.49.173.169', '52.214.14.220'].freeze
-
-  def initialize
-    secret_key = ENV['PAYSTACK_PRIVATE_KEY'].split(' ')[1]
-    @paystack_obj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], secret_key)
+  def process_payload(payload, user)
+    amount = payload["data"]["amount"]
+    description = "Subscription Renewal Paystack"
+    payload["user_id"] = user.id
+    payload["description"] = description
+    payload["amount"] = amount
+    options = payload.to_hash
+    return options
   end
 
-  def verify_webhook_event?(request)
-    verify_ip_address(request.remote_ip) && verify_header_signature(request)
+  def get_user(payload)
+    customer_code = payload["data"]["customer"]["customer_code"]
+    user = User.find_by(paystack_cust_code: customer_code)
+    return user
   end
+
+  def retrieve_payment_method(user)
+    user.payment_method.payment_system
+  end
+
 
   private
 
-  def verify_ip_address(ip_address)
-    WHITELISTED_IPS.include?(ip_address)
-  end
-
-  def verify_header_signature(request)
-    body = request.body.string
-    hash = OpenSSL::HMAC.hexdigest('SHA512', @paystack_obj.private_key, body)
-    hash == request.headers['HTTP_X_PAYSTACK_SIGNATURE']
+  def check_allowed_ip
+    whitelisted = ['41.58.96.208', '52.31.139.75', '52.49.173.169', '52.214.14.220', '127.0.0.1']
+    if whitelisted.include? request.remote_ip
+      return true
+    else
+      return false
+    end
   end
 end

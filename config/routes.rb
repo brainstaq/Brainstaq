@@ -2,11 +2,8 @@ require "sidekiq/web"
 
 Rails.application.routes.draw do
 
-  # get 'invoices/index'
-  # get 'invoices/show'
   root to: "home#index"
   
-  resources :plan_subscriptions
   resources :donors
   mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -31,7 +28,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   
-  resources :enterprises, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
+  resources :enterprises, :path => 'brands', only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :business_plans
     resources :pitch_decks
     resources :team_members
@@ -41,7 +38,14 @@ Rails.application.routes.draw do
     resources :invoices
   end
 
-  resources :ideas, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
+  resources :subs do
+    member do
+      get 'activate_sub'
+      get 'deactivate_sub'
+    end
+  end
+
+  resources :ideas, :path => 'projects', only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :comments
     member do
       put 'like', to: "ideas#like"
@@ -58,10 +62,11 @@ Rails.application.routes.draw do
   get '/pricing' => 'plan_subscription#new'
   get '/career' => 'pages#career'
   get '/faqs' => 'pages#faqs'
-  get '/features' => 'pages#features'
+  get '/all_features' => 'pages#features'
   get '/how_it_works' => 'pages#how_it_works'
   get '/contact' => 'pages#contact'
   get '/help' => 'pages#help'
+  # get '/plans' => 'pages#plans'
   get '/terms' => 'pages#terms'
   get '/privacy' => 'pages#privacy'
 
@@ -86,20 +91,20 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :plan_subscriptions
-
-  resources :plan_subscriptions do
+  resources :retracts
+  resources :transactions
+  resources :transactions do
     member do
       get 'details'
     end
   end
   
-  #post 'web' => "retracts#web"
-  #get 'callback' => "plan_subscriptions#callback"
-  #get 'upgrade' => "plan_subscriptions#upgrade"
+  post 'web' => "retracts#web"
+  get 'callback' => "transactions#callback"
+  get 'upgrade' => "transactions#upgrade"  
 
-  get 'plan_subscriptions/success'
-  get 'transactions/success'
+  # get 'plan_subscriptions/success'
+  # get 'transactions/success'
 
   post 'paystack/receive_webhooks', to: 'paystack#webhook'
 

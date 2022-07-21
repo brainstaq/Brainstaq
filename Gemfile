@@ -22,6 +22,7 @@ gem 'redis', '~> 4.0'
 #gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise', '~> 4.8'
+gem 'devise_invitable', '~> 2.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'font_awesome5_rails'
@@ -29,12 +30,14 @@ gem "font-ionicons-rails"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'receipts'
 gem 'mini_magick'
 gem 'intro', '~> 0.3.0'
 gem 'friendly_id', '~> 5.3'
 gem 'local_time', '~> 2.1'
 #gem 'tel_to_helper'
 gem 'mail_form'
+gem 'popper_js', '~> 2.9.3'
 #gem 'recaptcha', '~> 5.8', '>= 5.8.1'
 gem 'tinymce-rails'
 gem 'social-share-button'
@@ -45,7 +48,11 @@ gem 'omniauth-google-oauth2'
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary", group: :development
 gem "wkhtmltopdf-heroku", group: :production
-# gem 'public_activity', '~> 1.6', '>= 1.6.4'
+# # gem 'public_activity', '~> 1.6', '>= 1.6.4'
+# gem 'invisible_captcha'
+# gem 'country_select'
+# gem 'countries'
+# gem 'city-state'
 
 # local ENV var
 gem 'figaro', '~> 1.2'

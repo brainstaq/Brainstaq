@@ -11,8 +11,8 @@ class Enterprise < ApplicationRecord
   validate :image_size_validation
 	mount_uploader :image, ImageUploader
 
-  # extend FriendlyId
-  # friendly_id :name, use: :slugged
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   # include PublicActivity::Model
   # tracked
@@ -29,6 +29,10 @@ class Enterprise < ApplicationRecord
   has_many :portfolios, dependent: :destroy
   has_many :services, dependent: :destroy
   has_many :products, dependent: :destroy
+
+  def to_param
+    "#{id}-#{slug}"
+  end
 
   private
 

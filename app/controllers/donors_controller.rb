@@ -1,5 +1,4 @@
 class DonorsController < ApplicationController
-  before_action :set_donor, only: [:show]
 
   # GET /donors
   # GET /donors.json
@@ -68,8 +67,4 @@ class DonorsController < ApplicationController
       @donor = Donor.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def donor_params
-      params.require(:donor).permit(:name, :email, :user_id)
-    end
 end

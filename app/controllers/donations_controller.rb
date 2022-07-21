@@ -1,11 +1,12 @@
 class DonationsController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :verify_authenticity_token, :authenticate_user!
+  # skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def index
-    @donations = Donation.where(idea_id: current_user.ideas)
-    #@ideas = @user.ideas_with_donations
-    #@donation.idea_id = @idea.id
+    # @donations = Donation.where(donor_id: @donor_id).order(created_at: :desc)
+    @donations = Donation.all
+    # @ideas = current_user.ideas.all.order(created_at: :desc)
+    # @donations = current_user.donations.all.order(created_at: :desc)
   end
   
   def new
@@ -17,14 +18,12 @@ class DonationsController < ApplicationController
     @donor_id = params[:donor_id]
     @email = params[:email]
     @idea_id = params[:idea_id]
-    # @perk_id = params[:perk_id]
     @amount = params[:amount]
     @donation = current_user.donations.build(
       :amount => @amount,
       :donor_id => @donor_id,
       :idea_id => @idea_id,
-      # :perk_id => @perk_id,
-      # :response_reference => @response_reference
+      :response_reference => @response_reference
       )
     @donor_id = current_user.id
     @idea_id = Idea.find_by_id params[:idea]

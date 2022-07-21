@@ -44,15 +44,15 @@
                       <% end %>
                     </div>
                     
-                    <section>
+                    <section class="mb-3">
                       <% if @user.id == current_user.id %>
                         <%#= button_to "Logout", '/logout', method: :post %>
                       <% elsif current_user.followees.include?(@user) %>
                         <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST", 
-                              class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;" %></h5>
+                              class: "btn btn-sm text-white", style: "font-size: 10px;" %></h5>
                       <% else %>
                           <h5><%= button_to "Follow", follow_user_path, method: "POST", 
-                              class: "btn btn-sm rounded-pill text-white", style: "font-size: 12px;"  %></h5>
+                              class: "btn btn-sm text-white", style: "font-size: 10px;"  %></h5>
                       <% end%>
                     </section>
  
@@ -157,7 +157,7 @@
                             <i class="fas fa-users"></i>
                             <span>Teams</span>
                           </a>
-                          <span style="font-style: italic;">0</span>
+                          <span style="font-style: italic;"><%= (@team_members.count) %></span>
                         </li>
   
                         <li data-tab="my-bidss">
@@ -165,12 +165,12 @@
                             <i class="fas fa-life-ring"></i>
                             <span>Campaigns</span>
                           </a>
-                          <span style="font-style: italic;">0</span>
+                          <span style="font-style: italic;"><%= (@user.ideas.count) %></span>
                         </li>
                         <hr>
                       </ul>
                     </div><!-- tab-feed end-->
-                  </div><!--user-tab-sec end-->
+                  </div><!--user-tab-sec end--> 
                
                   <div class="product-feed-tab mb-3" id="feed-dd">
                     
@@ -358,15 +358,26 @@
 									</div><!--product-feed-tab end-->
 
 									<div class="product-feed-tab current" id="info-dd">
-										<%# if @user.ideas.count < 1 %>
-                      <p>No teams to display!</p>
-                    <%# end %>	
-									</div><!--product-feed-tab end-->
+										<% if @team_members.count < 1 %>
+                      <%# <p class="text-center mb-5">No teams to display.  %>
+      									<%#= link_to "Create one", new_team_member_path(@team_member) %>
+    									<%# </p> %>
+                    <% else %>
+											<% @user.team_members.each do |team_member| %>
+											
+											<% end %>
+										<% end %>
+										</div><!--product-feed-tab end-->
 									
 									<div class="product-feed-tab" id="my-bidss">
-										<%# if @user.ideas.count < 1 %>
-                      <p>No campaigns to display!</p>
+										<%# if @team_members.count < 1 %>
+                      <%# <p class="text-center mb-5">No campaigns to display.  %>
+      									<%#= link_to "Create one", new_team_member_path(@team_member) %>
+    									<%# </p> %>
                     <%# end %>
+                    <%# @user.team_members.each do |team_member| %>
+											
+										<%# end %>
 									</div><!--product-feed-tab end-->
                 </div><!--main-ws-sec end-->
               </div>

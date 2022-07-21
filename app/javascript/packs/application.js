@@ -12,6 +12,7 @@ window.$ = window.jQuery = jQuery;
 
 //= require("jquery")
 //= require("jquery-ui/core")
+//= require popper
 //= require activestorage
 //= require local-time
 //= require tinymce

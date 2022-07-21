@@ -142,6 +142,7 @@
                 <div class="tab-pane fade" id="nav-invoice" role="tabpanel" aria-labelledby="nav-invoice-tab">
                   <div class="acc-setting">
                     <h3>invoice Items</h3>
+										
 										<div data-controller="nested-form">
 											<template data-target='nested-form.template'>
 												<%= form.fields_for :invoice_items, InvoiceItem.new, child_index: 'TEMPLATE_RECORD' do |invoice_item| %>

@@ -1,8 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :login 
-
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
+  attr_accessor :login
+  enum status: [:inactive, :active]
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: %i[github google_oauth2]
@@ -17,12 +16,14 @@ class User < ApplicationRecord
   
   #has_secure_password
 
-  has_one :plan_subscription
+  has_one :sub
+  #has_many :transactions, dependent: :destroy
 
   has_many :ideas, dependent: :destroy
   has_many :enterprises, dependent: :destroy
   has_many :donations, through: :ideas
   has_many :comments, dependent: :destroy
+  has_many :team_members, through: :enterprises
 
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
 
@@ -34,8 +35,7 @@ class User < ApplicationRecord
   has_many :followees, through: :followed_users
   has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, through: :following_users
-  
-  # has_one_attached :image, dependent: :destroy
+
   
   def full_name
     "#{first_name} #{last_name}"
@@ -67,6 +67,7 @@ class User < ApplicationRecord
     end
     user
   end
+  
   # def user_rating
   #   self.user_rating = (self.ideas.count + self.comments.count)
   # end
@@ -92,17 +93,13 @@ class User < ApplicationRecord
     self.donated_amount = @donation.sum(:amount).to_f / 100
   end
 
-  def subscribed_to_plan?
-    plan_subscription
-  end
-
-  after_create :setup_plan_subscription
+  # after_create :setup_subscription_plan
 
   private
 
-  def setup_plan_subscription
-    PlanSubscription.create(user_id: self.id, plan: "free", active_until: 12.months.from_now)
-  end
+  # def setup_subscription_plan
+  #   SubscriptionPlan.create(user_id: self.id, plan: "free", active_until: 12.months.from_now)
+  # end
 
   def image_size_validation
     #errors[:image] << "should be less than 1MB" if image.size > 1.megabytes

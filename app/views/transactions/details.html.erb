@@ -1,0 +1,106 @@
+<% content_for :title, "Transaction History" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Pricing</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Pricing</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+ 
+  
+  <div class="forms">      
+    <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+      <div class="form-title">
+        <h4>Payment Reciept</h4>
+      </div>
+      <div class="form-body">
+        <div class="card-body card-body">
+          <div class="card-header">
+            <% if !current_user.admin? %>
+              <h5 class="card-title"><strong>Status - <%= @res.status %></strong></h5>
+              <div class="text-center py-20">
+                <div data-provide="peity" data-type="donut" data-size="150" data-inner-radius="55" data-fill="#efb3e6,#ffdf7c,#b2def7"></div>
+              </div>
+            <% else %>
+          </div>
+            <h5 class="card-title"><strong>Status - <%= @res['status'] %></strong></h5>
+            <div class="text-center py-20">
+              <div data-provide="peity" data-type="donut" data-size="150" data-inner-radius="55" data-fill="#efb3e6,#ffdf7c,#b2def7">User Email - <%= @res.user.email %></div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="card-body card-body">
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td> <strong>Reference:</strong></td>
+                <td><%= @res.reference %></td>
+              </tr>
+              <% if current_user.admin? %>
+                <td> <strong>User:</strong></td>
+                  <td><%= @res.user.full_name %> <%= link_to "view user", profile_path(@res.user.username)%></td>
+                </tr>
+              <% end %>
+              <tr>
+              <td>
+                <strong>Amount:</strong></td>
+                <td><%= @res.amount %></td>
+              </tr>
+
+              <tr>
+              <td>
+                <strong>Expires On:</strong></td>
+                <td><%= @res.expires_on %></td>
+              </tr>
+
+              <tr>
+                <td><strong>Channel:</strong></td>
+                <td><%= @res.channel%></td>
+              </tr>
+
+              <tr>
+                <td><strong>Gateway Response:</strong></td>
+                <td><%= @res.gateway_response %></td>
+              </tr>
+
+              <tr>
+                <td><strong>Currency:</strong></td>
+                <td><%= @res.currency%></td>
+              </tr>
+
+              <%if @res.created_at%>
+              <tr>
+                <td><strong>Paid At:</strong></td>
+                <td><%= @res.created_at%></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to 'Back to Dashboard', dashboard_path(current_user.full_name), class:"btn btn-info" %> |
+  <%= link_to "Back", :back, class:"btn btn-warning"%> 
+

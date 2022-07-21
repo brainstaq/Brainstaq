@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_23_212118) do
+ActiveRecord::Schema.define(version: 2022_07_17_091756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -397,22 +397,6 @@ ActiveRecord::Schema.define(version: 2022_06_23_212118) do
     t.index ["enterprise_id"], name: "index_pitch_decks_on_enterprise_id"
   end
 
-  create_table "plan_subscriptions", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "plan"
-    t.datetime "active_until"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "channel"
-    t.string "status"
-    t.string "gateway_response"
-    t.string "customer_code"
-    t.string "currency"
-    t.string "reference"
-    t.bigint "amount"
-    t.index ["user_id"], name: "index_plan_subscriptions_on_user_id"
-  end
-
   create_table "portfolios", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -444,6 +428,15 @@ ActiveRecord::Schema.define(version: 2022_06_23_212118) do
     t.index ["enterprise_id"], name: "index_services_on_enterprise_id"
   end
 
+  create_table "subs", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "status"
+    t.string "interval"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "subscribers", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
@@ -459,6 +452,22 @@ ActiveRecord::Schema.define(version: 2022_06_23_212118) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["enterprise_id"], name: "index_team_members_on_enterprise_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "channel"
+    t.string "status"
+    t.string "gateway_response"
+    t.string "customer_code"
+    t.string "currency"
+    t.string "reference"
+    t.bigint "amount"
+    t.date "expires_on"
+    t.bigint "integer"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -500,7 +509,12 @@ ActiveRecord::Schema.define(version: 2022_06_23_212118) do
     t.string "interval"
     t.string "provider"
     t.string "uid"
+    t.bigint "customer_code"
+    t.string "paystack_email_token"
+    t.string "paystack_auth_code"
+    t.string "paystack_cust_code"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["customer_code"], name: "index_users_on_customer_code", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

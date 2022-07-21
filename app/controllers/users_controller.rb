@@ -1,85 +1,97 @@
 class UsersController < ApplicationController
-    # layout 'dashboard'
-    before_action :authenticate_user!
-    before_action :set_user, only: [:profile, :index, :delete]
-    impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
+  # load_and_authorize_resource param_method: :user_params
+  before_action :authenticate_user!
+  before_action :set_user, only: [:profile, :index, :delete]
+  impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
 
-    def index
-      @ideas = Idea.all.order(created_at: :desc).take(15)
-      @enterprises = Enterprise.all.order(created_at: :desc).take(15)
-      @users = User.find_by_username params[:username]
-
-      following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)
-      following_ids << current_user.id
-
-      @follower_suggestions = User.where.not(id: following_ids).take(10)
+  def in_check
+    if user_signed_in?
+      if current_user.sub
+        if current_user.sub.status == "inactive" ||  current_user.sub.status == nil
+          redirect_to new_transaction_path, notice: 'You have no active subscription'
+        end
+      else
+        # redirect_to new_sub_path, notice: 'Setup Your Subscription First'
+      end
     end
+  end
+  
+  def index
+    @ideas = Idea.all.order(created_at: :desc).take(15)
+    @enterprises = Enterprise.all.order(created_at: :desc).take(15)
+    @users = User.find_by_username params[:username]
 
-    def follow
-      @user = User.find_by_username params[:username]
-      current_user.followees << @user
-      redirect_back(fallback_location: profile_path(@user))
-    end
-    
-    def unfollow
-      @user = User.find_by_username params[:username]
-      current_user.followed_users.find_by(followee_id: @user.id).destroy
-      redirect_back(fallback_location: profile_path(@user))
-    end
+    following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)
+    following_ids << current_user.id
 
-    # def user_rating
-    #   self.user_rating = (self.ideas.count + self.comments.count)
-    # end
+    @follower_suggestions = User.where.not(id: following_ids).take(10)
+  end
 
-    def subscribed_to_plan?
-      plan_subscription_id
-    end
+  def follow
+    @user = User.find_by_username params[:username]
+    current_user.followees << @user
+    redirect_back(fallback_location: profile_path(@user))
+  end
+  
+  def unfollow
+    @user = User.find_by_username params[:username]
+    current_user.followed_users.find_by(followee_id: @user.id).destroy
+    redirect_back(fallback_location: profile_path(@user))
+  end
 
-    def create
-      @users = User.create(params.require(:user))
-      session[:user_id] = @user.id
+  # def user_rating
+  #   self.user_rating = (self.ideas.count + self.comments.count)
+  # end
 
-      # redirect_to root_path
-      format.html { redirect_to root_path, notice: 'Confirmation required. Check your email!' }
-    end
-    
-    def new
-      @user = User.new
-    end
+  def subscribed_to_plan?
+    subscription_plan_id
+  end
 
-    def profile
-      @profile = User.find_by_username params[:username]
-      @ideas = current_user.ideas.all.order(created_at: :desc)
-    end
+  def create
+    @users = User.create(params.require(:user))
+    session[:user_id] = @user.id
 
+    # redirect_to root_path
+    format.html { redirect_to root_path, notice: 'Confirmation required. Check your email!' }
+  end
+  
+  def new
+    @user = User.new
+  end
 
-    def ideas
-      @user = User.find_by_username params[:username]
-      @ideas = @user.ideas
-    end
+  def profile
+    @profile = User.find_by_username params[:username]
+    @ideas = current_user.ideas.all.order(created_at: :desc)
+    @team_members = current_user.team_members.all.order(created_at: :desc)
+  end
 
-    def set_user
-      @user = User.find_by_username(params[:username])
-    end
+  def ideas
+    @user = User.find_by_username params[:username]
+    @ideas = @user.ideas
+  end
 
-    def edit
-     @user = User.find(params[:id]) 
-    end
+  def set_user
+    @user = User.find_by_username(params[:username])
+  end
 
-    def update
-      current_user.update(params[:user])
-      redirect_to profile_path(user.username)
-    end
+  def edit
+   @user = User.find(params[:id]) 
+  end
 
-    private
+  def update
+    current_user.update(params[:user])
+    redirect_to profile_path(user.username)
+  end
 
-    def user_params
-      params.require(:user).permit(:id, :first_name, :last_name, :image, :image_url, :username, :country, 
-        :website, :phone, :gender, :bio, :email, :password, :password_confirmation, :facebook_url, 
-        :twitter_url, :instagram_url, :linkedin_url)
-    end
+  private
 
-    def image_params
-      params.require(:image).permit(:image_url)
-    end
+  def user_params
+    params.require(:user).permit(:id, :first_name, :last_name, :image, :image_url, :username, :country, 
+      :website, :phone, :gender, :bio, :email, :password, :password_confirmation, :facebook_url, 
+      :twitter_url, :instagram_url, :linkedin_url)
+  end
+
+  def image_params
+    params.require(:image).permit(:image_url)
+  end
 end

@@ -32,15 +32,15 @@
   <div class="container">
     <div class="row align-items-center justify-content-around">
       <div class="col-lg-5 col-md-8 col-sm-10 mb-5">
-        <h2 class="section-title">
-          Our mission - <br><strong style="text-transform: uppercase !important;">empower creative & innovative ideas</strong></h2>
+        <h3 class="section-title">
+          Our mission - <br><strong style="text-transform: uppercase !important;">empower creative & innovative projects</strong></h3>
         <p class="pb-20 border-bottom mb-20">
           We see initiatives, projects, and businesses starting up here and there, 
           especially in Africa, only to disappear quickly due to lack of funds. 
           Those that are resilient enough soon become difficult to sustain over a period of time. 
-          Without adequate finances and funding, most of the ideas that can change the 
+          Without adequate finances and funding, most of the projects that can change the 
           African narrative are rarely able to break out from being just an idea, 
-          let alone grow into a tangible business.<br>
+          let alone grow into a tangible business.<br><br>
 
           <span style="font-weight: bold; color: gray; font-size: 18px;">
             This is the problem which Brainstaq solves!
@@ -63,7 +63,7 @@
           <li class="mb-15">
             <svg width="16" height="11" viewBox="0 0 18 13" class="text-primary mr-2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Join the Movement. Start building something!<br>
-            Every idea to has a fighting chance to grow and reach their true potential.
+            Every idea and project has a fighting chance to grow and reach their true potential.
             We believe every Entrepreneur should have the tools to create the solutions of tomorrow.
           </li>
         </ul>
@@ -83,7 +83,7 @@
 <!-- end section -->
 
 <!-- start section -->
-<section class="section-padding pt-0">
+<%# <section class="section-padding pt-0">
   <div class="container">
     <div class="shadow px-4 pt-30">
       <div class="has-colored-text row no-gutters overflow-hidden">
@@ -110,11 +110,14 @@
       </div>
     </div>
   </div>
-</section>
+</section> %>
 <!-- end section -->
+<section class="pt-50 pb-50 mb-5 image-info-section bg-light-gray has-shapes bg-brash-bottom has-bg-brash bg-brash-y overflow-hidden" style="background-image: url(images/brushes/section-top.svg), url(images/brushes/section-bottom.svg);">
+  <%= render partial: "layouts/growth_rate" %>
+</section>
 
 <!-- start section -->
-<section class="pt-120 pb-120 mb-5 image-info-section has-shapes bg-light-gray bg-brash-bottom has-bg-brash bg-brash-y overflow-hidden" style="background-image: url(images/brushes/section-top.svg), url(images/brushes/section-bottom.svg);">
+<section class="pt-120 pb-120 mb-5 image-info-section has-shapes bg-brash-bottom has-bg-brash bg-brash-y overflow-hidden" style="background-image: url(images/brushes/section-top.svg), url(images/brushes/section-bottom.svg);">
   <div class="container">
     <div class="row align-items-center justify-content-around">
       <div class="col-lg-5 col-md-8 col-sm-10">
@@ -145,8 +148,6 @@
   <div class="shape-7 shape-xs-2 bg-tertiary rounded-circle"></div>
 </section>
 <!-- end section -->
-
-<%= render partial: "layouts/growth_rate" %>
 
 
 <style>

@@ -181,30 +181,16 @@ background-color: #1d2124;
   font-weight: bold;
 }
 
-// @media only screen and (max-width: 600px) {
-//     .invoice-box table tr.top table td {
-//         width: 100%;
-//         display: block;
-//         text-align: center;
-//     }
-//
-//     .invoice-box table tr.information table td {
-//         width: 100%;
-//         display: block;
-//         text-align: center;
-//     }
-// }
+@media only screen and (max-width: 600px) {
+    .invoice-box table tr.top table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
 
-/** RTL **/
-.rtl {
-  direction: rtl;
-  font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-}
-
-.rtl table {
-  text-align: right;
-}
-
-.rtl table tr td:nth-child(2) {
-  text-align: left;
+    .invoice-box table tr.information table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
 }

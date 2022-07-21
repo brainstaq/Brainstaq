@@ -6,3 +6,4 @@ production:
   - high
   - default
   - mailers
+  - process_web_hook

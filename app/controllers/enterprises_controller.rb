@@ -32,7 +32,6 @@ class EnterprisesController < ApplicationController
     @business_plan.enterprise_id = @enterprise.id
 
     render :show
-    # @business_plan = @enterprise.business_plan.build
   end
 
   # GET /enterprises/new
@@ -52,7 +51,7 @@ class EnterprisesController < ApplicationController
 
     respond_to do |format|
       if @enterprise.save
-        format.html { redirect_to @enterprise, notice: "Enterprise was successfully created." }
+        format.html { redirect_to @enterprise, notice: "Brand was successfully created." }
         format.json { render :show, status: :created, location: @enterprise }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,7 +64,7 @@ class EnterprisesController < ApplicationController
   def update
     respond_to do |format|
       if @enterprise.update(enterprise_params)
-        format.html { redirect_to @enterprise, notice: "Enterprise was successfully updated." }
+        format.html { redirect_to @enterprise, notice: "Brand was successfully updated." }
         format.json { render :show, status: :ok, location: @enterprise }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -78,7 +77,7 @@ class EnterprisesController < ApplicationController
   def destroy
     @enterprise.destroy
     respond_to do |format|
-      format.html { redirect_to enterprises_url, notice: "Enterprise was successfully destroyed." }
+      format.html { redirect_to enterprises_url, notice: "Brand was successfully destroyed." }
       format.json { head :no_content }
     end
   end

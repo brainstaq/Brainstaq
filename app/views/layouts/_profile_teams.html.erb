@@ -1,0 +1,11 @@
+<div class="product-feed-tab current" id="info-dd">
+  <% if @team_members.count < 1 %>
+    <%# <p class="text-center mb-5">No teams to display.  %>
+      <%#= link_to "Create one", new_team_member_path(@team_member) %>
+    <%# </p> %>
+  <% else %>
+    <% @user.team_members.each do |team_member| %>
+    
+    <% end %>
+  <% end %>
+</div><!--product-feed-tab end-->

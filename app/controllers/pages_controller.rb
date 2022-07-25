@@ -27,7 +27,7 @@ class PagesController < ApplicationController
   def privacy
   end
 
-  def plans
-    render "pages/plans"
-  end
+  # def plans
+  #   render "pages/plans"
+  # end
 end

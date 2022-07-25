@@ -40,28 +40,32 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-7">
-                <div class="rounded shadow p-30">
-                    <h3 class="font-weight-600">
-                        <i class="ti-info-alt text-primary mr-2"></i>
-                        Contact us for
-                    </h3>
-
-                    <ul class="list-unstyled check-list-primary mt-30">
-                        <li class="mb-20">
-                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            Critical analysis of your core business
-                        </li>
-                        <li class="mb-20">
-                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            Development of a working business model                        </li>
-                        <li>
-                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            Business funding opportunities 
-                        </li>
-                    </ul>
-                </div>
+                <form class="rounded shadow p-30">
+                <%= form_for :contact, url: contact_path do |f| %>
+                    <div class="form-group mb-30">
+                        <label class="text-black-200 h5 font-weight-600 mb-2" for="fname">Full Name</label>
+                        <%= f.text_field  :name, required: true, class: "form-control shadow-none", placeholder: "Cliff Joe" %>
+                    </div>
+                    <div class="form-group mb-30">
+                        <label class="text-black-200 h5 font-weight-600 mb-2" for="email">Email</label>
+                        <%= f.text_field :email, required: true, class: "form-control shadow-none", placeholder: "joe@brainstaq.com" %>
+                    </div>
+                    <div class="form-group mb-30">
+                        <label class="text-black-200 h5 font-weight-600 mb-2" for="website">Subject</label>
+                        <%= f.text_field :subject, required: true, class: "form-control shadow-none", placeholder: "Need Assistance" %>
+                    </div>
+                    <div class="form-group mb-30">
+                        <label class="text-black-200 h5 font-weight-600 mb-2" for="message">Message</label>
+                        <%= f.text_area :message, rows: 8, cols: 40, required: true, class: "form-control shadow-none", placeholder: "Tell us something!"%>
+                    </div>
+                    <div>
+                        <%= f.hidden_field :nickname %>
+                    </div>
+                    <%= f.submit 'Send Message', class: 'btn btn-primary w-100' %>
+                </form>
+                <% end %>
             </div>
-            <div class="col-xl-6 col-lg-7 mt-5 mt-lg-0">
+            <div class="col-xl-4 col-lg-5 mt-5 mt-lg-0">
                 <div class="rounded shadow p-30 mb-30">
                     <h3 class="font-weight-600">
                         <i class="ti-location-pin text-primary mr-2"></i>
@@ -83,7 +87,26 @@
                         </li>
                     </ul>
                 </div>
-                
+                <div class="rounded shadow p-30">
+                    <h3 class="font-weight-600">
+                        <i class="ti-info-alt text-primary mr-2"></i>
+                        Contact us for
+                    </h3>
+
+                    <ul class="list-unstyled check-list-primary mt-30">
+                        <li class="mb-20">
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Critical analysis of your core business
+                        </li>
+                        <li class="mb-20">
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Development of a working business model                        </li>
+                        <li>
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Business funding opportunities 
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

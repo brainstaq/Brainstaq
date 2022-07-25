@@ -3,18 +3,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:profile, :index, :delete]
   impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
-
-  def in_check
-    if user_signed_in?
-      if current_user.sub
-        if current_user.sub.status == "inactive" ||  current_user.sub.status == nil
-          redirect_to new_transaction_path, notice: 'You have no active subscription'
-        end
-      else
-        # redirect_to new_sub_path, notice: 'Setup Your Subscription First'
-      end
-    end
-  end
   
   def index
     @ideas = Idea.all.order(created_at: :desc).take(15)
@@ -43,10 +31,6 @@ class UsersController < ApplicationController
   #   self.user_rating = (self.ideas.count + self.comments.count)
   # end
 
-  def subscribed_to_plan?
-    subscription_plan_id
-  end
-
   def create
     @users = User.create(params.require(:user))
     session[:user_id] = @user.id
@@ -63,6 +47,12 @@ class UsersController < ApplicationController
     @profile = User.find_by_username params[:username]
     @ideas = current_user.ideas.all.order(created_at: :desc)
     @team_members = current_user.team_members.all.order(created_at: :desc)
+
+    following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)
+    following_ids << current_user.id
+    @enterprises = Enterprise.all.order(created_at: :desc).take(15)
+
+    @follower_suggestions = User.where.not(id: following_ids).take(10)
   end
 
   def ideas
@@ -75,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-   @user = User.find(params[:id]) 
+   @user = User.find(params[:id])
   end
 
   def update

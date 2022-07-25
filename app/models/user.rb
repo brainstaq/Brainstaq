@@ -16,7 +16,7 @@ class User < ApplicationRecord
   
   #has_secure_password
 
-  has_one :sub
+  # has_one :sub
   #has_many :transactions, dependent: :destroy
 
   has_many :ideas, dependent: :destroy
@@ -91,6 +91,10 @@ class User < ApplicationRecord
 
   def donated_amount
     self.donated_amount = @donation.sum(:amount).to_f / 100
+  end
+
+  def funded_ideas_and_user
+    self.donations.includes(idea: :user)
   end
 
   # after_create :setup_subscription_plan

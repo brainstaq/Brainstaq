@@ -34,6 +34,7 @@ class IdeasController < ApplicationController
     @donors_count = donation.count
     @donors = @idea.donations
     @donated_amount = @idea.donations.sum(:amount)
+    @idea = Idea.includes(:perks).find(params[:id])
     render :show
   end
 

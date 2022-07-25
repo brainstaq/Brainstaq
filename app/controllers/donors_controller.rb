@@ -4,7 +4,7 @@ class DonorsController < ApplicationController
   # GET /donors.json
   def index
     @donors = Donor.all
-    # @donors = Donation.where(donor_id: !current_user.id)
+    @donor = Donation.where(donor_id: !current_user.id)
   end
 
   # GET /donors/1

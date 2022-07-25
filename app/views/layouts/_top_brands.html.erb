@@ -7,7 +7,7 @@
     <div class="suggestions-list make-me-sticky" style="padding-bottom: 60px;">
       <div class="suggestion-usd" style="margin-bottom: -60px;">
         <a href="<%= enterprise_url(enterprise) %>">
-          <%= image_tag enterprise.image_url, style: "width: 50px; height: 50px; margin-left: 5px; margin-right: 5px;" %>
+          <%= image_tag enterprise.image_url, style: "width: 60px; height: flex; margin-left: 5px; margin-right: 5px;" %>
         </a>
         <div class="sgt-text">
           <h4><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark' %></h4>
@@ -23,3 +23,5 @@
     </div>
   <% end %>
 </div>
+
+

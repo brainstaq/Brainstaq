@@ -19,7 +19,7 @@
             <li><%= link_to 'About', about_path, class: 'text-decoration-none' %></li>
 						<li><%= link_to 'Features', all_features_path, class: 'text-decoration-none' %></li>
 						<li><%= link_to 'How it Works', how_it_works_path, class: 'text-decoration-none' %></li>
-						<li><%= link_to 'Pricing', new_transaction_path, class: 'text-decoration-none' %></li>
+						<%#= link_to 'Pricing', new_transaction_path, class: 'text-decoration-none' %>
             <li><%= link_to 'Career', career_path, class: 'text-decoration-none' %></li>
             
 					</ul>
@@ -37,38 +37,39 @@
 					</ul>
 				</div>
 			</div>
+
 			<div class="col-lg-4 col-md-6">
-      <% if cookies[:saved_subscriber] %>
-        Thanks for signing up!
-      <% else %>
-				<div class="pl-0 pl-lg-4 mt-5 mt-lg-0">
-					<h5 class="font-weight-600 mb-3">Subscribe</h5>
+      	<% if cookies[:saved_subscriber] %>
+        	Thanks for signing up!
+      	<% else %>
+					<div class="pl-0 pl-lg-4 mt-5 mt-lg-0">
+						<h5 class="font-weight-600 mb-3">Subscribe</h5>
 						<p>Subscribe to be kept in the loop of amazing offers from Brainstaq. 
-              We will not share your email with the public without your consent.
-            </p>
-          
-            <%= form_for Subscriber.new do |f| %>
-              <div class="input-group mt-30">
-                <%= f.email_field :email, placeholder: "Enter email address", class: "form-control bg-gray" %>
-                <div class="input-group-append ml-0">
-                  <%= f.submit 'Submit', class: "btn btn-primary" do %>
-                    <span class="icon">
-                      <svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M30.7071 8.70808C31.0976 8.31756 31.0976 7.68439 30.7071 7.29387L24.3431 0.929909C23.9526 0.539384 
-                        23.3195 0.539384 22.9289 0.929909C22.5384 1.32043 22.5384 1.9536 22.9289 2.34412L28.5858 8.00098L22.9289 
-                        13.6578C22.5384 14.0484 22.5384 14.6815 22.9289 15.072C23.3195 15.4626 23.9526 15.4626 24.3431 15.072L30.7071 
-                        8.70808ZM0 9.00098H30V7.00098H0V9.00098Z" fill="white"/>
-                      </svg>
-                    </span>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
+							We will not share your email with the public without your consent.
+						</p>
+				
+						<%= form_for Subscriber.new do |f| %>
+							<div class="input-group mt-30">
+								<%= f.email_field :email, placeholder: "Enter email address", class: "form-control bg-gray" %>
+								<div class="input-group-append ml-0">
+									<%= f.submit 'Submit', class: "btn btn-primary" do %>
+										<span class="icon">
+											<svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M30.7071 8.70808C31.0976 8.31756 31.0976 7.68439 30.7071 7.29387L24.3431 0.929909C23.9526 0.539384 
+												23.3195 0.539384 22.9289 0.929909C22.5384 1.32043 22.5384 1.9536 22.9289 2.34412L28.5858 8.00098L22.9289 
+												13.6578C22.5384 14.0484 22.5384 14.6815 22.9289 15.072C23.3195 15.4626 23.9526 15.4626 24.3431 15.072L30.7071 
+												8.70808ZM0 9.00098H30V7.00098H0V9.00098Z" fill="white"/>
+											</svg>
+										</span>
+									<% end %>
+								</div>
+							</div>
+						<% end %>
           </div>
         <% end %>
-        </div>
       </div>
     </div>
+  </div>
 	<div class="footer-bottom">
 		<div class="container">
 			<div class="row">

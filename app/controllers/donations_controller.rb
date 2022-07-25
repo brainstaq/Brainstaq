@@ -3,10 +3,9 @@ class DonationsController < ApplicationController
   # skip_before_action :verify_authenticity_token, :authenticate_user!
 
   def index
-    # @donations = Donation.where(donor_id: @donor_id).order(created_at: :desc)
-    @donations = Donation.all
-    # @ideas = current_user.ideas.all.order(created_at: :desc)
-    # @donations = current_user.donations.all.order(created_at: :desc)
+    @ideas = current_user.ideas.all.order(created_at: :desc)
+    @donations = current_user.donations.order(created_at: :desc)
+    @perk = Perk.find_by_id params[:perk_id]
   end
   
   def new
@@ -27,9 +26,13 @@ class DonationsController < ApplicationController
       )
     @donor_id = current_user.id
     @idea_id = Idea.find_by_id params[:idea]
-    # @perk = Perk.find_by_id params[:perk_id]
+    @perk = Perk.find_by_id params[:perk_id]
     if @donation.save!
+      @idea = @donation.idea
+      @donation.perk if @donation.perk
       render json: { success: true}
+    else
+      render :new
     end
   end
 
@@ -40,16 +43,16 @@ class DonationsController < ApplicationController
   end
 
   def donor
-    # @donor ||= Donation.find_by(user: donor_id, idea: idea_id)
+    @donor ||= Donation.find_by(user: donor_id, idea: idea_id)
   end
   
   private
 
   def donation_params
-    params.permit(:idea_id, :donor_id, :response_reference, :amount, :email, :phone)
+    params.require(:donation).permit(:idea_id, :donor_id, :perk_id, :user_id, :response_reference, :amount, :email, :phone)
   end
 
-  def donations
-    params.permit(:idea_id, :donor_id, :response_reference, :amount)
-  end
+  # def donations
+  #   params.permit(:idea_id, :donor_id, :perk_id, :user_id, :response_reference, :amount)
+  # end
 end

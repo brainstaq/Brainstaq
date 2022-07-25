@@ -6,14 +6,17 @@ class ContactController < ApplicationController
     @contact = Contact.new
   end
 
+  def new
+    @contact = Contact.new
+  end
+
   def create
     @contact = Contact.new(params[:contact])
     @contact.request = request
     if @contact.deliver
-      @contact = Contact.new
-      redirect_to root_path, notice: 'Thank you for your message!'
+      redirect_to new_contact_path, notice: "Your message has been sent. Thank you!"
     else
-      redirect_to root_path, notice: 'Message not sent!'
+      redirect_to new_contact_path, notice: "Oops! Something went wrong."
     end
   end
 

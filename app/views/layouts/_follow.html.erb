@@ -1,33 +1,32 @@
 <div class="main-left-sidebar no-margin" style="width: 280px; padding-bottom: 10px;">			
-  <div class="suggestions full-width" style="padding-bottom: 30px;">
+  <div class="suggestions full-width" style="padding-bottom: 30px; width: 280px;">
     <div class="sd-title">
       <h3 style="font-weight: bold; text-align: center;">Popular Brainers</h3>
     </div>
     
     <% @follower_suggestions.each do |user| %>
-    <div class="suggestions-list">
-      <div class="suggestion-usd" style="margin-bottom: -50px; margin-left: 5px;">      
-        <a href="<%= profile_path(user.username) %>">
-          <% if user.image.url %>
+      <div class="suggestions-list">
+        <div class="suggestion-usd" style="margin-bottom: -50px; margin-left: 5px;">      
+          <a href="<%= profile_path(user.username) %>">
+            <% if user.image.url %>
             <%=image_tag (user.image_url), style: "width: 35px; height: 35px;", class: "rounded-circle" %>
-          <% else %>
+            <% else %>
             <%= image_tag 'avatar.png', style: "width: 35px; height: 35px;", class: "rounded-circle " %>
-          <% end %>
-        </a>
-        <div class="sgt-text">
-          <h4><%= link_to user.full_name.titleize, profile_path(user.username), class: "text-dark" %></h4>
-          <span style="font-size: 10px; font-weight: bold;" class= "text-dark"><%= user.country %></span>
-          <% if user.created_at > 2.days.ago %>
+            <% end %>
+          </a>
+          <div class="sgt-text">
+            <h4><%= link_to user.full_name.titleize, profile_path(user.username), class: "text-dark" %></h4>
+            <span style="font-size: 10px; font-weight: bold;" class= "text-dark"><%= user.country %></span>
+            <% if user.created_at > 2.days.ago %>
             <p style="font-size: 10px;">New to Brainstaq</p>
-          <% else %>
+            <% else %>
             <p style="font-size: 10px;"><%= pluralize(user.total_following, "follower") %></p>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
+        </div> 
       </div>
-    </div>
     <% end %>
-    
-    </div><!--suggestions-list end-->
-  </div><!--suggestions end-->						  
+  </div><!--suggestions-list end-->
+</div><!--suggestions end-->						  
 </div><!--main-left-sidebar end-->
 

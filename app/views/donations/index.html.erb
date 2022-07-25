@@ -1,11 +1,11 @@
-<% content_for :title, "Donations History" %>
+<% content_for :title, "Donation History" %>
 
 <!-- start of page-header -->
 <section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
     <div class="container h-100">
         <div class="row d-flex align-items-center h-100">
             <div class="col-md-12 text-center">
-                <h2 class="h1 font-weight-bold">All Donations</h2>
+                <h2 class="h1 font-weight-bold">Donations</h2>
                 <nav class="mt-15" aria-label="breadcrumb">
                     <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
                         <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
@@ -27,7 +27,7 @@
 </section>
 <!-- end of page-header -->
 
-<header class="section-header mb-5" style="padding-top: 80px;">
+<header class="section-header mb-5" style="padding-top: 50px;">
   <%# <h3 span class="text-primary">Donations</span></h3> %>
 </header>
 
@@ -38,29 +38,30 @@
         <table id="example" class="table table-hover responsive nowrap" style="width:100%">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Donor</th>
               <th>Amount</th>
               <th>Date</th>
               <th>Idea</th>
+              <th>Perk</th>
             </tr>
           </thead>
           <tbody>
-          <% @donations.each do |donation| %>
+          <% @donations.each do |donation| %> 
             <tr>
-              <td><%= donation.id %></td>
               <td>
                 <div class="d-flex align-items-center">
                   <div class="mr-3"><%= image_tag donation.user.image_url, style:"width:28px; height: 28px; margin-right: 0px;", class: "rounded-circle" %></div>
                   <div class="">
                     <p class="font-weight-bold mb-0"><%= link_to (donation.user.full_name), profile_path(donation.user.username) %></p>
                     <p class="text-muted mb-0"><%= donation.user.email %></p>
+                    <p class="text-muted mb-0"><%= donation.user.phone %></p>
                   </div>
                 </div>
               </td>
               <td><%= number_to_currency(donation.amount/100, :unit => "₦") %></td>
               <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
               <td><%= link_to (donation.idea.title), idea_path(donation.idea) %></td>
+              <td><%= donation.perk %></td>
             </tr>
           </tbody>
           <% end %>

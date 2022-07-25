@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
   
   resources :donations
-  resources :contact, only: [:create]
+  # resources :contact, only: [:new, :create]
   
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {
     registrations: 'registrations',
@@ -38,12 +38,12 @@ Rails.application.routes.draw do
     resources :invoices
   end
 
-  resources :subs do
-    member do
-      get 'activate_sub'
-      get 'deactivate_sub'
-    end
-  end
+  # resources :subs do
+  #   member do
+  #     get 'activate_sub'
+  #     get 'deactivate_sub'
+  #   end
+  # end
 
   resources :ideas, :path => 'projects', only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :comments
@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   post '/users/:username/unfollow', to: "users#unfollow", as: "unfollow_user"
 
   get '/about' => 'pages#about'
-  get '/pricing' => 'plan_subscription#new'
+  # get '/pricing' => 'plan_subscription#new'
   get '/career' => 'pages#career'
   get '/faqs' => 'pages#faqs'
   get '/all_features' => 'pages#features'
@@ -91,17 +91,17 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :retracts
-  resources :transactions
-  resources :transactions do
-    member do
-      get 'details'
-    end
-  end
+  # resources :retracts
+  # resources :transactions
+  # resources :transactions do
+  #   member do
+  #     get 'details'
+  #   end
+  # end
   
-  post 'web' => "retracts#web"
-  get 'callback' => "transactions#callback"
-  get 'upgrade' => "transactions#upgrade"  
+  # post 'web' => "retracts#web"
+  # get 'callback' => "transactions#callback"
+  # get 'upgrade' => "transactions#upgrade"  
 
   # get 'plan_subscriptions/success'
   # get 'transactions/success'

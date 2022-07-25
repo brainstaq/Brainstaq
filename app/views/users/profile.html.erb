@@ -34,9 +34,10 @@
           <div class="main-section-data">
             <div class="row">
               <div class="col-lg-3 pd-right-none no-pd">      
-                <div class="main-left-sidebar">
-                  <div class="user_profile">
-                    <div class="user-pro-img mt-3">
+                
+								<div class="main-left-sidebar">
+                  <div class="user_profile pt-0 pb-0">
+                    <div class="user-pro-img mt-3 mb-0">
                       <% if @user.image.url %>
                         <%=image_tag @user.image.url, style: "width: 160px; height: 156px;", class: "rounded-circle" %>
                       <% else %>
@@ -44,28 +45,28 @@
                       <% end %>
                     </div>
                     
-                    <section class="mb-3">
+                    <section class="mb-3 pb-0">
                       <% if @user.id == current_user.id %>
                         <%#= button_to "Logout", '/logout', method: :post %>
                       <% elsif current_user.followees.include?(@user) %>
-                        <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST", 
-                              class: "btn btn-sm text-white", style: "font-size: 10px;" %></h5>
+                    	  <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST", 
+                          class: "btn btn-sm text-white", style: "font-size: 10px;" %></h5>
                       <% else %>
-                          <h5><%= button_to "Follow", follow_user_path, method: "POST", 
-                              class: "btn btn-sm text-white", style: "font-size: 10px;"  %></h5>
+												<h5><%= button_to "Follow", follow_user_path, method: "POST", 
+													class: "btn btn-sm text-white", style: "font-size: 10px;"  %></h5>
                       <% end%>
                     </section>
  
-                    <div class="user_pro_status mx-auto">
-                      <ul class="flw-status">
+                    <div class="user_pro_status pb-3 mx-auto">
+                      <ul class="flw-status pb-0">
                         <li>
-                          <span style="font-size: 14px;">
+                          <span style="font-size: 12px;">
                             <%= link_to 'Followers', followers_user_path(@user) %>
                           </span>
                             <%= @user.total_following %>
                         </li>
                         <li>
-                          <span style="font-size: 14px;">
+                          <span style="font-size: 12px;">
                             <%= link_to 'Following', followings_user_path(@user) %>
                           </span>
                             <%= @user.total_followers %>
@@ -110,22 +111,23 @@
                       </div>
                     </div><!--user_pro_status end-->
                   </div><!--user_profile end-->          
-                </div>
+                
+									<%= render partial: 'layouts/follow', locals: { users: @users} %>						  
               </div>
               
               <div class="col-lg-6 col-md-8 no-pd">
                 <div class="main-ws-sec">
                   <div class="user-tab-sec">
-                    <h3 style="font-size: 30px;"><%= @user.full_name.titleize %></h3>
-                    <h4 style="font-size: 18px; color: #007bff;">@<%= @user.username %></h4>
+                    <h3 style="font-size: 24px;"><%= @user.full_name.titleize %></h3>
+                    <h4 style="font-size: 14px; color: #007bff;">@<%= @user.username %></h4>
                     <div class="star-descp">
                       <h5 class="mt-1" style="font-weight: bold; margin-bottom: 3px;">Bio</h5>
                       <span class="mb-3" style="font-size: 14px;"><%= @user.bio %></span>
                       
                       <div class="progress mt-0" style="height: 10px; width: 100%;">
                         <div class="progress-bar" role="progressbar" style="width: 
-                        <%= "#{@user.ideas.count + @user.comments.size}%" %>" aria-valuenow="<%= @user.ideas.count %>" 
-                          aria-valuemin="0" aria-valuemax="100">
+                        	<%= "#{@user.ideas.count + @user.comments.size}%" %>" aria-valuenow="<%= @user.ideas.count %>" 
+                          	aria-valuemin="0" aria-valuemax="100">
                           <small><%= "#{@user.ideas.size + @user.comments.size}%" %></small>      
                         </div>
                       </div>
@@ -139,7 +141,7 @@
                       <ul>
                         <li data-tab="saved-jobs" class="active">
                           <a href="#" title="">
-                            <i class="fas fa-tasks"></i>
+                            <i class="fa fa-building"></i>
                             <span>Brands</span>
                           </a>
                           <span style="font-style: italic;"><%= (@user.enterprises.count) %></span>
@@ -172,221 +174,26 @@
                     </div><!-- tab-feed end-->
                   </div><!--user-tab-sec end--> 
                
-                  <div class="product-feed-tab mb-3" id="feed-dd">
-                    
-										<% if @user.ideas.count < 1 %>
-											<p class="text-center mb-5">No projects to display. 
-      									<%= link_to "Create one", new_idea_path(@idea) %> now!
-    									</p>
-                    <% end %>
+                  <%= render partial: "layouts/profile_ideas" %>
+									<%= render partial: "layouts/profile_brands" %>
+									<%#= render partial: "layouts/profile_teams" %>
+									<%#= render partial: "layouts/profile_campaigns" %>
 
-                    <% @user.ideas.each do |idea| %>
-                      <div class="posts-section">
-                        <div class="post-bar">
-                          <div class="post_topbar">
-                            <div class="usy-dt">
-                              <% if @user.image_url %>
-                                <%= image_tag @user.image_url, style: "width: 40px;", class: "rounded-circle ml-1" %>
-                              <% else %>
-                                <%= image_tag 'avatar.png', style: "width: 40px;", class: "rounded-circle ml-1" %>
-                              <% end %>
-                              <div class="usy-name">
-                                <h3><%= idea.user.full_name.titleize %></h3>
-                                <span class="ml-1">
-                                  <i class="fas fa-clock mr-1"></i>
-                                  Created on <%= local_time(idea.created_at) %>
-                                </span>
-                              </div>
-                            </div>
-                            
-                            <% if user_signed_in? && current_user.id == idea.user_id %>
-                              <div class="dropdown ml-1 float-right" style="font-size: 20px;">
-                                <a class="dropdown-toggle fas fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" 
-                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">                                
-                                  <% if idea.end_date.future? %>
-                                   <%= link_to "Edit Idea", edit_idea_path(idea), class: "dropdown-item" %>
-                                  <% end %>
-                                  <%= link_to "Delete", idea, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
-                                </div>
-                              </div>
-                            <% end %>
-                          </div>
-													<div class="epi-sec">
-														<ul class="descp" style="font-size: 12px;">
-															<li><i class="fas fa-map-marker-alt"></i>  <%= idea.user.country %></li>
-															<li><i class="fas fa-list-alt"></i>  
-															<% if idea.category %>
-																<%= idea.category.name %>
-															<% else %>
-																<%= 'General' %>
-															<% end %>
-															</li>
-														</ul>
-													</div>
-                            <div class="job_descp">
-                              <h3><%= link_to idea.title.titleize, idea, class: 'text-dark' %></h3>
-                              <% if idea.relevance_bar.to_i > 75 && idea.expired? || idea.relevance_bar.to_i < 75 && idea.expired? %>
-                                <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
-                                  <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
-                                    <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
-                                  </small>
-                                </span>
-                              <% elsif idea.relevance_bar.to_i < 75 %>
-                                <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
-                                  <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
-                                    <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
-                                  </small>
-                              </span>
-                              <% elsif idea.relevance_bar.to_i > 75 %>
-                                <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
-                                  <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
-                                    <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
-                                  </small>
-                                </span>
-                              <% end %>
-
-                              <a href="<%= idea_url(idea) %>">
-                                <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %>
-                              </a>
-
-                              <p class="mt-3 mb-0" style="font-size: 14px;">
-                                <a class="text-dark" href="<%= idea_url(idea) %>">
-                                  <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
-                                </a>
-                              </p>
-                            </div>
-              
-                            <div class="job-status-bar mt-1">
-                              <ul class="like-com">
-                                <li style="font-size: 12px;" href="#"><i class="fa fa-eye text-primary"></i> <%= pluralize(idea.impressionist_count, 'View') %></li> 
-                        
-                                <% if user_signed_in? %>
-                                  <% if current_user.liked? idea %>
-                                    <%= link_to unlike_idea_path(idea), method: :put, class: "unlike_idea" do %>
-                                      <li><i class="fa fa-heart text-primary vote_count"></i> <%= idea.get_likes.size %></li>
-                                    <% end %>
-                                  <% else %>
-                                    <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
-                                      <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> <%= idea.get_likes.size %></li>
-                                    <% end %>
-                                  <% end %>
-                                  <% else %>
-                                    <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
-                                      <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> <%= idea.get_likes.size %></li>
-                                    <% end %>
-                                <% end %>
-
-                                <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments text-primary"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
-                              </ul>
-                            <a style="font-size: 12px;"><i class="fa fa-filter text-primary"></i> Relevance: <strong>
-                              <%= "#{idea.relevance_bar.to_i}%" %>
-                            </strong></a>
-                          </div>
-                        </div><!--post-bar end-->
-                      </div><!--posts-section end-->
-                    <% end %>
-                  </div><!--product-feed-tab end-->
-
-									<div class="product-feed-tab current" id="saved-jobs">
-										<% if @user.enterprises.count < 1 %>
-                      <p class="text-center mb-5">No brands to display. 
-      									<%= link_to "Create one", new_enterprise_path(@enterprise) %> now!
-    									</p>
-                    <% end %>
-                    <% @user.enterprises.each do |enterprise| %>
-                      <div class="posts-section">
-                        <div class="post-bar">
-                          <div class="post_topbar">
-                            <div class="usy-dt">
-                              <% if @user.image_url %>
-                                <%= image_tag @user.image_url, style: "width: 40px;", class: "rounded-circle ml-1" %>
-                              <% else %>
-                                <%= image_tag 'avatar.png', style: "width: 40px;", class: "rounded-circle ml-1" %>
-                              <% end %>
-                              <div class="usy-name">
-                                <h3><%= enterprise.user.full_name.titleize %></h3>
-                                <span class="ml-1">
-                                  <i class="fas fa-clock mr-1"></i>
-                                  Created on <%= local_time(enterprise.created_at) %>
-                                </span>
-                              </div>
-                            </div>
-                            
-                            <% if user_signed_in? && current_user.id == enterprise.user_id %>
-                              <div class="dropdown ml-1 float-right" style="font-size: 20px;">
-                                <a class="dropdown-toggle fas fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" 
-                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
-                                
-                                   <%= link_to "Edit Brand", edit_enterprise_path(enterprise), class: "dropdown-item" %>
-                                   <%= link_to "Delete", enterprise, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
-                                </div>
-                              </div>
-                            <% end %>
-                          </div>
-                            <div class="epi-sec">
-                              <ul class="descp" style="font-size: 12px;">
-                                <li><i class="fas fa-map-marker-alt"></i>  <%= enterprise.user.country %></li>
-                                <li><i class="fas fa-list-alt"></i>
-                                  <% if enterprise.category %>
-                                    <%= enterprise.category.name%>
-                                  <% else %>
-                                    <%= 'General' %>
-                                  <% end %>
-                                </li>
-                              </ul>
-                            </div>
-                            <div class="job_descp">
-                              <h3><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark' %></h3>
-                              
-                              <a href="<%= enterprise_url(enterprise) %>">
-                                <%= image_tag enterprise.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %>
-                              </a>
-
-                              <p class="mt-3 mb-0" style="font-size: 14px;">
-                                <a class="text-dark" href="<%= enterprise_url(enterprise) %>">
-                                  <%= truncate(sanitize(enterprise.info, tags: []), length: 200) %>
-                                </a>
-                              </p>
-                            </div>
-                        </div><!--post-bar end-->
-                      </div><!--posts-section end-->
-                    <% end %>
-									</div><!--product-feed-tab end-->
-
-									<div class="product-feed-tab current" id="info-dd">
-										<% if @team_members.count < 1 %>
-                      <%# <p class="text-center mb-5">No teams to display.  %>
-      									<%#= link_to "Create one", new_team_member_path(@team_member) %>
-    									<%# </p> %>
-                    <% else %>
-											<% @user.team_members.each do |team_member| %>
-											
-											<% end %>
-										<% end %>
-										</div><!--product-feed-tab end-->
-									
-									<div class="product-feed-tab" id="my-bidss">
-										<%# if @team_members.count < 1 %>
-                      <%# <p class="text-center mb-5">No campaigns to display.  %>
-      									<%#= link_to "Create one", new_team_member_path(@team_member) %>
-    									<%# </p> %>
-                    <%# end %>
-                    <%# @user.team_members.each do |team_member| %>
-											
-										<%# end %>
-									</div><!--product-feed-tab end-->
                 </div><!--main-ws-sec end-->
               </div>
               
               <div class="col-lg-3 pd-right-none no-pd">
-                <div class="right-sidebar">
+                <div class="right-sidebar" style="width: 280px; padding-bottom: 10px;">
+									<div class="widget widget-about sidebar-item widget-jobs">
+										<%= link_to (image_tag 'brand.png', class:"img-fluid navbar-brand p-0", style:"width:70px; height: 80px;"), root_path %>
+										<span class="mb-3 mt-2">Everything begins with an idea...</span>
+										<h5 class="text-uppercase mb-3 mt-0">Setup or join a <br>brainstorming session!</h5>
+										<div class="sign_link">
+											<h3><a href="#" title="">Try it now!</a></h3>
+										</div>
+									</div><!--widget-about end-->
                  
-                </div><!--widget-jobs end-->
-  
+								<%= render partial: "layouts/top_brands", locals: { enterprises: @enterprises} %>
                 </div><!--right-sidebar end-->
               </div>
             </div>
@@ -728,6 +535,14 @@ main {
 	width: 100%;
 	margin-top: -20px;
 	padding-left: 0px;
+	background-color: #fff;
+	border-left: 1px solid #e4e4e4;
+	border-right: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	margin-bottom: 20px;
+	position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 .full-width {
 	float: left;
@@ -974,6 +789,7 @@ main {
 	float: left;
   width: 100%;
   padding-left: 25px;
+	
 }
 
 /* ============ post-topbar =========== */
@@ -1642,10 +1458,14 @@ main {
 
 /* =============== right-sidebar ============= */
 
-// .right-sidebar {
-// 	float: left;
-// 	width: 100%;
-// }
+.right-sidebar {
+	float: left;
+	width: 100%;
+	position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+ }
+
 .widget {
 	float: left;
 	width: 100%;
@@ -1769,13 +1589,18 @@ footer {
 	width: 280px;
 	background-color: #fff;
 	margin-bottom: 20px;
+	margin-top: 20px;
 	text-align: center;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
 }
 .user-pro-img {
 	float: left;
 	width: 100%;
 	text-align: center;
-	margin-bottom: 28px;
+	margin-bottom: 8px;
 	margin-top: -95px;
 	position: relative;
 }
@@ -1923,7 +1748,15 @@ footer {
 .user-tab-sec {
 	float: left;
 	width: 100%;
-	padding-top: 4px;
+	background-color: #FAF9F6;
+	padding-top: 30px;
+	padding-bottom: 4px;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
 }
 .user-tab-sec h3 {
 	color: #000000;

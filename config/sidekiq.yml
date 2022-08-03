@@ -7,3 +7,7 @@ production:
   - default
   - mailers
   - process_web_hook
+  - brainstaq_app_development_default
+  - brainstaq_app_production_default
+  - brainstaq_app_production_ahoy
+  - brainstaq_app_production_mailers

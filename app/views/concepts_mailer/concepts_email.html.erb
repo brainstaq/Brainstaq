@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+
+<body>
+  <h1>Great work in your conception session!</h1>
+  <p>
+    You came up with <%= @concepts.count %> concepts to solve the following problem: <br>
+  </p>
+
+  <h2 style="font-weight:bold"><%= @brainstorm.problem %></h2>
+
+  <p>Here are your concepts sorted by most votes:</p>
+  <% @concepts.each do |concept| %>
+  <p>
+    <span style="font-weight:bold"><%= concept.text %></span><br>
+    <%= pluralize(concept.votes, "vote") %>
+  </p>
+  <p><%= concept.concept_builds.count > 0 ? "The concept inspired the following concept builds: " : "" %> </p>
+  <% concept.concept_builds.order(votes: :desc).each do |concept_build| %>
+  <ul>
+    <li><%= concept_build.concept_build_text %> (<%= pluralize(concept_build.votes, "vote") %>)</li>
+  </ul>
+  <% end %>
+  <% end %>
+  <br>
+  <p>You can always go back to your <a href="<%= brainstorm_url(@brainstorm.token) %>">brainstorm room</a> to review your concepts.</p>
+
+  <p>If you liked this way of doing conception, you are always welcome to try it out again at <a href="<%= root_url %>">brainstormer.online</a>.</p>
+
+  <p>If you have any feedback, questions or feature requests, don't be shy! You can press reply and let me know what you think!</p>
+</body>
+
+</html>

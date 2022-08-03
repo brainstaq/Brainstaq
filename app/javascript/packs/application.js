@@ -22,13 +22,20 @@ window.$ = window.jQuery = jQuery;
 
 
 require("@rails/ujs").start()
-    //require("turbolinks").start()
+//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
 require("pesky_scrolly_stuff")
 
 require("slick-carousel")
+
+// require("alpinejs")
+// import "../stylesheets/application.scss"
+// import "../stylesheets/brainstorms.scss"
+
+import { Turbo } from "@hotwired/turbo-rails"
+Turbo.session.drive = false
 
 import "slick-carousel/slick/slick.scss"
 import "slick-carousel/slick/slick-theme.scss"

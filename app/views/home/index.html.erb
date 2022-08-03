@@ -20,8 +20,6 @@
 				<form action="#" method="post" class="needs-validation mt-30" novalidate>
 					<div class="input-group d-block d-sm-flex">
 						<div class="input-group-append">
-							
-
 							<%= link_to about_path, class: "btn btn-primary has-icon" do %>Learn More
 								<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
 								xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473
@@ -67,7 +65,7 @@
             <% @enterprises.each do |enterprise| %>
               <div class="brand-item d-flex align-items-center justify-content-center">
                 <a href="<%= enterprise_url(enterprise) %>">
-                  <%= image_tag enterprise.image_url, width:'flex', height:'50px' if enterprise.image.present?  %>
+                  <%= image_tag enterprise.image_url, width:'80px' if enterprise.image.present?  %>
                 </a>
               </div>
             <% end %>
@@ -99,7 +97,8 @@
 	    <div class="row justify-content-center">
 		    <div class="col-lg-6 col-md-9 text-center mt-5 mb-5">
 		      <h2 class="section-title">How <strong class="text-primary">it Works</strong></h2>
-		      <p>Brainstaq provides the tools to help create and manage business documents like business plans, financial models, proposals, pitch decks, invoices, and raise funds via crowdfunding.</p>
+		      <p>Brainstaq provides the tools to help create and manage business ideas, projects and documents like 
+						business plans, financial models, proposals, pitch decks, invoices, and raise funds via crowdfunding.</p>
 		    </div>
 		    <div class="col-lg-11">
 					<ul class="nav nav-pills justify-content-center mb-20" id="pills-tab" role="tablist">
@@ -115,7 +114,7 @@
 						</li>
 						<li class="nav-item mb-20" role="presentation">
 							<a class="nav-link" id="pill-analytics-tab" data-toggle="pill" href="#analytics-tab" role="tab" aria-controls="analytics-tab" aria-selected="false">
-								<i class="circle-shape"></i>Social Ads
+								<i class="circle-shape"></i>Brainstorming
 							</a>
 						</li>
 						<li class="nav-item mb-20" role="presentation">
@@ -132,10 +131,14 @@
 								</div>
 								<div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
 									<h2 class="section-title">Setup <strong class="text-primary">Enterprise</strong></h2>
-									<p class="mb-30">Easily setup your enterprise on Brainstaq, and get instant access to a complete suite of business tools and documents already generated uniquely for your business.</p>
-									<a href="how-it-works.html" class="btn btn-primary has-icon">View More
-										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
-									</a>
+									<p class="mb-30">Easily setup your enterprise on Brainstaq, and get instant access to a complete 
+											suite of business tools and documents already generated uniquely for your business.</p>
+									<%= link_to how_it_works_path, class: "btn btn-primary has-icon" do %>View More
+										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
+										xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473
+										21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 
+										15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+									<% end %>
 								</div>
 							</div>
 						</div>
@@ -146,10 +149,14 @@
 								</div>
 								<div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
 									<h2 class="section-title">Business <strong class="text-primary">Plan</strong></h2>
-									<p class="mb-30">Create and manage your business plan, financial models, and other documents, and make informed decisions in real-time. </p>
-										<a href="how-it-works.html" class="btn btn-primary has-icon">View More
-											<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
-										</a>
+									<p class="mb-30">Create and manage your business plan, financial models, and other documents, and 
+											make informed decisions in real-time. </p>
+										<%= link_to how_it_works_path, class: "btn btn-primary has-icon" do %>View More
+										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
+										xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473
+										21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 
+										15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+									<% end %>
 									</div>
 								</div>
 							</div>
@@ -159,11 +166,15 @@
 										<%= image_tag '04.png', class: "img-fluid rounded-lg shadow" %>
 									</div>
 									<div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
-										<h2 class="section-title">Social <strong class="text-primary">Ads</strong></h2>
-										<p class="mb-30">Create and schedule social ads on major social media platforms like Facebook, Instagram, WhatsApp, Twitter and LinkedIn</p>
-										<a href="how-it-works.html" class="btn btn-primary has-icon">View More
-											<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
-										</a>
+										<h2 class="section-title">Brain<strong class="text-primary">storming</strong></h2>
+										<p class="mb-30">Using our structured approach, you can brainstorm with your team and generate 
+												really great ideas targeted at a specific problem.</p>
+										<%= link_to how_it_works_path, class: "btn btn-primary has-icon" do %>View More
+										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
+										xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473
+										21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 
+										15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+									<% end %>
 									</div>
 								</div>
 							</div>
@@ -174,10 +185,14 @@
 									</div>
 									<div class="col-lg-4 mt-4 mt-lg-0 anim-to-bottom">
 										<h2 class="section-title">Crowd<strong class="text-primary">funding</strong></h2>
-										<p class="mb-30">Share, validate, and market your ideas, projects, insights and inspiration and attract funding by engaging the power of the crowd.</p>
-										<a href="how-it-works.html" class="btn btn-primary has-icon">View More
-											<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473 21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
-										</a>
+										<p class="mb-30">Share, validate, and market your ideas, projects, insights and inspiration and 
+												attract funding by engaging the power of the crowd.</p>
+										<%= link_to how_it_works_path, class: "btn btn-primary has-icon" do %>View More
+										<span class="icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" 
+										xmlns="http://www.w3.org/2000/svg"><path d="M12.5522 6.66669L20.5522 14.6667C21.0329 15.1473
+										21.0699 15.9036 20.6632 16.4267L20.5522 16.5523L12.5522 24.5523L10.6666 22.6667L17.7228 
+										15.6095L10.6666 8.55231L12.5522 6.66669Z" fill="currentColor"/></svg></span>
+									<% end %>
 									</div>
 								</div>
 							</div>

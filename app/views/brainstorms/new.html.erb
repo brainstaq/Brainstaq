@@ -1,0 +1,118 @@
+<% content_for :title, "Brainstorm" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Create Brainstorms</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to :back, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Create Brainstorm</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<div class="d-none d-lg-block d-xl-none flex flex-col">
+  <div class="bg-blurple px-6 h-screen flex flex-col justify-center">
+    <%= form_with model: @brainstorm, local: true do |f| %>
+    <div class="flex flex-row justify-between items-baseline mb-2">
+      <%= f.label :problem, "PROBLEM TO SOLVE", class: "italic text-3xl font-bold flex flex-row justify-between items-baseline text-white leading-none " %>
+    </div>
+    <%= f.text_field :problem, class: "border-solid border-2 border-black h-32 italic px-4 w-full focus:outline-none text-black font-bold text-5xl my-shadow-lg", autocomplete: "off" %>
+    <% if @brainstorm.errors[:problem].any? %>
+        <div class="leading-none p-2 mt-1 text-3xl font-bold italic text-white bg-wine">
+          <span><%= @brainstorm.errors[:problem][0] %></span>
+        </div>
+    <% end %>
+    <div class="flex flex-row justify-between items-baseline mb-2">
+      <%= f.label :name, "YOUR NAME", class: "mt-8 italic text-3xl font-bold  flex flex-row justify-between items-baseline text-white leading-none" %>
+    </div>
+    <%= f.text_field :name, class: "border-solid border-2 border-black h-32 italic px-4 w-full focus:outline-none text-black font-bold text-5xl my-shadow-lg", autocomplete: "off" %>
+    <% if @brainstorm.errors[:name].any? %>
+      <div class="leading-none p-2 mt-1 text-3xl font-bold italic text-white bg-wine">
+        <span><%= @brainstorm.errors[:name][0] %></span>
+      </div>
+    <% end %>
+    <%= f.submit 'CREATE BRAINSTORM', class: "mt-16 py-4 w-full my-shadow-lg text-blurple text-6xl font-bold bg-yellowy cursor-pointer" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row justify-content-center" style="padding-top: 80px;">
+  <div class="col-lg-9 col-lg-7">
+  <%= form_with model: @brainstorm, local: true, class: "flex flex-col" do |f| %>
+      <div class="form-group mb-30">
+        <%= f.label :problem_to_solve, class: "input-label text-black-200 h5 font-weight-600 mb-2" %>
+        <p class="text-primary float-right font-italic">Need help? See Tips & Tricks</p>
+        <%= f.text_field :problem, class: "form-control shadow-none", autocomplete: "off", 
+          placeholder: "Describe the problem you want to solve" %>
+        <% if @brainstorm.errors[:problem].any? %>
+          <div class="mt-1 text-sm font-bold font-italic text-danger">
+            <span><%= @brainstorm.errors[:problem][0] %></span>
+          </div>
+        <% end %>
+      </div>
+
+      <p>
+        <button class="btn btn-primary mb-1 p-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Tips & Tricks 
+          <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.06L7.94 0L4.5 3.44L1.06 0L0 1.06L4.5 5.56L9 1.06Z" fill="currentColor"/></svg>
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body mt-2">
+          <div id="one" class="pt-10 ml-5">
+            <h4 class="font-weight-600 mb-20">What makes a good problem statement?</h4>
+            <div class="mb-35">
+              <ul class="list-unstyled bullet-list bullet-list-dark mt-20">
+                <li>Make it <a href="#!">open enough</a> to inspire a lot of ideas and concepts.</li>
+                <li>Make it <a href="#!">closed enough</a> to give your team the direction they need.</li>
+                <li>Make sure it can't be answered with a simple <a href="#!">yes or no</a> </li>
+                <li>Perform any other function that we believe in <a href="#!">proper functioning</a> of our Site.</li>
+              </ul>
+            </div>
+            <h4 class="font-weight-600 mb-20">Consider the following...</h4>
+            <div class="mb-35">
+              <ul class="list-unstyled bullet-list bullet-list-dark mt-20">
+                <li>How can we <a href="#!">prevent a shopping cart</a> from getting rusty? <span class="badge badge-security">Too Narrow</span></li> 
+                <li>How can we <a href="#!">reinvent</a> shopping? <span class="badge badge-security">Too Open</span></li>
+                <li>How can we <a href="#!">redesign shopping carts</a> to last longer? <span class="badge badge-added">Great!</span></li> 
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-30 mt-3">
+        <%= f.label :name, class: "input-label text-black-200 h5 font-weight-600 mb-2" %>
+        <p class="text-primary float-right font-italic">Let your participants know who you are</p>
+        <%= f.text_field :name, class: "form-control shadow-none", autocomplete: "off", placeholder: "Enter your name" %>
+        <% if @brainstorm.errors[:name].any? %>
+          <div class="mt-1 text-sm font-bold font-italic text-danger">
+            <span><%= @brainstorm.errors[:name][0] %></span>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'Back', dashboard_path(current_user.full_name), class: "btn btn-secondary rounded"%>
+        <%= f.submit 'Create Brainstorm', class: "btn btn-primary rounded float-right"%>
+      </div>
+  <% end %>
+  </div>
+</div>
+

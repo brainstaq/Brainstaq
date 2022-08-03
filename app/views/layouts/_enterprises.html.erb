@@ -7,9 +7,9 @@
             <div class="image-flip" >
               <div class="mainflip flip-0">
                 <div class="frontside">
-                  <div class="card">
-                    <div class="card-body">
-                      <p><%= image_tag enterprise.image_url, width:'flex', height:'60px' if enterprise.image.present?  %></p>
+                  <div class="card h-100">
+                    <div class="card-body h-100">
+                      <p><%= image_tag enterprise.image_url, width:'80px', height:'flex', class: "img" if enterprise.image.present?  %></p>
                       
                       <p class="card-text text-muted mt-2 mb-4">
                         <a href="<%= enterprise_url(enterprise) %>" class="text-decoration-none text-dark">
@@ -36,8 +36,8 @@
                   </div>
                 </div>
                 <div class="backside">
-                  <div class="card">
-                    <div class="card-body mt-0">
+                  <div class="card h-100">
+                    <div class="card-body h-100 mt-0">
                       <p class="card-text text-muted mt-2 mb-4">
                         <a href="<%= enterprise_url(enterprise) %>" class="text-decoration-none text-dark">
                           <h3 class="mb-1"><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark', style: "font-weight: bold; font-size: 16px;" %></h3>
@@ -90,9 +90,7 @@
               </div>
             </div>
           </div>
-
         <% end %>
-
       </div>
     </div>
   <% end %>
@@ -102,12 +100,23 @@
       clear: both;
     }
 
+    .img {
+      width: 100%;
+      height: 10vh;
+      object-fit: contain;
+    }
+
     .btn-primary:hover,
     .btn-primary:focus {
       background-color: #108d6f;
       border-color: #108d6f;
       box-shadow: none;
       outline: none;
+    }
+
+    .frontside .card,
+    .backside .card {
+      min-height: 312px;
     }
 
     .btn-primary {
@@ -195,7 +204,7 @@
 
     .frontside .card,
     .backside .card {
-      /* min-height: 300px; */
+      height: 100%;
     }
 
     .backside .card a {

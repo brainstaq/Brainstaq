@@ -6,8 +6,8 @@
       <span>B</span>
     </div> %>
     <div onclick="copyToken(getToken())" onmouseout="tokenOutFunc()" class="tooltip cursor-pointer bg-primary text-dark items-center lg:flex px-4 py-1 self-end ml-4">
-      <span class="tooltiptext" id="tooltipToken">Copy to clipboard</span>
-      <span class="uppercase">#<%=@brainstorm.token%></span>
+      <span class="tooltiptext text-red" id="tooltipToken">Copy to clipboard</span>
+      <span class="uppercase text-red">#<%=@brainstorm.token%></span>
     </div>
   </div>
   <div id="name-list-container" class="flex flex-col">

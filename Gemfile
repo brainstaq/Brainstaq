@@ -49,7 +49,7 @@ gem 'uglifier', '~> 4.2', require: 'uglifier'
 gem 'omniauth-google-oauth2'
 gem 'maxminddb'
 gem 'geoip'
-gem 'geocoder'
+# gem 'geocoder'
 gem 'blazer'
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary", group: :development

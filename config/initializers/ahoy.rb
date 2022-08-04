@@ -10,5 +10,5 @@ Ahoy.cookies = false
 # set to true for geocoding
 # we recommend configuring local geocoding first
 # see https://github.com/ankane/ahoy#geocoding
-Ahoy.geocode = true
+# Ahoy.geocode = true
 Ahoy.visit_duration = 24.hours

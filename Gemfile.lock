@@ -196,7 +196,6 @@ GEM
     formatador (0.3.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
-    geocoder (1.8.0)
     geoip (1.6.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -509,7 +508,6 @@ DEPENDENCIES
   font-ionicons-rails
   font_awesome5_rails
   friendly_id (~> 5.3)
-  geocoder
   geoip
   impressionist
   intro (~> 0.3.0)

@@ -1,4 +1,4 @@
-class IdeasMailer < ApplicationMailer
+class ConceptsMailer < ApplicationMailer
   
   default from: 'brainstaq@gmail.com'
 

@@ -3,15 +3,15 @@
       <div class="row">
         <% group.compact.each do |enterprise| %>
           
-          <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="col-xs-12 col-sm-6 col-md-4 pb-0" style="padding-bottom:-15px !important;">
             <div class="image-flip" >
               <div class="mainflip flip-0">
                 <div class="frontside">
                   <div class="card h-100">
-                    <div class="card-body h-100">
-                      <p><%= image_tag enterprise.image_url, width:'80px', height:'flex', class: "img" if enterprise.image.present?  %></p>
+                    <div class="card-body h-100 mt-3">
+                      <p><%= image_tag enterprise.image_url, width:'80px', height:'flex', class: "img mb-3" if enterprise.image.present?  %></p>
                       
-                      <p class="card-text text-muted mt-2 mb-4">
+                      <p class="card-text text-muted mt-5 mb-4">
                         <a href="<%= enterprise_url(enterprise) %>" class="text-decoration-none text-dark">
                           <h3 class="mb-1"><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark', style: "font-weight: bold; font-size: 16px;" %></h3> 
                           <%= truncate(sanitize(enterprise.info, tags: []), length: 70) %>
@@ -19,7 +19,7 @@
                       </p>
                     
                       <div class="d-flex flex-row justify-content-between">
-                        <div class="d-flex flex-row justify-content-center mt-5">
+                        <div class="d-flex flex-row justify-content-center" style="margin-top:80px;">
                           <small class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> <%= enterprise.state %>, <%= enterprise.country %></small>
                         </div>
                         <small class="pt-2 mt-5">
@@ -46,8 +46,7 @@
                       </p>
 
                       <div class="d-flex flex-row justify-content-between mt-3">
-                        <div class="d-flex flex-row justify-content-center mt-3">
-                          
+                        <div class="d-flex flex-row justify-content-center mt-3">    
                           <div class="social-links mt-2">
                             <% if enterprise.website_url.present? %>
                               <%= link_to (enterprise.website_url), target: "_blank", title: "#{enterprise.website_url}" do %>

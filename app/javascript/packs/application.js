@@ -30,10 +30,6 @@ require("pesky_scrolly_stuff")
 
 require("slick-carousel")
 
-// require("alpinejs")
-// import "../stylesheets/application.scss"
-// import "../stylesheets/brainstorms.scss"
-
 import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 
@@ -42,6 +38,8 @@ import "slick-carousel/slick/slick-theme.scss"
 
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
+
+import 'bootstrap/dist/js/bootstrap';
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 

@@ -2,16 +2,12 @@
 <div class="lg:hidden" id="notice-mobile"></div>
 <div class="hidden lg:flex mx-16 pt-16 mb-16 justify-between lg:items-start items-end">
   <div class="flex flex-row">
-    <%# <div class="italic bg-black w-40 h-40 lg:w-20 lg:h-20 text-white text-8xl lg:text-5xl flex font-bold items-center justify-center">
-      <span>B</span>
-    </div> %>
     <div onclick="copyToken(getToken())" onmouseout="tokenOutFunc()" class="tooltip cursor-pointer bg-primary text-dark items-center lg:flex px-4 py-1 self-end ml-4">
       <span class="tooltiptext text-red" id="tooltipToken">Copy to clipboard</span>
       <span class="uppercase text-red">#<%=@brainstorm.token%></span>
     </div>
   </div>
   <div id="name-list-container" class="flex flex-col">
-    <div id="name-list" class="my-shadow items-center hidden lg:flex bg-white w-min"></div>
-    </div>
+    <div id="name-list" class="items-center hidden lg:flex bg-white w-min"></div>
   </div>
 </div>

@@ -39,9 +39,9 @@
                   <div class="user_profile pt-0 pb-0">
                     <div class="user-pro-img mt-3 mb-0">
                       <% if @user.image.url %>
-                        <%=image_tag @user.image.url, style: "width: 160px; height: 156px;", class: "rounded-circle" %>
+                        <%=image_tag @user.image.url, style: "width: 160px; height: 156px; margin-left: 58px !important;", class: "rounded-circle" %>
                       <% else %>
-                        <%= image_tag 'avatar.png', style: "width: 160px; height: 156px;", class: "rounded-circle" %>
+                        <%= image_tag 'avatar.png', style: "width: 160px; height: 156px; margin-left: 58px !important;", class: "rounded-circle" %>
                       <% end %>
                     </div>
                     

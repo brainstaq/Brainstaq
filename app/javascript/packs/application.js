@@ -18,11 +18,13 @@ window.$ = window.jQuery = jQuery;
 //= require tinymce
 //= require social-share-buttons
 //= require shuffle
+//= require turbo
+//= require jquery_ujs
 //= require_tree .
 
 
 require("@rails/ujs").start()
-//require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
@@ -30,7 +32,7 @@ require("pesky_scrolly_stuff")
 
 require("slick-carousel")
 
-import { Turbo } from "@hotwired/turbo-rails"
+import "@hotwired/turbo-rails";
 Turbo.session.drive = false
 
 import "slick-carousel/slick/slick.scss"
@@ -75,7 +77,7 @@ function validateFiles(inputFile) {
     };
 }
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbo:load", function() {
     $('.scroller').slick()
 })
 
@@ -98,3 +100,10 @@ $(function() {
   });
 
 // script.js
+
+// $(document).on("turbolinks:load", () => {
+//   console.log("turbolinks!");
+// });
+// $(document).on("turbo:load", () => {
+//   console.log("turbo!");
+// });

@@ -22,8 +22,6 @@ class EnterprisesController < ApplicationController
     end
   end
 
-  
-
   def show
     @enterprise = Enterprise.find(params[:id])
     @business_plan = BusinessPlan.new

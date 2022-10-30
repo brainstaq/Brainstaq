@@ -46,7 +46,7 @@ changeView = function (state) {
   }
 
   if (state == "voting_done") {
-    document.getElementById("notice").innerHTML = '<div class="bg-greeny fade-out inset-x-0 fixed text-white text-center py-4 z-50 font-bold my-shadow"><span>Voting is done! Now you can review all your great concepts.</span></div>'
+    document.getElementById("notice").innerHTML = '<div class="bg-greeny fade-out inset-x-0 fixed text-white text-center py-4 z-50 font-bold my-shadow"><span></span></div>'
   }
 }
 

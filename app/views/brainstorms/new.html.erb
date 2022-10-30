@@ -108,8 +108,10 @@
         <% end %>
       </div>
       <div>
+      <% if user_signed_in? %>
         <%= link_to 'Back', dashboard_path(current_user.full_name), class: "btn btn-secondary rounded"%>
         <%= f.submit 'Create Brainstorm', class: "btn btn-primary rounded mb-3 float-right"%>
+      <% end %>
       </div>
   <% end %>
   </div>

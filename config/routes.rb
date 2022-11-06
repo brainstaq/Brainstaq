@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   require "sidekiq/web"
 
   mount Sidekiq::Web, at: "/sidekiq"
-  mount Blazer::Engine, at: "blazer"
 
   root to: "home#index"
   
@@ -93,40 +92,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brainstorms, param: :token, only: [:create, :new, :edit, :update] do
-    member do
-      post :done_brainstorming, :start_brainstorm, :start_voting, :done_voting, :end_voting, :change_state
-    end
-
-    resource :timer, only: :update, module: "brainstorms" do
-      resource :duration, only: :update, module: "timers"
-    end
-
-    resource :email, only: :create, module: "brainstorms"
-  end
-
   resource :session, only: [] do
     resource :name, only: :update, module: "sessions"
   end
-
-  get 'brainstorms/join-session', to: 'brainstorms#join_session'
-
-  # root 'brainstorms#new'
-
-  resources :concepts, only: [:create] do
-    post :show_concept_build_form, :vote
-    resources :concept_builds, only: [:create] do
-      post :vote
-    end
-  end
-
-  get '/:token', to: 'brainstorms#show', as: 'brainstorm_show'
-
-  post '/:token/downloads', to: 'brainstorms/downloads#download_pdf', as: 'download_brainstorm'
-
-  post '/go_to_brainstorm', to: 'brainstorms#go_to_brainstorm'
-  
-  post '/:token/edit_problem', to: 'brainstorms#edit_problem', as: 'edit_problem'
 
   # resources :retracts
   # resources :transactions

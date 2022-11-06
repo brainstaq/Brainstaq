@@ -32,15 +32,20 @@
       <div class="main-section-data">
         <div class="row">
           <div class="col-lg-3 col-md-4 pd-left-none no-pd">
-						    <div class="right-sidebar" style="width: 280px; padding-bottom: 10px;">
-									<div class="widget widget-about sidebar-item widget-jobs">
-										<%= link_to (image_tag 'brand.png', class:"img-fluid navbar-brand p-0", style:"width:70px; height: 80px;"), root_path %>
-										<span class="mb-3 mt-2">Everything begins with an idea...</span>
-										<h5 class="text-uppercase mb-3 mt-0">Setup or join a <br>brainstorming session!</h5>
-										<div class="sign_link user-fw-status">
-											<h3><%= link_to 'Try it now', new_brainstorm_path %></h3>
-										</div>
-									</div><!--widget-about end-->
+						<div class="right-sidebar" style="width: 280px; padding-bottom: 10px;">
+							<div class="widget widget-about sidebar-item widget-jobs">
+								<%= link_to (image_tag 'brand.png', class:"img-fluid navbar-brand p-0", style:"width:65px; height: 80px;"), root_path %>
+								<span class="mb-3 mt-2">Get access to a growing library <br>of professional business 
+								courses, and build a smarter enterprise</span>
+								<h5 class="text-uppercase mb-3 mt-0">Explore <br>Brainstaq Academy!</h5>
+								<div>
+									<ul class="user-fw-status" style="margin-bottom: 0px;">
+										<li>
+											<%= link_to 'Get Started', '#' %>
+										</li>
+									</ul>
+								</div>
+							</div><!--widget-about end-->
                  
 								<%= render partial: 'layouts/follow', locals: { users: @users} %>
                 </div><!--right-sidebar end-->

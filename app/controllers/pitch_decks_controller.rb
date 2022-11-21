@@ -2,6 +2,7 @@ class PitchDecksController < ApplicationController
   before_action :authenticate_user!
   before_action :get_enterprise
   before_action :set_pitch_deck, only: %i[ show edit update destroy ]
+  before_action :check_quota, only: [:new]
   
 
   def index
@@ -84,6 +85,12 @@ class PitchDecksController < ApplicationController
 
   def set_pitch_deck
     @pitch_deck = @enterprise.pitch_decks.find(params[:id])
+  end
+
+  def check_quota
+    if @enterprise.pitch_decks.count >= 3
+      @quota_warning = "Maximum number of Pitch Decks reached!"
+    end
   end
 
   def pitch_deck_params

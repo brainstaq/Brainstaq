@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id, :session_hash]
   
   def index
+  end
+
+  def dashboard
     @ideas = Idea.all.order(created_at: :desc).take(15)
     @enterprises = Enterprise.all.order(created_at: :desc).take(15)
     @users = User.find_by_username params[:username]

@@ -48,7 +48,8 @@
               <% end %>
             </li>
             <li class="nav-item dropdown @@pricing">
-              <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center" 
+              href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-1">Discover</span>
                 <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.06L7.94 0L4.5 3.44L1.06 0L0 1.06L4.5 5.56L9 1.06Z" fill="currentColor"/></svg>
               </a>
@@ -64,11 +65,6 @@
                   <% end %>
                 </li>
               </ul>
-            </li>
-            <li class="nav-item @@about">
-              <%= link_to '#', title: "The Academy", class: "text-decoration-none" do %>
-                <span class="nav-link">The Academy</span>
-              <% end %>
             </li>
             <li class="nav-item @@about">
               <%#= link_to new_transaction_path, title: "Pricing", class: "text-decoration-none" do %>
@@ -158,6 +154,9 @@
           <div class="navbar-button">
             <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-outline-primary mr-1" %>
             <%= link_to "Log In", new_user_session_path, class: "btn btn-sm btn-primary ml-1" %>
+            <% if current_user == admin? %>
+              <%= link_to "Add Course", new_course_path, class: "btn btn-sm btn-primary ml-1" %>
+            <% end %>
           </div>
         <% end %>
       </div>

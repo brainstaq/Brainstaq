@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+
+  # prepend_before_action :check_captcha, only: [:create]
   
   private
   
@@ -19,6 +21,15 @@ class RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     profile_path(current_user.username)
   end
+
+  # def check_captcha
+  #   unless verify_recaptcha
+  #     self.resource = resource_class.new sign_up_params
+  #     resource.validate
+  #     set_minimum_password_length
+  #     respond_with_navigational(resource) { render :new }
+  #   end
+  # end
 end
    
 

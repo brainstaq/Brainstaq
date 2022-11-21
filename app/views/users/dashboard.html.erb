@@ -1,0 +1,1115 @@
+<% content_for :title, "Dashboard" %>
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Dashboard</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page"><%= current_user.full_name %></li>
+          </ol>
+        </nav>
+      </div>
+    </div> 
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<main style="padding-top: 60px;">
+  <div class="main-section">
+    <div class="container">
+      <div class="main-section-data">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+						<div class="right-sidebar" style="width: 280px; padding-bottom: 10px;">
+							<div class="widget widget-about sidebar-item widget-jobs">
+								<%= link_to (image_tag 'brand.png', class:"img-fluid navbar-brand p-0", style:"width:65px; height: 80px;"), root_path %>
+								<span class="mb-3 mt-2">Get access to a growing library <br>of professional business 
+								courses, and build a smarter enterprise</span>
+								<h5 class="text-uppercase mb-3 mt-0">Explore <br>Brainstaq Academy!</h5>
+								<div>
+									<ul class="user-fw-status" style="margin-bottom: 0px;">
+										<li>
+											<%= link_to 'Get Started', "#" %>
+										</li>
+									</ul>
+								</div>
+							</div><!--widget-about end-->
+                 
+								<%= render partial: 'layouts/follow', locals: { users: @users} %>
+                </div><!--right-sidebar end-->
+	        
+					  <div class="col-lg-6 col-md-8 no-pd">
+			        <div class="main-ws-sec">
+                <div class="post-topbar">
+				          <div class="user-picy">
+                    <a href="<%= profile_path(current_user.username) %>"> 
+                      <% if current_user.image_url %>
+                        <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', 
+                        style:"width:40px; height: 40px; margin-right: 0px;" %>
+                      <% else %>
+                        <%= image_tag 'avatar.png', class: 'rounded-circle mt-1', 
+                        style:"width:32px; height: 32px; margin-right: 0px;" %>
+                      <% end %>
+                    </a>
+                  </div>
+									
+				          <div class="post-st">
+										<div class="dropdown">
+											<div class="dropdown ml-1 float-right text-primary" style="font-size: 20px;" title="New">
+												<a class="dropdown-toggle fas fa-edit" href="#" role="button" id="dropdownMenuLink" 
+													data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												</a>
+												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="font-size: 12px;">
+													<%= link_to "New Brand", new_enterprise_path, class: "dropdown-item" %>
+													<%= link_to "New Project", new_idea_path, class: "dropdown-item" %>
+												</div>
+											</div>
+										</div>
+			            </div>
+                </div>
+
+                <% @ideas.each do |idea|  %>
+                <div class="posts-section">
+                  <div class="post-bar">
+                    <div class="post_topbar">
+                      <div class="usy-dt">
+                        <a href="<%= profile_path(idea.user.username) %>">
+                          <% if idea.user.image_url %>
+                            <%= image_tag idea.user.image_url, style: "width: 40px; height: 40px;", class: "rounded-circle ml-1" %>
+                          <% else %>
+                            <%= image_tag 'avatar.png', style: "width: 40px; height: 40px;", class: "rounded-circle ml-1" %>
+                          <% end %>
+                        </a>
+                      
+                        <div class="usy-name">
+                          <h3><%= link_to idea.user.full_name.titleize, profile_path(idea.user.username), class: 'text-dark' %></h3>
+                          <span> Created on <%= local_time(idea.created_at) %></span>
+                        </div>
+                      </div>
+                    
+                      <% if user_signed_in? && current_user.id == idea.user_id %>
+                        <div class="dropdown ml-1 float-right" style="font-size: 20px;">
+                          <a class="dropdown-toggle fas fa-ellipsis-v" href="#" role="button" id="dropdownMenuLink" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                            <% if idea.end_date.future? %>
+                              <%= link_to "Edit Project", edit_idea_path(idea), class: "dropdown-item", style: "font-size: 12px" %>
+                            <% end %>
+                            <%= link_to "Delete", idea, :method => 'delete', data: { confirm: 'Are you sure?' }, class: "dropdown-item", style: "font-size: 12px" %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="epi-sec">
+                      <ul class="descp" style="font-size: 12px;">
+                        <li><i class="fas fa-map-marker-alt"></i>  <%= idea.user.country %></li>
+                        <li><i class="fas fa-list-alt"></i>  
+                        <% if idea.category %>
+                          <%= idea.category.name %>
+                        <% else %>
+                          <%= 'General' %>
+                        <% end %>
+												</li>
+                      </ul>
+                    </div>
+                    <div class="job_descp">
+                      <h3><%= link_to idea.title.titleize, idea, class: 'text-dark' %></h3>
+                      <% if idea.relevance_bar.to_i > 75 && idea.expired? || idea.relevance_bar.to_i < 75 && idea.expired? %>
+                        <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
+                          <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
+                            <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
+                          </small>
+                        </span>
+                      <% elsif idea.relevance_bar.to_i < 75 %>
+                        <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
+                          <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
+                            <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
+                          </small>
+                        </span>
+                      <% elsif idea.relevance_bar.to_i > 75 %>
+                        <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
+                          <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
+                            <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
+                          </small>
+                        </span>
+                      <% end %>
+                      <a href="<%= idea_url(idea) %>">
+                        <%= image_tag idea.image_url, style: "height: 150px; object-fit: cover;", class: "card-img-top" %>
+                      </a>
+                      <p class="mt-3 mb-0" style="font-size: 14px;">
+                        <a class="text-dark" href="<%= idea_url(idea) %>">
+                          <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
+                        </a>
+                      </p>
+                    </div>                  
+                    <div class="job-status-bar mt-1">
+                      <ul class="like-com">
+                        <li style="font-size: 12px;" href="#"><i class="fa fa-eye text-primary"></i> 
+                          <%= pluralize(idea.impressionist_count, 'View') %>
+                        </li> 
+                        
+                        <% if user_signed_in? %>
+                          <% if current_user.liked? idea %>
+                            <%= link_to unlike_idea_path(idea), method: :put, class: "unlike_idea" do %>
+                              <li><i class="fa fa-heart text-primary vote_count"></i> <%= idea.get_likes.size %></li>
+                            <% end %>
+                          <% else %>
+                            <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
+                              <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> 
+                                <%= idea.get_likes.size %>
+                              </li>
+                            <% end %>
+                          <% end %>
+                        <% else %>
+                          <%= link_to like_idea_path(idea), method: :put, class: "like_idea" do %>
+                            <li class="mb-1" style="font-size: 12px;"><i class="fa fa-heart vote_count"></i> 
+                              <%= idea.get_likes.size %>
+                            </li>
+                          <% end %>
+                        <% end %>
+
+                        <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments text-primary"></i> 
+                          <%= pluralize(idea.comments.size, 'Comment') %>
+                        </li> 
+                      </ul>
+                      <a style="font-size: 12px;"><i class="fa fa-filter text-primary"></i> 
+                        Relevance: <strong><%= "#{idea.relevance_bar.to_i}%" %></strong>
+                      </a>                  
+                    </div>
+                  </div><!--post-bar end-->
+                </div><!--posts-section end-->
+              <% end %>
+            </div><!--main-ws-sec end-->
+          </div>
+          
+					<div class="col-lg-3 pd-right-none no-pd">
+						<div class="right-sidebar" style="width: 280px; padding-bottom: 10px;">
+							<div class="sidebar-item">
+              	<a href="<%= profile_path(current_user.username) %>">
+									<div class="user-data make-me-sticky full-width" style="width: 280px;">
+										<div class="user-profile">
+											<div class="username-dt">
+												<div class="usr-pic rounded-circle">
+													<% if current_user.image_url %>
+														<%= image_tag current_user.image_url, style: "width: 100%; height: 100%;", class: "rounded-circle" %>
+													<% else %>
+														<%= image_tag 'avatar.png', style: "width: 100%; height: 100%;", class: "rounded-circle" %>
+													<% end %>
+												</div>
+											</div><!--username-dt end-->
+														
+											<div class="user-specs">
+												<h3 class="mb-0"><%= current_user.full_name.titleize %></h3>
+												<h6 class="p-4 text-muted" style="font-size: 12px; margin-top: -10px; margin-bottom: -30px;">
+													<%= current_user.bio %>
+												</h6>
+											</div>
+										</div><!--user-profile end-->
+					
+										<ul class="user-fw-status" style="margin-bottom: 0px;">
+											<li>
+												<%= link_to 'View Profile', profile_path(current_user.username) %>
+											</li>
+										</ul>
+									</div><!--user-data end-->
+			        	</a>
+              </div>	
+						<%= render partial: "layouts/top_brands", locals: { enterprises: @enterprises} %>
+						</div><!--right-sidebar end-->
+					</div>
+	    	</div>
+	  	</div><!-- main-section-data end-->
+		</div> 
+  </div>    
+</main>
+
+<style>
+  .main-left-sidebar {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+  }
+
+  /* ================================================================================== 
+										Reset Css
+===================================================================================== */
+
+// html, body, div, span, applet, object, iframe,
+// h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+// a, abbr, acronym, address, big, cite, code,
+// del, dfn, em, img, ins, kbd, q, s, samp,
+// small, strike, strong, sub, sup, tt, var,
+// b, u, i, center,
+// dl, dt, dd, ol, ul, li,
+// fieldset, form, label, legend,
+// table, caption, tbody, tfoot, thead, tr, th, td,
+// article, aside, canvas, details, embed, 
+// figure, figcaption, footer, header, hgroup, 
+// menu, nav, output, ruby, section, summary,
+// time, mark, audio, video {
+// 	margin: 0; 
+// 	padding: 0;
+// 	border: 0;
+// 	font-size: 100%;
+// 	font: inherit;
+// 	vertical-align: baseline;
+// }
+
+
+/* HTML5 display-role reset for older browsers */ 
+article, aside, details, figcaption, figure, hgroup, menu, section {
+	display: block;
+} 
+
+ ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+* {
+	margin:0;
+	padding: 0;
+}
+a:focus {
+	text-decoration: none;
+	outline: none;
+}
+a:hover {
+	color: #fff;
+}
+button {
+	outline: none;
+}
+input {
+	outline: none;
+}
+textarea {
+	outline: none;
+} 
+
+section {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+img {
+	float: left;
+}
+/* p {
+	font-size: 14px;
+	line-height: 26px;
+	color: #666666;
+} */
+
+
+/* ================ CROSS BROWSER COMPATABILITY =============== */
+
+.ask-question,
+nav,
+.notification-box.active,
+nav ul li a,
+.user-account-settingss.active,
+.user-info a,
+.suggestion-usd > span i,
+.view-more > a,
+.tags-sec ul li a, ul li a,
+.ed-opts > a,
+.bk-links li a,
+.like-com li a,
+.user-profy > a,
+.slick-previous:before,
+.slick-nexti:before,
+.comment > a,
+.sign_link > a,
+.post-popup,
+.post-project > a,
+.post-project-fields form ul li button,
+.post-project-fields form ul li a,
+.sign-control li a,
+.cover-sec > a,
+.star-descp > a,
+.message-btn a,
+.pf-gallery ul li,
+.gallery_pt:before,
+.gallery_pt > a,
+.overview-box,
+.skl-name,
+.conv-list,
+.save-stngs ul li button,
+.forum-links.active,
+.react-links li a,
+.next-prev > a,
+nav ul li:hover > ul {
+	-webkit-transition: all 0.4s ease-in;
+	-moz-transition: all 0.4s ease-in;
+	-ms-transition: all 0.4s ease-in;
+	-o-transition: all 0.4s ease-in;
+	transition: all 0.4s ease-in;
+}
+
+
+/* ============== DEFAULT BORDER RADIUS =========== */
+
+
+.ask-question,
+.post-st ul li a,
+.post-bar,
+.bk-links li i,
+.user-profy ul li a,
+.posty,
+.comment_box form button,
+.post-project-fields form input,
+.post-project-fields form textarea,
+.post-project-fields form select,
+.post-project-fields form ul li button,
+.post-project-fields form ul li a,
+.flw-hr li a,
+.message-btn a,
+.user-profile-ov,
+.portfolio-gallery-sec,
+.overview-edit,
+.overview-edit form textarea,
+.overview-edit form input,
+.overview-edit form select,
+.overview-edit button,
+.file-submit,
+.lt-sec > a,
+.company-up-info ul li a,
+.search-box form input,
+.filter-dd form input,
+.filter-dd form select,
+.conversation-box,
+.save-stngs ul li button,
+.cp-field input,
+.cp-field textarea,
+.accept-req,
+.mf-field input,
+.mf-field button,
+.pagination li .page-link,
+.post_comment_sec form textarea,
+.post_comment_sec form button,
+.next-prev > a {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.wrapper {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+.overlay:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.75);
+	z-index: 99;
+}
+
+.btn-sm {
+	font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    display: inline-block;
+    transition: 0.5s;
+    background: #007bff;
+}
+
+
+/* =================== main-section ================= */
+
+
+main {
+	float: left;
+	width: 100%;
+	padding: 20px 0 120px 0;
+}
+.main-section {
+	float: left;
+	width: 100%;
+}
+.main-section-data {
+	float: left;
+	width: 100%;
+}
+.main-left-sidebar {
+	float: left;
+	width: 100%;
+	margin-top: 0px;
+	padding-left: 0px;
+}
+.full-width {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 20px;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+}
+.username-dt {
+	float: left;
+	width: 100%;
+	background-color: #007bff;
+	padding-top: 40px;
+}
+.user-data {
+	text-align: center;
+}
+.usr-pic {
+	width: 110px;
+	height: 110px;
+	margin: 0 auto;
+	margin-bottom: -48px;
+}
+.usr-pic > img {
+	float: none;
+	border: 5px solid #fff;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-ms-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 100px;
+	width: 100%;
+}
+.user-profile {
+	float: left;
+	width: 100%;
+}
+.user-specs {
+	float: left;
+	width: 100%;
+	padding: 63px 0 27px 0;
+}
+.user-specs h3 {
+	color: #000000;
+	font-size: 20px !important;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+.user-specs span {
+	color: #686868;
+	font-size: 14px;
+}
+
+.user-fw-status {
+	float: left;
+	width: 100%;
+}
+.user-fw-status li {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	padding: 10px 0;
+}
+.user-fw-status li:last-child {
+	border-bottom: 0;
+}
+.user-fw-status li:nth-child(1),
+.user-fw-status li:nth-child(2) {
+	border-bottom: 0;
+}
+.user-fw-status li h4 {
+	color: #686868;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+.user-fw-status li a {
+	font-size: 14px;
+	font-weight: 600;
+	color: #007bff;	
+}
+
+.user-fw-status li:hover {
+	background-color: #007bff;
+}
+.user-fw-status li:hover a {
+	color: #fff;
+}
+
+
+/* ============= Suggestions ============ */
+
+.sd-title {
+	float: left;
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+}
+
+.sd-title h3 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.sd-title i {
+	float: right;
+	color: #b7b7b7;
+	font-size: 30px;
+	position: absolute;
+	right: 5px;
+	top: 15px;
+}
+.suggestions-list {
+	float: left;
+	width: 100%;
+	padding: 13px 0 30px 0;
+}
+.suggestion-usd {
+	float: left;
+	width: 100%;
+	padding: 15px 20px;
+}
+.suggestion-usd img {
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-ms-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 5px;
+}
+.sgt-text {
+	float: left;
+	padding-left: 10px;
+}
+.sgt-text h4 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: -2px;
+}
+.sgt-text span {
+	color: #686868;
+  font-size: 12px;
+  margin-top: -35px;
+}
+.suggestion-usd > span {
+	float: right;
+	margin-top: 2px;
+	position: relative;
+}
+.suggestion-usd > span i {
+	color: #b2b2b2;
+	width: 25px;
+	height: 25px;
+	border: 1px solid #e5e5e5;	
+	line-height: 25px;
+	font-weight: 700;
+	cursor: pointer;
+}
+.suggestion-usd > span i:hover {
+	background-color: #007bff;
+	color: #fff;
+}
+
+/* =================== main-ws-sec ================== */
+
+.main-ws-sec {
+	float: left;
+  width: 100%;
+  padding-left: 25px;
+}
+
+/* ============ post-topbar =========== */
+
+.post-topbar {
+	float: left;
+	width: 100%;
+	padding: 23px 20px;
+	background-color: #fff;
+	border-top: 4px solid #007bff;
+	border-left: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	border-right: 1px solid #e4e4e4;
+	-webkit-box-shadow: 0 0 1px rgba(0,0,0,0.24);
+	-moz-box-shadow: 0 0 1px rgba(0,0,0,0.24);
+	-ms-box-shadow: 0 0 1px rgba(0,0,0,0.24);
+	-o-box-shadow: 0 0 1px rgba(0,0,0,0.24);
+	box-shadow: 0 0 1px rgba(0,0,0,0.24);
+	margin-bottom: 20px;
+}
+.user-picy {
+	float: left;
+	width: 50px;
+}
+.user-picy img {
+	width: 100%;
+	object-fit: cover;
+}
+.post-st {
+	float: right;
+	margin-top: 3px;
+	margin-bottom: -30px;
+}
+.post-st ul li {
+	display: inline-block;
+}
+.post-st ul li:last-child {
+	margin-right: 0;
+}
+.post-st ul li a {
+	font-size: 12px;
+	display: inline-block;
+	height: 40px;
+	padding: 0 15px;
+	line-height: 40px;
+	font-weight: 500;
+}
+.post-st ul li a:hover,
+.post-st ul li a.active {
+	background-color: #007bff;
+	color: #fff;
+}
+
+
+/* ================ posts-section ================== */
+
+.posts-section {
+	float: left;
+	width: 100%;
+}
+.post-bar {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e4e4e4;
+	border-right: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	border-top: 1px solid #e4e4e4;
+	margin-bottom: 20px;
+}
+.post_topbar {
+	float: left;
+	width: 100%;
+	position: relative;
+	padding: 20px 20px 15px 20px;
+}
+.usy-dt {
+	float: left;
+}
+.usy-dt img {
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-ms-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 100px;
+}
+.usy-name {
+	float: left;
+	margin-left: 10px;
+}
+.usy-name h3 {
+	color: #000000;
+	font-size: 16px !important;
+	font-weight: 600;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+.usy-name span {
+	color: #b2b2b2;
+	font-size: 12px;
+	margin-top: -2px;
+}
+.usy-name img {
+	margin-top: 2px;
+	margin-right: 6px;
+}
+.epi-sec {
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 0 20px;
+}
+.descp {
+	float: left;
+	margin-top: 3px;
+}
+.descp li {
+	display: inline-block;
+	margin-right: 15px;
+}
+.descp li span {
+	color: #b2b2b2;
+	font-size: 14px;
+	float: left;
+}
+.descp li img {
+	margin-right: 5px;
+}
+.bk-links {
+	float: right;
+}
+.bk-links li {
+	display: inline-block;
+	margin-right: 7px;
+}
+.bk-links li:last-child {
+	margin-right: 0;
+}
+.bk-links li i {
+	color: #fff;
+	font-size: 24px;
+	width: 30px;
+	height: 30px;
+	background-color: #53d690;
+	text-align: center;
+	line-height: 30px;
+}
+.bk-links li i.la-envelope {
+	background-color: #007bff;
+}
+
+
+/* ============== job_descp ============ */
+
+.job_descp {
+	float: left;
+	width: 100%;
+	padding: 0 20px 20px 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.job_descp h3 {
+	color: #000000;
+	font-size: 18px !important;
+	font-weight: 600;
+  margin-bottom: 20px;
+	margin-top: 10px;
+  float: left;
+}
+
+.job_descp p {
+	color: #000000;
+  margin-top: 20px;
+  float: left;
+}
+
+.job-dt {
+	float: left;
+	width: 100%;
+	margin-bottom: 22px;
+}
+.job-dt li {
+	display: inline-block;
+	margin-right: 15px;
+}
+.job-dt li a {
+	color: #fff;
+	background-color: #53d690;
+	text-transform: capitalize;
+	padding: 5px 13px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	border-radius: 30px;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 500;
+}
+.job-dt li span {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+/* ============= skill-tags =========== */
+
+.skill-tags {
+	float: left;
+	width: 100%;
+}
+.skill-tags li {
+	display: inline-block;
+	margin-right: 6px;
+	margin-bottom: 10px;
+}
+.skill-tags li a {
+	display: inline-block;
+	color: #b2b2b2;
+	font-size: 14px;
+	background-color: #e5e5e5;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	border-radius: 30px;
+	padding: 7px 15px;
+	font-weight: 600;
+}
+
+/* ========== job-status-bar ========== */
+
+.job-status-bar {
+	float: left;
+	width: 100%;
+	padding: 15px 20px;
+}
+.like-com {
+	float: left;
+}
+.like-com li {
+	display: inline-block;
+	margin-right: 15px;
+}
+.like-com li a {
+	color: #3f3d3d;
+	font-size: 14px;
+	float: left;
+	margin-top: 6px;
+	margin-right: 5px;
+}
+.like-com li a:hover {
+	color: #007bff;
+}
+.like-com li a.active {
+	color: #007bff;
+}
+.like-com li a i {
+	margin-right: 2px;
+	font-size: 17px;
+	position: relative;
+	top: 2px;
+}
+.like-com li span {
+	color: #ffffff;
+	font-size: 13px;
+	width: 30px;
+	height: 30px;
+	background-color: #007bff;
+	line-height: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	border-radius: 30px;
+	float: left;
+	text-align: center;
+	font-weight: 600;
+	margin-left: -25px;
+}
+.like-com li .com {
+	position: relative;
+	top: -5px;
+}
+.like-com li .com img {
+	margin-right: 10px;
+}
+
+.job-status-bar > a {
+	float: right;
+	color: #b2b2b2;
+	font-size: 14px;
+	margin-top: 5px;
+}
+.job-status-bar > a i {
+	font-size: 20px;
+	margin-right: 7px;
+	position: relative;
+	top: 3px;
+}
+
+
+.user-profy {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	text-align: center;
+	border-left: 1px solid #ececec;
+	border-bottom: 1px solid #ececec;
+	border-right: 1px solid #ececec;
+	-webkit-box-shadow: 0px 0.5px 0.2px rgba(0,0,0,0.24);
+	-moz-box-shadow: 0px 0.5px 0.2px rgba(0,0,0,0.24);
+	-ms-box-shadow: 0px 0.5px 0.2px rgba(0,0,0,0.24);
+	-o-box-shadow: 0px 0.5px 0.2px rgba(0,0,0,0.24);
+	box-shadow: 0px 0.5px 0.2px rgba(0,0,0,0.24);
+	padding: 20px 0 0 0;
+}
+.user-profy > img {
+	float: none;
+	margin-bottom: 6px;
+}
+.user-profy h3 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	text-transform: capitalize;
+	margin-bottom: 4px;
+}
+.user-profy span {
+	color: #b2b2b2;
+	font-size: 14px;
+	font-weight: 500;
+	display: block;
+	margin-bottom: 15px;
+}
+.user-profy ul {
+	float: left;
+	width: 100%;
+	margin-bottom: 15px;
+}
+.user-profy ul li {
+	display: inline-block;
+}
+.user-profy ul li a {
+	color: #fff;
+	font-size: 13px;
+	padding: 0 8px;
+	height: 25px;
+	line-height: 25px;
+	display: inline-block;
+	text-transform: capitalize;
+}
+.user-profy > a {
+	float: left;
+	width: 100%;
+	color: #000000;
+	font-size: 14px;
+	text-transform: capitalize;
+	padding: 15px 0;
+	border-top: 1px solid #ececec;
+	font-weight: 600;
+}
+.user-profy > a:hover {
+	background-color: #007bff;
+	color: #fff;
+}
+
+.posty {
+	float: left;
+	width: 100%;
+	border-left: 1px solid #e4e4e4;
+	border-right: 1px solid #e4e4e4;
+}
+.posty .job-status-bar {
+	border-bottom: 1px solid #e4e4e4;
+}
+
+/* =============== right-sidebar ============= */
+.widget {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e4e4e4;
+	border-right: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	margin-bottom: 20px;
+	-webkit-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
+	box-shadow: 1px 0px 2px rgba(0,0,0,0.24);
+}
+.widget-about {
+	text-align: center;
+}
+.widget-about img {
+	float: none;
+	padding-top: 20px;
+}
+.widget-about h3 {
+	color: #000000;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+.widget-about span {
+	color: #686868;
+	font-size: 14px;
+	margin-bottom: 30px;
+	float: left;
+	width: 100%;
+}
+.sign_link {
+	float: left;
+	width: 100%;
+	border-top: 1px solid #e5e5e5;
+	padding: 18px 0 15px 0;
+}
+.sign_link h3 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.sign_link h3 a {
+	color: #000;
+}
+.sign_link > a {
+	display: inline-block;
+	color: #007bff;
+	font-size: 14px;
+	font-weight: 500;
+}
+.sign_link > a:hover {
+	color: #007bff;
+}
+
+footer {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+}
+
+.right-sidebar {
+	float: left;
+	width: 100%;
+	position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+ }
+
+/* ============= user_profile ============= */
+
+.user_profile {
+	float: left;
+	width: 280px;
+	background-color: #fff;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.user-pro-img {
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 28px;
+	margin-top: -95px;
+	position: relative;
+}
+
+
+</style>

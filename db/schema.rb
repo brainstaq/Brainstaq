@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_04_191335) do
+ActiveRecord::Schema.define(version: 2022_11_18_092719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,37 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "course_tags", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["course_id"], name: "index_course_tags_on_course_id"
+    t.index ["tag_id"], name: "index_course_tags_on_tag_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "slug"
+    t.string "image"
+    t.string "handout"
+    t.boolean "released", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "marketing_description"
+    t.string "language", default: "English", null: false
+    t.float "average_rating", default: 0.0, null: false
+    t.integer "enrollments_count", default: 0, null: false
+    t.integer "lessons_count", default: 0, null: false
+    t.boolean "published", default: false
+    t.boolean "approved", default: false
+    t.integer "income", default: 0, null: false
+    t.string "level", default: "Beginner", null: false
+    t.integer "price", default: 0, null: false
+    t.index ["slug"], name: "index_courses_on_slug", unique: true
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
   create_table "donations", force: :cascade do |t|
     t.integer "donor_id", null: false
     t.integer "idea_id", null: false
@@ -193,6 +224,20 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_donors_on_user_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "rating"
+    t.integer "price"
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["slug"], name: "index_enrollments_on_slug", unique: true
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
   create_table "enterprise_categories", force: :cascade do |t|
@@ -356,6 +401,20 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
     t.index ["enterprise_id"], name: "index_invoices_on_enterprise_id"
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.integer "row_order"
+    t.integer "comments_count", default: 0, null: false
+    t.integer "user_lessons_count", default: 0, null: false
+    t.index ["course_id"], name: "index_lessons_on_course_id"
+    t.index ["slug"], name: "index_lessons_on_slug", unique: true
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id"
@@ -423,6 +482,17 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
     t.index ["enterprise_id"], name: "index_products_on_enterprise_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -446,6 +516,11 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "course_tags_count", default: 0, null: false
   end
 
   create_table "team_members", force: :cascade do |t|
@@ -473,6 +548,14 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
     t.date "expires_on"
     t.bigint "integer"
     t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
+  create_table "user_lessons", force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "impressions", default: 0, null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -517,10 +600,28 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
     t.string "paystack_email_token"
     t.string "paystack_auth_code"
     t.string "paystack_cust_code"
+    t.integer "courses_count", default: 0, null: false
+    t.integer "enrollments_count", default: 0, null: false
+    t.integer "comments_count", default: 0, null: false
+    t.integer "user_lessons_count", default: 0, null: false
+    t.string "refresh_token"
+    t.integer "expires_at"
+    t.boolean "expires"
+    t.integer "balance", default: 0, null: false
+    t.integer "course_income", default: 0, null: false
+    t.integer "enrollment_expenses", default: 0, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   create_table "votes", force: :cascade do |t|
@@ -542,13 +643,21 @@ ActiveRecord::Schema.define(version: 2022_11_04_191335) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "business_plans", "enterprises"
+  add_foreign_key "course_tags", "courses"
+  add_foreign_key "course_tags", "tags"
+  add_foreign_key "courses", "users"
   add_foreign_key "donors", "users"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "users"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "enterprises"
+  add_foreign_key "lessons", "courses"
   add_foreign_key "perks", "ideas"
   add_foreign_key "pitch_decks", "enterprises"
   add_foreign_key "portfolios", "enterprises"
   add_foreign_key "products", "enterprises"
   add_foreign_key "services", "enterprises"
   add_foreign_key "team_members", "enterprises"
+  add_foreign_key "user_lessons", "lessons"
+  add_foreign_key "user_lessons", "users"
 end

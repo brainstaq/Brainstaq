@@ -8,7 +8,7 @@
         <nav class="mt-15" aria-label="breadcrumb">
           <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
             <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
-            <li class="breadcrumb-item text-primary" aria-current="page">Profile</li>
+            <li class="breadcrumb-item text-primary" aria-current="page"><%= @user.username %></li>
           </ol>
         </nav>
       </div>
@@ -39,9 +39,9 @@
                   <div class="user_profile pt-0 pb-0">
                     <div class="user-pro-img mt-3 mb-0">
                       <% if @user.image.url %>
-                        <%=image_tag @user.image.url, style: "width: 160px; height: 156px; margin-left: 58px !important;", class: "rounded-circle" %>
+                        <%=image_tag @user.image.url, style: "width: 160px; height: 156px; margin-left: 0px !important;", class: "rounded-circle" %>
                       <% else %>
-                        <%= image_tag 'avatar.png', style: "width: 160px; height: 156px; margin-left: 58px !important;", class: "rounded-circle" %>
+                        <%= image_tag 'avatar.png', style: "width: 160px; height: 156px; margin-left: 0px !important;", class: "rounded-circle" %>
                       <% end %>
                     </div>
                     
@@ -192,7 +192,7 @@
 								  <div>
 									<ul class="user-fw-status" style="margin-bottom: 0px;">
 										<li>
-											<%= link_to 'Get Started', '#' %>
+											<%= link_to 'Get Started', "#" %>
 										</li>
 									</ul>
 								</div>

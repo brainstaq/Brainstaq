@@ -1,10 +1,49 @@
 Rails.application.routes.draw do
   require "sidekiq/web"
-
   mount Sidekiq::Web, at: "/sidekiq"
 
   root to: "home#index"
   
+  resources :courses, except: [:edit] do
+    get :purchased, :pending_review, :created, :unapproved, on: :collection
+    resources :lessons do
+      put :sort
+      member do
+        delete :delete_video
+      end
+    end
+    resources :enrollments, only: [:new, :create, :index]
+
+    member do
+      get :analytics
+      patch :approve
+      patch :unapprove
+    end
+    resources :course_wizard, controller: 'courses/course_wizard'
+  end
+
+  resources :users, only: [:index, :edit, :show, :update]
+  resources :youtube, only: :show
+  resources :tags, only: [:create, :index, :destroy]
+
+  resources :enrollments do
+    get :my_students, on: :collection
+    member do
+      get :certificate
+    end
+  end
+  
+  get 'analytics', to: 'courses#analytics'
+
+  namespace :charts do
+    get 'users_per_day'
+    get 'enrollments_per_day'
+    get 'course_popularity'
+    get 'money_makers'
+  end
+
+  get 'activity', to: 'courses#activity'
+
   resources :donors
   mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -67,6 +106,7 @@ Rails.application.routes.draw do
   get '/how_it_works' => 'pages#how_it_works'
   get '/contact' => 'pages#contact'
   get '/help' => 'pages#help'
+  get '/the_academy' => 'courses#academy'
   # get '/plans' => 'pages#plans'
   get '/terms' => 'pages#terms'
   get '/privacy' => 'pages#privacy'
@@ -75,7 +115,7 @@ Rails.application.routes.draw do
 
   get 'profile/:username' => 'users#profile', as: :profile
 
-  get 'dashboard/:full_name' => 'users#index', as: :dashboard
+  get 'dashboard/:full_name' => 'users#dashboard', as: :dashboard
 
   # Routes for blog
   # match '/blog',        to: 'blog_posts#index', as: :blog_posts, via: :get

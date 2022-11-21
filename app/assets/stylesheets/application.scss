@@ -22,6 +22,11 @@
 @import "slick-carousel/slick/slick.scss";
 @import "slick-carousel/slick/slick-theme.scss";
 
+@import "./actiontext.scss";
+
+@import "selectize/dist/css/selectize";
+@import "selectize/dist/css/selectize.default";
+
 @import "invoices.scss";
 // @import "responsive.scss";
 @import "ionicons";
@@ -89,3 +94,4 @@
 img {
 	float: left;
 }
+

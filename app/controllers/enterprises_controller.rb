@@ -1,7 +1,7 @@
 class EnterprisesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [ :index, :show]
-  # before_action :check_quota, only: [:index, :new]
+  before_action :check_quota, only: [:new]
   before_action :set_enterprise, only: [:show, :edit, :update, :destroy]
 
   ENTERPRISES_PER_PAGE = 9
@@ -90,11 +90,11 @@ class EnterprisesController < ApplicationController
   end
   
 
-  # def check_quota
-  #   if user.enterprises.count >= 5
-  #     @quota_warning = "You've reached the maximum number of Brands you can create!"
-  #   end
-  # end
+  def check_quota
+    if current_user.enterprises.count >= 3
+      @quota_warning = "Maximum number of Brands reached!"
+    end
+  end
 
   # Only allow a list of trusted parameters through.
   def enterprise_params

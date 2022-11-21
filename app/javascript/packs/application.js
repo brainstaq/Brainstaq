@@ -1,17 +1,11 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-
-
 var jQuery = require("jquery");
 
+
 // import jQuery from "jquery";
-global.$ = global.jQuery = jQuery;
-window.$ = window.jQuery = jQuery;
+// global.$ = global.jQuery = jQuery;
+// window.$ = window.jQuery = jQuery;
 
 //= require("jquery")
-//= require("jquery-ui/core")
 //= require popper
 //= require activestorage
 //= require local-time
@@ -20,6 +14,7 @@ window.$ = window.jQuery = jQuery;
 //= require shuffle
 //= require turbo
 //= require jquery_ujs
+//= require bootstrap.min
 //= require_tree .
 
 
@@ -29,7 +24,14 @@ require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
 require("pesky_scrolly_stuff")
+require("trix")
+require("@rails/actiontext")
+require("chartkick")
+require("chart.js")
+require("@nathanvda/cocoon")
+import "youtube"
 
+require("selectize")
 require("slick-carousel")
 
 import "@hotwired/turbo-rails";
@@ -42,6 +44,11 @@ import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
 
 import 'bootstrap/dist/js/bootstrap';
+import "../trix-editor-overrides"
+import "chartkick/chart.js"
+
+// require('cocoon')
+// import "cocoon"
 
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
@@ -81,29 +88,3 @@ document.addEventListener("turbo:load", function() {
     $('.scroller').slick()
 })
 
-$(function() {
-    $('#slider2').slick({
-        autoplay: true,
-        autoplaySpeed: 4000,
-        slidesToShow: 3, //Number of slides to display
-        slidesToScroll: 3, //Number of slides switched by scrolling
-  
-        //If you want to make it responsive, also describe the following
-        responsive: [{
-          breakpoint: 768, //The following settings with a screen width of 768px
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-          }
-        }]
-    });
-  });
-
-// script.js
-
-// $(document).on("turbolinks:load", () => {
-//   console.log("turbolinks!");
-// });
-// $(document).on("turbo:load", () => {
-//   console.log("turbo!");
-// });

@@ -2,6 +2,7 @@ class BusinessPlansController < ApplicationController
   before_action :authenticate_user!
   before_action :get_enterprise
   before_action :set_business_plan, only: %i[ show edit update destroy ]
+  before_action :check_quota, only: [:new]
   
 
   def index
@@ -86,10 +87,16 @@ class BusinessPlansController < ApplicationController
     @business_plan = @enterprise.business_plans.find(params[:id])
   end
 
+  def check_quota
+    if @enterprise.business_plans.count >= 3
+      @quota_warning = "Maximum number of Business Plans reached!"
+    end
+  end
+
   def business_plan_params
     params.require(:business_plan).permit(:executive_summary, :products_and_services, 
       :industry_analysis, :competition, :swot, :operations, :enterprise_id, 
       :marketing, :financial, :management, :appendices, :milestones, :vision, :mission, :objectives, 
       :value_proposition)
-  end
+  end 
 end

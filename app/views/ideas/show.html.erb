@@ -9,7 +9,7 @@
               <nav class="mt-15" aria-label="breadcrumb">
                   <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
                       <li class="breadcrumb-item"><%= link_to "Projects", ideas_path, class: "text-black-300" %></li>
-                      <li class="breadcrumb-item text-primary" aria-current="page">Project</li>
+                      <li class="breadcrumb-item text-primary" aria-current="page"><%= @idea.title %></li>
                   </ol>
               </nav>
           </div>

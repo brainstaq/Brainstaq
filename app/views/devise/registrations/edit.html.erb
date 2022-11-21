@@ -38,18 +38,21 @@
 					<div class="col-lg-3">
 						<div class="acc-leftbar">
 							<div class="nav nav-tabs" id="nav-tab" role="tablist">
-								<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true">Personal Details</a>
-								<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Social Profiles</a>
+								<a class="nav-item nav-link active" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="true">Personal Details</a>
+								<a class="nav-item nav-link" id="nav-profiles-tab" data-toggle="tab" href="#nav-profiles" role="tab" aria-controls="nav-profiles" aria-selected="false">Social Profiles</a>
 								<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Change Password</a>
-								<a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false">Upload Photo</a>
-								<a class="nav-item nav-link" id="nav-billing-tab" data-toggle="tab" href="#nav-billing" role="tab" aria-controls="nav-billing" aria-selected="false">Payout</a>
+								<a class="nav-item nav-link" id="nav-photo-tab" data-toggle="tab" href="#nav-photo" role="tab" aria-controls="nav-photo" aria-selected="false">Upload Photo</a>
+								<a class="nav-item nav-link" id="nav-payout-tab" data-toggle="tab" href="#nav-payout" role="tab" aria-controls="nav-payout" aria-selected="false">Payout</a>
 								<a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">Delete Account</a>
+								</div>
+								<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									<a class="nav-item nav-link" id="nav-roles-tab" data-toggle="tab" href="#nav-roles" role="tab" aria-controls="nav-roles" aria-selected="false">Select Roles</a>
 								</div>
 							</div><!--acc-leftbar end-->
 						</div>
 						<div class="col-lg-9">
 							<div class="tab-content" id="nav-tabContent">
-								<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
+								<div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
 									<div class="acc-setting">
 										<h3>Personal Details</h3>
 											<div class="cp-field">
@@ -163,7 +166,7 @@
 									</div><!--acc-setting end-->
 								</div>
 
-							  	<div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+							  	<div class="tab-pane fade" id="nav-profiles" role="tabpanel" aria-labelledby="nav-profiles-tab">
 							  		<div class="acc-setting">
 							  			<h3>Social Profiles</h3>
 							  			
@@ -237,7 +240,7 @@
 										</div><!--acc-setting end-->
 							  	</div>
 							  	
-							  	<div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
+							  	<div class="tab-pane fade" id="nav-photo" role="tabpanel" aria-labelledby="nav-photo-tab">
 							  		<div class="acc-setting">
 							  			<h3>Upload Photo</h3>
 							  			<div class="requests-list">
@@ -258,6 +261,7 @@
 							  							<li><%= f.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes } %></li>
 							  						</ul>
 							  					</div><!--accept-feat end-->
+													
 													<div class="save-stngs pd2">
 														<ul>
 													<li><%= f.submit "Update Account", class: "btn btn-primary" %></li>
@@ -269,7 +273,7 @@
 							  		</div><!--acc-setting end-->
 							  	</div>
 
-									<div class="tab-pane fade" id="nav-billing" role="tabpanel" aria-labelledby="nav-billing-tab">
+									<div class="tab-pane fade" id="nav-payout" role="tabpanel" aria-labelledby="nav-payout-tab">
 							  		<div class="acc-setting">
 										<h3>Payout</h3>
 										<%# <div class="cp-field">
@@ -321,6 +325,21 @@
 											</div><!--save-stngs end-->	
 									</div><!--acc-setting end-->
 							  </div>
+
+								<div class="tab-pane fade" id="nav-roles" role="tabpanel" aria-labelledby="nav-roles-tab">
+							  		<div class="acc-setting">
+										<h3>Select Roles</h3>
+											<div class="cp-field">
+												<%#= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+      									<%#= f.error :roles, class: 'text-danger' %>
+											</div>
+										
+											<div class="save-stngs pd3">
+												<ul>
+													<%= f.submit "Update Account", class: "btn btn-primary" %>
+												</ul>
+											</div><!--save-stngs end-->	
+									</div><!--acc-setting end-->
 							</div>
 						</div>
 					</div>

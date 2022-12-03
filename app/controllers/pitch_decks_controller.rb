@@ -88,7 +88,7 @@ class PitchDecksController < ApplicationController
   end
 
   def check_quota
-    if @enterprise.pitch_decks.count >= 3
+    if @enterprise.pitch_decks.count >= 1
       @quota_warning = "Maximum number of Pitch Decks reached!"
     end
   end

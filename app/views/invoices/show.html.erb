@@ -29,20 +29,16 @@
 
 <section class="container col-lg-8", style= "margin-top: 70px;">
   <div class="container-fluid col-lg-6 text-right float-right">
-    <%= link_to fa_icon("chevron-circle-left", title: "Back", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+    <%= link_to fa_icon("chevron-circle-left", title: "Back", class: "text-primary mr-2", style: "font-size: 20px;"), 
       enterprise_invoices_path(@enterprise) %>
     <% if user_signed_in? && current_user.id == @enterprise.user_id %>
-      <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
-      enterprise_invoice_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%= link_to fa_icon("edit", title: "Edit Invoice", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
-      edit_enterprise_invoice_path(@enterprise) %>
-      <%= link_to fa_icon("file", title: "Download", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
-      enterprise_invoice_path(@enterprise, format: :pdf) %>
+      <%= link_to fa_icon("file", title: "Download", class: "text-primary mr-2", style: "font-size: 20px;"), 
+        enterprise_invoice_path(@enterprise, format: :pdf) %>
     <% end %>
   </div>
 </section>
 
-<div class="container col-lg-8", style= "margin-top: 150px;">
+<div class="container col-lg-8", style= "margin-top: 100px; margin-bottom: 50px;">
   <div class="invoice-box">
     <table cellpadding="0" cellspacing="0">
       <tr class="top">
@@ -110,7 +106,7 @@
         <tr class="item">
           <td>
             <%= invoice_item.name %><br>
-            <small><%= sanitize invoice_item.description %></small>
+            <%= sanitize invoice_item.description %>
           </td>
 
           <td class="right">
@@ -167,7 +163,7 @@
   padding: 30px;
   border: 1px solid #eee;
   box-shadow: 0 0 5px rgba(0, 0, 0, .10);
-  font-size: 16px;
+  font-size: 12px;
   line-height: 24px;
   font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
   color: #555;

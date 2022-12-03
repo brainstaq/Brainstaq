@@ -29,240 +29,62 @@
 
 <section class="section-padding pb-0" style="margin-top: -40px !important; margin-bottom: -20px !important;" data-aos="fade-in" data-aos-delay="150">
   <div class="site-section ideas-entry-wrap mt-0" style="margin-top: 0px;" data-aos="fade" data-aos-delay="100">
-    <div class="container mb-0">
+    <div class="container mb-5">
       <%= link_to 'New Pitch Deck', new_enterprise_pitch_deck_path(@enterprise), class: "btn btn-primary float-right mr-5 mb-0 mt-0" %>
     </div>
   </div>
 </section>
 
 <% unless @enterprise.pitch_decks.present?  %>
-  <p class="text-center mb-5">You don't have any pitch deck. 
-    <%= link_to "Create one", new_enterprise_pitch_deck_path(@enterprise) %> now!
+  <p class="text-center mb-5">You don't have any Pitch Deck. 
+    <%= link_to "Create one now!", new_enterprise_pitch_deck_path(@enterprise), class: "text-primary" %>
   </p>
 <% else %>
 
-<section class="cards-wrapper mb-5" style="margin-top: -40px !important;">
-  <% @pitch_decks.each do |pitch_deck| %>
-    <div class="card-grid-space">
-      <div class="card" href="" style="background-color: #0070C0;">
-        <div>
-          <h1><%= link_to (pitch_deck.enterprise.name).titleize, enterprise_pitch_deck_path(@enterprise, pitch_deck) %></h1>
-          <p>Created by <%= @enterprise.user.full_name.titleize %></p>
-          <p>Updated on <%= local_time(pitch_deck.updated_at)%></p>
-          <div class="date">
-            <div class="dropdown dropleft">
-              <div class="dropdown-toggle" role="button" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="top" title="Actions"></i>
-              </div>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2", style="font-size: 10px;">
-                <small><%= link_to "Edit", edit_enterprise_pitch_deck_path(@enterprise, pitch_deck), class: "dropdown-item", style: "font-size: 10px" %></small>
-                <small><%= link_to 'Delete', [@enterprise, pitch_deck], method: :delete, data: { confirm: 'Are you sure?' }, class: "p-0 dropdown-item text-danger", style: "font-size: 10px" %></small>
-              </div>
-            </div>
-          </div>
-          <div class="tags">
-            <div class="tag"><%= pitch_deck.id %></div>
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Created By</th>
+            <th scope="col">Updated On</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <% @pitch_decks.each do |pitch_deck| %>
+          <tbody>
+            <tr>
+              <th scope="row"><%= pitch_deck.id %></th>
+              <td><%= link_to (pitch_deck.enterprise.name).titleize, enterprise_pitch_deck_path(@enterprise, pitch_deck), class: "text-dark" %></td>
+              <td><%= @enterprise.user.full_name.titleize %></td>
+              <td><%= local_time(pitch_deck.updated_at)%></td>
+              <td>
+                <%= link_to fa_icon("eye", title: "View", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), enterprise_pitch_deck_path(@enterprise, pitch_deck) %>
+                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), edit_enterprise_pitch_deck_path(@enterprise, pitch_deck) %>
+                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), [@enterprise, pitch_deck], method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
     </div>
-  <% end %>
-</section>
+  </div>
+</div>
 <% end %>
+
 <style>
 
-:root {
-  --color: #3c3163;
-  --transition-time: 0.5s;
+.table-image {
+  td, th {
+    vertical-align: middle;
+  }
 }
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-}
-
-a {
-  color: inherit;
-}
-
-.cards-wrapper {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 3rem;
-  padding: 4rem;
-  margin: -50px auto;
-  width: max-content;
-}
-
-.card {
-  --bg-filter-opacity: 0.5;
-  background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
-  height: 10em;
-  width: 10em;
-  font-size: 1.5em;
-  color: white;
-  border-radius: 1em;
-  padding: 1em;
-  display: flex;
-  align-items: flex-end;
-  background-size: cover;
-  background-position: center;
-  transition: all, var(--transition-time);
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-}
-
-.card:hover {
-  transform: rotate(0);
-}
-
-/* .card h1:hover {
-  color: #000;
-} */
-
-.card h1 {
-  margin-top: 30px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.2em;
-  /* color: #fff; */
-}
-
-.card p {
-  font-size: 10px;
-  margin-top: 0.5em;
-  line-height: 2em;
-}
-
-.card .tags {
-  display: flex;
-}
-
-.card .tags .tag {
-  font-size: 0.75em;
-  background: black;
-  margin-top: 30px;
-  border-radius: 0.3rem;
-  padding: 0 0.5em;
-  margin-right: 0.5em;
-  line-height: 1.5em;
-  transition: all, var(--transition-time);
-}
-
-.card:hover .tags .tag {
-  background: var(--color);
-  color: white;
-}
-
-.card .date {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 15px;
-  padding: 2em;
-  line-height: 1em;
-  opacity: .8;
-}
-
-.card:before, .card:after {
-  content: '';
-  transform: scale(0);
-  transform-origin: top left;
-  border-radius: 50%;
-  position: absolute;
-  left: -50%;
-  top: -50%;
-  z-index: -5;
-  transition: all, var(--transition-time);
-  transition-timing-function: ease-in-out;
-}
-
-.card:before {
-  background: #ddd;
-  width: 250%;
-  height: 250%;
-}
-
-.card:after {
-  background: white;
-  width: 200%;
-  height: 200%;
-}
-
-.card:hover {
-  color: var(--color);
-}
-
-.card:hover:before, .card:hover:after {
-  transform: scale(1);
-}
-
-.card-grid-space .num {
-  font-size: 3em;
-  margin-bottom: 1.2rem;
-  margin-left: 1rem;
-}
-
-.info {
-  font-size: 1.2em;
-  display: flex;
-  padding: 1em 3em;
-  height: 3em;
-}
-
-.info img {
-  height: 3em;
-  margin-right: 0.5em;
-}
-
-.info h1 {
-  font-size: 1em;
-  font-weight: normal;
-}
-
-/* MEDIA QUERIES */
-@media screen and (max-width: 1285px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .info {
-    justify-content: center;
-  }
-  .card-grid-space .num {
-    /margin-left: 0;
-    /text-align: center;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .cards-wrapper {
-    padding: 4rem 2rem;
-  }
-  .card {
-    max-width: calc(100vw - 4rem);
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .info {
-    display: block;
-    text-align: center;
-  }
-  .info h1 {
-    margin: 0;
-  }
-}
 </style>

@@ -88,7 +88,7 @@ class BusinessPlansController < ApplicationController
   end
 
   def check_quota
-    if @enterprise.business_plans.count >= 3
+    if @enterprise.business_plans.count >= 1
       @quota_warning = "Maximum number of Business Plans reached!"
     end
   end

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   after_action :user_activity
 
-  include Pundit
+  include Pundit::Authorization
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   include PublicActivity::StoreController
 

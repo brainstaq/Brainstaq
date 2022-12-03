@@ -14,6 +14,7 @@
  *= require_self
  *= require jquery-ui
  *= require social-share-button
+ *= require trix
  
  */
 
@@ -23,6 +24,7 @@
 @import "slick-carousel/slick/slick-theme.scss";
 
 @import "./actiontext.scss";
+@import "trix/dist/trix.css";
 
 @import "selectize/dist/css/selectize";
 @import "selectize/dist/css/selectize.default";
@@ -30,6 +32,9 @@
 @import "invoices.scss";
 // @import "responsive.scss";
 @import "ionicons";
+
+//= require actiontext
+
 //  @import "social-share-button";
 //  $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 //  @import '@fortawesome/fontawesome-free/scss/fontawesome';

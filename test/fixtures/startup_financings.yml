@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  savings: 1
+  grants: 1
+  equity: 1
+  debt: 1
+
+two:
+  savings: 1
+  grants: 1
+  equity: 1
+  debt: 1

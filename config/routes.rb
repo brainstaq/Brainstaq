@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   require "sidekiq/web"
   mount Sidekiq::Web, at: "/sidekiq"
 
@@ -69,14 +70,20 @@ Rails.application.routes.draw do
   # end
   
   resources :enterprises, :path => 'brands', only: [:show, :index, :new, :create, :edit, :update, :destroy] do
-    resources :business_plans
     resources :pitch_decks
     resources :team_members
     resources :services
     resources :portfolios
     resources :products
     resources :invoices
+    resources :business_plans
+    resources :financial_plans do
+      get 'balance_sheet/show'
+      get 'cash_flow_statement/show'
+      get 'income_statement/show'
+    end
   end
+  
 
   # resources :subs do
   #   member do

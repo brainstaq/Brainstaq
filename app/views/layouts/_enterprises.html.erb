@@ -14,7 +14,7 @@
                       <p class="card-text text-muted mt-5 mb-4">
                         <a href="<%= enterprise_url(enterprise) %>" class="text-decoration-none text-dark">
                           <h3 class="mb-1"><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark', style: "font-weight: bold; font-size: 16px;" %></h3> 
-                          <%= truncate(sanitize(enterprise.info, tags: []), length: 70) %>
+                          <%= enterprise.info.to_plain_text.truncate(70) %>
                         </a>
                       </p>
                     
@@ -41,7 +41,7 @@
                       <p class="card-text text-muted mt-2 mb-4">
                         <a href="<%= enterprise_url(enterprise) %>" class="text-decoration-none text-dark">
                           <h3 class="mb-1"><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark', style: "font-weight: bold; font-size: 16px;" %></h3>
-                          <%= truncate(sanitize(enterprise.info, tags: []), length: 178) %> 
+                          <%= enterprise.info.to_plain_text.truncate(178) %>
                         </a>
                       </p>
 

@@ -1,0 +1,917 @@
+
+<%= form_for([@enterprise, @financial_plan]) do |form| %>
+  <% if financial_plan.errors.any? %>
+    <div id="error_explanation" class="text-center text-danger">
+      <h4>Oops! You've got <%= pluralize(financial_plan.errors.count, "error") %></h4>
+      <ul>
+        <% financial_plan.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <section class="profile-account-setting">
+		<div class="container">
+			<div class="account-tabs-setting">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="acc-leftbar">
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<a class="nav-item nav-link active" id="nav-assumptions-tab" data-toggle="tab" href="#nav-assumptions" role="tab" aria-controls="nav-assumptions" aria-selected="true">General Assumptions</a>
+								<a class="nav-item nav-link" id="nav-depreciation-tab" data-toggle="tab" href="#nav-depreciation" role="tab" aria-controls="nav-depreciation" aria-selected="false">Depreciation Rates</a>
+								<a class="nav-item nav-link" id="nav-cost-tab" data-toggle="tab" href="#nav-cost" role="tab" aria-controls="nav-cost" aria-selected="false">Cost Growth Rates</a>
+								<a class="nav-item nav-link" id="nav-revenue-tab" data-toggle="tab" href="#nav-revenue" role="tab" aria-controls="nav-revenue" aria-selected="false">Revenue Growth Rates</a>
+								<a class="nav-item nav-link" id="nav-startup-tab" data-toggle="tab" href="#nav-startup" role="tab" aria-controls="nav-startup" aria-selected="false">Startup Costs</a>
+                <a class="nav-item nav-link" id="nav-employee-tab" data-toggle="tab" href="#nav-employee" role="tab" aria-controls="nav-employee" aria-selected="false">Employee Analysis</a>
+                <a class="nav-item nav-link" id="nav-direct-tab" data-toggle="tab" href="#nav-direct" role="tab" aria-controls="nav-direct" aria-selected="false">Operations Direct Costs</a>
+								<a class="nav-item nav-link" id="nav-fixed-tab" data-toggle="tab" href="#nav-fixed" role="tab" aria-controls="nav-fixed" aria-selected="false">Operations Fixed Costs</a>
+                <a class="nav-item nav-link" id="nav-revenues-tab" data-toggle="tab" href="#nav-revenues" role="tab" aria-controls="nav-revenues" aria-selected="false">Revenue</a>
+								<a class="nav-item nav-link" id="nav-capital-tab" data-toggle="tab" href="#nav-capital" role="tab" aria-controls="nav-capital" aria-selected="false">Working Capital</a>
+								<a class="nav-item nav-link" id="nav-financing-tab" data-toggle="tab" href="#nav-financing" role="tab" aria-controls="nav-financing" aria-selected="false">Startup Financing</a>
+								<a class="nav-item nav-link" id="nav-equity-tab" data-toggle="tab" href="#nav-equity" role="tab" aria-controls="nav-equity" aria-selected="false">Equity Financing</a>
+								<a class="nav-item nav-link" id="nav-debt-tab" data-toggle="tab" href="#nav-debt" role="tab" aria-controls="nav-debt" aria-selected="false">Debt Financing</a>
+								</div>
+							</div><!--acc-leftbar end-->
+						</div>
+						<div class="col-lg-9">
+							<div class="tab-content" id="nav-tabContent">
+								<div class="tab-pane fade show active" id="nav-assumptions" role="tabpanel" aria-labelledby="nav-assumptions-tab">
+									<div class="acc-setting row g-3">
+										<h3>Assumptions
+											<hr>
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Enter healthy assumptions for the fields below 
+												</p>
+											</details>
+										</h3>
+										
+										<div class="col-md-6 mt-3">
+											<label class="form-label">Company Tax Rate</label>
+											<%= form.number_field :company_tax_rate, class: "form-control", placeholder: "Enter tax rate"  %>
+										</div>
+										<div class="col-md-6 mt-3">
+											<label class="form-label">Bank Interest Rate</label>
+											<%= form.number_field :bank_interest_rate, class: "form-control", placeholder: "Enter bank interest rate"  %>
+										</div>
+										<div class="col-md-6 mt-2">
+											<label class="form-label">Inflation Rate</label>
+											<%= form.number_field :inflation_rate, class: "form-control", placeholder: "Enter inflation rate"  %>
+										</div>
+										<div class="col-md-6 mt-2">
+											<label class="form-label">Percentage Benefit of Salary</label>
+											<%= form.number_field :salary_benefits, class: "form-control", placeholder: "Enter percentage benefits of Salary"  %>
+										</div>
+										
+										<%= form.hidden_field :user_id, placeholder: "0", class: "input form-control" %>
+										<%= form.hidden_field :enterprise_id, placeholder: "0", class: "input form-control" %>
+										
+										<div class="save-stngs">
+											<ul>
+												<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+												<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+											</ul>
+										</div><!--save-stngs end-->
+										
+									</div><!--acc-setting end-->
+								</div>
+
+								<div class="tab-pane fade" id="nav-depreciation" role="tabpanel" aria-labelledby="nav-depreciation-tab">
+									<div>
+										<h3>Depreciation Rates
+											<hr>
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Add estimated depreciation rates for items such as buildings, furniture, equipment, etc.
+												</p>
+											</details>
+										</h3>	
+										<div data-controller="nested-form">
+											<template data-target='nested-form.template'>
+												<%= form.fields_for :depreciation_items, DepreciationItem.new, child_index: 'TEMPLATE_RECORD' do |depreciation_item| %>
+													<%= render 'depreciation_items_fields', form: depreciation_item %>
+												<% end %>
+											</template>
+
+											<%= form.fields_for :depreciation_items do |depreciation_item| %>
+												<%= render 'depreciation_items_fields', form: depreciation_item %>
+											<% end %>
+							
+											<div data-target="nested-form.add_perk">
+												<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+												class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+											</div>
+										</div>
+										<div class="save-stngs pd2">
+											<ul>
+												<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+												<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+											</ul>
+										</div><!--save-stngs end-->
+									</div><!--acc-setting end-->
+								</div>
+
+								<div class="tab-pane fade" id="nav-cost" role="tabpanel" aria-labelledby="nav-cost-tab">
+									<div>
+										<h3>Cost Growth Rates
+											<hr>
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Add estimated depreciation rates for items such as buildings, furniture, equipment, etc.
+												</p>
+											</details>
+										</h3>	
+										<div data-controller="nested-form">
+											<template data-target='nested-form.template'>
+												<%= form.fields_for :costs_growth_rates, CostsGrowthRate.new, child_index: 'TEMPLATE_RECORD' do |costs_growth_rate| %>
+													<%= render 'costs_growth_rates_fields', form: costs_growth_rate %>
+												<% end %>
+											</template>
+
+											<%= form.fields_for :costs_growth_rates do |costs_growth_rate| %>
+												<%= render 'costs_growth_rates_fields', form: costs_growth_rate %>
+											<% end %>
+							
+											<div data-target="nested-form.add_perk">
+												<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+												class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+											</div>
+										</div>
+										<div class="save-stngs pd2">
+											<ul>
+												<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+												<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+											</ul>
+										</div><!--save-stngs end-->
+									</div><!--acc-setting end-->
+								</div>
+
+								<div class="tab-pane fade" id="nav-revenue" role="tabpanel" aria-labelledby="nav-revenue-tab">
+									<div>
+										<h3>Revenue Growth Rates
+											<hr>
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													Add estimated depreciation rates for items such as buildings, furniture, equipment, etc.
+												</p>
+											</details>
+										</h3>	
+										<div data-controller="nested-form">
+											<template data-target='nested-form.template'>
+												<%= form.fields_for :revenue_growth_rates, RevenueGrowthRate.new, child_index: 'TEMPLATE_RECORD' do |revenue_growth_rate| %>
+													<%= render 'revenue_growth_rates_fields', form: revenue_growth_rate %>
+												<% end %>
+											</template>
+
+											<%= form.fields_for :revenue_growth_rates do |revenue_growth_rate| %>
+												<%= render 'revenue_growth_rates_fields', form: revenue_growth_rate %>
+											<% end %>
+							
+											<div data-target="nested-form.add_perk">
+												<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+												class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+											</div>
+										</div>
+										<div class="save-stngs pd2">
+											<ul>
+												<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+												<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+											</ul>
+										</div><!--save-stngs end-->
+									</div><!--acc-setting end-->
+								</div>
+							  		
+							  	<div class="tab-pane fade" id="nav-startup" role="tabpanel" aria-labelledby="nav-startup-tab">
+							  		<div>
+							  			<h3>Startup Costs
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Enter the costs you expect to incur in the process of setting up your business below. 
+														Note that not all costs may be relevant to your business, so only fill the necessary costs
+													</p>
+												</details>
+											</h3>
+							  			<div data-controller="nested-form">
+											<template data-target='nested-form.template'>
+												<%= form.fields_for :startup_costs, StartupCost.new, child_index: 'TEMPLATE_RECORD' do |startup_cost| %>
+													<%= render 'startup_costs_fields', form: startup_cost %>
+												<% end %>
+											</template>
+
+											<%= form.fields_for :startup_costs do |startup_cost| %>
+												<%= render 'startup_costs_fields', form: startup_cost %>
+											<% end %>
+							
+											<div data-target="nested-form.add_perk">
+												<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+												class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+											</div>
+										</div>
+										<div class="save-stngs pd2">
+											<ul>
+												<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+												<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+											</ul>
+										</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+
+							  	<div class="tab-pane fade" id="nav-employee" role="tabpanel" aria-labelledby="nav-employee-tab">
+							  		<div>
+							  			<h3>Employee Analysis
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Enter the salary and number of employees you expect for each key business function. 
+														Note that not all headcount groups may be relevant to your own business, 
+														so only fill if necessary.
+													</p>
+												</details>
+											</h3>
+							  			<div data-controller="nested-form">
+												<template data-target='nested-form.template'>
+													<%= form.fields_for :positions, Position.new, child_index: 'TEMPLATE_RECORD' do |position| %>
+														<%= render 'positions_fields', form: position %>
+													<% end %>
+												</template>
+
+												<%= form.fields_for :positions do |position| %>
+													<%= render 'positions_fields', form: position %>
+												<% end %>
+							
+												<div data-target="nested-form.add_perk">
+													<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+													class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+                          <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+							  		</div><!--acc-setting end-->
+							  	</div>
+                  
+                  <div class="tab-pane fade" id="nav-direct" role="tabpanel" aria-labelledby="nav-direct-tab">
+							  		<div>
+							  			<h3> Direct Operations Cost
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Enter the direct operations cost for your business.
+													</p>
+												</details>
+											</h3>
+                      <div data-controller="nested-form">
+												<template data-target='nested-form.template'>
+													<%= form.fields_for :direct_costs, DirectCost.new, child_index: 'TEMPLATE_RECORD' do |direct_cost| %>
+														<%= render 'direct_costs_fields', form: direct_cost %>
+													<% end %>
+												</template>
+
+												<%= form.fields_for :direct_costs do |direct_cost| %>
+													<%= render 'direct_costs_fields', form: direct_cost %>
+												<% end %>
+								
+												<div data-target="nested-form.add_perk">
+													<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+													class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+												</div>
+											</div>
+                      <div class="save-stngs pd2">
+                        <ul>
+                          <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                        </ul>
+                      </div><!--save-stngs end-->
+                    </div><!--acc-setting end-->
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-fixed" role="tabpanel" aria-labelledby="nav-fixed-tab">
+							  		<div>
+							  			<h3>Fixed Operations Cost
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														State how you can reduce the threats, risk and challenges.
+													</p>
+												</details>
+											</h3>
+							  			<div data-controller="nested-form">
+												<template data-target='nested-form.template'>
+													<%= form.fields_for :fixed_costs, FixedCost.new, child_index: 'TEMPLATE_RECORD' do |fixed_cost| %>
+														<%= render 'fixed_costs_fields', form: fixed_cost %>
+													<% end %>
+												</template>
+
+												<%= form.fields_for :fixed_costs do |fixed_cost| %>
+													<%= render 'fixed_costs_fields', form: fixed_cost %>
+												<% end %>
+							
+												<div data-target="nested-form.add_perk">
+													<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+													class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										</div><!--acc-setting end-->
+                  </div>
+
+									<div class="tab-pane fade" id="nav-revenues" role="tabpanel" aria-labelledby="nav-revenues-tab">
+							  		<div>
+							  			<h3>Monthly Estimated Revenue
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Monthly revenue may vary due to seasonal trends (holidays, festivities, 
+														seasonal discounts & promos, off-peak seasons, etc.) 
+														Account for monthly spikes or slumps in your forecasted sales using the model below:
+													</p>
+												</details>
+											</h3>
+							  			<div data-controller="nested-form">
+												<template data-target='nested-form.template'>
+													<%= form.fields_for :seasonal_estimates, SeasonalEstimate.new, child_index: 'TEMPLATE_RECORD' do |seasonal_estimate| %>
+														<%= render 'seasonal_estimates_fields', form: seasonal_estimate %>
+													<% end %>
+												</template>
+
+												<%= form.fields_for :seasonal_estimates do |seasonal_estimate| %>
+													<%= render 'seasonal_estimates_fields', form: seasonal_estimate %>
+												<% end %>
+							
+												<div data-target="nested-form.add_perk">
+													<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+													class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										</div><!--acc-setting end-->
+                  </div>
+
+									<div class="tab-pane fade" id="nav-capital" role="tabpanel" aria-labelledby="nav-capital-tab">
+							  		<div>
+							  			<h3>Working Capital
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Working capital is an estimate of the amount of cash your business requires to 
+														fund day-to-day operations. Availability of working capital depends on how fast you 
+														can collect cash from your customers after providing goods/services to them, 
+														how long it takes your business to turn over inventory, and how long you can afford 
+														to wait till you pay your vendors/suppliers. 
+														Provide realistic estimates based on the peculiarities of your local economy and 
+														business industry for these below.
+														- Receivable Days: average number of days customers take to pay your business for services rendered
+														- Payable Days: average number of days that your company takes to pay its suppliers
+														- Inventory Days: average number of days required for your business to sell one batch of inventory
+													</p>
+												</details>
+											</h3>
+											<div class="mb-6 col-sm-12 form-group">
+												<label class="form-label mt-2">Receivable Days</label>
+												<%= form.number_field :receivable_days, class: "input form-control" %>
+											</div>
+
+											<div class="mb-6 col-sm-12 form-group">
+												<label class="form-label">Payable Days</label>
+												<%= form.number_field :payable_days, class: "input form-control" %>
+											</div>
+
+											<div class="mb-6 col-sm-12 form-group">
+												<label class="form-label">Inventory Days</label>
+												<%= form.number_field :inventory_days, class: "input form-control" %>
+											</div>
+										
+											<%= form.hidden_field :user_id, placeholder: "0", class: "input form-control" %>
+											<%= form.hidden_field :enterprise_id, placeholder: "0", class: "input form-control" %>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										</div><!--acc-setting end-->
+									</div>
+
+									<div class="tab-pane fade" id="nav-financing" role="tabpanel" aria-labelledby="nav-financing-tab">
+							  		<div class="acc-setting row g-3">
+							  			<h3>Startup Financing
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Monthly revenue may vary due to seasonal trends (holidays, festivities, 
+														seasonal discounts & promos, off-peak seasons, etc.) 
+														Account for monthly spikes or slumps in your forecasted sales using the model below:
+													</p>
+												</details>
+											</h3>
+							  			  <div class="col-md-6 mt-3">
+													<label class="form-label">Personal Savings (Owner's Capital)</label>
+													<%= form.number_field :savings, class: "input form-control" %>
+												</div>
+
+												<div class="col-md-6 mt-3">
+													<label class="form-label">Grants</label>
+													<%= form.number_field :grants, class: "input form-control" %>
+												</div>
+
+													<div class="col-md-6 mt-3">
+													<label class="form-label">Equity</label>
+													<%= form.number_field :equity, class: "input form-control" %>
+												</div>
+
+													<div class="col-md-6 mt-3">
+													<label class="form-label">Debt</label>
+													<%= form.number_field :debt, class: "input form-control" %>
+												</div>
+												<%= form.hidden_field :user_id, placeholder: "0", class: "input form-control" %>
+											<%= form.hidden_field :enterprise_id, placeholder: "0", class: "input form-control" %>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										</div><!--acc-setting end-->
+                  </div>
+
+									<div class="tab-pane fade" id="nav-equity" role="tabpanel" aria-labelledby="nav-equity-tab">
+							  		<div class="acc-setting row g-3">
+							  			<h3>Equity Financing
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Monthly revenue may vary due to seasonal trends (holidays, festivities, 
+														seasonal discounts & promos, off-peak seasons, etc.) 
+														Account for monthly spikes or slumps in your forecasted sales using the model below:
+													</p>
+												</details>
+											</h3>
+							  			<div class="col-md-6 mt-3">
+													<label class="form-label">Equity Injection in Year Two</label>
+													<%= form.number_field :equity_injection_one, class: "input form-control" %>
+												</div>
+
+												<div class="col-md-6 mt-3">
+													<label class="form-label">Equity Injection in Year Three</label>
+													<%= form.number_field :equity_injection_two, class: "input form-control" %>
+												</div>
+
+													<div class="col-md-6 mt-3">
+													<label class="form-label">Equity Injection in Year Four</label>
+													<%= form.number_field :equity_injection_three, class: "input form-control" %>
+												</div>
+
+													<div class="col-md-6 mt-3">
+													<label class="form-label">Equity Injection in Year Five</label>
+													<%= form.number_field :equity_injection_four, class: "input form-control" %>
+												</div>
+												<%= form.hidden_field :user_id, placeholder: "0", class: "input form-control" %>
+											<%= form.hidden_field :enterprise_id, placeholder: "0", class: "input form-control" %>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										</div><!--acc-setting end-->
+                  </div>
+
+									<div class="tab-pane fade" id="nav-debt" role="tabpanel" aria-labelledby="nav-debt-tab">
+							  		<div>
+							  			<h3>Debt Financing
+												<hr>
+												<details>
+													<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+													<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+														Monthly revenue may vary due to seasonal trends (holidays, festivities, 
+														seasonal discounts & promos, off-peak seasons, etc.) 
+														Account for monthly spikes or slumps in your forecasted sales using the model below:
+													</p>
+												</details>
+											</h3>
+							  			<div data-controller="nested-form">
+												<template data-target='nested-form.template'>
+													<%= form.fields_for :debt_financings, DebtFinancing.new, child_index: 'TEMPLATE_RECORD' do |debt_financing| %>
+														<%= render 'debt_financings_fields', form: debt_financing %>
+													<% end %>
+												</template>
+
+												<%= form.fields_for :debt_financings do |debt_financing| %>
+													<%= render 'debt_financings_fields', form: debt_financing %>
+												<% end %>
+							
+												<div data-target="nested-form.add_perk">
+													<%= link_to "Add Item", "#", data: { action: "nested-form#add_association" }, 
+													class: "btn btn-sm rounded btn-primary ml-3 mt-3", style: "font-size: 12px;"%>
+												</div>
+											</div>
+											<div class="save-stngs pd2">
+												<ul>
+													<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+												</ul>
+											</div><!--save-stngs end-->
+										</div><!--acc-setting end-->
+                  </div>
+                  
+							</div>
+						</div>
+					</div>
+				</div><!--account-tabs-setting end-->
+			</div>
+	</section>
+<% end %>
+
+<style>
+details {
+    padding: .3em .3em 0;
+		text-transform: initial;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .3em;
+}
+
+.acc-leftbar {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+}
+.acc-leftbar .nav-tabs > a {
+	float: left;
+	width: 100%;
+	background: none;
+	padding: 18px 20px;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	border-left: 0;
+	border-right: 0;
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	border-radius: 0;
+}
+.nav-tabs {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a:last-child {
+	border-bottom: 0;
+}
+.acc-leftbar .nav-tabs > a i {
+	padding-right: 15px;
+	font-size: 20px;
+	position: relative;
+	top: 2px;
+	font-weight: 700;
+	width: 40px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	background-color: inherit;
+	color: #0070C0;
+	border-color: inherit;
+}
+.acc-setting {
+	float: left;
+	width: 100%;
+	background-color: #fff;
+	/* border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	-webkit-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-moz-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-ms-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	-o-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	box-shadow: 1px 0 4px rgba(0,0,0,0.24); */
+}
+.acc-setting form {
+	float: left;
+	width: 100%;
+}
+.acc-setting > h3 {
+	margin-left: 12px;
+	width: 100%;
+	color: #000000;
+	/* font-weight: 600; */
+	font-size: 24px;
+	text-transform: capitalize;
+	/* border-bottom: 1px solid #e5e5e5; */
+	/* padding: 17px 20px; */
+}
+.notbar {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 20px;
+	position: relative;
+}
+.notbar h4 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.notbar p {
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	width: 75%;
+}
+.toggle-btn {
+	position: absolute;
+	top: 35px;
+	right: 20px	;
+}
+.save-stngs {
+	float: left;
+	width: 100%;
+	padding: 30px 20px 50px 20px;
+}
+.save-stngs.pd2 {
+	padding: 25px 20px 42px 20px;
+}
+.save-stngs.pd3 {
+	padding: 25px 20px 25px 20px;
+}
+.save-stngs ul li {
+	display: inline-block;
+	margin-right: 17px;
+}
+.save-stngs ul li button {
+	display: inline-block;
+	color: #000000;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 22px;
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+}
+.save-stngs ul li button:hover {
+	background-color: #e44d3a;
+	color: #fff;
+	border-color: transparent;
+}
+.profile-bx-details {
+	float: left;
+	width: 100%;
+	padding: 30px 7px 30px 7px;
+}
+.profile-bx-details .row .col-lg-3 {
+	padding: 0 7px;
+}
+.profile-bx-info {
+	float: left;
+	width: 100%;
+	background-color: #f2f2f2;
+	padding: 20px;
+	border: 1px solid #e5e5e5;
+}
+.pro-bx {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 10px;
+}
+.bx-info {
+	float: left;
+	margin-top: 7px;
+	padding-left: 15px;
+}
+.bx-info h3 {
+	color: #e44d3a;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}	
+.bx-info h5 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.pd-left-20 {
+	padding-left: 20px;
+	padding-right: 0;
+}
+.pd-left-15 {
+	padding-left: 15px;
+	padding-right: 0;
+}
+.pd-left-right {
+	padding-left: 15px;
+	padding-right: 20px;
+}
+.profile-bx-info > p {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+	line-height: 22px;
+	padding-top: 3px;
+}
+.pro-work-status {
+	float: left;
+	width: 100%;
+	padding: 0 15px;
+}
+.pro-work-status h4 {
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+.cp-field {
+	float: left;
+	width: 100%;
+	margin-top: 29.4px;
+	padding: 0 20px;
+}
+.cp-field h5 {
+	color: #000000;
+	font-size: 16px;
+	font-weight: 600;
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.cp-field h5 a {
+	color: #000;
+}
+.cpp-fiel {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.cp-field input {
+	height: 40px;
+	padding: 0 40px;
+}
+.cp-field input,
+.cp-field textarea {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+}
+.cp-field textarea {
+	padding: 20px;
+	height: 115px;	
+}
+.cpp-fiel i {
+	position: absolute;
+	top: 12px;
+	left: 15px;
+	color: #b2b2b2;
+	font-size: 16px;
+}
+.cp-field > p {
+	float: left;
+	width: 100%;
+	color: #686868;
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: 5px;
+}
+.notifications-list {
+	float: left;
+	width: 100%;
+}
+.notfication-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.notfication-details:last-child {
+	border-bottom: 0;
+}
+.noty-user-img {
+	float: left;
+	width: 35px;
+}
+.noty-user-img img {
+	width: 100%;
+}
+.notification-info {
+	float: left;
+	width: auto;
+	padding-left: 10px;
+}
+.notification-info h3 {
+	color: #686868;
+	font-size: 14px;
+	font-weight: 600;
+	border: 0;
+	padding: 0;
+	margin-bottom: 6px;
+}
+.notification-info h3 a {
+	color: #000000;
+	font-size: 16px;
+	display: inline-block;
+}
+.notification-info > span {
+	display: inline-block;
+	color: #b2b2b2;
+	font-size: 12px;
+	font-weight: 600;
+}
+.requests-list {
+	float: left;
+	width: 100%;
+	padding-bottom: 0;
+}
+.request-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.request-details:last-child {
+	border-bottom: 0;
+}
+.request-info {
+	float: left;
+	padding-left: 10px;
+}
+.request-info h3 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0;
+	border: 0;
+	margin-bottom: 3px;
+}
+.request-info span {
+	color: #686868;
+	font-size: 12px;
+	display: inline-block;
+}
+.accept-feat {
+	float: right;
+}
+.accept-feat ul li {
+	display: inline-block;
+}
+.accept-feat ul li button {
+	cursor: pointer;
+}
+.accept-req {
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #51a5fb;
+	height: 30px;
+	padding: 0 20px;
+	font-weight: 600;
+	border: 0;
+	border: 1px solid #51a5fb;
+}
+.close-req {
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #e5e5e5;
+	background: inherit;
+	color: #b2b2b2;
+	margin-left: 7px;
+}
+.close-req i {
+	font-weight: 600;
+}
+</style>

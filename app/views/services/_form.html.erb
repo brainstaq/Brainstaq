@@ -32,8 +32,8 @@
 										<h3>Service Name</h3>
 											<div class="cp-field">
 												<div class="cpp-fiel">
-													<%= form.text_field :title, class: "form-control tinymce", placeholder: "Enter Title"  %>
-                          <%= tinymce %>
+													<%= form.text_field :title, class: "form-control", placeholder: "Enter Title"  %>
+                          <%#= tinymce %>
 												</div>
 											</div>
 											<div class="save-stngs">
@@ -49,8 +49,8 @@
 							  			<h3>Service Description</h3>	
 											<div class="cp-field">
 												<div class="cpp-fiel">
-													<%= form.text_area :description, placeholder: "Enter Description", class: "form-control tinymce" %>
-                          <%= tinymce %>
+													<%= form.rich_text_area :description, placeholder: "Enter Description", class: "form-control" %>
+                          <%#= tinymce %>
 												</div>
 											</div>
 											<div class="save-stngs pd2">

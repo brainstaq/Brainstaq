@@ -64,8 +64,8 @@
 							  			
 											<div class="cp-field">
 												<div class="cpp-fiel">
-													<%= form.text_area :description, class: "form-control tinymce", placeholder: "How would you describe your project in 5 sentences?"%>
-                          <%= tinymce %>
+													<%= form.text_area :description, class: "form-control", placeholder: "How would you describe your project in 5 sentences?"%>
+                          <%#= tinymce %>
 												</div>
 											</div>
 											<div class="save-stngs pd2">
@@ -84,8 +84,8 @@
 										
 											<div class="cp-field">
 												<div class="cpp-fiel">
-													<%= form.text_area :challenges, class: "form-control tinymce", placeholder: "How would you describe the problem your project is solving?"%>
-                          <%= tinymce %>
+													<%= form.text_area :challenges, class: "form-control", placeholder: "How would you describe the problem your project is solving?"%>
+                          <%#= tinymce %>
 												</div>
 											</div>
 											<div class="save-stngs pd2">
@@ -103,8 +103,8 @@
 							  			<h3>Solutions</h3>
 							  			<div class="cp-field">
 												<div class="cpp-fiel">
-													<%= form.text_area :overview, class: "form-control tinymce", placeholder: "How are you solving this problem?"%>
-                          <%= tinymce %>
+													<%= form.text_area :overview, class: "form-control", placeholder: "How are you solving this problem?"%>
+                          <%#= tinymce %>
 												</div>
 											</div>
 											<div class="save-stngs pd2">
@@ -121,8 +121,8 @@
 							  			<h3>Impact</h3>
 							  			<div class="cp-field">
 												<div class="cpp-fiel">
-													<%= form.text_area :impact, class: "form-control tinymce", placeholder: "How would your project impact the world?"%>
-                          <%= tinymce %>
+													<%= form.text_area :impact, class: "form-control", placeholder: "How would your project impact the world?"%>
+                          <%#= tinymce %>
 												</div>
 											</div>
 											<div class="save-stngs pd2">
@@ -139,15 +139,14 @@
 							  			<div class="cp-field">
 												<h5>Funding Goal (Naira)</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :donation_goal, :readonly => form.object.persisted?, class: "form-control tinymce", placeholder: "How much would it cost to implement your idea?"%>
-                          <%= tinymce %>
+													<%= form.text_field :donation_goal, :readonly => form.object.persisted?, class: "form-control", placeholder: "How much would it cost to implement your idea?"%>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>Campaign Expiry Date</h5>
 												<div class="cpp-fiel">
-													<%= form.date_field :end_date, :readonly => form.object.persisted?, class: "form-control tinymce", placeholder: "How much time do you need to raise the funding you need?"%>
-                          <%= tinymce %>
+													<%= form.date_field :end_date, :readonly => form.object.persisted?, class: "form-control", placeholder: "How much time do you need to raise the funding you need?"%>
+                          <%#= tinymce %>
 												</div>
 											</div>
                       <div class="field">

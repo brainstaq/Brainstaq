@@ -8,7 +8,7 @@
 		<!-- / End Header Section -->
 
 		<% if user_signed_in? && current_user.id == @enterprise.user_id %>
-			<%= link_to fa_icon("edit", title: "Add Team member", class: "text-primary float-right mr-2 mt-2", style: "font-size: 20px;"), 
+			<%= link_to fa_icon("edit", title: "Add Team Member", class: "text-primary float-right mr-2 mt-2", style: "font-size: 20px;"), 
 			new_enterprise_team_member_path(@enterprise) %>
 		<% end %>
 			
@@ -28,13 +28,13 @@
 						</div>
 					<% end %>
 						<div class="single-person">
-							<div class="person-image">
+							<div class="person-image mb-2">
 								<%= image_tag team_member.image.url, skip_pipeline: true %>
 							</div>
-							<div>
-								<h5 class="full-name"><%= team_member.full_name %></h5>
+							<div class="mt-2">
+								<h5 class="full-name mt-2"><%= team_member.full_name %></h5>
 								<span class="speciality"><%= team_member.position %></span>
-								<h6 class=""><small><%= sanitize team_member.bio %></small></h6>
+								<h6 class=""><small><%= team_member.bio.html_safe %></small></h6>
 							</div>
 						</div>
 					</div><!-- / End Single Person -->
@@ -79,7 +79,6 @@ p,a,h1,h2,h3,h4 {
 
 .section-team .single-person:hover .person-image {
 	padding: 10px;
-  border: 3px dashed #fff;
 }
 
 .section-team .single-person .person-image img {

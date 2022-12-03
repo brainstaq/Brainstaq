@@ -33,7 +33,7 @@
 							</div>
 							<div>
 								<h5 class="full-name"><%= product.title %></h5>
-								<h6 class=""><small><%= sanitize product.description %></small></h6>
+								<h6 class=""><small><%= product.description.html_safe %></small></h6>
 							</div>
 						</div>
 					</div><!-- / End Single Person -->

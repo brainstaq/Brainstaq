@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loan_year: 1
+  loan_amount: 1
+  repayment_period: 1
+  loan_end: 1
+
+two:
+  loan_year: 1
+  loan_amount: 1
+  repayment_period: 1
+  loan_end: 1

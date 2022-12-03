@@ -15,6 +15,7 @@ var jQuery = require("jquery");
 //= require turbo
 //= require jquery_ujs
 //= require bootstrap.min
+//= require trix
 //= require_tree .
 
 
@@ -22,6 +23,10 @@ require("@rails/ujs").start()
 // require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+import 'bootstrap/dist/js/bootstrap';
+import "../trix-editor-overrides"
+
 require("bootstrap")
 require("pesky_scrolly_stuff")
 require("trix")
@@ -43,8 +48,6 @@ import "slick-carousel/slick/slick-theme.scss"
 import "controllers"
 import "@fortawesome/fontawesome-free/js/all";
 
-import 'bootstrap/dist/js/bootstrap';
-import "../trix-editor-overrides"
 import "chartkick/chart.js"
 
 // require('cocoon')

@@ -34,7 +34,7 @@
 							<div>
 								<h5 class="full-name"><%= portfolio.title %></h5>
                 <span class="mt-0" style="font-size: 12px;">-- <%= portfolio.location %> --</span>
-								<h6 class=""><small><%= sanitize portfolio.description %></small></h6>
+								<h6 class=""><small><%= portfolio.description.html_safe %></small></h6>
 							</div>
 						</div>
 					</div><!-- / End Single Person -->

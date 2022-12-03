@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_18_092719) do
+ActiveRecord::Schema.define(version: 2022_12_02_133100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,11 +65,11 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
-    t.index ["owner_type", "owner_id"], name: "index_activities_on_owner"
+    t.index ["owner_type", "owner_id"], name: "index_activities_on_owner_type_and_owner_id"
     t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
-    t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient"
+    t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient_type_and_recipient_id"
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
-    t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable"
+    t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -172,6 +172,19 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "costs_growth_rates", force: :cascade do |t|
+    t.string "item_name"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "cost_growth_rate_one", default: 0, null: false
+    t.integer "cost_growth_rate_two", default: 0, null: false
+    t.integer "cost_growth_rate_three", default: 0, null: false
+    t.integer "cost_growth_rate_four", default: 0, null: false
+    t.integer "cost_growth_rate_five", default: 0, null: false
+    t.index ["financial_plan_id"], name: "index_costs_growth_rates_on_financial_plan_id"
+  end
+
   create_table "course_tags", force: :cascade do |t|
     t.bigint "course_id", null: false
     t.bigint "tag_id", null: false
@@ -201,6 +214,35 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.integer "price", default: 0, null: false
     t.index ["slug"], name: "index_courses_on_slug", unique: true
     t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "debt_financings", force: :cascade do |t|
+    t.integer "loan_year"
+    t.integer "loan_amount"
+    t.integer "repayment_period"
+    t.integer "loan_end"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["financial_plan_id"], name: "index_debt_financings_on_financial_plan_id"
+  end
+
+  create_table "depreciation_items", force: :cascade do |t|
+    t.string "item_name"
+    t.decimal "rate"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["financial_plan_id"], name: "index_depreciation_items_on_financial_plan_id"
+  end
+
+  create_table "direct_costs", force: :cascade do |t|
+    t.string "item"
+    t.integer "cost"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["financial_plan_id"], name: "index_direct_costs_on_financial_plan_id"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -269,6 +311,38 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.string "website_url"
     t.index ["slug"], name: "index_enterprises_on_slug", unique: true
     t.index ["user_id"], name: "index_enterprises_on_user_id"
+  end
+
+  create_table "financial_plans", force: :cascade do |t|
+    t.bigint "enterprise_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "company_tax_rate", precision: 8, scale: 2
+    t.decimal "bank_interest_rate", precision: 8, scale: 2
+    t.integer "inflation_rate"
+    t.integer "salary_benefits"
+    t.integer "receivable_days"
+    t.integer "payable_days"
+    t.integer "inventory_days"
+    t.integer "savings"
+    t.integer "grants"
+    t.integer "equity"
+    t.integer "debt"
+    t.integer "equity_injection_one"
+    t.integer "equity_injection_two"
+    t.integer "equity_injection_three"
+    t.integer "equity_injection_four"
+    t.integer "user_id"
+    t.index ["enterprise_id"], name: "index_financial_plans_on_enterprise_id"
+  end
+
+  create_table "fixed_costs", force: :cascade do |t|
+    t.string "item"
+    t.integer "cost"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["financial_plan_id"], name: "index_fixed_costs_on_financial_plan_id"
   end
 
   create_table "followers", force: :cascade do |t|
@@ -472,6 +546,20 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.index ["enterprise_id"], name: "index_portfolios_on_enterprise_id"
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "number_of_employees_one"
+    t.integer "number_of_employees_two"
+    t.integer "number_of_employees_three"
+    t.integer "base_annual_salary"
+    t.integer "number_of_employees_four"
+    t.integer "number_of_employees_five"
+    t.index ["financial_plan_id"], name: "index_positions_on_financial_plan_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -479,7 +567,28 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price", precision: 8, scale: 2
     t.index ["enterprise_id"], name: "index_products_on_enterprise_id"
+  end
+
+  create_table "revenue_growth_rates", force: :cascade do |t|
+    t.string "product"
+    t.integer "base_product_price"
+    t.integer "monthly_sales_volume"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sales_volume_growth_rate_one"
+    t.integer "unit_price_growth_rate_one"
+    t.integer "sales_volume_growth_rate_two"
+    t.integer "unit_price_growth_rate_two"
+    t.integer "sales_volume_growth_rate_three"
+    t.integer "unit_price_growth_rate_three"
+    t.integer "sales_volume_growth_rate_four"
+    t.integer "unit_price_growth_rate_four"
+    t.integer "sales_volume_growth_rate_five"
+    t.integer "unit_price_growth_rate_five"
+    t.index ["financial_plan_id"], name: "index_revenue_growth_rates_on_financial_plan_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -493,6 +602,27 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
+  create_table "seasonal_estimates", force: :cascade do |t|
+    t.string "product"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sales_percentage_one"
+    t.integer "sales_percentage_two"
+    t.integer "sales_percentage_three"
+    t.integer "sales_percentage_four"
+    t.integer "sales_percentage_five"
+    t.integer "sales_percentage_six"
+    t.integer "sales_percentage_seven"
+    t.integer "sales_percentage_eight"
+    t.integer "sales_percentage_nine"
+    t.integer "sales_percentage_ten"
+    t.integer "sales_percentage_eleven"
+    t.integer "sales_percentage_twelve"
+    t.index ["financial_plan_id"], name: "index_seasonal_estimates_on_financial_plan_id"
+    t.index ["product"], name: "index_seasonal_estimates_on_product"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -500,7 +630,17 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
     t.bigint "enterprise_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "cost", precision: 8, scale: 2
     t.index ["enterprise_id"], name: "index_services_on_enterprise_id"
+  end
+
+  create_table "startup_costs", force: :cascade do |t|
+    t.string "item_name"
+    t.integer "baseline_cost"
+    t.bigint "financial_plan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["financial_plan_id"], name: "index_startup_costs_on_financial_plan_id"
   end
 
   create_table "subs", force: :cascade do |t|
@@ -643,20 +783,30 @@ ActiveRecord::Schema.define(version: 2022_11_18_092719) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "business_plans", "enterprises"
+  add_foreign_key "costs_growth_rates", "financial_plans"
   add_foreign_key "course_tags", "courses"
   add_foreign_key "course_tags", "tags"
   add_foreign_key "courses", "users"
+  add_foreign_key "debt_financings", "financial_plans"
+  add_foreign_key "depreciation_items", "financial_plans"
+  add_foreign_key "direct_costs", "financial_plans"
   add_foreign_key "donors", "users"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
+  add_foreign_key "financial_plans", "enterprises"
+  add_foreign_key "fixed_costs", "financial_plans"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "enterprises"
   add_foreign_key "lessons", "courses"
   add_foreign_key "perks", "ideas"
   add_foreign_key "pitch_decks", "enterprises"
   add_foreign_key "portfolios", "enterprises"
+  add_foreign_key "positions", "financial_plans"
   add_foreign_key "products", "enterprises"
+  add_foreign_key "revenue_growth_rates", "financial_plans"
+  add_foreign_key "seasonal_estimates", "financial_plans"
   add_foreign_key "services", "enterprises"
+  add_foreign_key "startup_costs", "financial_plans"
   add_foreign_key "team_members", "enterprises"
   add_foreign_key "user_lessons", "lessons"
   add_foreign_key "user_lessons", "users"

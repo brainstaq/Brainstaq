@@ -50,7 +50,7 @@
           on <%= local_time(@idea.created_at) %>
         </small>
         <p class="card-text">
-          <%= truncate(sanitize(@idea.description, tags: []), length: 300) %>
+          <%= @idea.description.html_safe.truncate(300) %>
         </p>
       
         <% if user_signed_in? %>
@@ -162,7 +162,6 @@
         <li class="nav-item">
           <a class="nav-link title-blk" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments (<%= @idea.comments.size %>)</a>
         </li>
-
         <% if @idea.relevance_bar.to_i > 75 %>
           <% if !@idea.expired? %>
             <li class="nav-item">
@@ -184,26 +183,27 @@
                 on <%= local_time(@idea.created_at) %>
               </p>
               
-              <%= image_tag @idea.image_url, class: "img-fluid rounded mb-3 mb-md-0", width:'100%', height:'80%' if @idea.image.present? %>
+              <%= image_tag @idea.image_url, class: "img-fluid rounded mb-5", width:'100%', height:'80%' if @idea.image.present? %>
+              
             
               <h4 class="mb-0 mt-3" style="font-weight: bold;">Description</h4>
               <p class="mt-2 mb-0">
-                <%= sanitize @idea.description %>
+                <%= @idea.description.html_safe %>
               </p>
             
               <h4 class="mb-0 mt-3" style="font-weight: bold;">Problem</h4>
               <p class="mt-2 mb-0">
-                <%= sanitize @idea.challenges %>
+                <%= @idea.challenges.html_safe %>
               </p>
             
               <h4 class="mb-0 mt-3" style="font-weight: bold;">Solution</h4>
               <p class="mt-2 mb-0">
-                <%= sanitize @idea.overview %>
+                <%= @idea.overview.html_safe %>
               </p>
 
               <h4 class="mb-0 mt-3" style="font-weight: bold;">Impact</h4>
               <p class="mt-2 mb-0">
-                <%= sanitize @idea.impact %>
+                <%= @idea.impact.html_safe %>
               </p>
 
               <h4 class="mb-0 mt-3" style="font-weight: bold;">Funding Goal</h4>

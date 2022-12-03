@@ -15,6 +15,8 @@ class Enterprise < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_rich_text :info
+
   # include PublicActivity::Model
   # tracked
 	
@@ -24,6 +26,7 @@ class Enterprise < ApplicationRecord
   has_many_attached :images, dependent: :destroy
   has_many :line_items, inverse_of: :order
   has_many :business_plans, dependent: :destroy
+  has_many :financial_plans, dependent: :destroy
   has_many :invoices, dependent: :destroy
   has_many :pitch_decks, dependent: :destroy
   has_many :team_members, dependent: :destroy
@@ -42,7 +45,7 @@ class Enterprise < ApplicationRecord
   end
 
   def check_quota
-    if self.user.enterprises.count >= 3
+    if self.user.enterprises.count >=  1
       self.errors.add(:base, "Maximum number of Brands reached!")
       return false
     end

@@ -1,0 +1,33 @@
+<div class="nested-fields">
+  <%= form.hidden_field :_destroy %>
+
+  <div class="card card-outline-secondary">
+    <div class="card-header">
+      <h5 class="text-dark">Add Marketing Expense</h5>
+    </div>
+    <div class="card-body">
+      <div class="row mt-4">
+        <div class="col-md-6 pb-3">
+          <label for="exampleAccount">Expense Item</label>
+          <%= form.select(:item_name, options_for_select([
+          ['SEO & PPC'],
+          ['Print Ads'],
+          ['Press Releases'],
+          ['Road Shows'],
+          ['TV & Radio Commercials'],
+          ['Seminars']
+          ]), {}, :class => 'form-control') %>
+        </div>
+        <div class="col-sm-6 pb-3">
+          <label for="exampleCtrl">Cost</label> 
+          <%= form.number_field :cost, class: "form-control", placeholder: "Enter price"  %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "text-primary underline text-sm col-md-3 mt-3 ml-3 mr-3" %>
+      </div>
+    </div>
+  </div>
+</div>

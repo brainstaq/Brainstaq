@@ -37,6 +37,23 @@ Category.create!([
 ])
 
 
+CostItem.create!([
+  {name: "Direct Costs"}, 
+  {name: "Salaries"}, 
+  {name: "Rent"}, 
+  {name: "Utilities"},
+  {name: "Marketing"},
+  {name: "Advertising"},
+  {name: "Maintenance"},
+  {name: "Insurance"},
+  {name: "Transportation"},
+  {name: "Licenses"},
+  {name: "Communications"},
+  {name: "Administrative"},
+  {name: "Other"}
+])
+
+
 # Country.create!([
 #   {name: "Algeria"},
 #   {name: "Angola"},

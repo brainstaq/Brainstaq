@@ -1,0 +1,196 @@
+<% content_for :title, "Brand" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Brand</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Brands", enterprises_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page"><%= @enterprise.name %></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<main style="padding-top: 100px; background-color: #fff;">
+  <div class="container-fluid col-lg-10 mb-5">
+    <div class="row">
+      <div class="col-md-6">
+        <%= image_tag @enterprise.image_url, class: "img-fluid float-right rounded mb-3 mb-md-0", width:'50%', height:'50%' if @enterprise.image.present? %>
+      </div>
+      
+      <div class="container-fluid col-lg-6">
+        <button type="button" class="btn btn-primary btn-sm my-3 float-right rounded" disabled>
+          <% if @enterprise.category %>
+            <%= @enterprise.category.name %>
+          <% else %>
+            <%= 'General' %>
+          <% end %>
+        </button>
+        <h3 class="card-title" style="margin-bottom: -3px; font-size: 30px; font-weight: bold;">
+          <%= @enterprise.name.titleize %>
+        </h3>
+      
+        <small>Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+          on <%= local_time(@enterprise.created_at) %>
+        </small>
+        <p class="card-text">
+          <%= @enterprise.info.to_plain_text.truncate(300) %>
+        </p>
+
+        <% if user_signed_in? && current_user.id == @enterprise.user_id %>
+          <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
+              enterprise_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to fa_icon("edit", title: "Edit Brand", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+            edit_enterprise_path(@enterprise) %>
+              
+          <div class="dropdown float-right text-primary mt-3" style="font-size: 14px;">
+            <button class="dropdown-toggle btn btn-primary" href="#" role="button" id="dropdownMenuButton" 
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> New
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="font-size: 12px;">
+              <%= link_to "Business Plan", new_enterprise_business_plan_path(@enterprise), class: "dropdown-item" %>
+              <%#= link_to "Financial Plan", new_enterprise_financial_plan_path(@enterprise), class: "dropdown-item" %>
+              <%= link_to "Pitch Deck", new_enterprise_pitch_deck_path(@enterprise), class: "dropdown-item" %>
+              <%= link_to "Invoice", new_enterprise_invoice_path(@enterprise), class: "dropdown-item" %>
+            </div>
+          </div>
+
+          <div class="dropdown float-right text-primary mr-2 mt-3" style="font-size: 14px;">
+            <button class="dropdown-toggle btn btn-primary" href="#" role="button" id="dropdownMenuButton" 
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> View
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="font-size: 12px;">
+              <%= link_to "Business Plans", enterprise_business_plans_path(@enterprise), class: "dropdown-item" %>
+              <%#= link_to "Financial Plans", enterprise_financial_plans_path(@enterprise), class: "dropdown-item" %>
+              <%= link_to "Pitch Decks", enterprise_pitch_decks_path(@enterprise), class: "dropdown-item" %>
+              <%= link_to "Invoices", enterprise_invoices_path(@enterprise), class: "dropdown-item" %>
+            </div>
+          </div>
+        <% end %>
+        <div class="d-flex flex-row justify-content-between mt-3">
+          <div class="d-flex flex-row justify-content-center">
+            <div class="social-links mt-2">
+              <% if @enterprise.website_url.present? %>
+                <%= link_to (@enterprise.website_url), target: "_blank", title: "#{@enterprise.website_url}" do %>
+                  <i class="fas fa-globe mr-1"></i>
+                <% end %>
+              <% end %>
+
+              <% if @enterprise.facebook_url.present? %>
+                <%= link_to (@enterprise.facebook_url), target: "_blank", title: "#{@enterprise.facebook_url}" do %>
+                  <i class="fab fa-facebook mr-1"></i>
+                <% end %>
+              <% end %>
+
+              <% if @enterprise.twitter_url.present? %>
+                <%= link_to (@enterprise.twitter_url), target: "_blank", title: "#{@enterprise.twitter_url}" do %>
+                  <i class="fab fa-twitter mr-1"></i>
+                <% end %>
+              <% end %>
+
+              <% if @enterprise.instagram_url.present? %>
+                <%= link_to (@enterprise.instagram_url), target: "_blank", title: "#{@enterprise.instagram_url}" do %>
+                  <i class="fab fa-instagram mr-1"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <small class="pt-2">
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+          </small>
+        </div>
+      </div>
+
+      <div class="col-lg-12 mt-5">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link title-blk active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link title-blk" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="false">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link title-blk" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services" aria-selected="false">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link title-blk" id="portfolio-tab" data-toggle="tab" href="#portfolio" role="tab" aria-controls="portfolio" aria-selected="false">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link title-blk" id="team-tab" data-toggle="tab" href="#team" role="tab" aria-controls="team" aria-selected="false">Team</a>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+            <div class="card card-body mt-5">
+              <h3 class="mt-5 mb-0 text-center" style="font-size: 24px; font-weight: bold;">
+                About <%= @enterprise.name.titleize %>
+              </h3>
+              <div class="mt-4 m-5">
+                <%= @enterprise.info.to_plain_text %>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+            <div class="card card-body mt-5">
+              <h3 class="mt-5 text-center" style="font-size: 24px; font-weight: bold;">
+                Our Products
+              </h3>
+              
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
+            <div class="card card-body mt-5">
+              <h3 class="mt-5 text-center" style="font-size: 24px; font-weight: bold;">
+                Our Services
+              </h3>
+              
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="portfolio" role="tabpanel" aria-labelledby="portfolio-tab">
+            <div class="card card-body mt-5">
+              <h3 class="mt-5 text-center" style="font-size: 24px; font-weight: bold;">
+                Our Portfolio 
+              </h3>
+              
+            </div>
+          </div>
+          <div class="tab-pane fade" id="team" role="tabpanel" aria-labelledby="team-tab">
+            <div class="card card-body mt-5">
+              <h3 class="mt-5 text-center" style="font-size: 24px; font-weight: bold;">
+                Meet the Team
+              </h3>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% unless user_signed_in? %>
+      <%= render partial: "layouts/cta" %>  
+    <% end %>
+  </div>
+</main>

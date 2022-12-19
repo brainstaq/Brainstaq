@@ -1,0 +1,29 @@
+<div class="nested-fields">
+  <%= form.hidden_field :_destroy %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row mt-2">
+        <div class="col-md-6 pb-3">
+          <label for="exampleAccount">SWOT Type</label>
+          <%= form.select(:swot_type, options_for_select([
+          ['Strength'],
+          ['Weakness'],
+          ['Opportunity'],
+          ['Threats']
+          ]), {}, :class => 'form-control') %>
+        </div>
+        
+        <div class="col-md-12 pb-3">
+          <label for="exampleMessage">Description</label> 
+          <%= form.text_area :description, class: "form-control", placeholder: "Enter description" %> 
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "text-primary underline text-sm col-md-3 mt-3 ml-3 mr-3" %>
+      </div>
+    </div>
+  </div>
+</div>

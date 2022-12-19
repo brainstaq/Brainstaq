@@ -1,0 +1,31 @@
+<div class="nested-fields">
+  <%= form.hidden_field :_destroy %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row mt-2">
+        <div class="col-sm-4 pb-3">
+          <label for="exampleAccount">Full Name</label>
+          <%= form.text_field :full_name, class: "form-control", placeholder: "Enter position title"  %>
+        </div>
+        
+        <div class="col-sm-4 pb-3">
+          <label for="exampleAmount">Photo</label>
+          <div class="input-group">
+            <%= form.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes }, class: "p-2 form-control" %>
+          </div>
+        </div>
+
+        <div class="col-md-12 pb-3">
+          <label for="exampleMessage">Bio</label> 
+          <%= form.text_area :bio, class: "form-control", placeholder: "Enter bio"  %> 
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "text-primary underline text-sm col-md-3 mt-3 ml-3 mr-3" %>
+      </div>
+    </div>
+  </div>
+</div>

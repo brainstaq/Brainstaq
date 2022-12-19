@@ -1,7 +1,7 @@
 class EnterprisesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [ :index, :show]
-  before_action :check_quota, only: [:new]
+  # before_action :check_quota, only: [:new]
   before_action :set_enterprise, only: [:show, :edit, :update, :destroy]
 
   ENTERPRISES_PER_PAGE = 9
@@ -26,14 +26,11 @@ class EnterprisesController < ApplicationController
     @enterprise = Enterprise.find(params[:id])
     @business_plan = BusinessPlan.new
     @business_plans = @enterprise.business_plans
-    @financial_plan = FinancialPlan.new
-    @financial_plans = @enterprise.financial_plans
-    @team_members = @enterprise.team_members
-    @products = @enterprise.products
+    @team_members = @business_plan.team_members
+    @products = @business_plan.products
     @portfolios = @enterprise.portfolios
     @services = @enterprise.services
     @business_plan.enterprise_id = @enterprise.id
-    @financial_plan.enterprise_id = @enterprise.id
 
     render :show
   end
@@ -93,11 +90,11 @@ class EnterprisesController < ApplicationController
   end
   
 
-  def check_quota
-    if current_user.enterprises.count >= 1
-      @quota_warning = "Maximum number of Brands reached!"
-    end
-  end
+  # def check_quota
+  #   if current_user.enterprises.count >= 1
+  #     @quota_warning = "Maximum number of Brands reached!"
+  #   end
+  # end
 
   # Only allow a list of trusted parameters through.
   def enterprise_params

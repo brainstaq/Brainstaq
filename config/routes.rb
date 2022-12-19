@@ -71,16 +71,14 @@ Rails.application.routes.draw do
   
   resources :enterprises, :path => 'brands', only: [:show, :index, :new, :create, :edit, :update, :destroy] do
     resources :pitch_decks
-    resources :team_members
     resources :services
     resources :portfolios
-    resources :products
     resources :invoices
-    resources :business_plans
-    resources :financial_plans do
-      get 'balance_sheet/show'
-      get 'cash_flow_statement/show'
-      get 'income_statement/show'
+    resources :business_plans, only: [:show, :index, :new, :create, :edit, :update, :financial_plan, :destroy] do
+      get '/financial_plan' => 'business_plans#financials'
+      get '/financial_plan/balance_sheet' => 'balance_sheet#show'
+      get '/financial_plan/cash_flow_statement' => 'cash_flow_statement#show'
+      get '/financial_plan/income_statement' => 'income_statement#show'
     end
   end
   
@@ -120,9 +118,9 @@ Rails.application.routes.draw do
 
   get 'search' => 'search#index'
 
-  get 'profile/:username' => 'users#profile', as: :profile
+  get '/:username-profile' => 'users#profile', as: :profile
 
-  get 'dashboard/:full_name' => 'users#dashboard', as: :dashboard
+  get '/user/:full_name' => 'users#dashboard', as: :dashboard
 
   # Routes for blog
   # match '/blog',        to: 'blog_posts#index', as: :blog_posts, via: :get

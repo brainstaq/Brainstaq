@@ -27,98 +27,177 @@
 </section>
 <!-- end of page-header -->
 
-<div class="idea-form container col-lg-8", style= "margin-top: 100px;">
-  <small class="text-center mb-5">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
-    on <%= local_time(@business_plan.created_at) %>
-  </small>
+<section class="section-padding align-items-center pb-0" style="margin-top: 20px !important; margin-bottom: 10px !important;" data-aos="fade-in" data-aos-delay="150">
+  
+</section>
 
-  <div class="container-fluid col-lg-6 text-right float-right">
-    <% if user_signed_in? && current_user.id == @enterprise.user_id %>
-        <%= link_to "Create Financial Plan", new_enterprise_financial_plan_path(@enterprise), class: "btn btn-primary btn-sm ml-1 mr-2 mb-2", style: "font-size: 11px;" %>
+<div class="col-lg-12">
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link title-blk active" id="business-tab" data-toggle="tab" href="#business" role="tab" aria-controls="business" aria-selected="true">Business Plan</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="financials-tab" data-toggle="tab" href="#financials" role="tab" aria-controls="financials" aria-selected="false">Financials</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="income-tab" data-toggle="tab" href="#income" role="tab" aria-controls="income" aria-selected="false">Income Statement</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="cashflow-tab" data-toggle="tab" href="#cashflow" role="tab" aria-controls="cashflow" aria-selected="false">Cashflow Statement</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="balance-tab" data-toggle="tab" href="#balance" role="tab" aria-controls="balance" aria-selected="false">Balance Sheet</a>
+		</li>
+	</ul>
 
-        <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
-        enterprise_business_plan_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" id="business" role="tabpanel" aria-labelledby="business-tab">
+			<div class="card card-body mt-5">
+        <div class="idea-form container col-lg-8", style= "margin-top: 30px;">
+          <small class="text-center mb-5">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
+            on <%= local_time(@business_plan.created_at) %>
+          </small>
 
-        <%= link_to fa_icon("edit", title: "Edit Business Plan", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
-        edit_enterprise_business_plan_path(@enterprise) %>
-        
-        <%= link_to fa_icon("file", title: "Download", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
-        enterprise_business_plan_path(@enterprise, format: :pdf) %>
-    <% end %>
+          <div class="container-fluid col-lg-6 text-right float-right">
+            <% if user_signed_in? && current_user.id == @enterprise.user_id %>
+              <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
+              enterprise_business_plan_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+              <%= link_to fa_icon("edit", title: "Edit Business Plan", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+              edit_enterprise_business_plan_path(@enterprise) %>
+              
+              <%= link_to fa_icon("file", title: "Download", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+              enterprise_business_plan_path(@enterprise, format: :pdf) %>
+            <% end %>
+          </div>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Executive Summary</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.executive_summary.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Vision</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.vision.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Mission</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.mission.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Objectives</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.objectives.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Value Proposition</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.value_proposition.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Products and Services</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.products_and_services.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Industry Analysis</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.industry_analysis.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Competition</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.competition.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">SWOT</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.swot.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Operations Plan</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.operations.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Marketing Plan</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.marketing.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Management Plan</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.management.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Financial Plan</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.financial.html_safe %>
+          </p>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Milestones</h4>
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">Milestone</th>
+                      <th scope="col">Done By</th>
+                      <th scope="col">Cost</th>
+                      <th scope="col">Scheduled Date</th>
+                    </tr>
+                  </thead>
+                  <% @milestones.each do |milestone| %>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><%= milestone.milestone %></th>
+                        <td><%= milestone.done_by %></td>
+                        <td><%= number_to_currency(milestone.cost, :unit => "₦") %></td>
+                        <td><%= local_time(milestone.date_schedule)%></td>
+                      </tr>
+                    </tbody>
+                  <% end %>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="mb-0 mt-3" style="font-weight: bold;">Appendices</h4>
+          <p class="mt-2 mb-0">
+            <%= @business_plan.appendices.html_safe %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="financials" role="tabpanel" aria-labelledby="financials-tab">
+      <div class="card card-body mt-5">
+        <%= render partial: "layouts/assumptions" %>
+        <%= render partial: "layouts/products_and_growth_rates" %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="income" role="tabpanel" aria-labelledby="income-tab">
+      <div class="card card-body mt-5">
+        Income Statement
+
+      </div>
+    </div>
+    
+    <div class="tab-pane fade" id="cashflow" role="tabpanel" aria-labelledby="cashflow-tab">
+      <div class="card card-body mt-5">
+        Cashflow Statement
+
+      </div>
+    </div>
+    
+    <div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
+      <div class="card card-body mt-5">
+        Balance Sheet	
+
+      </div>
+    </div>
   </div>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Executive Summary</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.executive_summary.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Vision</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.vision.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Mission</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.mission.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Objectives</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.objectives.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Value Proposition</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.value_proposition.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Products and Services</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.products_and_services.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Industry Analysis</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.industry_analysis.html_safe %>
-  </p>
-
-    <h4 class="mb-0 mt-3" style="font-weight: bold;">Competition</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.competition.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">SWOT</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.swot.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Operations Plan</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.operations.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Marketing Plan</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.marketing.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Management Plan</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.management.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Financial Plan</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.financial.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Milestones</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.milestones.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Appendices</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.appendices.html_safe %>
-  </p>
 </div>

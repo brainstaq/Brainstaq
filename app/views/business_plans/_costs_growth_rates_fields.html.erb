@@ -1,0 +1,39 @@
+<div class="nested-fields">
+  <%= form.hidden_field :_destroy %>
+  <div class="card">
+    <div class="card-body">
+      <div class="row mt-2">
+        <div class="col-sm-4 mt-3 form-group">
+          <label class="form-label">Item Name</label>
+          <%= form.text_field :cost_item, class: "form-control", placeholder: "Enter item name"  %>
+        </div>
+        <div class="col-md-4 mt-3">
+          <label class="form-label">Growth Rate: Year One</label>
+          <%= form.number_field :cost_growth_rate_one, class: "form-control", placeholder: "Enter bank interest rate"  %>
+        </div>
+        <div class="col-md-4 mt-3">
+          <label class="form-label">Growth Rate: Year Two</label>
+          <%= form.number_field :cost_growth_rate_two, class: "form-control", placeholder: "Enter bank interest rate"  %>
+        </div>
+        <div class="col-md-4 mt-3">
+          <label class="form-label">Growth Rate: Year Three</label>
+          <%= form.number_field :cost_growth_rate_three, class: "form-control", placeholder: "Enter bank interest rate"  %>
+        </div>
+        <div class="col-md-4 mt-3">
+          <label class="form-label">Growth Rate: Year Four</label>
+          <%= form.number_field :cost_growth_rate_four, class: "form-control", placeholder: "Enter inflation rate"  %>
+        </div>
+        <div class="col-md-4 mt-3">
+          <label class="form-label">Growth Rate: Year Five</label>
+          <%= form.number_field :cost_growth_rate_five, class: "form-control", placeholder: "Enter percentage benefits of Salary"  %>
+        </div>      
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "text-primary underline text-sm col-md-3 mt-3 ml-3 mr-3" %>
+      </div>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,34 @@
+<div class="nested-fields">
+  <%= form.hidden_field :_destroy %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row mt-2">
+        <div class="col-sm-3 pb-3">
+          <label for="exampleAccount">Milestone</label>
+          <%= form.text_field :milestone, class: "form-control", placeholder: "Enter milestone"  %>
+        </div>
+
+        <div class="col-sm-3 pb-3">
+          <label for="exampleCtrl">Done By</label> 
+          <%= form.text_field :done_by, class: "form-control", placeholder: "Enter staff name"  %>
+        </div>
+        
+        <div class="col-sm-3 pb-3">
+          <label for="exampleAmount">Cost</label>
+            <%= form.number_field :cost, class: "form-control", placeholder: "Enter cost"  %>
+        </div>
+
+        <div class="col-sm-3 pb-3">
+          <label for="exampleMessage">Date</label> 
+          <%= form.date_field :date_schedule, class: "form-control", placeholder: "Pick date"  %> 
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "text-primary underline text-sm col-md-3 mt-3 ml-3 mr-3" %>
+      </div>
+    </div>
+  </div>
+</div>

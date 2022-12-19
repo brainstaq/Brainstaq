@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def profile
     @profile = User.find_by_username params[:username]
     @ideas = current_user.ideas.all.order(created_at: :desc)
-    @team_members = current_user.team_members.all.order(created_at: :desc)
+    # @team_members = current_user.team_members.all.order(created_at: :desc)
 
     following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)
     following_ids << current_user.id

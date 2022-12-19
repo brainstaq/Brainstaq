@@ -1,0 +1,180 @@
+<% content_for :title, "Financial Plan" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+      <div class="row d-flex align-items-center h-100">
+          <div class="col-md-12 text-center">
+              <h2 class="h1 font-weight-bold">Financial Plan</h2>
+              <nav class="mt-15" aria-label="breadcrumb">
+                  <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+                      <li class="breadcrumb-item"><%= link_to "Back", :back, class: "text-black-300" %></li>
+                      <li class="breadcrumb-item text-primary" aria-current="page">Financial Plan</li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+
+<section class="section-padding align-items-center pb-0" style="margin-top: -40px !important; margin-bottom: -20px !important;" data-aos="fade-in" data-aos-delay="150">
+  <div class="site-section ideas-entry-wrap mt-0" style="margin-top: 0px;" data-aos="fade" data-aos-delay="100">
+    <div class="container mt-3">
+			<%= link_to 'Income Statement', enterprise_business_plan_financial_plan_income_statement_path, class: "btn btn-sm btn-primary mb-0 mt-0" %>
+			<%= link_to 'Cashflow Statement', enterprise_business_plan_financial_plan_cash_flow_statement_path, class: "btn btn-sm btn-primary mb-0 mt-0" %>
+			<%= link_to 'Balance Sheet', enterprise_business_plan_financial_plan_balance_sheet_path, class: "btn btn-sm btn-primary mb-0 mt-0" %>
+		</div>
+  </div>
+</section>
+
+<div class="col-lg-12">
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link title-blk active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">Assumptions</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="growth-tab" data-toggle="tab" href="#growth" role="tab" aria-controls="growth" aria-selected="false">Growth Rates</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="startup-tab" data-toggle="tab" href="#startup" role="tab" aria-controls="startup" aria-selected="false">Startup Costs</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="employees-tab" data-toggle="tab" href="#employees" role="tab" aria-controls="employees" aria-selected="false">Employees</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="operations-tab" data-toggle="tab" href="#operations" role="tab" aria-controls="operations" aria-selected="false">Operations</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="revenue-tab" data-toggle="tab" href="#revenue" role="tab" aria-controls="revenue" aria-selected="true">Revenue</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="working-tab" data-toggle="tab" href="#working" role="tab" aria-controls="working" aria-selected="false">Working Capital</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="financing-tab" data-toggle="tab" href="#financing" role="tab" aria-controls="financing" aria-selected="false">Startup Financing</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="equity-tab" data-toggle="tab" href="#equity" role="tab" aria-controls="equity" aria-selected="false">Equity Financing</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link title-blk" id="debt-tab" data-toggle="tab" href="#debt" role="tab" aria-controls="debt" aria-selected="false">Debt Financing</a>
+		</li>
+	</ul>
+
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 mb-0 text-center" style="font-size: 24px; font-weight: bold;">
+					General Assumptions
+				</h3>
+				<%= render partial: "layouts/assumptions" %>	
+			</div>
+		</div>
+	
+		<div class="tab-pane fade" id="growth" role="tabpanel" aria-labelledby="growth-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Revenue Growth Rates
+				</h3>
+				<%= render partial: "layouts/growth_rates" %>	
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="startup" role="tabpanel" aria-labelledby="startup-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Startup Costs
+				</h3>
+				<%= render partial: "layouts/startup_costs" %>
+			</div>
+		</div>
+		
+		<div class="tab-pane fade" id="employees" role="tabpanel" aria-labelledby="employees-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Employees Analysis
+				</h3>
+				<%= render partial: "layouts/employee_analysis" %>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="operations" role="tabpanel" aria-labelledby="operations-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Operation Costs
+				</h3>
+				<div class="mt-4 m-5">
+					
+
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="revenue" role="tabpanel" aria-labelledby="revenue-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 mb-0 text-center" style="font-size: 24px; font-weight: bold;">
+					Revenue
+				</h3>
+				<div class="mt-4 m-5">
+					
+
+				</div>
+			</div>
+		</div>
+	
+		<div class="tab-pane fade" id="working" role="tabpanel" aria-labelledby="working-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Working Capital
+				</h3>
+				<div class="mt-4 m-5">
+					
+
+				</div>	
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="financing" role="tabpanel" aria-labelledby="financing-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Startup Financing
+				</h3>
+				<div class="mt-4 m-5">
+					
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="tab-pane fade" id="equity" role="tabpanel" aria-labelledby="equity-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Equity Financing
+				</h3>
+				<div class="mt-4 m-5">
+					
+
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="debt" role="tabpanel" aria-labelledby="debt-tab">
+			<div class="card card-body mt-5">
+				<h3 class="mt-3 text-center" style="font-size: 24px; font-weight: bold;">
+					Debt Financing
+				</h3>
+				<div class="mt-4 m-5">
+					
+
+				</div>
+			</div>
+		</div>
+	</div>

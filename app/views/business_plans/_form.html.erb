@@ -11,11 +11,11 @@
       </ul>
     </div>
   <% end %>
-	<div class="text-danger text-center mb-3" id="error_explanation">
-		<% if @quota_warning.present? %>
-			<span><%= @quota_warning %></span>
-		<% end %>
-	</div>
+	<%# <div class="text-danger text-center mb-3" id="error_explanation"> %>
+		<%# if @quota_warning.present? %>
+			<span><%#= @quota_warning %></span>
+		<%# end %>
+	<%# </div> %>
 
   <section class="profile-account-setting">
 		<div class="container">
@@ -25,7 +25,7 @@
 						<div class="acc-leftbar">
 							<div class="nav nav-tabs" id="nav-tab" role="tablist">
 								<a class="nav-item nav-link active" id="nav-summary-tab" data-toggle="tab" href="#nav-summary" role="tab" aria-controls="nav-summary" aria-selected="true">Executive Summary</a>
-								<a class="nav-item nav-link" id="nav-vision-tab" data-toggle="tab" href="#nav-vision" role="tab" aria-controls="nav-vision" aria-selected="false">Vision, Mission & Objectives</a>
+								<a class="nav-item nav-link" id="nav-intro-tab" data-toggle="tab" href="#nav-intro" role="tab" aria-controls="nav-intro" aria-selected="false">Introduction</a>
 								<a class="nav-item nav-link" id="nav-value-tab" data-toggle="tab" href="#nav-value" role="tab" aria-controls="nav-value" aria-selected="false">Value Proposition</a>
                 <a class="nav-item nav-link" id="nav-products-tab" data-toggle="tab" href="#nav-products" role="tab" aria-controls="nav-products" aria-selected="false">Products and Services</a>
                 <a class="nav-item nav-link" id="nav-industry-tab" data-toggle="tab" href="#nav-industry" role="tab" aria-controls="nav-industry" aria-selected="false">Industry Analysis</a>
@@ -33,492 +33,981 @@
                 <a class="nav-item nav-link" id="nav-swot-tab" data-toggle="tab" href="#nav-swot" role="tab" aria-controls="nav-swot" aria-selected="false">SWOT Analysis</a>
 								<a class="nav-item nav-link" id="nav-operations-tab" data-toggle="tab" href="#nav-operations" role="tab" aria-controls="nav-operations" aria-selected="false">Operations Plan</a>
 								<a class="nav-item nav-link" id="nav-marketing-tab" data-toggle="tab" href="#nav-marketing" role="tab" aria-controls="nav-marketing" aria-selected="false">Marketing Plan</a>
-								<a class="nav-item nav-link" id="nav-management-tab" data-toggle="tab" href="#nav-management" role="tab" aria-controls="nav-management" aria-selected="false">Management Plan</a>
-								<a class="nav-item nav-link" id="nav-financial-tab" data-toggle="tab" href="#nav-financial" role="tab" aria-controls="nav-financial" aria-selected="false">Financial Plan</a>
-								<a class="nav-item nav-link" id="nav-milestones-tab" data-toggle="tab" href="#nav-milestones" role="tab" aria-controls="nav-milestones" aria-selected="false">Milestones</a>
-                <a class="nav-item nav-link" id="nav-appendices-tab" data-toggle="tab" href="#nav-appendices" role="tab" aria-controls="nav-appendices" aria-selected="false">Appendices</a>
-								</div>
-							</div><!--acc-leftbar end-->
-						</div>
-						<div class="col-lg-9">
-							<div class="tab-content" id="nav-tabContent">
-								<div class="tab-pane fade show active" id="nav-summary" role="tabpanel" aria-labelledby="nav-summary-tab">
-									<div class="acc-setting">
-										<h3>Executive Summary
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													The Executive Summary is a brief of all the contents of the business plan. 
-													It should be written in such a way that whoever reads it would get the 
-													essence of the entire business plan. It should cover every part of the 
-													business plan.
-												</p>
-											</details>
-										</h3>
-										
-											<div class="cp-field">
-												<div class="cpp-fiel">
-													<%= form.text_area :executive_summary, class: "form-control", placeholder: "Enter executive summary"  %>
-                          <%#= tinymce %>
-												</div>
-											</div>
-											<div class="save-stngs">
-												<ul>
-													<li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-										
-									</div><!--acc-setting end-->
-								</div>
-
-							  	<div class="tab-pane fade" id="nav-vision" role="tabpanel" aria-labelledby="nav-vision-tab">
-							  		<div class="acc-setting">
-							  			<h3>Vision, Mission & Objectives</h3>	
-											<div class="cp-field">
-												<h5>Vision
-													<details>
-														<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-														<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-														The Vision Statement is a statement of what you want your company to 
-														become in the future. You may state the time frame for attaining the 
-														vision. The vision must be inspiring to drive you to higher and higher 
-														performances in the business.
-														</p>
-													</details>
-												</h5>
-												<div class="cpp-fiel">
-													<%= form.text_area :vision, placeholder: "Enter your Brand vision", class: "form-control" %>
-                          <%#= tinymce %>
-												</div>
-											</div>
-											<div class="cp-field">
-												<h5>Mission
-													<details>
-														<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-														<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-															The Mission Statement is simply the statement of the purpose for which 
-															the business is set up and is trying to achieve, its reason for 
-															existing that indicates the problem the company's product will solve 
-															and the market. 
-														</p>
-													</details>
-												</h5>
-												<div class="cpp-fiel">
-													<%= form.text_area :mission, placeholder: "Enter your Brand mission", class: "form-control" %>
-                          <%#= tinymce %>
-												</div>
-											</div>
-                      <div class="cp-field">
-												<h5>Objectives
-													<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													This is a list of what you want to achieve with the business over a defined 
-													period. Most importantly, your business objectives must be SMART:
-													Specific – target a specific area for improvement or initiation.
-													Measurable – quantify or at least suggest an indicator of progress.
-													Attainable – specify who will do it.
-													Realistic – state what results can realistically be achieved, given available resources.
-													Time bound – specify when the result(s) will be.
-												</p>
-											</details>
-												</h5>
-												<div class="cpp-fiel">
-													<%= form.text_area :objectives, placeholder: "List your Brand objectives", class: "form-control" %>
-                          <%#= tinymce %>
-												</div>
-											</div>
-											<div class="save-stngs pd2">
-												<ul>
-													<li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-										
-							  		</div><!--acc-setting end-->
-							  	</div>
-							  		
-							  	<div class="tab-pane fade" id="nav-value" role="tabpanel" aria-labelledby="nav-value-tab">
-							  		<div class="acc-setting">
-							  			<h3>Value Proposition
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													This is a promise of value to be delivered and acknowledged. 
-													It is what gives the target market an expectation of what benefits will 
-													be delivered and experienced from the product or service. It could be:
-													- It could be reduction in time
-													- Reduction in cost
-													- Enhancement of health
-													- It could be enhancement of efficiency in the customers’ business or 
-													life, etc.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-												<div class="cpp-fiel">
-													<%= form.text_area :value_proposition, placeholder: "Enter your value proposition", class: "form-control" %>
-                          <%#= tinymce %>
-												</div>
-											</div>
-                      <div class="field">
-                        <%= form.hidden_field :enterprise_id %>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-
-							  	<div class="tab-pane fade" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab">
-							  		<div class="acc-setting">
-							  			<h3>Products & Services
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													In this section, you should describe the products and/or services that 
-													would deliver the value proposed to customers.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-												<div class="cpp-fiel">
-													<%= form.text_area :products_and_services, class: "form-control", placeholder: "Describe your products and services"%>
-                          <%#= tinymce %>
-												</div>
-											</div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-                  <div class="tab-pane fade" id="nav-industry" role="tabpanel" aria-labelledby="nav-industry-tab">
-							  		<div class="acc-setting">
-							  			<h3>Industry Analysis
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													Here, you are expected to conduct a thorough research on the market. 
-													You need to:
-													- State the industry or the sector of the economy (health, agriculture, construction, manufacturing, etc.) in which your business is playing
-													- State the key features or peculiarities of the industry that make it viable or demonstrate growth potential.
-													- State the actions of government that support the growth of the industry
-													- State the market you intend to serve
-													- State the major players in the industry
-													- State the size of the market (volume and value, where possible)
-													- State the segments of the market – the different customer groups
-													- State the specific group your product or service is meant for
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-												<div class="cpp-fiel">
-													<%= form.text_area :industry_analysis, class: "form-control", placeholder: "Enter industry analysis"%>
-                          <%#= tinymce %>
-												</div>
-											</div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-                  <div class="tab-pane fade" id="nav-competition" role="tabpanel" aria-labelledby="nav-competition-tab">
-							  		<div class="acc-setting">
-							  			<h3>Competition
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													- State your major (direct and indirect) competitors
-													- Describe their product and service offers.
-													- State their competitive advantages or disadvantages
-													- The customer segments they are focusing on
-													- State the probability of new entrants
-													- State the potential new competitor/market entrants
-													- State if the barriers they must overcome to enter the market is high or low.
-												</p>
-											</details>
-											</h3>
-                      <div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :competition, class: "form-control", placeholder: "Describe your competitors and the competition"%>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-                      <div class="save-stngs pd2">
-                        <ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-                        </ul>
-                      </div><!--save-stngs end-->
-                    </div><!--acc-setting end-->
-                  </div>
-
-                  <div class="tab-pane fade" id="nav-swot" role="tabpanel" aria-labelledby="nav-swot-tab">
-							  		<div class="acc-setting">
-							  			<h3>SWOT Analysis
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													STRENGTHS:
-													State your areas of strengths – skills/expertise, financial resources and 
-													unique selling point. State any existing patents, intellectual property, 
-													partnerships, collaborations and technical support you currently have or 
-													will soon secure, and how they contribute to your strength. 
-													State any awards and recognitions achieved that can make your brand stronger.
-													WEAKNESSES:
-													State your weaknesses, both internally and externally – such as new 
-													untested product, weak brand, low level of adoption by target market, etc.
-													OPPORTUNITIES:
-													State the opportunities in the business environment that will assist the 
-													performance and growth of your business. Consider the political, economic, 
-													social, technological, legal/regulatory and physical environmental factors 
-													(PESTLE) in your community, country, that may influence your business.
-													THREATS:
-													State the threats, challenges and risks that you have to deal with.
-													State how you will enhance your strength and use it for competitive 
-													advantage. State how you can reduce your weaknesses.
-													State how you can exploit the opportunities.
-													State how you can reduce the threats, risk and challenges.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :swot, class: "form-control", placeholder: "Enter SWOT Analysis"%>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-                  
-                  <div class="tab-pane fade" id="nav-operations" role="tabpanel" aria-labelledby="nav-operations-tab">
-							  		<div class="acc-setting">
-							  			<h3>Operations Plan
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													This is the section where you:
-													- State the patents and permits/licenses you require to operate
-													- State material resources (such as raw materials, physical assets, 
-													  human resources and other inputs) and how you obtain – by direct 
-														purchase, by suppliers, by buying agents, outsourcing, etc. include 
-														the equipment needed to manufacture the products or produce the service
-													- State other key resources (including intangibles like certification or 
-														new knowledge) you require
-													- Describe how you will deliver the product or service to the customer 
-														(from production point to consumption point)
-													- State your suppliers, and your expected method of relationship with them, 
-														as well as your key distributors and/or agents (if any)
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :operations, class: "form-control", placeholder: "Describe your operations plan"%>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-                  
-                  <div class="tab-pane fade" id="nav-marketing" role="tabpanel" aria-labelledby="nav-marketing-tab">
-							  		<div class="acc-setting">
-							  			<h3>Marketing Plan
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													The marketing plan is one of the most important sections of a business plan. 
-													Here, you should:
-													- State how you will make the customers aware of your product or service – be as specific as possible by digital, social media, TV, radio, newsprint, etc.
-													- State how you will promote your product or services – by trade fairs, 
-													  TV talk shows and appearances, radio talk shows focus meetings, strategic 
-													  presentations, etc.
-													- Describe the pricing strategy for your products or services and the 
-													  assumptions you have made.
-													- Will there be any incentives that will make them switch from current 
-													  providers or buy the products/services anew – discounts, credit facilities; 
-													  and where possible, describe the effect of the incentives on your cash flow and profitability
-													- State how you ensure that credit customers (if any) will pay
-													- State the channels by which you will get the services to the customers: 
-													  e-market place (on the Internet or any other electronic means), 
-														department stores/supermarkets, distributors, wholesalers, sales agents, etc.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :marketing, class: "form-control", placeholder: "Describe your marketing plan"%>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-                  
-                  <div class="tab-pane fade" id="nav-management" role="tabpanel" aria-labelledby="nav-management-tab">
-							  		<div class="acc-setting">
-							  			<h3>Management Plan
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													Functions:
-													State and describe the functions you need to perform to run the business:
-													-	Production/ Inventory Management
-													-	Admin/Facility management
-													-	Human Resources
-													-	Finance/accounts
-													-	Marketing/Sales
-													-	Other functions
-													Qualifications/Expertise:
-													-	State briefly the qualification and expertise of staff required to perform the functions
-													-	State the calibre of staff who will be (or are currently) responsible for the function such as production manager, personnel manager, accountant and marketing Manager
-													-	The roles and responsibilities you hold in the business
-													Organizational Structure to show the coordination and relationship lines between and within the functions.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :management, class: "form-control", placeholder: "What is your management plan?"%>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-
-									<div class="tab-pane fade" id="nav-financial" role="tabpanel" aria-labelledby="nav-financial-tab">
-							  		<div class="acc-setting">
-							  			<h3>Financial Plan
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													Make key assumptions on cost elements, current and future costing, financing 
-													options and revenues projections. Remembers that it is prudent to 
-													underestimate your revenue and anticipate more in costs.
-													Make revenue projections:
-													- State the products and services from which you will derive revenue - 
-													  your revenue streams
-												  - State the way you will price them
-													- State the estimated volumes of products and services to be sold for any 
-													  number of years. – year 1, year 2, year 3, etc.
-													- Determine the revenue projections for the specified number of years
-													Other financial projections that should be made are financial statements, 
-													such as:
-													- Profit and Loss projections,
-													- Cash flow projections and
-													- Balance sheet projections for the number of years.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :financial, class: "form-control", placeholder: "What is your financial plan?"%>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-
-                  <div class="tab-pane fade" id="nav-milestones" role="tabpanel" aria-labelledby="nav-milestones-tab">
-							  		<div class="acc-setting">
-							  			<h3>Milestones
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													Milestones and Attachments:
-													State what you need to achieve each quarter for the next 3 years and the 
-													amount required to achieve each of them. Include milestones of output - 
-													products, solutions, clients, patents, coverage area, etc. Indicate number 
-													of staff (full time and/or part time). Include expansion/growth milestones 
-													that can be tracked per quarter. Avoid bogus, exaggerated or unattainable milestones.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :milestones, placeholder: "Enter your milestones", class: "form-control" %>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
-
-                  <div class="tab-pane fade" id="nav-appendices" role="tabpanel" aria-labelledby="nav-appendices-tab">
-							  		<div class="acc-setting">
-							  			<h3>Appendices
-											<details>
-												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
-												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
-													The appendix should contain supplementary materials that are not an 
-													essential part of the business plan but which may be helpful in providing 
-													a more comprehensive understanding of the business plan.
-												</p>
-											</details>
-											</h3>
-							  			<div class="cp-field">
-                        <div class="cpp-fiel">
-                          <%= form.text_area :appendices, placeholder: "Enter appendices", class: "form-control" %>
-                          <%#= tinymce %>
-                        </div>
-                      </div>
-											<div class="save-stngs pd2">
-												<ul>
-                          <li><%= form.submit 'Create Plan', class: "actions btn rounded btn-primary" %></li>
-													<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-												</ul>
-											</div><!--save-stngs end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
+								<a class="nav-item nav-link" id="nav-mgt-tab" data-toggle="tab" href="#nav-mgt" role="tab" aria-labelledby="nav-mgt-tab" aria-controls="nav-mgt" aria-selected="false"> Management Summary </a>
+								<a class="nav-item nav-link" id="nav-positions-tab" data-toggle="tab" href="#nav-positions" role="tab" aria-labelledby="nav-positions-tab" aria-controls="nav-positions" aria-selected="false"> Employee Analysis</a>
+								<%# <a class="nav-item nav-link" id="nav-members-tab" data-toggle="tab" href="#nav-members" role="tab" aria-labelledby="nav-members-tab" aria-controls="nav-members" aria-selected="false">Team Members</a> %>
+								<a class="nav-item nav-link" id="nav-financial-tab" data-toggle="tab" href="#nav-financial" role="tab" aria-labelledby="nav-financial-tab" aria-controls="nav-financial" aria-selected="false">Financial Plan</a>
+								<a class="nav-item nav-link" id="nav-milestones-tab" data-toggle="tab" href="#nav-milestones" role="tab" aria-labelledby="nav-milestones-tab" aria-controls="nav-milestones" aria-selected="false">Milestones</a>
+                <a class="nav-item nav-link" id="nav-appendices-tab" data-toggle="tab" href="#nav-appendices" role="tab" aria-labelledby="nav-appendices-tab" aria-controls="nav-appendices" aria-selected="false">Appendices</a>
 							</div>
+						</div><!--acc-leftbar end-->
+					</div>
+					<div class="col-lg-9">
+						<div class="tab-content" id="nav-tabContent">
+							<div class="tab-pane fade show active" id="nav-summary" role="tabpanel" aria-labelledby="nav-summary-tab">
+								<div class="acc-setting">
+									<h3>Executive Summary
+										<details>
+											<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+											<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+												The Executive Summary is a brief of all the contents of the business plan. 
+												It should be written in such a way that whoever reads it would get the 
+												essence of the entire business plan. It should cover every part of the 
+												business plan.
+											</p>
+										</details>
+									</h3>
+										
+									<div class="col-md-12 mt-3">
+										<div class="cpp-fiel">
+											<%= form.text_area :executive_summary, class: "form-control", placeholder: "Enter executive summary"  %>
+										</div>
+									</div>
+									<div class="save-stngs">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->	
+								</div><!--acc-setting end-->
+							</div>
+
+							<div class="tab-pane fade" id="nav-intro" role="tabpanel" aria-labelledby="nav-intro-tab">
+								<div class="acc-setting">
+									<h3>Introduction</h3>	
+									<div class="cp-field">
+										<h5>Vision
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+												The Vision Statement is a statement of what you want your company to 
+												become in the future. You may state the time frame for attaining the 
+												vision. The vision must be inspiring to drive you to higher and higher 
+												performances in the business.
+												</p>
+											</details>
+										</h5>
+										<div class="cpp-fiel">
+											<%= form.text_area :vision, placeholder: "Enter your Brand vision", class: "form-control" %>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="cp-field">
+										<h5>Mission
+											<details>
+												<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+												<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+													The Mission Statement is simply the statement of the purpose for which 
+													the business is set up and is trying to achieve, its reason for 
+													existing that indicates the problem the company's product will solve 
+													and the market. 
+												</p>
+											</details>
+										</h5>
+										<div class="cpp-fiel">
+											<%= form.text_area :mission, placeholder: "Enter your Brand mission", class: "form-control" %>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="cp-field">
+										<h5>Objectives
+											<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											This is a list of what you want to achieve with the business over a defined 
+											period. Most importantly, your business objectives must be SMART:
+											Specific – target a specific area for improvement or initiation.
+											Measurable – quantify or at least suggest an indicator of progress.
+											Attainable – specify who will do it.
+											Realistic – state what results can realistically be achieved, given available resources.
+											Time bound – specify when the result(s) will be.
+										</p>
+									</details>
+										</h5>
+										<div class="cpp-fiel">
+											<%= form.text_area :objectives, placeholder: "List your Brand objectives", class: "form-control" %>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								
+								</div><!--acc-setting end-->
+							</div>
+								
+							<div class="tab-pane fade" id="nav-value" role="tabpanel" aria-labelledby="nav-value-tab">
+								<div class="acc-setting">
+									<h3>Value Proposition
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											This is a promise of value to be delivered and acknowledged. 
+											It is what gives the target market an expectation of what benefits will 
+											be delivered and experienced from the product or service. It could be:
+											- It could be reduction in time
+											- Reduction in cost
+											- Enhancement of health
+											- It could be enhancement of efficiency in the customers’ business or 
+											life, etc.
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel">
+											<%= form.text_area :value_proposition, placeholder: "Enter your value proposition", class: "form-control" %>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="field">
+										<%= form.hidden_field :enterprise_id %>
+									</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+
+							<div class="tab-pane fade" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab">
+								<div class="acc-setting">
+									<h3>Products & Services
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											In this section, you should add your products and services, and also add a summary text for 
+											your products and/or services that would deliver the value proposed to customers.
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel">
+											<%= form.text_area :products_and_services, class: "form-control", placeholder: "Add products and services summary text"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+									
+									<div class="save-stngs pd2">
+									<ul>
+										<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+										<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+									</ul>
+								</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+							<div class="tab-pane fade" id="nav-industry" role="tabpanel" aria-labelledby="nav-industry-tab">
+								<div class="acc-setting">
+									<h3>Industry Analysis
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											Here, you are expected to conduct a thorough research on the market. 
+											You need to:
+											- State the industry or the sector of the economy (health, agriculture, construction, manufacturing, etc.) in which your business is playing
+											- State the key features or peculiarities of the industry that make it viable or demonstrate growth potential.
+											- State the actions of government that support the growth of the industry
+											- State the market you intend to serve
+											- State the major players in the industry
+											- State the size of the market (volume and value, where possible)
+											- State the segments of the market – the different customer groups
+											- State the specific group your product or service is meant for
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel">
+											<%= form.text_area :industry_analysis, class: "form-control", placeholder: "Enter industry analysis"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+							<div class="tab-pane fade" id="nav-competition" role="tabpanel" aria-labelledby="nav-competition-tab">
+								<div class="acc-setting">
+									<h3>Competition
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											- State your major (direct and indirect) competitors
+											- Describe their product and service offers.
+											- State their competitive advantages or disadvantages
+											- The customer segments they are focusing on
+											- State the probability of new entrants
+											- State the potential new competitor/market entrants
+											- State if the barriers they must overcome to enter the market is high or low.
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel">
+											<%= form.text_area :competition, class: "form-control", placeholder: "Describe your competitors and the competition"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+
+							<div class="tab-pane fade" id="nav-swot" role="tabpanel" aria-labelledby="nav-swot-tab">
+								<div class="acc-setting">
+									<h3>SWOT Analysis
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											STRENGTHS:
+											State your areas of strengths – skills/expertise, financial resources and 
+											unique selling point. State any existing patents, intellectual property, 
+											partnerships, collaborations and technical support you currently have or 
+											will soon secure, and how they contribute to your strength. 
+											State any awards and recognitions achieved that can make your brand stronger.
+											WEAKNESSES:
+											State your weaknesses, both internally and externally – such as new 
+											untested product, weak brand, low level of adoption by target market, etc.
+											OPPORTUNITIES:
+											State the opportunities in the business environment that will assist the 
+											performance and growth of your business. Consider the political, economic, 
+											social, technological, legal/regulatory and physical environmental factors 
+											(PESTLE) in your community, country, that may influence your business.
+											THREATS:
+											State the threats, challenges and risks that you have to deal with.
+											State how you will enhance your strength and use it for competitive 
+											advantage. State how you can reduce your weaknesses.
+											State how you can exploit the opportunities.
+											State how you can reduce the threats, risk and challenges.
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel mb-4">
+											<%= form.text_area :swot, class: "form-control", placeholder: "Add SWOT summary text"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div data-controller="nested-form">
+									<template data-target='nested-form.template'>
+										<%= form.fields_for :swots, Swot.new, child_index: 'TEMPLATE_RECORD' do |swot| %>
+											<%= render 'swots_fields', form: swot %>
+										<% end %>
+									</template>
+
+									<%= form.fields_for :swots do |swot| %>
+										<%= render 'swots_fields', form: swot %>
+									<% end %>
+					
+									<div data-target="nested-form.add_perk">
+										<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+										class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+									</div>
+								</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+							
+							<div class="tab-pane fade" id="nav-operations" role="tabpanel" aria-labelledby="nav-operations-tab">
+								<div class="acc-setting">
+									<h3>Operations Plan
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											This is the section where you:
+											- State the patents and permits/licenses you require to operate
+											- State material resources (such as raw materials, physical assets, 
+												human resources and other inputs) and how you obtain – by direct 
+												purchase, by suppliers, by buying agents, outsourcing, etc. include 
+												the equipment needed to manufacture the products or produce the service
+											- State other key resources (including intangibles like certification or 
+												new knowledge) you require
+											- Describe how you will deliver the product or service to the customer 
+												(from production point to consumption point)
+											- State your suppliers, and your expected method of relationship with them, 
+												as well as your key distributors and/or agents (if any)
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel">
+											<%= form.text_area :operations, class: "form-control", placeholder: "Describe your operations plan"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+							
+							<div class="tab-pane fade" id="nav-marketing" role="tabpanel" aria-labelledby="nav-marketing-tab">
+								<div class="acc-setting">
+									<h3>Marketing Plan
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											The marketing plan is one of the most important sections of a business plan. 
+											Here, you should:
+											- State how you will make the customers aware of your product or service – be as specific as possible by digital, social media, TV, radio, newsprint, etc.
+											- State how you will promote your product or services – by trade fairs, 
+												TV talk shows and appearances, radio talk shows focus meetings, strategic 
+												presentations, etc.
+											- Describe the pricing strategy for your products or services and the 
+												assumptions you have made.
+											- Will there be any incentives that will make them switch from current 
+												providers or buy the products/services anew – discounts, credit facilities; 
+												and where possible, describe the effect of the incentives on your cash flow and profitability
+											- State how you ensure that credit customers (if any) will pay
+											- State the channels by which you will get the services to the customers: 
+												e-market place (on the Internet or any other electronic means), 
+												department stores/supermarkets, distributors, wholesalers, sales agents, etc.
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel mb-4">
+											<%= form.text_area :marketing, class: "form-control", placeholder: "Add Marketing summary text"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div data-controller="nested-form">
+									<template data-target='nested-form.template'>
+										<%= form.fields_for :marketing_expenses, MarketingExpense.new, child_index: 'TEMPLATE_RECORD' do |marketing_expense| %>
+											<%= render 'marketing_expenses_fields', form: marketing_expense %>
+										<% end %>
+									</template>
+
+									<%= form.fields_for :marketing_expenses do |marketing_expense| %>
+										<%= render 'marketing_expenses_fields', form: marketing_expense %>
+									<% end %>
+					
+									<div data-target="nested-form.add_perk">
+										<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+										class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+									</div>
+								</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+							
+							<div class="tab-pane fade" id="nav-mgt" role="tabpanel" aria-labelledby="nav-mgt-tab">
+								<div class="acc-setting">
+									<h3>Management Plan
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											Functions:
+											State and describe the functions you need to perform to run the business:
+											-	Production/ Inventory Management
+											-	Admin/Facility management
+											-	Human Resources
+											-	Finance/accounts
+											-	Marketing/Sales
+											-	Other functions
+											Qualifications/Expertise:
+											-	State briefly the qualification and expertise of staff required to perform the functions
+											-	State the calibre of staff who will be (or are currently) responsible for the function such as production manager, personnel manager, accountant and marketing Manager
+											-	The roles and responsibilities you hold in the business
+											Organizational Structure to show the coordination and relationship lines between and within the functions.
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field">
+										<div class="cpp-fiel">
+											<%= form.text_area :management, class: "form-control", placeholder: "What is your management plan?"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+
+							<div class="tab-pane fade" id="nav-positions" role="tabpanel" aria-labelledby="nav-positions-tab">
+								<div class="acc-setting">
+									<h3>Add Employee & Position
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											Enter the salary and number of employees you expect for each key business function. 
+											Note that not all positions may be relevant to your own business, 
+											so only add if necessary.
+										</p>
+									</details>
+									</h3>
+									<div class="mt-3" data-controller="nested-form">
+										<template data-target='nested-form.template'>
+											<%= form.fields_for :positions, Position.new, child_index: 'TEMPLATE_RECORD' do |position| %>
+												<%= render 'positions_fields', form: position %>
+											<% end %>
+										</template>
+
+										<%= form.fields_for :positions do |position| %>
+											<%= render 'positions_fields', form: position %>
+										<% end %>
+					
+										<div data-target="nested-form.add_perk">
+											<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+											class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+										</div>
+									</div>
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+
+							
+
+							<div class="tab-pane fade" id="nav-financial" role="tabpanel" aria-labelledby="nav-financial-tab">
+								<div class="acc-setting">
+									<h3>Financial Plan
+									<details>
+										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+											Make key assumptions on cost elements, current and future costing, financing 
+											options and revenues projections. Remembers that it is prudent to 
+											underestimate your revenue and anticipate more in costs.
+											Make revenue projections:
+											- State the products and services from which you will derive revenue - 
+												your revenue streams
+											- State the way you will price them
+											- State the estimated volumes of products and services to be sold for any 
+												number of years. – year 1, year 2, year 3, etc.
+											- Determine the revenue projections for the specified number of years
+											Other financial projections that should be made are financial statements, 
+											such as:
+											- Profit and Loss projections,
+											- Cash flow projections and
+											- Balance sheet projections for the number of years.
+										</p>
+									</details>
+									</h3>
+									<div class="cp-field mb-5">
+										<div class="cpp-fiel">
+											<%= form.text_area :financial, class: "form-control", placeholder: "Enter financial plan summary?"%>
+											<%#= tinymce %>
+										</div>
+									</div>
+
+									<div class="col-lg-12 mt-5">
+										<div class="justify-content-center">
+											<ul class="nav nav-tabs" id="myTab" role="tablist">
+												<li class="nav-item">
+													<a class="nav-link title-blk active" id="assumptions-tab" data-toggle="tab" href="#assumptions" role="tab" aria-controls="assumptions" aria-selected="true"><small>Assumption</small></a>
+												</li>
+												
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="depreciation-tab" data-toggle="tab" href="#depreciation" role="tab" aria-controls="depreciation" aria-selected="false"><small>Depreciation Rates</small></a>
+												</li>
+												
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="cost-tab" data-toggle="tab" href="#cost" role="tab" aria-controls="cost" aria-selected="false"><small>Cost Growth Rates</small></a>
+												</li>
+												
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="revenue-tab" data-toggle="tab" href="#revenue" role="tab" aria-controls="revenue" aria-selected="false"><small>Products & Growth Rates</small></a>
+												</li>
+												
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="startup-tab" data-toggle="tab" href="#startup" role="tab" aria-controls="startup" aria-selected="false"><small>Startup Costs</small></a>
+												</li>
+												
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="direct-tab" data-toggle="tab" href="#direct" role="tab" aria-controls="direct" aria-selected="false"><small>Direct Costs</small></a>
+												</li>
+
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="fixed-tab" data-toggle="tab" href="#fixed" role="tab" aria-controls="fixed" aria-selected="false"><small>Fixed Costs</small></a>
+												</li>
+												
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="capital-tab" data-toggle="tab" href="#capital" role="tab" aria-controls="capital" aria-selected="false"><small>Working Capital</small></a>
+												</li>
+
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="financing-tab" data-toggle="tab" href="#financing" role="tab" aria-controls="financing" aria-selected="false"><small>Startup Financing</small></a>
+												</li>
+												
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="equity-tab" data-toggle="tab" href="#equity" role="tab" aria-controls="equity" aria-selected="false"><small>Equity Financing</small></a>
+												</li>
+
+												<li class="nav-item">
+													<a class="nav-link title-blk" id="debt-tab" data-toggle="tab" href="#debt" role="tab" aria-controls="debt" aria-selected="false"><small>Debt Financing</small></a>
+												</li>
+											</ul>
+										</div>
+									
+										
+										<div class="acc-setting mt-3">
+											<div>
+												<div class="tab-content" id="myTabContent">
+													
+													<div class="tab-pane fade show active" id="assumptions" role="tabpanel" aria-labelledby="assumptions-tab">
+														<div class="acc-setting row g-3">
+															<h3> General Assumptions
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Enter healthy assumptions for the fields below 
+																	</p>
+																</details>
+															</h3>
+															<div class="col-md-3 mt-3">
+																<label class="form-label">Company Tax Rate</label>
+																<%= form.number_field :company_tax_rate, class: "form-control" %>
+															</div>
+															<div class="col-md-3 mt-3">
+																<label class="form-label">Bank Interest Rate</label>
+																<%= form.number_field :bank_interest_rate, class: "form-control" %>
+															</div>
+															<div class="col-md-3 mt-3">
+																<label class="form-label">Inflation Rate</label>
+																<%= form.number_field :inflation_rate, class: "form-control" %>
+															</div>
+															<div class="col-md-3 mt-3">
+																<label class="form-label"> Salary Benefits in %</label>
+																<%= form.number_field :salary_benefits, class: "form-control" %>
+															</div>
+															<%= form.hidden_field :user_id, placeholder: "0", class: "input form-control" %>
+															<%= form.hidden_field :enterprise_id, placeholder: "0", class: "input form-control" %>
+														</div><!--acc-setting end-->
+													</div>
+												
+													<div class="tab-pane fade" id="depreciation" role="tabpanel" aria-labelledby="depreciation-tab">
+														<div class="acc-setting mt-3">
+															<h3>Add Depreciation Rates
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Add estimated depreciation rates for items such as buildings, furniture, equipment, etc.
+																	</p>
+																</details>
+															</h3>	
+															<div class="mt-3" data-controller="nested-form">
+																<template data-target='nested-form.template'>
+																	<%= form.fields_for :depreciation_items, DepreciationItem.new, child_index: 'TEMPLATE_RECORD' do |depreciation_item| %>
+																		<%= render 'depreciation_items_fields', form: depreciation_item %>
+																	<% end %>
+																</template>
+
+																<%= form.fields_for :depreciation_items do |depreciation_item| %>
+																	<%= render 'depreciation_items_fields', form: depreciation_item %>
+																<% end %>
+												
+																<div data-target="nested-form.add_perk">
+																	<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+																	class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+																</div>
+															</div>
+														</div><!--acc-setting end-->
+													</div>
+
+													<div class="tab-pane fade" id="cost" role="tabpanel" aria-labelledby="cost-tab">
+														<div class="acc-setting mt-3">
+															<h3>Cost Growth Rates
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Add estimated depreciation rates for items such as buildings, furniture, equipment, etc.
+																	</p>
+																</details>
+															</h3>	
+															<div class="mt-3" data-controller="nested-form">
+																<template data-target='nested-form.template'>
+																	<%= form.fields_for :costs_growth_rates, CostsGrowthRate.new, child_index: 'TEMPLATE_RECORD' do |costs_growth_rate| %>
+																		<%= render 'costs_growth_rates_fields', form: costs_growth_rate %>
+																	<% end %>
+																</template>
+
+																<%= form.fields_for :costs_growth_rates do |costs_growth_rate| %>
+																	<%= render 'costs_growth_rates_fields', form: costs_growth_rate %>
+																<% end %>
+												
+																<div data-target="nested-form.add_perk">
+																	<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+																	class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+																</div>
+															</div>
+														</div><!--acc-setting end-->
+													</div>
+													
+													<div class="tab-pane fade" id="revenue" role="tabpanel" aria-labelledby="revenue-tab">
+														<div class="acc-setting mt-3">
+															<h3>Revenue Growth Rates
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Add estimated depreciation rates for items such as buildings, furniture, equipment, etc.
+																	</p>
+																</details>
+															</h3>	
+															<div class="mt-3" data-controller="nested-form">
+																<template data-target='nested-form.template'>
+																	<%= form.fields_for :products_and_growth_rates, ProductsAndGrowthRate.new, child_index: 'TEMPLATE_RECORD' do |products_and_growth_rate| %>
+																		<%= render 'products_and_growth_rates_fields', form: products_and_growth_rate %>
+																	<% end %>
+																</template>
+
+																<%= form.fields_for :products_and_growth_rates do |products_and_growth_rate| %>
+																	<%= render 'products_and_growth_rates_fields', form: products_and_growth_rate %>
+																<% end %>
+												
+																<div data-target="nested-form.add_perk">
+																	<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+																	class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+																</div>
+															</div>
+														</div><!--acc-setting end-->
+													</div>
+													<div class="tab-pane fade" id="startup" role="tabpanel" aria-labelledby="startup-tab">
+														<div class="acc-setting mt-3">
+															<h3>Startup Costs
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Enter the costs you expect to incur in the process of setting up your business below. 
+																		Note that not all costs may be relevant to your business, so only fill the necessary costs
+																	</p>
+																</details>
+															</h3>
+															<div class="mt-3" data-controller="nested-form">
+															<template data-target='nested-form.template'>
+																<%= form.fields_for :startup_costs, StartupCost.new, child_index: 'TEMPLATE_RECORD' do |startup_cost| %>
+																	<%= render 'startup_costs_fields', form: startup_cost %>
+																<% end %>
+															</template>
+
+															<%= form.fields_for :startup_costs do |startup_cost| %>
+																<%= render 'startup_costs_fields', form: startup_cost %>
+															<% end %>
+											
+															<div data-target="nested-form.add_perk">
+																<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+																class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+															</div>
+														</div>
+														</div><!--acc-setting end-->
+													</div>
+													
+													<div class="tab-pane fade" id="direct" role="tabpanel" aria-labelledby="direct-tab">
+														<div class="acc-setting mt-3">
+															<h3> Direct Operations Cost
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Enter the direct operations cost for your business.
+																	</p>
+																</details>
+															</h3>
+															<div class="mt-3" data-controller="nested-form">
+																<template data-target='nested-form.template'>
+																	<%= form.fields_for :direct_costs, DirectCost.new, child_index: 'TEMPLATE_RECORD' do |direct_cost| %>
+																		<%= render 'direct_costs_fields', form: direct_cost %>
+																	<% end %>
+																</template>
+
+																<%= form.fields_for :direct_costs do |direct_cost| %>
+																	<%= render 'direct_costs_fields', form: direct_cost %>
+																<% end %>
+												
+																<div data-target="nested-form.add_perk">
+																	<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+																	class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+																</div>
+															</div>
+														</div><!--acc-setting end-->
+													</div>
+													<div class="tab-pane fade" id="fixed" role="tabpanel" aria-labelledby="fixed-tab">
+														<div class="acc-setting mt-3">
+															<h3>Fixed Operations Cost
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		State how you can reduce the threats, risk and challenges.
+																	</p>
+																</details>
+															</h3>
+															<div class="mt-3" data-controller="nested-form">
+																<template data-target='nested-form.template'>
+																	<%= form.fields_for :fixed_costs, FixedCost.new, child_index: 'TEMPLATE_RECORD' do |fixed_cost| %>
+																		<%= render 'fixed_costs_fields', form: fixed_cost %>
+																	<% end %>
+																</template>
+
+																<%= form.fields_for :fixed_costs do |fixed_cost| %>
+																	<%= render 'fixed_costs_fields', form: fixed_cost %>
+																<% end %>
+											
+																<div data-target="nested-form.add_perk">
+																	<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+																	class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+																</div>
+															</div>
+														</div><!--acc-setting end-->
+													</div>
+													
+													<div class="tab-pane fade" id="capital" role="tabpanel" aria-labelledby="capital-tab">
+														<div class="acc-setting mt-3 row g-3">
+															<h3>Working Capital
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Working capital is an estimate of the amount of cash your business requires to 
+																		fund day-to-day operations. Availability of working capital depends on how fast you 
+																		can collect cash from your customers after providing goods/services to them, 
+																		how long it takes your business to turn over inventory, and how long you can afford 
+																		to wait till you pay your vendors/suppliers. 
+																		Provide realistic estimates based on the peculiarities of your local economy and 
+																		business industry for these below.
+																		- Receivable Days: average number of days customers take to pay your business for services rendered
+																		- Payable Days: average number of days that your company takes to pay its suppliers
+																		- Inventory Days: average number of days required for your business to sell one batch of inventory
+																	</p>
+																</details>
+															</h3>
+															<div class="mb-6 col-sm-4 form-group">
+																<label class="form-label mt-2">Receivable Days</label>
+																<%= form.number_field :receivable_days, class: "input form-control" %>
+															</div>
+
+															<div class="mb-6 col-sm-4 form-group">
+																<label class="form-label mt-2">Payable Days</label>
+																<%= form.number_field :payable_days, class: "input form-control" %>
+															</div>
+
+															<div class="mb-6 col-sm-4 form-group">
+																<label class="form-label mt-2">Inventory Days</label>
+																<%= form.number_field :inventory_days, class: "input form-control" %>
+															</div>
+														
+														</div><!--acc-setting end-->
+													</div>
+													<div class="tab-pane fade" id="financing" role="tabpanel" aria-labelledby="financing-tab">
+														<div class="acc-setting mt-3 row g-3">
+															<h3>Startup Financing
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Monthly revenue may vary due to seasonal trends (holidays, festivities, 
+																		seasonal discounts & promos, off-peak seasons, etc.) 
+																		Account for monthly spikes or slumps in your forecasted sales using the model below:
+																	</p>
+																</details>
+															</h3>
+																<div class="col-md-6 mt-3">
+																	<label class="form-label">Personal Savings (Owner's Capital) in %</label>
+																	<%= form.number_field :savings, class: "input form-control" %>
+																</div>
+
+																<div class="col-md-2 mt-3">
+																	<label class="form-label">Grants</label>
+																	<%= form.number_field :grants, class: "input form-control" %>
+																</div>
+
+																	<div class="col-md-2 mt-3">
+																	<label class="form-label">Equity</label>
+																	<%= form.number_field :equity, class: "input form-control" %>
+																</div>
+
+																	<div class="col-md-2 mt-3">
+																	<label class="form-label">Debt</label>
+																	<%= form.number_field :debt, class: "input form-control" %>
+																</div>
+														</div><!--acc-setting end-->
+													</div>
+													<div class="tab-pane fade" id="equity" role="tabpanel" aria-labelledby="equity-tab">
+														<div class="acc-setting mt-3 row g-3">
+															<h3>Equity Financing
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Monthly revenue may vary due to seasonal trends (holidays, festivities, 
+																		seasonal discounts & promos, off-peak seasons, etc.) 
+																		Account for monthly spikes or slumps in your forecasted sales using the model below:
+																	</p>
+																</details>
+															</h3>
+															<div class="col-md-3 mt-3">
+																	<label class="form-label">Equity Injection: Yr 2</label>
+																	<%= form.number_field :equity_injection_one, class: "input form-control" %>
+																</div>
+
+																<div class="col-md-3 mt-3">
+																	<label class="form-label">Equity Injection: Yr 3</label>
+																	<%= form.number_field :equity_injection_two, class: "input form-control" %>
+																</div>
+
+																	<div class="col-md-3 mt-3">
+																	<label class="form-label">Equity Injection: Yr 4</label>
+																	<%= form.number_field :equity_injection_three, class: "input form-control" %>
+																</div>
+
+																	<div class="col-md-3 mt-3">
+																	<label class="form-label">Equity Injection: Yr 5</label>
+																	<%= form.number_field :equity_injection_four, class: "input form-control" %>
+																</div>
+														</div><!--acc-setting end-->
+													</div>
+													<div class="tab-pane fade" id="debt" role="tabpanel" aria-labelledby="debt-tab">
+														<div class="acc-setting mt-3">
+															<h3>Debt Financing
+																<hr>
+																<details>
+																	<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+																	<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+																		Monthly revenue may vary due to seasonal trends (holidays, festivities, 
+																		seasonal discounts & promos, off-peak seasons, etc.) 
+																		Account for monthly spikes or slumps in your forecasted sales using the model below:
+																	</p>
+																</details>
+															</h3>
+															<div class="mt-3" data-controller="nested-form">
+																<template data-target='nested-form.template'>
+																	<%= form.fields_for :debt_financings, DebtFinancing.new, child_index: 'TEMPLATE_RECORD' do |debt_financing| %>
+																		<%= render 'debt_financings_fields', form: debt_financing %>
+																	<% end %>
+																</template>
+
+																<%= form.fields_for :debt_financings do |debt_financing| %>
+																	<%= render 'debt_financings_fields', form: debt_financing %>
+																<% end %>
+											
+																<div data-target="nested-form.add_perk">
+																	<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+																	class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+																</div>
+															</div>
+														</div><!--acc-setting end-->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="save-stngs pd2">
+										<ul>
+											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+										</ul>
+									</div><!--save-stngs end-->
+								</div><!--acc-setting end-->
+							</div>
+
+						<div class="tab-pane fade" id="nav-milestones" role="tabpanel" aria-labelledby="nav-milestones-tab">
+							<div class="acc-setting">
+								<h3>Milestones
+								<details>
+									<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+									<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+										Milestones and Attachments:
+										State what you need to achieve each quarter for the next 3 years and the 
+										amount required to achieve each of them. Include milestones of output - 
+										products, solutions, clients, patents, coverage area, etc. Indicate number 
+										of staff (full time and/or part time). Include expansion/growth milestones 
+										that can be tracked per quarter. Avoid bogus, exaggerated or unattainable milestones.
+									</p>
+								</details>
+								</h3>
+								<div class="mt-3" data-controller="nested-form">
+									<template data-target='nested-form.template'>
+										<%= form.fields_for :milestones, Milestone.new, child_index: 'TEMPLATE_RECORD' do |milestone| %>
+											<%= render 'milestones_fields', form: milestone %>
+										<% end %>
+									</template>
+
+									<%= form.fields_for :milestones do |milestone| %>
+										<%= render 'milestones_fields', form: milestone %>
+									<% end %>
+				
+									<div data-target="nested-form.add_perk">
+										<%= link_to "Add", "#", data: { action: "nested-form#add_association" }, 
+										class: "btn btn-sm rounded btn-primary float-right mr-5 mt-3", style: "font-size: 12px;"%>
+									</div>
+								</div>
+								<div class="save-stngs pd2">
+									<ul>
+										<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+										<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+									</ul>
+								</div><!--save-stngs end-->
+							</div><!--acc-setting end-->
+						</div>
+
+						<div class="tab-pane fade" id="nav-appendices" role="tabpanel" aria-labelledby="nav-appendices-tab">
+							<div class="acc-setting">
+								<h3>Appendices
+								<details>
+									<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
+									<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
+										The appendix should contain supplementary materials that are not an 
+										essential part of the business plan but which may be helpful in providing 
+										a more comprehensive understanding of the business plan.
+									</p>
+								</details>
+								</h3>
+								<div class="cp-field">
+									<div class="cpp-fiel">
+										<%= form.text_area :appendices, placeholder: "Enter appendices", class: "form-control" %>
+										<%#= tinymce %>
+									</div>
+								</div>
+								<div class="save-stngs pd2">
+									<ul>
+										<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+										<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+									</ul>
+								</div><!--save-stngs end-->
+							</div><!--acc-setting end-->
 						</div>
 					</div>
-				</div><!--account-tabs-setting end-->
-			</div>
+				</div>
+			<%# </div> %>
+		</div><!--account-tabs-setting end-->
+	</div>
 	</section>
 <% end %>
 
@@ -545,14 +1034,13 @@ details[open] summary {
 	float: left;
 	width: 100%;
 	background: none;
-	padding: 18px 20px;
+	padding: 10px 20px;
 	border-bottom: 1px solid #e5e5e5;
 	border-top: 1px solid #e5e5e5;
 	border-left: 0;
 	border-right: 0;
 	color: #000000;
-	font-size: 16px;
-	font-weight: 600;
+	font-size: 14px;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	-ms-border-radius: 0;
@@ -582,28 +1070,28 @@ details[open] summary {
 	float: left;
 	width: 100%;
 	background-color: #fff;
-	border-left: 1px solid #e5e5e5;
+	/* border-left: 1px solid #e5e5e5;
 	border-bottom: 1px solid #e5e5e5;
 	border-right: 1px solid #e5e5e5;
 	-webkit-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
 	-moz-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
 	-ms-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
 	-o-box-shadow: 1px 0 4px rgba(0,0,0,0.24);
-	box-shadow: 1px 0 4px rgba(0,0,0,0.24);
+	box-shadow: 1px 0 4px rgba(0,0,0,0.24); */
 }
 .acc-setting form {
 	float: left;
 	width: 100%;
 }
 .acc-setting > h3 {
-	float: left;
+	margin-left: 12px;
 	width: 100%;
 	color: #000000;
 	font-weight: 600;
 	font-size: 18px;
 	text-transform: capitalize;
-	border-bottom: 1px solid #e5e5e5;
-	padding: 17px 20px;
+	/* border-bottom: 1px solid #e5e5e5; */
+	/* padding: 17px 20px; */
 }
 .notbar {
 	float: left;

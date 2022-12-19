@@ -1,3 +1,3 @@
 class DebtFinancing < ApplicationRecord
-  belongs_to :financial_plan
+  belongs_to :business_plan
 end

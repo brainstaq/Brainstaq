@@ -1,0 +1,24 @@
+<div class="nested-fields">
+  <%= form.hidden_field :_destroy %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row mt-2">
+        <div class="col-sm-6 pb-3">
+          <label for="exampleAccount">Item Name</label>
+          <%= form.text_field :item_name, class: "form-control", placeholder: "Enter item name"  %>
+        </div>
+
+        <div class="col-sm-6 pb-3">
+          <label class="form-label">Baseline Cost</label>
+          <%= form.number_field :baseline_cost, class: "form-control", placeholder: "Enter baseline cost"  %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" }, class: "text-primary underline text-sm col-md-3 mt-3 ml-3 mr-3" %>
+      </div>
+    </div>
+  </div>
+</div>

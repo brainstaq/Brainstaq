@@ -1,4 +1,7 @@
 <div class="container pt-5 pb-5">
+  <h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
+		Startup Costs
+	</h3>
   <div class="row">
     <div class="col-12">
       <table class="table table-bordered table-hover">
@@ -10,18 +13,18 @@
           </tr>
         </thead>
 				<tbody>
-					<%# @financial_plan.startup_costs.each do |startup_cost| %>
+					<% @business_plan.startup_costs.each do |startup_cost| %>
 						<tr>
-							<td><%#= startup_cost.item_name %></td>
-							<td><%#= number_to_currency(startup_cost.baseline_cost, :unit => "₦") %></td>
-							<td><%#= local_time(startup_cost.updated_at)%></td>
+							<td><%= startup_cost.item_name %></td>
+							<td><%= number_to_currency(startup_cost.baseline_cost, :unit => "₦") %></td>
+							<td><%= local_time(startup_cost.updated_at)%></td>
 						</tr>
-	        <%# end %>
+	        <% end %>
 				</tbody>
         <tr>
           <td class="mb-3" style="font-size: 18px; font-weight: bold;"> Total Startup Cost: </td>
           <td class="mb-3" style="font-size: 18px; font-weight: bold;">
-            <%#= number_to_currency(@startup_costs.sum(:baseline_cost), :unit => "₦") %>
+            <%= number_to_currency(@startup_costs.sum(:baseline_cost), :unit => "₦") %>
           </td>
           <td></td>
         </tr>

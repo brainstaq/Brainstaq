@@ -1,0 +1,135 @@
+<div class="container">
+	<h3 class="mt-5 mb-3" style="font-size: 18px; font-weight: bold;">
+		
+	</h3>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-sm table-bordered table-hover">
+        <thead>
+          <tr>
+						<th scope="col"></th>
+            <th scope="col">Year One</th>
+            <th scope="col">Year Two</th>
+            <th scope="col">Year Three</th>
+						<th scope="col">Year Four</th>
+            <th scope="col">Year Five</th>
+          </tr>
+        </thead>
+				<tbody>
+          <tr>
+            <td style="font-weight:bold;">REVENUE</td>
+          </tr>
+          <% @business_plan.products_and_growth_rates.each do |products_and_growth_rate| %>
+						<tr>
+							<td><%= products_and_growth_rate.product_name %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+						</tr>
+          <% end %>
+          <tr>
+            <td style="font-weight:bold;">Total Revenue</td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold;">
+              DIRECT COSTS
+            </td>
+          </tr>
+          <% @business_plan.direct_costs.each do |direct_cost| %>
+          <tr>
+            <td><%= direct_cost.item %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td style="font-weight:bold;">Gross Profit</td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold;">
+              OPERATING EXPENSES
+            </td>
+          </tr>
+          <% @business_plan.fixed_costs.each do |fixed_cost| %>
+						<tr>
+							<td><%= fixed_cost.item %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+						</tr>
+          <% end %>
+          <tr>
+            <td style="font-weight:bold;">Total Operating Expenses</td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold;">Operating Profit</td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold;">
+              &nbsp;
+            </td>
+          </tr>
+          <tr>
+            <td>Interest Expense</td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+          </tr>
+          <tr>
+            <td>Profit Before Tax</td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+          </tr>
+          <tr>
+            <td>Taxation</td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+            <td><%=  %></td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold;">Net Income</td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+            <td style="font-weight:bold;"><%=  %></td>
+          </tr>
+				</tbody>
+      </table>
+    </div>
+  </div>
+</div>

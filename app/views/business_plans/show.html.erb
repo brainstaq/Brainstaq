@@ -40,6 +40,9 @@
 			<a class="nav-link title-blk" id="financials-tab" data-toggle="tab" href="#financials" role="tab" aria-controls="financials" aria-selected="false">Financials</a>
 		</li>
 		<li class="nav-item">
+			<a class="nav-link title-blk" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule" aria-selected="false">Schedules</a>
+		</li>
+    <li class="nav-item">
 			<a class="nav-link title-blk" id="income-tab" data-toggle="tab" href="#income" role="tab" aria-controls="income" aria-selected="false">Income Statement</a>
 		</li>
 		<li class="nav-item">
@@ -176,27 +179,36 @@
       <div class="card card-body mt-5">
         <%= render partial: "layouts/assumptions" %>
         <%= render partial: "layouts/products_and_growth_rates" %>
+        <%= render partial: "layouts/startup_costs" %>
+        <%= render partial: "layouts/employee_analysis" %>
+        <%= render partial: "layouts/direct_costs" %>
+        <%= render partial: "layouts/fixed_costs" %>
+        <%#= render partial: "layouts/revenue_analysis" %>
+        <%#= render partial: "layouts/working_capital" %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
+      <div class="card card-body mt-5">
+        <%= render partial: "layouts/schedules" %>
       </div>
     </div>
 
     <div class="tab-pane fade" id="income" role="tabpanel" aria-labelledby="income-tab">
       <div class="card card-body mt-5">
-        Income Statement
-
+        <%= render partial: "layouts/income_statement" %>
       </div>
     </div>
     
     <div class="tab-pane fade" id="cashflow" role="tabpanel" aria-labelledby="cashflow-tab">
       <div class="card card-body mt-5">
-        Cashflow Statement
-
+        <%= render partial: "layouts/cashflow_statement" %>
       </div>
     </div>
     
     <div class="tab-pane fade" id="balance" role="tabpanel" aria-labelledby="balance-tab">
       <div class="card card-body mt-5">
-        Balance Sheet	
-
+        <%= render partial: "layouts/balance_sheet" %>
       </div>
     </div>
   </div>

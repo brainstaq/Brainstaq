@@ -28,7 +28,12 @@ class BusinessPlansController < ApplicationController
     @products_and_growth_rates = ProductsAndGrowthRate.all
     @depreciation_items = DepreciationItem.all
     @startup_costs = StartupCost.all
+    @direct_costs = DirectCost.all
+    @fixed_costs = FixedCost.all
     @total_cost = @startup_costs.sum(:baseline_cost)
+    @total_fixed_cost = @fixed_costs.sum(:cost)
+    @total_direct_cost = @direct_costs.sum(:cost)
+    
 
     respond_to do |format|
       format.html
@@ -140,7 +145,10 @@ class BusinessPlansController < ApplicationController
       :savings, 
       :grants, 
       :equity, 
-      :debt, 
+      :debt,
+      :loan_year,
+      :loan_amount,
+      :repayment_period,
       :equity_injection_four,         
       :equity_injection_three, 
       :equity_injection_two, 
@@ -148,9 +156,6 @@ class BusinessPlansController < ApplicationController
         costs_growth_rates_attributes: [
           :id, :_destroy, :cost_item, :cost_growth_rate_one, :cost_growth_rate_two,
           :cost_growth_rate_three, :cost_growth_rate_four, :cost_growth_rate_five 
-        ],
-        debt_financings_attributes: [
-          :id, :_destroy, :loan_year, :loan_amount, :repayment_period, :loan_end
         ],
         depreciation_items_attributes: [
           :id, :_destroy, :item_name, :rate
@@ -169,7 +174,7 @@ class BusinessPlansController < ApplicationController
         ],
         positions_attributes: [
           :id, :_destroy, :title, :number_of_employees_one, :number_of_employees_two, :number_of_employees_three, 
-          :number_of_employees_four, :number_of_employees_five, :base_annual_salary
+          :number_of_employees_four, :number_of_employees_five, :base_annual_salary, :full_name, :image, :bio
         ],
         products_and_growth_rates_attributes: [
           :id, :_destroy, :sales_volume_growth_rate_one, :sales_volume_growth_rate_two, 
@@ -187,9 +192,6 @@ class BusinessPlansController < ApplicationController
         ],
         swots_attributes: [
           :id, :_destroy, :swot_type, :description
-        ],
-        team_members_attributes: [
-          :id, :_destroy, :full_name, :image, :bio
         ]
     )
   end 

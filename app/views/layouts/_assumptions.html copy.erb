@@ -1,0 +1,219 @@
+<div>
+	<div class="container pt-5 pb-3">
+		<h3 class="mb-3" style="font-size: 24px; font-weight: bold;">
+			Assumptions
+		</h3>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col mt-0">
+								<h5 class="card-title">Company Tax Rate</h5>
+							</div>
+							<div class="col-auto">
+								<div class="stat text-primary">
+									<i class="fa fa-calculator" data-feather="truck"></i>
+								</div>
+							</div>
+						</div>
+						<h1 class="mt-1 mb-3"><%= @business_plan.company_tax_rate.ceil %>%</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+							<div>
+								<p class="mb-0 text-muted">Bank Interest Rate</p>
+								<h2><%= @business_plan.bank_interest_rate.ceil %>%</h2>
+							</div>
+						</div>
+						<div class="m-t-40">
+							<div class="d-flex justify-content-between">
+								<div class="d-flex align-items-center">
+									<span class="badge badge-primary badge-dot mr-2"></span>
+									<span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+								</div>
+								<span class="text-dark font-weight-semibold font-size-13 mt-2">60% </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+							<div>
+								<p class="mb-0 text-muted">Inflation Rate</p>
+								<h2><%= @business_plan.inflation_rate.ceil %>%</h2>
+							</div>
+						</div>
+						<div class="m-t-40">
+							<div class="d-flex justify-content-between">
+								<div class="d-flex align-items-center">
+									<span class="badge badge-primary badge-dot mr-2"></span>
+									<span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+								</div>
+								<span class="text-dark font-weight-semibold font-size-13 mt-2">70% </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<div class="container pb-5">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+							<div>
+								<p class="mb-0 text-muted">Company Tax Rate</p>
+								<h2><%= @business_plan.company_tax_rate.ceil %>%</h2>
+							</div>
+						</div>
+						<div class="m-t-40">
+							<div class="d-flex justify-content-between">
+								<div class="d-flex align-items-center">
+									<span class="badge badge-primary badge-dot mr-2"></span>
+									<span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+								</div>
+								<span class="text-dark font-weight-semibold font-size-13 mt-2">70% </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+							<div>
+								<p class="mb-0 text-muted">Bank Interest Rate</p>
+								<h2><%= @business_plan.bank_interest_rate.ceil %>%</h2>
+							</div>
+						</div>
+						<div class="m-t-40">
+							<div class="d-flex justify-content-between">
+								<div class="d-flex align-items-center">
+									<span class="badge badge-primary badge-dot mr-2"></span>
+									<span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+								</div>
+								<span class="text-dark font-weight-semibold font-size-13 mt-2">60% </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex justify-content-between align-items-center">
+							<div>
+								<p class="mb-0 text-muted">Inflation Rate</p>
+								<h2><%= @business_plan.inflation_rate.ceil %>%</h2>
+							</div>
+						</div>
+						<div class="m-t-40">
+							<div class="d-flex justify-content-between">
+								<div class="d-flex align-items-center">
+									<span class="badge badge-primary badge-dot mr-2"></span>
+									<span class="text-gray font-weight-semibold font-size-13">Monthly Goal</span>
+								</div>
+								<span class="text-dark font-weight-semibold font-size-13 mt-2">70% </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
+		Depreciation Rates
+	</h3>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Depreciation Rate</th>
+            <th scope="col">Updated On</th>
+          </tr>
+        </thead>
+				<tbody>
+					<% @business_plan.depreciation_items.each do |depreciation_item| %>
+						<tr>
+							<td><%= depreciation_item.item_name %></td>
+							<td><%= depreciation_item.rate.ceil %>%</td>
+							<td><%= local_time(depreciation_item.updated_at)%></td>
+						</tr>
+	        <% end %>
+				</tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+	<h3 class="mt-5 mb-3" style="font-size: 18px; font-weight: bold;">
+		Equity Financing
+	</h3>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+						<th scope="col"></th>
+            <th scope="col">Year One</th>
+            <th scope="col">Year Two</th>
+            <th scope="col">Year Three</th>
+						<th scope="col">Year Four</th>
+            <th scope="col">Year Five</th>
+          </tr>
+        </thead>
+				<tbody>
+						<tr>
+							<td>Equity Injection</td>
+							<td>Enter calc. here</td>
+							<td><%= @business_plan.equity_injection_one %></td>
+							<td><%= @business_plan.equity_injection_two %></td>
+							<td><%= @business_plan.equity_injection_three %></td>
+							<td><%= @business_plan.equity_injection_four %></td>
+						</tr>
+						<tr>
+							<td>Opening Balance</td>
+							<td>Enter calc. here</td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+						</tr>
+						<tr>
+							<td>Closing Balance</td>
+							<td>Enter calc. here</td>
+							<td><%= %></td>
+							<td><%= %></td>
+							<td><%=  %></td>
+							<td><%=  %></td>
+						</tr>
+				</tbody>
+      </table>
+    </div>
+  </div>
+</div>

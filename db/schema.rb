@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_19_215113) do
+ActiveRecord::Schema.define(version: 2022_12_23_182453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,9 @@ ActiveRecord::Schema.define(version: 2022_12_19_215113) do
     t.integer "equity_injection_two"
     t.integer "equity_injection_three"
     t.integer "equity_injection_four"
+    t.integer "loan_year"
+    t.integer "loan_amount"
+    t.integer "repayment_period"
     t.index ["enterprise_id"], name: "index_business_plans_on_enterprise_id"
   end
 
@@ -229,17 +232,6 @@ ActiveRecord::Schema.define(version: 2022_12_19_215113) do
     t.integer "price", default: 0, null: false
     t.index ["slug"], name: "index_courses_on_slug", unique: true
     t.index ["user_id"], name: "index_courses_on_user_id"
-  end
-
-  create_table "debt_financings", force: :cascade do |t|
-    t.integer "loan_year"
-    t.integer "loan_amount"
-    t.integer "repayment_period"
-    t.integer "loan_end"
-    t.bigint "business_plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_plan_id"], name: "index_debt_financings_on_business_plan_id"
   end
 
   create_table "depreciation_items", force: :cascade do |t|
@@ -592,6 +584,9 @@ ActiveRecord::Schema.define(version: 2022_12_19_215113) do
     t.bigint "business_plan_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "full_name"
+    t.string "image"
+    t.text "bio"
     t.index ["business_plan_id"], name: "index_positions_on_business_plan_id"
   end
 
@@ -687,16 +682,6 @@ ActiveRecord::Schema.define(version: 2022_12_19_215113) do
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.integer "course_tags_count", default: 0, null: false
-  end
-
-  create_table "team_members", force: :cascade do |t|
-    t.string "full_name"
-    t.string "image"
-    t.text "bio"
-    t.bigint "business_plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_plan_id"], name: "index_team_members_on_business_plan_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -812,7 +797,6 @@ ActiveRecord::Schema.define(version: 2022_12_19_215113) do
   add_foreign_key "course_tags", "courses"
   add_foreign_key "course_tags", "tags"
   add_foreign_key "courses", "users"
-  add_foreign_key "debt_financings", "business_plans"
   add_foreign_key "depreciation_items", "business_plans"
   add_foreign_key "direct_costs", "business_plans"
   add_foreign_key "donors", "users"
@@ -833,7 +817,6 @@ ActiveRecord::Schema.define(version: 2022_12_19_215113) do
   add_foreign_key "services", "business_plans"
   add_foreign_key "startup_costs", "business_plans"
   add_foreign_key "swots", "business_plans"
-  add_foreign_key "team_members", "business_plans"
   add_foreign_key "user_lessons", "lessons"
   add_foreign_key "user_lessons", "users"
 end

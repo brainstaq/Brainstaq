@@ -13,11 +13,9 @@ class BusinessPlan < ApplicationRecord
   has_many :costs_growth_rates, dependent: :destroy
   has_many :products_and_growth_rates, dependent: :destroy
   has_many :fixed_costs, dependent: :destroy
-  has_many :debt_financings, dependent: :destroy
   has_many :direct_costs, dependent: :destroy
   has_many :startup_costs, dependent: :destroy
   has_many :positions, dependent: :destroy
-  has_many :team_members, dependent: :destroy
   has_many :marketing_expenses, dependent: :destroy
   has_many :milestones, dependent: :destroy
   has_many :swots, dependent: :destroy
@@ -25,10 +23,8 @@ class BusinessPlan < ApplicationRecord
   accepts_nested_attributes_for :swots, allow_destroy: true
   accepts_nested_attributes_for :milestones, allow_destroy: true
   accepts_nested_attributes_for :marketing_expenses, allow_destroy: true
-  accepts_nested_attributes_for :team_members, allow_destroy: true
   accepts_nested_attributes_for :depreciation_items, allow_destroy: true
   accepts_nested_attributes_for :costs_growth_rates, allow_destroy: true
-  accepts_nested_attributes_for :debt_financings, allow_destroy: true
   accepts_nested_attributes_for :direct_costs, allow_destroy: true
   accepts_nested_attributes_for :fixed_costs, allow_destroy: true
   accepts_nested_attributes_for :positions, allow_destroy: true

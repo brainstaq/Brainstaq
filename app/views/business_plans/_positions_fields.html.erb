@@ -4,40 +4,13 @@
   <div class="card">
     <div class="card-body">
       <div class="row mt-2">
-        <%=form.fields_for :team_members, TeamMember.new do |team_member_attributes| %>
-          <div class="col-sm-12 mb-3">
-            <h5 class="text-primary" style="font-size: 11px;">
-            Enter the name of employee, attach a photo and enter a bio</h5>
-          </div>
-          <div class="col-sm-4 pb-3">
-            <label for="exampleAccount">Full Name</label>
-            <%= team_member_attributes.text_field :full_name, class: "form-control"  %>
-          </div>
+        <div class="col-sm-12 mb-3">
+          <h5 class="text-primary" style="font-size: 11px;">
+            Enter the position, the annual salary for this position, and the number of employees you 
+            expect to fill this position in each year
+          </h5>
+        </div>
 
-          <%# <div class="col-sm-4 pb-3"> %>
-            <%# <label for="exampleCtrl">Position</label>  %>
-            <%#= team_member_attributes.collection_select(:position_id, Position.all, :id, :title, {prompt: 'Select position'}, class: "form-control") %>
-          <%# </div> %>
-          
-          <div class="col-sm-4 pb-3">
-            <label for="exampleAmount">Photo</label>
-            <div class="input-group">
-              <%= team_member_attributes.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes }, class: "p-2 form-control" %>
-            </div>
-          </div>
-
-          <div class="col-md-12 pb-3">
-            <label for="exampleMessage">Bio</label> 
-            <%= team_member_attributes.text_area :bio, class: "form-control", placeholder: "Enter bio"  %> 
-          </div>
-        <% end %>
-
-        <div class="col-sm-12 mt-3 mb-3">
-            <h5 class="text-primary" style="font-size: 11px;">
-              Enter the position, the annual salary for this position, and the number of employees you 
-              expect to fill this position in each year
-            </h5>
-          </div>
         <div class="col-sm-3 pb-3">
           <label for="exampleAccount">Position</label>
           <%= form.text_field :title, class: "form-control", placeholder: "Enter position"  %>
@@ -70,6 +43,30 @@
         <div class="col-sm-3 pb-3">
           <label for="exampleMessage">No. of Employees: Year 5</label> 
           <%= form.number_field :number_of_employees_five, class: "form-control"  %> 
+        </div>
+
+        <div class="col-sm-12 mt-3 mb-3">
+          <h5 class="text-primary" style="font-size: 11px;">
+            Enter the name of employee for the above position, attach a photo and enter a bio. If there is no
+            one filling the position yet, simply leave it blank
+          </h5>
+        </div>
+
+        <div class="col-sm-4 pb-3">
+          <label for="exampleAccount">Full Name</label>
+          <%= form.text_field :full_name, class: "form-control"  %>
+        </div>
+
+        <div class="col-sm-4 pb-3">
+          <label for="exampleAmount">Photo</label>
+          <div class="input-group">
+            <%= form.file_field :image, onchange: "validateFiles(this);", data: { max_file_size: 1.megabytes }, class: "p-2 form-control" %>
+          </div>
+        </div>
+
+        <div class="col-md-12 pb-3">
+          <label for="exampleMessage">Bio</label> 
+          <%= form.text_area :bio, class: "form-control", placeholder: "Enter bio"  %> 
         </div>
       </div>
     </div>

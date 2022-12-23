@@ -1,87 +1,108 @@
-<div class="container mt-5">
-	<div class="col-md-12">
-    <div class="panel panel-default">
-			<div class="panel-body">
-				<table class="table table-condensed table-striped">
-    			<thead>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td style="font-size: 14px;" class="text-danger">
-                Benefits % of Salary: <%#= @financial_plan.salary_benefits %>%
-              </td>
-						</tr>
-					</thead>
-					<%# @business_plan.positions.each do |position| %>
-					<tbody>
-						<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-              <td style="font-size: 18px; font-weight: bold;">
-                <%#= position.title %>
-              </td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-              <td style="font-size: 14px;">
-                Base Annual Salary: 
-                <%#= number_to_currency(position.base_annual_salary, :unit => "₦") %>
-              </td>
-						</tr>
-				
-						<tr>
-							<td colspan="12" class="hiddenRow">
-								<div class="accordian-body collapse" id="demo1"> 
-									<table class="table table-striped">
-										<thead>
-											<tr class="info">
-												<th></th>
-												<th>Year One</th>
-												<th>Year Two</th>		
-												<th>Year Three</th>	
-												<th>Year Four</th>	
-												<th>Year Five</th>	
-											</tr>
-										</thead>	
-										
-										<tbody>		
-											<tr data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
-												<td>Number of Employees</td>
-												<td><%#= position.number_of_employees_one %></td>
-												<td><%#= position.number_of_employees_two %></td>
-												<td><%#= position.number_of_employees_three %></td>
-												<td><%#= position.number_of_employees_four %></td>
-												<td><%#= position.number_of_employees_five %></td>
-											</tr>
+<div class="container">
+	<h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
+		Employee Analysis
+	</h3>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table class="table table-condensed table-striped">
+						<thead>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td style="font-size: 14px;" class="text-danger">
+									Benefits % of Salary: <%= @business_plan.salary_benefits %>%
+								</td>
+							</tr>
+						</thead>
+						<% @business_plan.positions.each do |position| %>
+						<tbody>
+							<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+								<td style="font-size: 18px; font-weight: bold;">
+									<%= position.title %>
+								</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td style="font-size: 14px;">
+									Base Annual Salary: 
+									<%= number_to_currency(position.base_annual_salary, :unit => "₦") %>
+								</td>
+							</tr>
+					
+							<tr>
+								<td colspan="12" class="hiddenRow">
+									<div class="accordian-body collapse" id="demo1"> 
+										<table class="table table-striped">
+											<thead>
+												<tr class="info">
+													<th></th>
+													<th>Year One</th>
+													<th>Year Two</th>		
+													<th>Year Three</th>	
+													<th>Year Four</th>	
+													<th>Year Five</th>	
+												</tr>
+											</thead>	
 											
-											<tr>
-												<td>Total Salaries</td>
-												<td><%#= number_to_currency(position.base_annual_salary * position.number_of_employees_one, :unit => "₦") %></td>
-												<td><%#= number_to_currency(position.base_annual_salary * position.number_of_employees_two, :unit => "₦") %></td>
-												<td><%#= number_to_currency(position.base_annual_salary * position.number_of_employees_three, :unit => "₦") %></td>
-												<td><%#= number_to_currency(position.base_annual_salary * position.number_of_employees_four, :unit => "₦") %></td>
-												<td><%#= number_to_currency(position.base_annual_salary * position.number_of_employees_five, :unit => "₦") %></td>
-											</tr>
-																											
-											<tr>
-												<td class="bg-danger"></td>
-												<td class="bg-danger"></td>
-												<td class="bg-danger"></td>
-												<td class="bg-danger"></td>
-												<td class="bg-danger"></td>
-												<td class="bg-danger"></td>
-											</tr>
-										</tbody>
-									</table>
-								</div> 
-							</td>
-						</tr>
-					</tbody>
-					<%# end %>
-				</table>
-			</div>
-		</div> 
+											<tbody>		
+												<tr data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
+													<td>Number of Employees</td>
+													<td><%= position.number_of_employees_one %></td>
+													<td><%= position.number_of_employees_two %></td>
+													<td><%= position.number_of_employees_three %></td>
+													<td><%= position.number_of_employees_four %></td>
+													<td><%= position.number_of_employees_five %></td>
+												</tr>
+												
+												<tr>
+													<td>Total Salaries</td>
+													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_one, :unit => "₦") %></td>
+													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_two, :unit => "₦") %></td>
+													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_three, :unit => "₦") %></td>
+													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_four, :unit => "₦") %></td>
+													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_five, :unit => "₦") %></td>
+												</tr>
+																												
+												<tr>
+													<td class="bg-danger"></td>
+													<td class="bg-danger"></td>
+													<td class="bg-danger"></td>
+													<td class="bg-danger"></td>
+													<td class="bg-danger"></td>
+													<td class="bg-danger"></td>
+												</tr>
+												<tr>
+													<td>Name of <%= position.title %>:</td>
+													<td></td>
+													<td></td>
+													<td></td>
+
+													<td>
+														<% if position.image.present? %>
+															<div class="d-flex align-items-center">
+																<%= image_tag position.image_url, class: "rounded-circle", width: "30" %>
+																	<span class="ml-2"><%= position.full_name %></span>
+															</div>
+														<% end %>
+													</td>
+													<td><%= position.bio %></td>
+												</tr>
+											</tbody>
+										</table>
+									</div> 
+								</td>
+							</tr>
+						</tbody>
+						<% end %>
+					</table>
+				</div>
+			</div> 
+		</div>
 	</div>
 </div>

@@ -26,8 +26,7 @@ class EnterprisesController < ApplicationController
     @enterprise = Enterprise.find(params[:id])
     @business_plan = BusinessPlan.new
     @business_plans = @enterprise.business_plans
-    @team_members = @business_plan.team_members
-    @products = @business_plan.products
+    @products_and_growth_rates = @business_plan.products_and_growth_rates
     @portfolios = @enterprise.portfolios
     @services = @enterprise.services
     @business_plan.enterprise_id = @enterprise.id
@@ -99,7 +98,7 @@ class EnterprisesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def enterprise_params
     params.require(:enterprise).permit(:status, :name, :image, :remove_image, :image_cache, 
-      :category_id, :user_id, :address, :email, :products, :services, :portfolios, :team_members, :phone_number, 
+      :category_id, :user_id, :address, :email, :phone_number, 
       :country, :state, :city, :info, :facebook_url, :twitter_url, :instagram_url, :website_url)
   end
 end

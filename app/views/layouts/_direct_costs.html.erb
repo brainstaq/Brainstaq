@@ -1,0 +1,31 @@
+<div class="container pt-5">
+  <h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
+		Direct Costs
+	</h3>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Cost</th>
+          </tr>
+        </thead>
+				<tbody>
+					<% @business_plan.direct_costs.each do |direct_cost| %>
+						<tr>
+							<td><%= direct_cost.item %></td>
+							<td><%= number_to_currency(direct_cost.cost, :unit => "₦") %></td>
+						</tr>
+	        <% end %>
+				</tbody>
+        <tr>
+          <td class="mb-3" style="font-size: 18px; font-weight: bold;"> Total Direct Costs: </td>
+          <td class="mb-3" style="font-size: 18px; font-weight: bold;">
+            <%= number_to_currency(@direct_costs.sum(:cost), :unit => "₦") %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -11,38 +11,76 @@
           </h5>
         </div>
 
-        <div class="col-sm-3 pb-3">
+        <div class="col-sm-4 pb-3">
           <label for="exampleAccount">Position</label>
           <%= form.text_field :title, class: "form-control", placeholder: "Enter position"  %>
         </div>
-        <div class="col-sm-3 pb-3">
+        <div class="col-sm-4 pb-3">
           <label for="exampleCtrl">Base Annual Salary</label> 
           <%= form.number_field :base_annual_salary, class: "form-control" %>
         </div>
+
+        <div class="col-sm-4 pb-3">
+          <label for="exampleCtrl">Salary Benefits (%)</label> 
+          <%= form.number_field :salary_benefits, class: "form-control" %>
+        </div>
+
+        <div class="col-sm-2 form-group">
+          <br>
+          <h5 class="form-label fnt">Number of Employees</h5>
+        </div>
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 1</label>
+          <%= form.text_field :number_of_employees_one, class: "form-control fnt" %>
+        </div>
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 2</label>
+          <%= form.text_field :number_of_employees_two, class: "form-control fnt"  %>
+        </div>
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 3</label>
+          <%= form.text_field :number_of_employees_three, class: "form-control fnt"  %>
+        </div>
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 4</label>
+          <%= form.text_field :number_of_employees_four, class: "form-control fnt"  %>
+        </div>
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 5</label>
+          <%= form.text_field :number_of_employees_five, class: "form-control fnt"  %>
+        </div>
+
+        <div class="col-sm-12 mt-3 mb-3">
+          <h5 class="text-primary" style="font-size: 11px;">
+            Enter the percentage salary growth rates for each year. For example, you may want to increase staff salaries
+            by 5% every year or once in 2 years. However, you can enter '0' for any year that you do not want 
+            to increase staff salaries. Also, you only need to fill this growth rates once. DO NOT REPEAT IT FOR OTHER POSITIONS. 
+          </h5>
+        </div>
         
-        <div class="col-sm-3 pb-3">
-          <label for="exampleMessage">No. of Employees: Year 1</label> 
-          <%= form.number_field :number_of_employees_one, class: "form-control"  %> 
+        <div class="col-sm-2 form-group">
+          <br>
+          <h5 class="form-label fnt">Salaries Growth Rate</h5>
         </div>
-
-        <div class="col-sm-3 pb-3">
-          <label for="exampleMessage">No. of Employees: Year 2</label> 
-          <%= form.number_field :number_of_employees_two, class: "form-control"  %> 
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 1</label>
+          <%= form.text_field :salaries_cgr1, class: "form-control fnt" %>
         </div>
-
-        <div class="col-sm-3 pb-3">
-          <label for="exampleMessage">No. of Employees: Year 3</label> 
-          <%= form.number_field :number_of_employees_three, class: "form-control"  %> 
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 2</label>
+          <%= form.text_field :salaries_cgr2, class: "form-control fnt"  %>
         </div>
-
-        <div class="col-sm-3 pb-3">
-          <label for="exampleMessage">No. of Employees: Year 4</label> 
-          <%= form.number_field :number_of_employees_four, class: "form-control"  %> 
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 3</label>
+          <%= form.text_field :salaries_cgr3, class: "form-control fnt"  %>
         </div>
-
-        <div class="col-sm-3 pb-3">
-          <label for="exampleMessage">No. of Employees: Year 5</label> 
-          <%= form.number_field :number_of_employees_five, class: "form-control"  %> 
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 4</label>
+          <%= form.text_field :salaries_cgr4, class: "form-control fnt"  %>
+        </div>
+        <div class="col-sm-2 mt-3 form-group">
+          <label class="form-label fnt">Year 5</label>
+          <%= form.text_field :salaries_cgr5, class: "form-control fnt"  %>
         </div>
 
         <div class="col-sm-12 mt-3 mb-3">

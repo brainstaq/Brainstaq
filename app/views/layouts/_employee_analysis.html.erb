@@ -1,5 +1,5 @@
 <div class="container">
-	<h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
+	<h3 class="mt-5 mb-3" style="font-size: 18px; font-weight: bold;">
 		Employee Analysis
 	</h3>
 	<div class="row">
@@ -15,18 +15,18 @@
 								<td></td>
 								<td></td>
 								<td style="font-size: 14px;" class="text-danger">
-									Benefits % of Salary: <%= @business_plan.salary_benefits %>%
+									
 								</td>
 							</tr>
 						</thead>
 						<% @business_plan.positions.each do |position| %>
 						<tbody>
-							<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+							<tr data-toggle="collapse" data-target="#demo3" class="accordion-toggle">
 								<td style="font-size: 18px; font-weight: bold;">
 									<%= position.title %>
 								</td>
 								<td></td>
-								<td></td>
+								<td>Benefits % of Salary: <%= position.salary_benefits.ceil %>%</td>
 								<td></td>
 								<td></td>
 								<td style="font-size: 14px;">
@@ -37,7 +37,7 @@
 					
 							<tr>
 								<td colspan="12" class="hiddenRow">
-									<div class="accordian-body collapse" id="demo1"> 
+									<div class="accordian-body collapse" id="demo3"> 
 										<table class="table table-striped">
 											<thead>
 												<tr class="info">
@@ -62,27 +62,34 @@
 												
 												<tr>
 													<td>Total Salaries</td>
-													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_one, :unit => "₦") %></td>
-													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_two, :unit => "₦") %></td>
-													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_three, :unit => "₦") %></td>
-													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_four, :unit => "₦") %></td>
-													<td><%= number_to_currency(position.base_annual_salary * position.number_of_employees_five, :unit => "₦") %></td>
+													<td>
+														<%= number_to_currency(position.total_salaries_one, :unit => "₦") %>
+													</td>
+													<td>
+														<%= number_to_currency(position.total_salaries_two, :unit => "₦") %>
+													</td>
+													<td>
+														<%= number_to_currency(position.total_salaries_three, :unit => "₦") %>
+													</td>
+													<td>
+														<%= number_to_currency(position.total_salaries_four, :unit => "₦") %>
+													</td>
+													<td>
+														<%= number_to_currency(position.total_salaries_five, :unit => "₦") %>
+													</td>
+													
 												</tr>
 																												
 												<tr>
-													<td class="bg-danger"></td>
-													<td class="bg-danger"></td>
-													<td class="bg-danger"></td>
-													<td class="bg-danger"></td>
-													<td class="bg-danger"></td>
-													<td class="bg-danger"></td>
+													<td class="bg-info text-white">Salary Growth Rate</td>
+													<td class="bg-info text-white"><%= position.salaries_cgr1.ceil %>%</td>
+													<td class="bg-info text-white"><%= position.salaries_cgr2.ceil %>%</td>
+													<td class="bg-info text-white"><%= position.salaries_cgr3.ceil %>%</td>
+													<td class="bg-info text-white"><%= position.salaries_cgr4.ceil %>%</td>
+													<td class="bg-info text-white"><%= position.salaries_cgr5.ceil %>%</td>
 												</tr>
 												<tr>
 													<td>Name of <%= position.title %>:</td>
-													<td></td>
-													<td></td>
-													<td></td>
-
 													<td>
 														<% if position.image.present? %>
 															<div class="d-flex align-items-center">
@@ -91,6 +98,9 @@
 															</div>
 														<% end %>
 													</td>
+													<td></td>
+													<td></td>
+													<td></td>
 													<td><%= position.bio %></td>
 												</tr>
 											</tbody>

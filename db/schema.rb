@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_23_182453) do
+ActiveRecord::Schema.define(version: 2022_12_29_211917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,7 +149,6 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
     t.decimal "company_tax_rate", precision: 8, scale: 2
     t.decimal "bank_interest_rate", precision: 8, scale: 2
     t.integer "inflation_rate"
-    t.integer "salary_benefits"
     t.integer "receivable_days"
     t.integer "payable_days"
     t.integer "inventory_days"
@@ -162,8 +161,79 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
     t.integer "equity_injection_three"
     t.integer "equity_injection_four"
     t.integer "loan_year"
-    t.integer "loan_amount"
     t.integer "repayment_period"
+    t.integer "raw_material_cost"
+    t.integer "direct_labour_cost"
+    t.integer "factory_overhead"
+    t.integer "inbound_transport"
+    t.integer "salaries_cost"
+    t.integer "rent_cost"
+    t.integer "utilities_cost"
+    t.integer "marketing_cost"
+    t.integer "admin_cost"
+    t.integer "website_cost"
+    t.integer "telephone_cost"
+    t.integer "transport_cost"
+    t.integer "misc"
+    t.integer "land"
+    t.integer "rent"
+    t.integer "office_supplies"
+    t.integer "equipment"
+    t.integer "vehicles"
+    t.integer "utilities"
+    t.integer "opening_inventory"
+    t.integer "capital"
+    t.integer "contingency"
+    t.decimal "dep_building"
+    t.decimal "dep_furniture"
+    t.decimal "dep_machinery"
+    t.decimal "dep_installations"
+    t.decimal "dep_vehicles"
+    t.decimal "rent_cgr1"
+    t.decimal "direct_cgr1"
+    t.decimal "utilities_cgr1"
+    t.decimal "marketing_cgr1"
+    t.decimal "maintenance_cgr1"
+    t.decimal "transport_cgr1"
+    t.decimal "phone_cgr1"
+    t.decimal "admin_cgr1"
+    t.decimal "rent_cgr2"
+    t.decimal "direct_cgr2"
+    t.decimal "utilities_cgr2"
+    t.decimal "marketing_cgr2"
+    t.decimal "maintenance_cgr2"
+    t.decimal "transport_cgr2"
+    t.decimal "phone_cgr2"
+    t.decimal "admin_cgr2"
+    t.decimal "rent_cgr3"
+    t.decimal "direct_cgr3"
+    t.decimal "utilities_cgr3"
+    t.decimal "marketing_cgr3"
+    t.decimal "maintenance_cgr3"
+    t.decimal "transport_cgr3"
+    t.decimal "phone_cgr3"
+    t.decimal "admin_cgr3"
+    t.decimal "rent_cgr4"
+    t.decimal "direct_cgr4"
+    t.decimal "utilities_cgr4"
+    t.decimal "marketing_cgr4"
+    t.decimal "maintenance_cgr4"
+    t.decimal "transport_cgr4"
+    t.decimal "phone_cgr4"
+    t.decimal "admin_cgr4"
+    t.decimal "rent_cgr5"
+    t.decimal "direct_cgr5"
+    t.decimal "utilities_cgr5"
+    t.decimal "marketing_cgr5"
+    t.decimal "maintenance_cgr5"
+    t.decimal "transport_cgr5"
+    t.decimal "phone_cgr5"
+    t.decimal "admin_cgr5"
+    t.decimal "misc_cgr1"
+    t.decimal "misc_cgr2"
+    t.decimal "misc_cgr3"
+    t.decimal "misc_cgr4"
+    t.decimal "misc_cgr5"
     t.index ["enterprise_id"], name: "index_business_plans_on_enterprise_id"
   end
 
@@ -188,19 +258,6 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
     t.integer "recipient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "costs_growth_rates", force: :cascade do |t|
-    t.integer "cost_growth_rate_one", default: 0, null: false
-    t.integer "cost_growth_rate_two", default: 0, null: false
-    t.integer "cost_growth_rate_three", default: 0, null: false
-    t.integer "cost_growth_rate_four", default: 0, null: false
-    t.integer "cost_growth_rate_five", default: 0, null: false
-    t.string "cost_item"
-    t.bigint "business_plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_plan_id"], name: "index_costs_growth_rates_on_business_plan_id"
   end
 
   create_table "course_tags", force: :cascade do |t|
@@ -232,24 +289,6 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
     t.integer "price", default: 0, null: false
     t.index ["slug"], name: "index_courses_on_slug", unique: true
     t.index ["user_id"], name: "index_courses_on_user_id"
-  end
-
-  create_table "depreciation_items", force: :cascade do |t|
-    t.string "item_name"
-    t.decimal "rate"
-    t.bigint "business_plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_plan_id"], name: "index_depreciation_items_on_business_plan_id"
-  end
-
-  create_table "direct_costs", force: :cascade do |t|
-    t.string "item"
-    t.integer "cost"
-    t.bigint "business_plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_plan_id"], name: "index_direct_costs_on_business_plan_id"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -341,15 +380,6 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
     t.integer "equity_injection_four"
     t.integer "user_id"
     t.index ["enterprise_id"], name: "index_financial_plans_on_enterprise_id"
-  end
-
-  create_table "fixed_costs", force: :cascade do |t|
-    t.string "item"
-    t.integer "cost"
-    t.bigint "business_plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_plan_id"], name: "index_fixed_costs_on_business_plan_id"
   end
 
   create_table "followers", force: :cascade do |t|
@@ -587,6 +617,12 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
     t.string "full_name"
     t.string "image"
     t.text "bio"
+    t.decimal "salary_benefits"
+    t.decimal "salaries_cgr1"
+    t.decimal "salaries_cgr2"
+    t.decimal "salaries_cgr3"
+    t.decimal "salaries_cgr4"
+    t.decimal "salaries_cgr5"
     t.index ["business_plan_id"], name: "index_positions_on_business_plan_id"
   end
 
@@ -644,15 +680,6 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_plan_id"], name: "index_services_on_business_plan_id"
-  end
-
-  create_table "startup_costs", force: :cascade do |t|
-    t.string "item_name"
-    t.integer "baseline_cost"
-    t.bigint "business_plan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["business_plan_id"], name: "index_startup_costs_on_business_plan_id"
   end
 
   create_table "subs", force: :cascade do |t|
@@ -793,17 +820,13 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "business_plans", "enterprises"
-  add_foreign_key "costs_growth_rates", "business_plans"
   add_foreign_key "course_tags", "courses"
   add_foreign_key "course_tags", "tags"
   add_foreign_key "courses", "users"
-  add_foreign_key "depreciation_items", "business_plans"
-  add_foreign_key "direct_costs", "business_plans"
   add_foreign_key "donors", "users"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
   add_foreign_key "financial_plans", "enterprises"
-  add_foreign_key "fixed_costs", "business_plans"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "enterprises"
   add_foreign_key "lessons", "courses"
@@ -815,7 +838,6 @@ ActiveRecord::Schema.define(version: 2022_12_23_182453) do
   add_foreign_key "positions", "business_plans"
   add_foreign_key "products_and_growth_rates", "business_plans"
   add_foreign_key "services", "business_plans"
-  add_foreign_key "startup_costs", "business_plans"
   add_foreign_key "swots", "business_plans"
   add_foreign_key "user_lessons", "lessons"
   add_foreign_key "user_lessons", "users"

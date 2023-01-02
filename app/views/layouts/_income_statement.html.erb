@@ -42,16 +42,14 @@
               DIRECT COSTS
             </td>
           </tr>
-          <% @business_plan.direct_costs.each do |direct_cost| %>
           <tr>
-            <td><%= direct_cost.item %></td>
+            <td><%=  %></td>
             <td><%=  %></td>
             <td><%=  %></td>
             <td><%=  %></td>
             <td><%=  %></td>
             <td><%=  %></td>
           </tr>
-          <% end %>
           <tr>
             <td style="font-weight:bold;">Gross Profit</td>
             <td style="font-weight:bold;"><%=  %></td>
@@ -65,16 +63,14 @@
               OPERATING EXPENSES
             </td>
           </tr>
-          <% @business_plan.fixed_costs.each do |fixed_cost| %>
 						<tr>
-							<td><%= fixed_cost.item %></td>
+							<td><%=  %></td>
 							<td><%=  %></td>
 							<td><%=  %></td>
 							<td><%=  %></td>
 							<td><%=  %></td>
 							<td><%=  %></td>
 						</tr>
-          <% end %>
           <tr>
             <td style="font-weight:bold;">Total Operating Expenses</td>
             <td style="font-weight:bold;"><%=  %></td>

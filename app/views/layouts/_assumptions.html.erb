@@ -121,7 +121,6 @@
 	</div>
 </div>
 
-
 <div class="container pb-5">
 	<div class="row">
 		<div class="col-xl-6 col-xxl-5 d-flex">
@@ -224,126 +223,350 @@
 			</div>
 		</div>
 
-<div class="col-xl-6 col-xxl-7">
-	<div class="card flex-fill w-100">
-		<div class="card-header">
+		<div class="col-xl-6 col-xxl-7">
+			<div class="card flex-fill w-100">
+				<div class="card-header">
 
-			<h5 class="card-title mb-0">Debt Financing</h5>
-		</div>
-		<div class="card-body py-3">
-			<div class="chart chart-sm">
-				<div class="container mt-3">
-					<div class="row">
-						<div class="col-12">
-							<table class="table table-bordered table-hover">
-								<thead>
-									<tr>
-										<th scope="col">Debt Facility</th>
-										<th scope="col"></th>
-									</tr>
-								</thead>
-								<tbody>
-										<tr>
-											<td>Loan Year</td>
-											<td><%= @business_plan.loan_year %></td>
-										</tr>
-										<tr>
-											<td>Loan Amount</td>
-											<td><%= number_to_currency(@business_plan.loan_amount, :unit => "₦") %></td>
-										</tr>
-										<tr>
-											<td>Repayment Period</td>
-											<td><%= @business_plan.repayment_period %></td>
-										</tr>
-										<tr>
-											<td>Loan End</td>
-											<td> calc. loan end </td>
-										</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
+					<h5 class="card-title mb-0">Debt Financing</h5>
 				</div>
+				<div class="card-body py-3">
+					<div class="chart chart-sm">
+						<div class="container mt-3">
+							<div class="row">
+								<div class="col-12">
+									<table class="table table-bordered table-hover">
+										<thead>
+											<tr>
+												<th scope="col">Debt Facility</th>
+												<th scope="col"></th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr>
+													<td>Loan Year</td>
+													<td><%= @business_plan.loan_year %></td>
+												</tr>
+												<tr>
+													<td>Loan Amount</td>
+													<td><%= number_to_currency(@loan_amount, :unit => "₦") %></td>
+												</tr>
+												<tr>
+													<td>Repayment Period</td>
+													<td><%= @business_plan.repayment_period %></td>
+												</tr>
+												<tr>
+													<td>Loan End</td>
+													<td class="bg-info text-white"><%= @loan_end %></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+		<div class="container pb-5">
+			<div class="row">
+				<div class="col-xl-6 col-xxl-7">
+					<div class="card flex-fill w-100">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Direct Costs</h5>
+						</div>
+						<div class="card-body py-3">
+							<div class="chart chart-sm">
+								<div class="container mt-3">
+									<div class="row">
+										<div class="col-12">
+											<table class="table table-bordered table-hover">
+												<thead>
+													<tr>
+														<th scope="col">Item</th>
+														<th scope="col">Cost</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Raw Material Cost</td>
+														<td><%= number_to_currency(@business_plan.raw_material_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Direct Labour Cost</td>
+														<td><%= number_to_currency(@business_plan.direct_labour_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Factory Overhead</td>
+														<td><%= number_to_currency(@business_plan.factory_overhead, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Inbound Transport</td>
+														<td><%= number_to_currency(@business_plan.inbound_transport, :unit => "₦") %></td>
+													</tr>
+												</tbody>
+												<tr>
+													<td scope="col" style="font-weight: bold;"> Total Direct Costs: </td>
+													<td class="mb-3 bg-info text-white" style="font-weight: bold;">
+														<%= number_to_currency(@total_direct_cost, :unit => "₦") %>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 col-xxl-7">
+					<div class="card flex-fill w-100">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Depreciation Rates</h5>
+						</div>
+						<div class="card-body py-3">
+							<div class="chart chart-sm">
+								<div class="container mt-3">
+									<div class="row">
+										<div class="col-12">
+											<table class="table table-bordered table-hover">
+												<thead>
+													<tr>
+														<th scope="col">Item Name</th>
+														<th scope="col">Depreciation</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Building</td>
+														<td><%= @business_plan.dep_building.ceil %>%</td>
+													</tr>
+													<tr>
+														<td>Furniture</td>
+														<td><%= @business_plan.dep_furniture.ceil %>%</td>
+													</tr>
+													<tr>
+														<td>Equipment/Machinery</td>
+														<td><%= @business_plan.dep_machinery.ceil %>%</td>
+													</tr>
+													<tr>
+														<td>Installations</td>
+														<td><%= @business_plan.dep_installations.ceil %>%</td>
+													</tr>
+													<tr>
+														<td>Vehicles</td>
+														<td><%= @business_plan.dep_vehicles.ceil %>%</td>
+													</tr>
+												</tbody>
+												
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<%# --------------------------------------------- %>
+
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-xxl-7">
+					<div class="card flex-fill w-100">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Fixed Costs</h5>
+						</div>
+						<div class="card-body py-3">
+							<div class="chart chart-sm">
+								<div class="container mt-3">
+									<div class="row">
+										<div class="col-12">
+											<table class="table table-bordered table-hover">
+												<thead>
+													<tr>
+														<th scope="col">Item</th>
+														<th scope="col">Cost</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Salaries & Wages</td>
+														<td><%= number_to_currency(@business_plan.salaries_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Rent</td>
+														<td><%= number_to_currency(@business_plan.rent_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Utilities</td>
+														<td><%= number_to_currency(@business_plan.utilities_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Marketing & Adverts</td>
+														<td><%= number_to_currency(@business_plan.marketing_cost, :unit => "₦") %></td>
+													</tr>
+													<td>Administrative</td>
+														<td><%= number_to_currency(@business_plan.admin_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Maintenance</td>
+														<td><%= number_to_currency(@business_plan.website_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Communication</td>
+														<td><%= number_to_currency(@business_plan.telephone_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Logistics</td>
+														<td><%= number_to_currency(@business_plan.transport_cost, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Miscellaneous</td>
+														<td><%= number_to_currency(@business_plan.misc, :unit => "₦") %></td>
+													</tr>
+												</tbody>
+												<tr>
+													<td scope="col" style="font-weight: bold;"> Total Fixed Costs: </td>
+													<td class="mb-3 bg-info text-white" style="font-weight: bold;">
+														<%= number_to_currency(@total_fixed_cost, :unit => "₦") %>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-6 col-xxl-7">
+					<div class="card flex-fill w-100">
+						<div class="card-header">
+							<h5 class="card-title mb-0">Startup Costs</h5>
+						</div>
+						<div class="card-body py-3">
+							<div class="chart chart-sm">
+								<div class="container mt-3">
+									<div class="row">
+										<div class="col-12">
+											<table class="table table-bordered table-hover">
+												<thead>
+													<tr>
+														<th scope="col">Startup Item</th>
+														<th scope="col">Cost</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Land</td>
+														<td><%= number_to_currency(@business_plan.land, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Rent</td>
+														<td><%= number_to_currency(@business_plan.rent, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Office Supplies</td>
+														<td><%= number_to_currency(@business_plan.office_supplies, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Equipment</td>
+														<td><%= number_to_currency(@business_plan.equipment, :unit => "₦") %></td>
+													</tr>
+													<td>Vehicles</td>
+														<td><%= number_to_currency(@business_plan.vehicles, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Utilities</td>
+														<td><%= number_to_currency(@business_plan.utilities, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Opening Inventory</td>
+														<td><%= number_to_currency(@business_plan.opening_inventory, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Initial Working Capital</td>
+														<td><%= number_to_currency(@business_plan.capital, :unit => "₦") %></td>
+													</tr>
+													<tr>
+														<td>Contingency</td>
+														<td><%= number_to_currency(@business_plan.contingency, :unit => "₦") %></td>
+													</tr>
+												</tbody>
+												<tr>
+													<td scope="col" style="font-weight: bold;"> Total Startup Costs: </td>
+													<td class="mb-3 bg-info text-white" style="font-weight: bold;">
+														<%= number_to_currency(@total_cost, :unit => "₦") %>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<% if @business_plan.equity.present? %>
+	<div class="container">
+		<h3 class="mt-5 mb-3" style="font-size: 18px; font-weight: bold;">
+			Equity Financing
+		</h3>
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">Year One</th>
+							<th scope="col">Year Two</th>
+							<th scope="col">Year Three</th>
+							<th scope="col">Year Four</th>
+							<th scope="col">Year Five</th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr>
+								<td>Equity Injection</td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity, :unit => "₦") %></td>
+								<td><%= number_to_currency(@business_plan.equity_injection_one, :unit => "₦") %></td>
+								<td><%= number_to_currency(@business_plan.equity_injection_two, :unit => "₦") %></td>
+								<td><%= number_to_currency(@business_plan.equity_injection_three, :unit => "₦") %></td>
+								<td><%= number_to_currency(@business_plan.equity_injection_four, :unit => "₦") %></td>
+							</tr>
+							<tr>
+								<td>Opening Balance</td>
+								<td class="bg-info text-white">₦0.00</td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity, :unit => "₦") %></td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity_2, :unit => "₦") %></td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity_3, :unit => "₦") %></td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity_4, :unit => "₦") %></td>
+							</tr>
+							<tr>
+								<td>Closing Balance</td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity, :unit => "₦") %></td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity_2, :unit => "₦") %></td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity_3, :unit => "₦") %></td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity_4, :unit => "₦") %></td>
+								<td class="bg-info text-white"><%= number_to_currency(@calculated_equity_5, :unit => "₦") %></td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-</div>
-
-
-<div class="container">
-	<h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
-		Depreciation Rates
-	</h3>
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Depreciation Rate</th>
-            <th scope="col">Updated On</th>
-          </tr>
-        </thead>
-				<tbody>
-					<% @business_plan.depreciation_items.each do |depreciation_item| %>
-						<tr>
-							<td><%= depreciation_item.item_name %></td>
-							<td><%= depreciation_item.rate.ceil %>%</td>
-							<td><%= local_time(depreciation_item.updated_at)%></td>
-						</tr>
-	        <% end %>
-				</tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-	<h3 class="mt-5 mb-3" style="font-size: 18px; font-weight: bold;">
-		Equity Financing
-	</h3>
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-						<th scope="col"></th>
-            <th scope="col">Year One</th>
-            <th scope="col">Year Two</th>
-            <th scope="col">Year Three</th>
-						<th scope="col">Year Four</th>
-            <th scope="col">Year Five</th>
-          </tr>
-        </thead>
-				<tbody>
-						<tr>
-							<td>Equity Injection</td>
-							<td>Enter calc. here</td>
-							<td><%= @business_plan.equity_injection_one %></td>
-							<td><%= @business_plan.equity_injection_two %></td>
-							<td><%= @business_plan.equity_injection_three %></td>
-							<td><%= @business_plan.equity_injection_four %></td>
-						</tr>
-						<tr>
-							<td>Opening Balance</td>
-							<td>Enter calc. here</td>
-							<td><%=  %></td>
-							<td><%=  %></td>
-							<td><%=  %></td>
-							<td><%=  %></td>
-						</tr>
-						<tr>
-							<td>Closing Balance</td>
-							<td>Enter calc. here</td>
-							<td><%= %></td>
-							<td><%= %></td>
-							<td><%=  %></td>
-							<td><%=  %></td>
-						</tr>
-				</tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<% end %>

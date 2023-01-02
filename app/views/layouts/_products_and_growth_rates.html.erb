@@ -14,7 +14,7 @@
 						</thead>
 						<tbody>
 							
-							<% @business_plan.products_and_growth_rates.each do |products_and_growth_rate| %>
+						<% @business_plan.products_and_growth_rates.each do |products_and_growth_rate| %>
 							<tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
 									<td style="font-size: 18px; font-weight: bold;"><%= products_and_growth_rate.product_name.upcase %></td>
 									<td style="font-size: 18px;">Base Product Price: <%= number_to_currency(products_and_growth_rate.base_product_price, :unit => "₦") %></td>
@@ -118,7 +118,7 @@
 													<th></th>	
 												</tr>
 											
-												<tr data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
+												<tr>
 													<td>Monthly Sales Percentage</td>
 													<td><%= products_and_growth_rate.sales_percentage_one.ceil %>%</td>
 													<td><%= products_and_growth_rate.sales_percentage_two.ceil %>%</td>
@@ -132,30 +132,28 @@
 													<td><%= products_and_growth_rate.sales_percentage_ten.ceil %>%</td>
 													<td><%= products_and_growth_rate.sales_percentage_eleven.ceil %>%</td>
 													<td><%= products_and_growth_rate.sales_percentage_twelve.ceil %>%</td>
-													<td></td>
 												</tr>
 												
 												<tr>
 													
 												</tr>
 
-																							<tr>
+												<tr>
 											</tr>
-											<tr class="info">
-													<th></th>
-													<th></th>
-													<th></th>		
-													<th></th>	
-													<th></th>	
-													<th></th>
-													<th></th>
-													<th></th>		
-													<th></th>	
-													<th></th>	
-													<th></th>
-													<th></th>	
-													<th></th>
-													<th></th>	
+											<tr class="bg-info text-white info">
+													<th>Monthly Sales Volume</th>
+													<th><%= products_and_growth_rate.jan_sales.to_i %></th>
+													<th><%= products_and_growth_rate.feb_sales.to_i %></th>		
+													<th><%= products_and_growth_rate.mar_sales.to_i %></th>	
+													<th><%= products_and_growth_rate.apr_sales.to_i %></th>	
+													<th><%= products_and_growth_rate.may_sales.to_i %></th>
+													<th><%= products_and_growth_rate.jun_sales.to_i %></th>
+													<th><%= products_and_growth_rate.jul_sales.to_i %></th>		
+													<th><%= products_and_growth_rate.aug_sales.to_i %></th>	
+													<th><%= products_and_growth_rate.sep_sales.to_i %></th>	
+													<th><%= products_and_growth_rate.oct_sales.to_i %></th>
+													<th><%= products_and_growth_rate.nov_sales.to_i %></th>	
+													<th><%= products_and_growth_rate.dec_sales.to_i %></th>	
 												</tr>
 												<tr class="info">
 													<th></th>
@@ -171,22 +169,22 @@
 													<th>Year Five</th>
 													<th></th>
 													<th></th>	
-													<th></th>
+													<%# <th></th> %>
 												</tr>
 
 												<tbody>		
-												<tr data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
+												<tr class="bg-info text-white info" data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
 													<td>Annual Sales Volume</td>
 													<td></td>
-													<td><%= products_and_growth_rate.sales_volume_growth_rate_one.ceil %>%</td>
+													<td><%= products_and_growth_rate.annual_sales_1.to_i %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.sales_volume_growth_rate_two.ceil %>%</td>
+													<td><%= products_and_growth_rate.annual_sales_2.to_i %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.sales_volume_growth_rate_three.ceil %>%</td>
+													<td><%= products_and_growth_rate.annual_sales_3.to_i %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.sales_volume_growth_rate_four.ceil %>%</td>
+													<td><%= products_and_growth_rate.annual_sales_4.to_i %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.sales_volume_growth_rate_five.ceil %>%</td>
+													<td><%= products_and_growth_rate.annual_sales_5.to_i %></td>
 													<td></td>
 													<td></td>
 													<td></td>
@@ -196,18 +194,18 @@
 													
 												</tr>
 																												
-												<tr>
+												<tr class="bg-info text-white info">
 													<td>Annual Product/Service Price </td>
 													<td></td>
-													<td><%= products_and_growth_rate.unit_price_growth_rate_one.ceil %>%</td>
+													<td><%= number_to_currency(products_and_growth_rate.base_product_price, :unit => "₦") %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.unit_price_growth_rate_two.ceil %>%</td>
+													<td><%= number_to_currency(products_and_growth_rate.annual_price_2, :unit => "₦") %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.unit_price_growth_rate_three.ceil %>%</td>
+													<td><%= number_to_currency(products_and_growth_rate.annual_price_3, :unit => "₦") %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.unit_price_growth_rate_four.ceil %>%</td>
+													<td><%= number_to_currency(products_and_growth_rate.annual_price_4, :unit => "₦") %></td>
 													<td></td>
-													<td><%= products_and_growth_rate.unit_price_growth_rate_five.ceil %>%</td>
+													<td><%= number_to_currency(products_and_growth_rate.annual_price_5, :unit => "₦") %></td>
 													<td></td>
 													<td></td>
 													<td></td>
@@ -229,9 +227,7 @@
 
 
 <div class="container mt-5">
-	<h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
-		Cost Growth Rates
-	</h3>
+	
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
@@ -242,11 +238,14 @@
 
 							</tr>
 						</thead>
-						<% @business_plan.costs_growth_rates.each do |costs_growth_rate| %>
+						
 						<tbody>
-							<tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
-							<% %>
-							<td style="font-size: 18px; font-weight: bold;"><%= costs_growth_rate.cost_item %></td>
+							<tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">	
+								<td>
+									<h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
+										Cost Growth Rates
+									</h3>
+								</td>
 							</tr>
 					
 							<tr>
@@ -266,26 +265,347 @@
 											
 											<tbody>		
 												<tr>
-													<td>Costs Growth Rate</td>
-													<td><%= costs_growth_rate.cost_growth_rate_one.ceil %>%</td>
-													<td><%= costs_growth_rate.cost_growth_rate_two.ceil %>%</td>
-													<td><%= costs_growth_rate.cost_growth_rate_three.ceil %>%</td>
-													<td><%= costs_growth_rate.cost_growth_rate_four.ceil %>%</td>
-													<td><%= costs_growth_rate.cost_growth_rate_five.ceil %>%</td>
+													<td>Rent</td>
+													<td><%= @business_plan.rent_cgr1.ceil %>%</td>
+													<td><%= @business_plan.rent_cgr2.ceil %>%</td>
+													<td><%= @business_plan.rent_cgr3.ceil %>%</td>
+													<td><%= @business_plan.rent_cgr4.ceil %>%</td>
+													<td><%= @business_plan.rent_cgr5.ceil %>%</td>
 												</tr>
 												
 												<tr>
 													
 												</tr>
-																												
 												<tr>
+													<td>Direct Costs</td>
+													<td><%= @business_plan.direct_cgr1.ceil %>%</td>
+													<td><%= @business_plan.direct_cgr2.ceil %>%</td>
+													<td><%= @business_plan.direct_cgr3.ceil %>%</td>
+													<td><%= @business_plan.direct_cgr4.ceil %>%</td>
+													<td><%= @business_plan.direct_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												
+												<tr>
+													<td>Utilities</td>
+													<td><%= @business_plan.utilities_cgr1.ceil %>%</td>
+													<td><%= @business_plan.utilities_cgr2.ceil %>%</td>
+													<td><%= @business_plan.utilities_cgr3.ceil %>%</td>
+													<td><%= @business_plan.utilities_cgr4.ceil %>%</td>
+													<td><%= @business_plan.utilities_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Marketing</td>
+													<td><%= @business_plan.marketing_cgr1.ceil %>%</td>
+													<td><%= @business_plan.marketing_cgr2.ceil %>%</td>
+													<td><%= @business_plan.marketing_cgr3.ceil %>%</td>
+													<td><%= @business_plan.marketing_cgr4.ceil %>%</td>
+													<td><%= @business_plan.marketing_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Maintenance</td>
+													<td><%= @business_plan.maintenance_cgr1.ceil %>%</td>
+													<td><%= @business_plan.maintenance_cgr2.ceil %>%</td>
+													<td><%= @business_plan.maintenance_cgr3.ceil %>%</td>
+													<td><%= @business_plan.maintenance_cgr4.ceil %>%</td>
+													<td><%= @business_plan.maintenance_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Logistics</td>
+													<td><%= @business_plan.transport_cgr1.ceil %>%</td>
+													<td><%= @business_plan.transport_cgr2.ceil %>%</td>
+													<td><%= @business_plan.transport_cgr3.ceil %>%</td>
+													<td><%= @business_plan.transport_cgr4.ceil %>%</td>
+													<td><%= @business_plan.transport_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Communication</td>
+													<td><%= @business_plan.phone_cgr1.ceil %>%</td>
+													<td><%= @business_plan.phone_cgr2.ceil %>%</td>
+													<td><%= @business_plan.phone_cgr3.ceil %>%</td>
+													<td><%= @business_plan.phone_cgr4.ceil %>%</td>
+													<td><%= @business_plan.phone_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Administrative</td>
+													<td><%= @business_plan.admin_cgr1.ceil %>%</td>
+													<td><%= @business_plan.admin_cgr2.ceil %>%</td>
+													<td><%= @business_plan.admin_cgr3.ceil %>%</td>
+													<td><%= @business_plan.admin_cgr4.ceil %>%</td>
+													<td><%= @business_plan.admin_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Miscellaneous</td>
+													<td><%= @business_plan.misc_cgr1.ceil %>%</td>
+													<td><%= @business_plan.misc_cgr2.ceil %>%</td>
+													<td><%= @business_plan.misc_cgr3.ceil %>%</td>
+													<td><%= @business_plan.misc_cgr4.ceil %>%</td>
+													<td><%= @business_plan.misc_cgr5.ceil %>%</td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
 											</tbody>
 										</table>
 									</div> 
 								</td>
 							</tr>
 						</tbody>
-						<% end %>
+					</table>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div>
+
+
+<div class="container mt-5">
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table class="table table-condensed table-striped">
+						<thead>
+							<tr>
+
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr data-toggle="collapse" data-target="#demo9" class="accordion-toggle">	
+								<td>
+									<h3 class="mt-1 mb-3" style="font-size: 18px; font-weight: bold;">
+										Operation Costs
+									</h3>
+								</td>
+							</tr>
+					
+							<tr>
+								<td colspan="12" class="hiddenRow">
+									<div class="accordian-body collapse" id="demo9"> 
+										<table class="table table-striped">
+											<thead>
+												<tr class="info">
+													<th></th>
+													<th>Year One</th>
+													<th>Year Two</th>		
+													<th>Year Three</th>	
+													<th>Year Four</th>	
+													<th>Year Five</th>	
+												</tr>
+											</thead>	
+											
+											<tbody>		
+												<tr>
+													<td>Raw Materials</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.raw_materials_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.raw_materials_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.raw_materials_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.raw_materials_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.raw_materials_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Direct Labour</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.direct_labour_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.direct_labour_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.direct_labour_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.direct_labour_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.direct_labour_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												
+												<tr>
+													<td>Factory Overheads</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.factory_overhead_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.factory_overhead_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.factory_overhead_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.factory_overhead_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.factory_overhead_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Inbound Transport</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.inbound_transport_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.inbound_transport_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.inbound_transport_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.inbound_transport_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.inbound_transport_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr class="bg-white">
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Salaries/Wages</td>
+													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_one).sum, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_two).sum, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_three).sum, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_four).sum, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_five).sum, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Rent</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.rent_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.rent_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.rent_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.rent_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.rent_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+												<tr>
+													<td>Utilities</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.utilities_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.utilities_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.utilities_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.utilities_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.utilities_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+
+												<tr>
+													<td>Marketing</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.marketing_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.marketing_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.marketing_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.marketing_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.marketing_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+
+												<tr>
+													<td>Maintenance</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.website_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.website_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.website_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.website_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.website_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+
+												<tr>
+													<td>Logistics</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.transport_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.transport_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.transport_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.transport_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.transport_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+
+												<tr>
+													<td>Communication</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.telephone_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.telephone_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.telephone_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.telephone_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.telephone_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+
+												<tr>
+													<td>Administrative</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.admin_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.admin_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.admin_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.admin_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.admin_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+
+												<tr>
+													<td>Miscellaneous</td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.misc_op_cost_1.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.misc_op_cost_2.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.misc_op_cost_3.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.misc_op_cost_4.ceil, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.misc_op_cost_5.ceil, :unit => "₦") %></td>
+												</tr>
+												
+												<tr>
+													
+												</tr>
+											</tbody>
+										</table>
+									</div> 
+								</td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
 			</div> 

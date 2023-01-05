@@ -87,4 +87,38 @@ class ProductsAndGrowthRate < ApplicationRecord
     annual_price_4 * (1 + (self.sales_volume_growth_rate_five * 0.01))
   end
 
+  def revenue_1
+    annual_sales_1 * base_product_price
+  end
+  def revenue_2
+    annual_sales_2 * annual_price_2
+  end
+  def revenue_3
+    annual_sales_3 * annual_price_3
+  end
+  def revenue_4
+    annual_sales_4 * annual_price_4
+  end
+  def revenue_5
+    annual_sales_5 * annual_price_5
+  end
+
+  
+
+  def days_receivable_one
+    annual_sales_1 * base_product_price * business_plan.receivable_days / 365
+  end
+  def days_receivable_two
+    annual_sales_2 * annual_price_2 * business_plan.receivable_days / 365
+  end
+  def days_receivable_three
+    annual_sales_3 * annual_price_3 * business_plan.receivable_days / 365
+  end
+  def days_receivable_four
+    annual_sales_4 * annual_price_4 * business_plan.receivable_days / 365
+  end
+  def days_receivable_five
+    annual_sales_5 * annual_price_5 * business_plan.receivable_days / 365
+  end
+
 end

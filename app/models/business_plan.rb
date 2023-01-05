@@ -21,6 +21,7 @@ class BusinessPlan < ApplicationRecord
   accepts_nested_attributes_for :positions, allow_destroy: true
   accepts_nested_attributes_for :products_and_growth_rates, allow_destroy: true
   
+  
   def raw_materials_op_cost_1
     self.raw_material_cost * ( 1 + (0.01 * self.direct_cgr1))
   end
@@ -85,6 +86,31 @@ class BusinessPlan < ApplicationRecord
     self.inbound_transport_op_cost_4 * ( 1 + (0.01 * self.direct_cgr5))
   end
 
+  def total_direct_op_cost_1
+    self.raw_materials_op_cost_1 + self.direct_labour_op_cost_1 + self.factory_overhead_op_cost_1 + 
+    self.inbound_transport_op_cost_1
+  end
+  def total_direct_op_cost_2
+    self.raw_materials_op_cost_2 + self.direct_labour_op_cost_2 + self.factory_overhead_op_cost_2 + 
+    self.inbound_transport_op_cost_2
+  end
+  def total_direct_op_cost_3
+    self.raw_materials_op_cost_3 + self.direct_labour_op_cost_3 + self.factory_overhead_op_cost_3 + 
+    self.inbound_transport_op_cost_3
+  end
+  def total_direct_op_cost_4
+    self.raw_materials_op_cost_4 + self.direct_labour_op_cost_4 + self.factory_overhead_op_cost_4 + 
+    self.inbound_transport_op_cost_4
+  end
+  def total_direct_op_cost_5
+    self.raw_materials_op_cost_5 + self.direct_labour_op_cost_5 + self.factory_overhead_op_cost_5 + 
+    self.inbound_transport_op_cost_5
+  end
+
+
+  
+
+
   def inventory_schedule_1
     (self.raw_materials_op_cost_1 + self.direct_labour_op_cost_1 + self.factory_overhead_op_cost_1 + self.inbound_transport_op_cost_1) * self.inventory_days / 365
   end
@@ -107,27 +133,27 @@ class BusinessPlan < ApplicationRecord
 
   def days_payable_1
     (self.rent_op_cost_1 + self.utilities_op_cost_1 + self.marketing_op_cost_1 + self.admin_op_cost_1 + 
-      self.website_op_cost_1 + self.telephone_op_cost_1 + self.transport_op_cost_1 + self.misc_op_cost_1 )
+      self.website_op_cost_1 + self.telephone_op_cost_1 + self.transport_op_cost_1 + self.misc_op_cost_1 + self.salaries_one) * self.payable_days/365
   end
 
   def days_payable_2
     (self.rent_op_cost_2 + self.utilities_op_cost_2 + self.marketing_op_cost_2 + self.admin_op_cost_2 + 
-      self.website_op_cost_2 + self.telephone_op_cost_2 + self.transport_op_cost_2 + self.misc_op_cost_2 )
+      self.website_op_cost_2 + self.telephone_op_cost_2 + self.transport_op_cost_2 + self.misc_op_cost_2 + self.salaries_two) * self.payable_days/365
   end
 
   def days_payable_3
     (self.rent_op_cost_3 + self.utilities_op_cost_3 + self.marketing_op_cost_3 + self.admin_op_cost_3 + 
-      self.website_op_cost_3 + self.telephone_op_cost_3 + self.transport_op_cost_3 + self.misc_op_cost_3 )
+      self.website_op_cost_3 + self.telephone_op_cost_3 + self.transport_op_cost_3 + self.misc_op_cost_3 + self.salaries_three) * self.payable_days/365
   end
 
   def days_payable_4
     (self.rent_op_cost_4 + self.utilities_op_cost_4 + self.marketing_op_cost_4 + self.admin_op_cost_4 + 
-      self.website_op_cost_4 + self.telephone_op_cost_4 + self.transport_op_cost_4 + self.misc_op_cost_4 )
+      self.website_op_cost_4 + self.telephone_op_cost_4 + self.transport_op_cost_4 + self.misc_op_cost_4 + self.salaries_four) * self.payable_days/365
   end
 
   def days_payable_5
     (self.rent_op_cost_5 + self.utilities_op_cost_5 + self.marketing_op_cost_5 + self.admin_op_cost_5 + 
-      self.website_op_cost_5 + self.telephone_op_cost_5 + self.transport_op_cost_5 + self.misc_op_cost_5 )
+      self.website_op_cost_5 + self.telephone_op_cost_5 + self.transport_op_cost_5 + self.misc_op_cost_5 + self.salaries_five) * self.payable_days/365
   end
 
   def rent_op_cost_1
@@ -257,6 +283,35 @@ class BusinessPlan < ApplicationRecord
   def misc_op_cost_5
     self.misc_op_cost_4 * ( 1 + (0.01 * self.misc_cgr5))
   end
+
+
+  def total_op_expenses_1
+    self.rent_op_cost_1 + self.utilities_op_cost_1 + self.marketing_op_cost_1 + self.admin_op_cost_1 + 
+    self.website_op_cost_1 + self.telephone_op_cost_1 + self.transport_op_cost_1 + self.misc_op_cost_1 + 
+    self.total_charge_1 + self.salaries_one
+  end
+  def total_op_expenses_2
+    self.rent_op_cost_2 + self.utilities_op_cost_2 + self.marketing_op_cost_2 + self.admin_op_cost_2 + 
+    self.website_op_cost_2 + self.telephone_op_cost_2 + self.transport_op_cost_2 + self.misc_op_cost_2 + 
+    self.total_charge_2 + self.salaries_two
+  end
+  def total_op_expenses_3
+    self.rent_op_cost_3 + self.utilities_op_cost_3 + self.marketing_op_cost_3 + self.admin_op_cost_3 + 
+    self.website_op_cost_3 + self.telephone_op_cost_3 + self.transport_op_cost_3 + self.misc_op_cost_3 + 
+    self.total_charge_3 + self.salaries_three
+  end
+  def total_op_expenses_4
+    self.rent_op_cost_4 + self.utilities_op_cost_4 + self.marketing_op_cost_4 + self.admin_op_cost_4 + 
+    self.website_op_cost_4 + self.telephone_op_cost_4 + self.transport_op_cost_4 + self.misc_op_cost_4 + 
+    self.total_charge_4 + self.salaries_four
+  end
+  def total_op_expenses_5
+    self.rent_op_cost_5 + self.utilities_op_cost_5 + self.marketing_op_cost_5 + self.admin_op_cost_5 + 
+    self.website_op_cost_5 + self.telephone_op_cost_5 + self.transport_op_cost_5 + self.misc_op_cost_5 + 
+    self.total_charge_5 + self.salaries_five
+  end
+
+
 
   def land_add_2
     0
@@ -914,6 +969,38 @@ class BusinessPlan < ApplicationRecord
   end
   def total_net_5
     (self.land_net_5 + self.building_net_5 + self.furniture_net_5 + self.machinery_net_5 + self.vehicles_net_5 + self.installations_net_5)
+  end
+
+  def salaries_one
+    positions.sum(&:total_salaries_one)
+  end
+  def salaries_two
+    positions.sum(&:total_salaries_two)
+  end
+  def salaries_three
+    positions.sum(&:total_salaries_three)
+  end
+  def salaries_four
+    positions.sum(&:total_salaries_four)
+  end
+  def salaries_five
+    positions.sum(&:total_salaries_five)
+  end
+
+  def total_revenue_1
+    products_and_growth_rates.sum(&:revenue_1)
+  end
+  def total_revenue_2
+    products_and_growth_rates.sum(&:revenue_2)
+  end
+  def total_revenue_3
+    products_and_growth_rates.sum(&:revenue_3)
+  end
+  def total_revenue_4
+    products_and_growth_rates.sum(&:revenue_4)
+  end
+  def total_revenue_5
+    products_and_growth_rates.sum(&:revenue_5)
   end
   
 end

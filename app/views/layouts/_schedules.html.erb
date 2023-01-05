@@ -128,17 +128,19 @@
 													<th>Year Four</th>	
 													<th>Year Five</th>
 													<th>Year Six</th>	
+													<td><%=  %></td>
+													<td><%=  %></td>
 												</tr>
 											</thead>	
 											
 											<tbody>		
 												<tr>
 													<td>Days Receivable</td>
-													<% @business_plan.products_and_growth_rates.each do |products_and_growth_rate| %>
-													<td><%= number_to_currency(products_and_growth_rate.annual_sales_1 * products_and_growth_rate.base_product_price, :unit => "₦") %></td>
-													<% end %>
-													<td><%=  %></td>
-													<td><%=  %></td>
+													<td><%= number_to_currency(@products_and_growth_rate.days_receivable_one, :unit => "₦") %></td>
+													<td><%= number_to_currency(@products_and_growth_rate.days_receivable_two, :unit => "₦") %></td>
+													<td><%= number_to_currency(@products_and_growth_rate.days_receivable_three, :unit => "₦") %></td>
+													<td><%= number_to_currency(@products_and_growth_rate.days_receivable_four, :unit => "₦") %></td>
+													<td><%= number_to_currency(@products_and_growth_rate.days_receivable_five, :unit => "₦") %></td>
 													<td><%=  %></td>
 													<td><%=  %></td>
 												</tr>
@@ -152,36 +154,32 @@
 													<td><%= number_to_currency(@business_plan.inventory_schedule_3, :unit => "₦") %></td>
 													<td><%= number_to_currency(@business_plan.inventory_schedule_4, :unit => "₦") %></td>
 													<td><%= number_to_currency(@business_plan.inventory_schedule_5, :unit => "₦") %></td>
+													<td><%=  %></td>
+													<td><%=  %></td>
 												</tr>
 												
 												<tr></tr>
 
 												<tr>
 													<td>Days Payable</td>
-													<td><%= number_to_currency(((@positions.map(&:total_salaries_one).sum) + @business_plan.days_payable_1) * 
-														@business_plan.payable_days / 365, :unit => "₦") %>
-													</td>
-													<td><%= number_to_currency(((@positions.map(&:total_salaries_two).sum) + @business_plan.days_payable_2) * 
-														@business_plan.payable_days / 365, :unit => "₦") %>
-													</td>
-													<td><%= number_to_currency(((@positions.map(&:total_salaries_three).sum) + @business_plan.days_payable_3) * 
-														@business_plan.payable_days / 365, :unit => "₦") %>
-													</td>
-													<td><%= number_to_currency(((@positions.map(&:total_salaries_four).sum) + @business_plan.days_payable_4) * 
-														@business_plan.payable_days / 365, :unit => "₦") %>
-													</td>
-													<td><%= number_to_currency(((@positions.map(&:total_salaries_five).sum) + @business_plan.days_payable_5) * 
-														@business_plan.payable_days / 365, :unit => "₦") %>
-													</td>
+													<td><%= number_to_currency(@business_plan.days_payable_1, :unit => "₦") %></td>
+													<td><%= number_to_currency(@business_plan.days_payable_2, :unit => "₦") %></td>
+													<td><%= number_to_currency(@business_plan.days_payable_3, :unit => "₦") %></td>
+													<td><%= number_to_currency(@business_plan.days_payable_4, :unit => "₦") %></td>
+													<td><%= number_to_currency(@business_plan.days_payable_5, :unit => "₦") %></td>
+													<td><%=  %></td>
+													<td><%=  %></td>
 												</tr>
 												
 												<tr></tr>
 
 												<tr>
 													<td>Net Working Capital</td>
-													<td><%=  %></td>
-													<td><%=  %></td>
-													<td><%=  %></td>
+													<td><%= number_to_currency(@net_working_capital_1, :unit => "₦") %></td>
+													<td><%= number_to_currency(@net_working_capital_2, :unit => "₦") %></td>
+													<td><%= number_to_currency(@net_working_capital_3, :unit => "₦") %></td>
+													<td><%= number_to_currency(@net_working_capital_4, :unit => "₦") %></td>
+													<td><%= number_to_currency(@net_working_capital_5, :unit => "₦") %></td>
 													<td><%=  %></td>
 													<td><%=  %></td>
 												</tr>
@@ -190,9 +188,11 @@
 
 												<tr>
 													<td style="font-weight:bold;">Change in Net Working Capital</td>
-													<td><%=  %></td>
-													<td><%=  %></td>
-													<td><%=  %></td>
+													<td><%= number_to_currency(@change_net_cap_1, :unit => "₦") %></td>
+													<td><%= number_to_currency(@change_net_cap_2, :unit => "₦") %></td>
+													<td><%= number_to_currency(@change_net_cap_3, :unit => "₦") %></td>
+													<td><%= number_to_currency(@change_net_cap_4, :unit => "₦") %></td>
+													<td><%= number_to_currency(@change_net_cap_5, :unit => "₦") %></td>
 													<td><%=  %></td>
 													<td><%=  %></td>
 												</tr>

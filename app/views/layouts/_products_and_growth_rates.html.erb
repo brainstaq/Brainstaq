@@ -488,11 +488,11 @@
 												</tr>
 												<tr>
 													<td>Salaries/Wages</td>
-													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_one).sum, :unit => "₦") %></td>
-													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_two).sum, :unit => "₦") %></td>
-													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_three).sum, :unit => "₦") %></td>
-													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_four).sum, :unit => "₦") %></td>
-													<td class="bg-info text-white"><%= number_to_currency(@positions.map(&:total_salaries_five).sum, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.salaries_one, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.salaries_two, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.salaries_three, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.salaries_four, :unit => "₦") %></td>
+													<td class="bg-info text-white"><%= number_to_currency(@business_plan.salaries_five, :unit => "₦") %></td>
 												</tr>
 												
 												<tr>

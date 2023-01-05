@@ -23,6 +23,4 @@ class Position < ApplicationRecord
   def total_salaries_five
     self.number_of_employees_five * (self.base_annual_salary * (1 + (self.salaries_cgr5 * 0.01)) * (1 + (self.salary_benefits * 0.01)))
   end
-
-
 end

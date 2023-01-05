@@ -101,6 +101,57 @@ class BusinessPlansController < ApplicationController
       @business_plan.utilities_cost + @business_plan.marketing_cost + 
       @business_plan.misc
     )
+    
+    # @total_salaries_one = Position.all.sum(&:total_salaries_one)
+
+    @products_and_growth_rate = ProductsAndGrowthRate.find(params[:id])
+
+    @net_working_capital_1 = (@products_and_growth_rate.days_receivable_one + @business_plan.inventory_schedule_1) - @business_plan.days_payable_1
+    @net_working_capital_2 = (@products_and_growth_rate.days_receivable_two + @business_plan.inventory_schedule_2) - @business_plan.days_payable_2
+    @net_working_capital_3 = (@products_and_growth_rate.days_receivable_three + @business_plan.inventory_schedule_3) - @business_plan.days_payable_3
+    @net_working_capital_4 = (@products_and_growth_rate.days_receivable_four + @business_plan.inventory_schedule_4) - @business_plan.days_payable_4
+    @net_working_capital_5 = (@products_and_growth_rate.days_receivable_five + @business_plan.inventory_schedule_5) - @business_plan.days_payable_5
+
+    @change_net_cap_1 = @net_working_capital_1
+    @change_net_cap_2 = @net_working_capital_2 - @net_working_capital_1
+    @change_net_cap_3 = @net_working_capital_3 - @net_working_capital_2
+    @change_net_cap_4 = @net_working_capital_4 - @net_working_capital_3
+    @change_net_cap_5 = @net_working_capital_5 - @net_working_capital_4
+
+    @gross_profit_1 = @business_plan.total_revenue_1 - @business_plan.total_direct_op_cost_1
+    @gross_profit_2 = @business_plan.total_revenue_2 - @business_plan.total_direct_op_cost_2
+    @gross_profit_3 = @business_plan.total_revenue_3 - @business_plan.total_direct_op_cost_3
+    @gross_profit_4 = @business_plan.total_revenue_4 - @business_plan.total_direct_op_cost_4
+    @gross_profit_5 = @business_plan.total_revenue_5 - @business_plan.total_direct_op_cost_5
+
+    @op_profit_1 = @gross_profit_1 - @business_plan.total_op_expenses_1
+    @op_profit_2 = @gross_profit_2 - @business_plan.total_op_expenses_2
+    @op_profit_3 = @gross_profit_3 - @business_plan.total_op_expenses_3
+    @op_profit_4 = @gross_profit_4 - @business_plan.total_op_expenses_4
+    @op_profit_5 = @gross_profit_5 - @business_plan.total_op_expenses_5
+
+    @profit_before_tax_1 = @op_profit_1 - @interest_expense_1
+    @profit_before_tax_2 = @op_profit_2 - @interest_expense_2
+    @profit_before_tax_3 = @op_profit_3 - @interest_expense_3
+    @profit_before_tax_4 = @op_profit_4 - @interest_expense_4
+    @profit_before_tax_5 = @op_profit_5 - @interest_expense_5
+
+
+    @taxation_1 = if @profit_before_tax_1 < 0 then 0 else (@profit_before_tax_1 * @business_plan.company_tax_rate * 0.01) end
+    @taxation_2 = if @profit_before_tax_2 < 0 then 0 else (@profit_before_tax_2 * @business_plan.company_tax_rate * 0.01) end
+    @taxation_3 = if @profit_before_tax_3 < 0 then 0 else (@profit_before_tax_3 * @business_plan.company_tax_rate * 0.01) end
+    @taxation_4 = if @profit_before_tax_4 < 0 then 0 else (@profit_before_tax_4 * @business_plan.company_tax_rate * 0.01) end
+    @taxation_5 = if @profit_before_tax_5 < 0 then 0 else (@profit_before_tax_5 * @business_plan.company_tax_rate * 0.01) end
+    
+    @net_income_1 = @profit_before_tax_1 - @taxation_1
+    @net_income_2 = @profit_before_tax_2 - @taxation_2
+    @net_income_3 = @profit_before_tax_3 - @taxation_3
+    @net_income_4 = @profit_before_tax_4 - @taxation_4
+    @net_income_5 = @profit_before_tax_5 - @taxation_5
+
+
+
+
 
     respond_to do |format|
       format.html

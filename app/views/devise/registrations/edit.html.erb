@@ -42,11 +42,10 @@
 								<a class="nav-item nav-link" id="nav-profiles-tab" data-toggle="tab" href="#nav-profiles" role="tab" aria-controls="nav-profiles" aria-selected="false">Social Profiles</a>
 								<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Change Password</a>
 								<a class="nav-item nav-link" id="nav-photo-tab" data-toggle="tab" href="#nav-photo" role="tab" aria-controls="nav-photo" aria-selected="false">Upload Photo</a>
-								<a class="nav-item nav-link" id="nav-payout-tab" data-toggle="tab" href="#nav-payout" role="tab" aria-controls="nav-payout" aria-selected="false">Payout</a>
+								<% if @user.ideas.present? %>
+									<a class="nav-item nav-link" id="nav-payout-tab" data-toggle="tab" href="#nav-payout" role="tab" aria-controls="nav-payout" aria-selected="false">Payout</a>
+								<% end %>
 								<a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">Delete Account</a>
-								</div>
-								<div class="nav nav-tabs" id="nav-tab" role="tablist">
-									<a class="nav-item nav-link" id="nav-roles-tab" data-toggle="tab" href="#nav-roles" role="tab" aria-controls="nav-roles" aria-selected="false">Select Roles</a>
 								</div>
 							</div><!--acc-leftbar end-->
 						</div>
@@ -55,31 +54,31 @@
 								<div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
 									<div class="acc-setting">
 										<h3>Personal Details</h3>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Last Name</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :last_name, :readonly => f.object.persisted?, placeholder: "Last Name", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>First Name</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :first_name, :readonly => f.object.persisted?, placeholder: "First Name", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Username</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :username, :readonly => f.object.persisted?, placeholder: "Username", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 											  <h5>Gender</h5>
 												<div class="cpp-fiel">
 													<%= f.select :gender, %w{Male Female}, {}, :prompt => 'Select', class: 'form-control' %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Country</h5>
 												<div class="cpp-fiel">
 													<% if @user.country %>
@@ -144,7 +143,7 @@
 													<% end %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Phone Number</h5>
 												<div class="cpp-fiel">
 													<%= f.number_field :phone, placeholder: "Phone Number", class: "form-control" %>
@@ -170,31 +169,31 @@
 							  		<div class="acc-setting">
 							  			<h3>Social Profiles</h3>
 							  			
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Website</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :website, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Facebook</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Twitter</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-6">
 												<h5>Instagram</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-6">
 												<h5>Linkedin</h5>
 												<div class="cpp-fiel">
 													<%= f.text_field :linkedin_url, placeholder: "Enter your Linkedin profile link... e.g https://linkedin.com/profile", class: "form-control" %>
@@ -213,19 +212,19 @@
 							  		<div class="acc-setting">
 										<h3>Change Password</h3>
 										
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Current Password</h5>
 												<div class="cpp-fiel">
 													<%= f.password_field :current_password, placeholder: "Enter your current password to confirm your changes", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>New Password</h5>
 												<div class="cpp-fiel">
 													<%= f.password_field :password, placeholder: "Enter New Password", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Confirm New Password</h5>
 												<div class="cpp-fiel">
 													<%= f.password_field :password_confirmation, placeholder: "Confirm New Password", class: "form-control" %>
@@ -281,19 +280,19 @@
 										</div>
 										<div class="cp-field">
 										</div> %>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Account Name</h5>
 												<div class="cpp-fiel">
 													<input class="form-control" type="text" placeholder="Enter Account Name">
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Account Number</h5>
 												<div class="cpp-fiel">
 													<input class="form-control" type="text" placeholder="Enter Account Number">
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Bank Name</h5>
 												<div class="cpp-fiel">
 													<input class="form-control" type="text" placeholder="Enter Bank Name">
@@ -327,18 +326,18 @@
 							  </div>
 
 								<div class="tab-pane fade" id="nav-roles" role="tabpanel" aria-labelledby="nav-roles-tab">
-							  		<div class="acc-setting">
-										<h3>Select Roles</h3>
-											<div class="cp-field">
-												<%#= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
-      									<%#= f.error :roles, class: 'text-danger' %>
-											</div>
-										
-											<div class="save-stngs pd3">
-												<ul>
-													<%= f.submit "Update Account", class: "btn btn-primary" %>
-												</ul>
-											</div><!--save-stngs end-->	
+									<div class="acc-setting">
+									<%# <h3>Select Roles</h3> %>
+										<%# <div class="cp-field"> %>
+											<%#= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+											<%#= f.error :roles, class: 'text-danger' %>
+										<%# </div> %>
+									
+										<div class="save-stngs pd3">
+											<ul>
+												<%= f.submit "Update Account", class: "btn btn-primary" %>
+											</ul>
+										</div><!--save-stngs end-->	
 									</div><!--acc-setting end-->
 							</div>
 						</div>

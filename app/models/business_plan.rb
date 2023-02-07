@@ -8,6 +8,7 @@ class BusinessPlan < ApplicationRecord
   # validates_uniqueness_of :enterprise_id
 
   belongs_to :enterprise
+  belongs_to :user
 
   has_many :products_and_growth_rates, dependent: :destroy
   has_many :positions, dependent: :destroy
@@ -20,6 +21,8 @@ class BusinessPlan < ApplicationRecord
   accepts_nested_attributes_for :marketing_expenses, allow_destroy: true
   accepts_nested_attributes_for :positions, allow_destroy: true
   accepts_nested_attributes_for :products_and_growth_rates, allow_destroy: true
+  
+  
   
   
   def raw_materials_op_cost_1
@@ -106,10 +109,6 @@ class BusinessPlan < ApplicationRecord
     self.raw_materials_op_cost_5 + self.direct_labour_op_cost_5 + self.factory_overhead_op_cost_5 + 
     self.inbound_transport_op_cost_5
   end
-
-
-  
-
 
   def inventory_schedule_1
     (self.raw_materials_op_cost_1 + self.direct_labour_op_cost_1 + self.factory_overhead_op_cost_1 + self.inbound_transport_op_cost_1) * self.inventory_days / 365
@@ -284,7 +283,6 @@ class BusinessPlan < ApplicationRecord
     self.misc_op_cost_4 * ( 1 + (0.01 * self.misc_cgr5))
   end
 
-
   def total_op_expenses_1
     self.rent_op_cost_1 + self.utilities_op_cost_1 + self.marketing_op_cost_1 + self.admin_op_cost_1 + 
     self.website_op_cost_1 + self.telephone_op_cost_1 + self.transport_op_cost_1 + self.misc_op_cost_1 + 
@@ -311,7 +309,9 @@ class BusinessPlan < ApplicationRecord
     self.total_charge_5 + self.salaries_five
   end
 
-
+  def total_add_1
+    self.land + self.utilities + self.vehicles + self.equipment + self.office_supplies + self.rent
+  end
 
   def land_add_2
     0
@@ -859,7 +859,6 @@ class BusinessPlan < ApplicationRecord
     (self.land_acc_close_5 + self.building_acc_close_5 + self.furniture_acc_close_5 + self.machinery_acc_close_5 + 
       self.vehicles_acc_close_5 + self.installations_acc_close_5)
   end
-
 
   def land_net_1
     self.land - self.land_charge_1

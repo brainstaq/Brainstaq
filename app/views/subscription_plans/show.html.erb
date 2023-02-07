@@ -1,0 +1,21 @@
+<!-- display the details of the selected subscription plan -->
+<h1><%= @subscription_plan.plan_name %></h1>
+<table>
+  <tbody>
+    <tr>
+      <th>Price:</th>
+      <td><%= number_to_currency(@subscription_plan.cost, :unit => "₦") %></td>
+    </tr>
+    <tr>
+      <th>Duration:</th>
+      <td><%= @subscription_plan.duration %></td>
+    </tr>
+    <tr>
+      <th>Features:</th>
+      <td><%= @subscription_plan.features.name %></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- include a link to the subscription plans index page -->
+<%= link_to 'Back', subscription_plans_path %>

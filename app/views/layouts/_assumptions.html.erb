@@ -242,13 +242,17 @@
 											</tr>
 										</thead>
 										<tbody>
-												<tr>
-													<td>Loan Year</td>
+											<tr>
+												<td>Loan Year</td>
 													<td><%= @business_plan.loan_year %></td>
 												</tr>
 												<tr>
 													<td>Loan Amount</td>
-													<td><%= number_to_currency(@loan_amount, :unit => "₦") %></td>
+													<% if @business_plan.debt? %>
+														<td><%= number_to_currency(@loan_amount, :unit => "₦") %></td>
+													<% else %>
+													<td><%= number_to_currency(0, :unit => "₦") %></td>
+													<% end %>
 												</tr>
 												<tr>
 													<td>Repayment Period</td>
@@ -400,7 +404,7 @@
 												<tbody>
 													<tr>
 														<td>Salaries & Wages</td>
-														<td><%= number_to_currency(@business_plan.salaries_cost, :unit => "₦") %></td>
+														<td><%= number_to_currency(@business_plan.salaries_one, :unit => "₦") %></td>
 													</tr>
 													<tr>
 														<td>Rent</td>

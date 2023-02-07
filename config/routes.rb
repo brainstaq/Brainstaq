@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   require "sidekiq/web"
   mount Sidekiq::Web, at: "/sidekiq"
+  mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: "home#index"
   
@@ -14,7 +16,6 @@ Rails.application.routes.draw do
       end
     end
     resources :enrollments, only: [:new, :create, :index]
-
     member do
       get :analytics
       patch :approve
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :show, :update]
   resources :youtube, only: :show
   resources :tags, only: [:create, :index, :destroy]
-
   resources :enrollments do
     get :my_students, on: :collection
     member do
@@ -46,17 +46,14 @@ Rails.application.routes.draw do
   get 'activity', to: 'courses#activity'
 
   resources :donors
-  mount Intro::Engine => "/intro" #brainstaq.com/intro/admin
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
   resources :follows
   resources :subscribers, only: [:create, :new, :index]
-  
   resources :conversations do
     resources :messages
   end
   
   resources :donations
+  resources :features
   # resources :contact, only: [:new, :create]
   
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'}, :controllers => {
@@ -95,10 +92,13 @@ Rails.application.routes.draw do
     member do
       put 'like', to: "ideas#like"
       put 'unlike', to: "ideas#unlike"
+      get 'donation_history'
     end
   end
   post '/tinymce_assets' => 'tinymce_assets#create'
   # post "follow/user" => "users#follow_user", as: :follow_user
+  post  'check_recurring' => 'subscription_plans#check_recurring', as: :check_recurring
+  post  'check_selected_plan' => 'subscription_plans#check_selected_plan', as: :check_selected_plan
 
   post '/users/:username/follow', to: "users#follow", as: "follow_user"
   post '/users/:username/unfollow', to: "users#unfollow", as: "unfollow_user"
@@ -128,6 +128,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:profile] do
     get :ideas
+    get :enterprises
   end
   
   resources :users do
@@ -141,17 +142,17 @@ Rails.application.routes.draw do
     resource :name, only: :update, module: "sessions"
   end
 
-  # resources :retracts
-  # resources :transactions
-  # resources :transactions do
-  #   member do
-  #     get 'details'
-  #   end
-  # end
+  resources :retracts
+  resources :transactions
+  resources :transactions do
+    member do
+      get 'details'
+    end
+  end
   
-  # post 'web' => "retracts#web"
-  # get 'callback' => "transactions#callback"
-  # get 'upgrade' => "transactions#upgrade"  
+  post 'web' => "retracts#web"
+  get 'callback' => "transactions#callback"
+  get 'upgrade' => "transactions#upgrade"  
 
   # get 'plan_subscriptions/success'
   # get 'transactions/success'

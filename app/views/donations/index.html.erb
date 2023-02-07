@@ -46,6 +46,7 @@
             </tr>
           </thead>
           <tbody>
+
           <% @donations.each do |donation| %> 
             <tr>
               <td>
@@ -61,7 +62,7 @@
               <td><%= number_to_currency(donation.amount/100, :unit => "₦") %></td>
               <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
               <td><%= link_to (donation.idea.title), idea_path(donation.idea) %></td>
-              <td><%= donation.perk %></td>
+              <td><%#= donation.perk_id %></td>
             </tr>
           </tbody>
           <% end %>

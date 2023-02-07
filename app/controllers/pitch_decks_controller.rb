@@ -2,6 +2,7 @@ class PitchDecksController < ApplicationController
   before_action :authenticate_user!
   before_action :get_enterprise
   before_action :set_pitch_deck, only: %i[ show edit update destroy ]
+  #before_action :require_subscription, only: [:new]
   before_action :check_quota, only: [:new]
   
 
@@ -74,6 +75,13 @@ class PitchDecksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to enterprise_pitch_decks_path(@enterprise), notice: "Business plan was successfully deleted" }
       format.json { head :no_content }
+    end
+  end
+
+  def require_subscription
+    unless current_user.subscribed?
+      flash[:error] = "A subscription is required to create a pitch deck."
+      redirect_to new_transaction_path
     end
   end
 

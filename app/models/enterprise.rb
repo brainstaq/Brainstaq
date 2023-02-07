@@ -1,7 +1,4 @@
 class Enterprise < ApplicationRecord
-  enum status: [:inactive, :active]
-  # before_save :check_quota
-
 	validates :name, :address, :email, :phone_number, :country, :category, :image, :website_url, 
   :facebook_url, :twitter_url, :instagram_url, :user_id, :state, :city, presence: true
 
@@ -33,8 +30,6 @@ class Enterprise < ApplicationRecord
   has_many :portfolios, dependent: :destroy
   has_many :services, dependent: :destroy
 
-  # has_many :costs_growth_rates
-
   def to_param
     "#{id}-#{slug}"
   end
@@ -44,13 +39,6 @@ class Enterprise < ApplicationRecord
   def set_slug
     self.slug = name.to_s.parameterize
   end
-
-  # def check_quota
-  #   if self.user.enterprises.count >=  1
-  #     self.errors.add(:base, "Maximum number of Brands reached!")
-  #     return false
-  #   end
-  # end
 
   def image_size_validation
     #errors[:image] << "should be less than 1MB" if image.size > 1.megabytes

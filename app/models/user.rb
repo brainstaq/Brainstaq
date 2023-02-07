@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validate :image_size_validation
   validates :bio, length: { maximum: 180 }
 
+  # belongs_to :subscription_plan
+
   # include PublicActivity::Model
   # tracked only: [:create]
   
@@ -19,14 +21,15 @@ class User < ApplicationRecord
   # has_one :sub
   #has_many :transactions, dependent: :destroy
 
+  has_many :transactions, dependent: :destroy
   has_many :ideas, dependent: :destroy
   has_many :enterprises, dependent: :destroy
-  has_many :donations, through: :ideas
+  has_many :business_plans, through: :enterprises
+  has_many :donations #through: :ideas
   has_many :comments, dependent: :destroy
   has_many :team_members, through: :enterprises
 
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
-
   has_many :visits, class_name: "Ahoy::Visit"
 
   acts_as_voter
@@ -35,6 +38,12 @@ class User < ApplicationRecord
   has_many :followees, through: :followed_users
   has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, through: :following_users
+
+  # scope :with_subscription_plan_id, (lambda {|subscription_plan_id|
+  #   where(subscription_plan_id: [*subscription_plan_id])})
+
+  # scope :with_subscription_plan_name, (lambda {|subscription_plan_name|
+  #   where('subscription_plans.plan_name = ?', subscription_plan_name).joins(:subscription_plan)})
 
   
   def full_name
@@ -95,6 +104,18 @@ class User < ApplicationRecord
 
   def funded_ideas_and_user
     self.donations.includes(idea: :user)
+  end
+
+  def subscribed?
+    # self.enterprises.subscription_plan
+  end
+
+  def can_create_enterprise?
+    enterprise_count < 2
+  end
+
+  def can_create_business_plan?
+    business_plan_count < 2
   end
 
   # after_create :setup_subscription_plan

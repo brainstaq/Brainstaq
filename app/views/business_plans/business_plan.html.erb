@@ -14,76 +14,94 @@
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Executive Summary</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.executive_summary.html_safe %>
+    <%= simple_format(@business_plan.executive_summary.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Vision</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.vision.html_safe %>
+    <%= simple_format(@business_plan.vision.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Mission</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.mission.html_safe %>
+    <%= simple_format(@business_plan.mission.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Objectives</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.objectives.html_safe %>
+    <%= simple_format(@business_plan.objectives.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Value Proposition</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.value_proposition.html_safe %>
+    <%= simple_format(@business_plan.value_proposition.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Products and Services</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.products_and_services.html_safe %>
+    <%= simple_format(@business_plan.products_and_services.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Industry Analysis</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.industry_analysis.html_safe %>
+    <%= simple_format(@business_plan.industry_analysis.html_safe) %>
   </p>
 
-    <h4 class="mb-0 mt-3" style="font-weight: bold;">Competition</h4>
+  <h4 class="mb-0 mt-3" style="font-weight: bold;">Competition</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.competition.html_safe %>
+    <%= simple_format(@business_plan.competition.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">SWOT</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.swot.html_safe %>
+    <%= simple_format(@business_plan.swot.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Operations Plan</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.operations.html_safe %>
+    <%= simple_format(@business_plan.operations.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Marketing Plan</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.marketing.html_safe %>
+    <%= simple_format(@business_plan.marketing.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Management Plan</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.management.html_safe %>
+    <%= simple_format(@business_plan.management.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Financial Plan</h4>
   <p class="mt-2 mb-0">
-    <%= @business_plan.financial.html_safe %>
+    <%= simple_format(@business_plan.financial.html_safe) %>
   </p>
 
   <h4 class="mb-0 mt-3" style="font-weight: bold;">Milestones</h4>
-  <p class="mt-2 mb-0">
-    <%#= @business_plan.milestones.html_safe %>
-  </p>
-
-  <h4 class="mb-0 mt-3" style="font-weight: bold;">Appendices</h4>
-  <p class="mt-2 mb-0">
-    <%= @business_plan.appendices.html_safe %>
-  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Milestone</th>
+              <th scope="col">Done By</th>
+              <th scope="col">Cost</th>
+              <th scope="col">Scheduled Date</th>
+            </tr>
+          </thead>
+          <% @milestones.each do |milestone| %>
+            <tbody>
+              <tr>
+                <th scope="row"><%= milestone.milestone %></th>
+                <td><%= milestone.done_by %></td>
+                <td><%= number_to_currency(milestone.cost, :unit => "₦") %></td>
+                <td><%= local_time(milestone.date_schedule)%></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

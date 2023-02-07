@@ -29,7 +29,7 @@
 
 <main id="main">
   <section class="section-padding pb-0" data-aos="fade-in" data-aos-delay="150">
-    <div class="container">  
+    <div class="container mb-5">  
       <div class="row justify-content-center">
         <div class="col-lg-6 col-md-9 text-center mb-40">
           <h2 class="section-title">Search <strong><span class="text-primary">Results</span></strong></h2>
@@ -40,49 +40,77 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container mt-3">
       <div class="row ng-scope">
         <div class="col-md-12 col-md-pull-3">
           <% c = 0 %>
           
           <% @ideas.each do |idea| %>
-              <section class="search-result-item">
-                <a class="image-link" href="<%= idea_url(idea) %>">
-                  <% if idea.image.present? %>
-                    <%=image_tag idea.image_url, class: "image", style: "width: 200px; height: 200px;" %>
-                  <% end %>
-                </a>
-                <div class="search-result-item-body">
-                  <div class="row">
-                    <div class="col-sm-9">
-                      <h4 class="search-result-item-heading">
-                        <%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %>
-                      </h4>
-                      <p class="info usr-cnt"><%= idea.category.name %></p>
-                    
-                      <a class="text-dark description" href="<%= idea_url(idea) %>">
-                        <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
-                      </a>
-                    </div>
-                    <div class="col-sm-3 text-align-center">
-                      <p class="value3 mt-sm"></p>
-                      <p class="value3 mt-sm"></p>
-                      <p class="info text-muted mb-0"><span class="fa fa-filter text-primary mr-1"></span> 
-                        <%= "#{idea.relevance_bar}%" %> Relevance
-                      </p>
-                      <p class="fs-mini info text-muted mb-0"><span class="fa fa-eye text-primary mr-1"></span> 
-                        <%= pluralize(idea.impressionist_count, 'View') %>
-                      </p>
-                      <p class="fs-mini info text-muted mb-3"><span class="fa fa-heart text-primary mr-1"></span> 
-                        <%= pluralize(idea.get_likes.size, 'Like') %>
-                      </p>
-                      <%= link_to 'View More', idea, class: 'btn btn-primary btn-info btn-sm' %>
-                    </div>
+            <section class="search-result-item">
+              <a class="image-link" href="<%= idea_url(idea) %>">
+                <% if idea.image.present? %>
+                  <%=image_tag idea.image_url, class: "image", style: "width: 200px; height: 200px;" %>
+                <% end %>
+              </a>
+              <div class="search-result-item-body">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <h4 class="search-result-item-heading">
+                      <%= link_to idea.title, idea, class: 'text-dark', style: "font-weight: bold;" %>
+                    </h4>
+                    <p class="info usr-cnt"><%= idea.category.name %></p>
+                  
+                    <a class="text-dark description" href="<%= idea_url(idea) %>">
+                      <%= truncate(sanitize(idea.description, tags: []), length: 200) %>
+                    </a>
+                  </div>
+                  <div class="col-sm-3 text-align-center">
+                    <p class="value3 mt-sm"></p>
+                    <p class="value3 mt-sm"></p>
+                    <p class="info text-muted mb-0"><span class="fa fa-filter text-primary mr-1"></span> 
+                      <%= "#{idea.relevance_bar}%" %> Relevance
+                    </p>
+                    <p class="fs-mini info text-muted mb-0"><span class="fa fa-eye text-primary mr-1"></span> 
+                      <%= pluralize(idea.impressionist_count, 'View') %>
+                    </p>
+                    <p class="fs-mini info text-muted mb-3"><span class="fa fa-heart text-primary mr-1"></span> 
+                      <%= pluralize(idea.get_likes.size, 'Like') %>
+                    </p>
+                    <%= link_to 'View More', idea, class: 'btn btn-primary btn-info btn-sm' %>
                   </div>
                 </div>
-              </section>
-              <% c = c + 1 %>
-            <% end %>
+              </div>
+            </section>
+            <% c = c + 1 %>
+          <% end %>
+
+          <% @enterprises.each do |enterprise| %>
+            <section class="search-result-item">
+              <a class="image-link" href="<%= enterprise_url(enterprise) %>">
+                <% if enterprise.image.present? %>
+                  <%=image_tag enterprise.image_url, class: "image", style: "width: 200px; height: 200px;" %>
+                <% end %>
+              </a>
+              <div class="search-result-item-body">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <h4 class="search-result-item-heading">
+                      <%= link_to enterprise.name, enterprise, class: 'text-dark', style: "font-weight: bold;" %>
+                    </h4>
+                    <p class="info usr-cnt"><%= enterprise.category.name %></p>
+                  
+                    <a class="text-dark description" href="<%= enterprise_url(enterprise) %>">
+                      <%= enterprise.info.to_plain_text.truncate(300) %>
+                    </a>
+                  </div>
+                  <div class="col-sm-3 text-align-center">
+                    <%= link_to 'View More', enterprise, class: 'btn btn-primary btn-info btn-sm' %>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <% c = c + 1 %>
+          <% end %>
           
           <% @users.each do |user| %>
               <section class="search-result-item">

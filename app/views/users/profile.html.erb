@@ -154,15 +154,16 @@
                           </a>
 													<span style="font-style: italic;"><%= (@user.ideas.count) %></span>
                         </li>
-                        <li data-tab="info-dd">
+                        <%# <li data-tab="info-dd">
                           <a href="#" title="">
                             <i class="fas fa-users"></i>
                             <span>Teams</span>
                           </a>
-                          <span style="font-style: italic;"><%#= (@user.team_members.count) %></span>
-                        </li>
+                          <span style="font-style: italic;">= (@user.team_members.count)</span>
+                        <%# </li> %>
   
-                        <li data-tab="my-bidss">
+                        <%# <li data-tab="my-bidss"> %>
+												<li data-tab="feed-dd">
                           <a href="#" title="">
                             <i class="fas fa-life-ring"></i>
                             <span>Campaigns</span>

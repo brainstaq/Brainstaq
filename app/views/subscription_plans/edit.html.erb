@@ -1,0 +1,140 @@
+<% content_for :title, "Update Plans" %>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-50">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Update Plan</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Plans", subscription_plans_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Update Plan</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+
+<div class="row justify-content-center mt-5">
+	<div class="form-wrap col-md-6">	
+		<%= form_for([@subscription_plan], html: {class: 'form-group m-t-40' }) do |f| %>
+      <% if @subscription_plan.errors.any? %>
+        <% @subscription_plan.errors.full_messages.each do |message| %>
+          <div class='alert alert-danger flash-message'>
+            <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="name-label" for="name">Plan Name</label>
+            <%= f.text_field :plan_name, class: 'form-control' %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label id="email-label" for="email">Cost(₦)</label>
+						<%= f.number_field :cost, class: 'form-control' %>
+            </div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Plan Duration</label>
+						<%= f.select(:duration, options_for_select(SubscriptionPlan.durations.keys.map { |duration| [duration.titleize, duration]}), {include_blank: true}, { :class =>  "form-control" } ) %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Recurring Plan?</label>
+						<%= f.select(:recurring, options_for_select([['Yes', :true], ['No', :false]]), {include_blank: "Choose Yes or No"}, { :class =>  'form-control' } ) %>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label>Description</label>
+						<%= f.text_field :description, class: 'form-control' %>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+          <div data-controller="nested-form">
+            <template data-target='nested-form.template'>
+              <%= f.fields_for :features, Feature.new, child_index: 'TEMPLATE_RECORD' do |feature| %>
+                <%= render 'feature_fields', form: feature %>
+              <% end %>
+            </template>
+
+            <%= f.fields_for :features do |feature| %>
+              <%= render 'feature_fields', form: feature %>
+            <% end %>
+      
+            <div data-target="nested-form.add_perk">
+              <%= link_to "Add Feature", "#", data: { action: "nested-form#add_association" }, class: "btn rounded btn-primary mt-3" %>
+            </div>
+          </div>
+          <div class="save-stngs pd2">
+            <ul class="float-right">
+              <li><%= f.submit 'Update Plan', class: "actions btn rounded btn-primary" %></li>
+              <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+            </ul>
+          </div><!--save-stngs end-->
+        </div>
+			</div>
+		<% end %>
+	</div>	
+</div>
+<%= link_to 'Show', @subscription_plan %> |
+<%= link_to 'Back', subscription_plans_path %>
+
+<style>
+.save-stngs {
+	float: right;
+	width: 100%;
+	padding: 30px 20px 50px 20px;
+}
+.save-stngs.pd2 {
+	padding: 25px 20px 42px 20px;
+}
+.save-stngs ul li {
+	display: inline-block;
+	margin-right: 17px;
+  float: right;
+}
+.save-stngs ul li button {
+	display: inline-block;
+	color: #000000;
+	font-size: 16px;
+	border: 1px solid #e5e5e5;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 22px;
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+}
+.save-stngs ul li button:hover {
+	background-color: #e44d3a;
+	color: #fff;
+	border-color: transparent;
+}
+</style>

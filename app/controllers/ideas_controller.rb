@@ -21,6 +21,21 @@ class IdeasController < ApplicationController
     end
   end
 
+  def donation_history
+    @perk = Perk.find_by_id params[:perk_id]
+
+    @idea = Idea.find(params[:id]) 
+    @comment = Comment.new
+    @comments = @idea.comments
+    @comment.idea_id = @idea.id
+    donation = Donation.includes(:idea).where(idea_id: params[:id])
+    @donation = Donation.new
+    @donors_count = donation.count
+    @donors = @idea.donations
+    @donated_amount = @idea.donations.sum(:amount)
+    @idea = Idea.includes(:perks).find(params[:id])
+  end
+
   def show
     @idea = Idea.find(params[:id]) 
     @comment = Comment.new

@@ -59,7 +59,7 @@
               </tr>
               <% if current_user.admin? %>
                 <td> <strong>User:</strong></td>
-                  <td><%= @res.user.full_name %> <%= link_to "view user", profile_path(@res.user.username)%></td>
+                  <td><%= @res.user.full_name %> <%= link_to "view profile", profile_path(@res.user.username)%></td>
                 </tr>
               <% end %>
               <tr>

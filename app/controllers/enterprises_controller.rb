@@ -1,7 +1,7 @@
 class EnterprisesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [ :index, :show]
-  # before_action :check_quota, only: [:new]
+  # before_action :require_subscription, only: [:new]
   before_action :set_enterprise, only: [:show, :edit, :update, :destroy]
 
   ENTERPRISES_PER_PAGE = 9
@@ -36,9 +36,11 @@ class EnterprisesController < ApplicationController
 
   # GET /enterprises/new
   def new
-    # @enterprise = Enterprise.new
-    @enterprise = current_user.enterprises.build
-    # @user = current_user
+    if current_user.can_create_enterprise?
+      @enterprise = current_user.enterprises.build
+    else
+      redirect_to enterprises_path, notice: "You have reached the maximum number of enterprises you can create"
+    end
   end
 
   # GET /enterprises/1/edit
@@ -48,9 +50,11 @@ class EnterprisesController < ApplicationController
   # POST /enterprises or /enterprises.json
   def create
     @enterprise = current_user.enterprises.build(enterprise_params)
+    # @enterprise = Enterprise.new(subscription_plan: current_subscription, user: current_user)
 
     respond_to do |format|
       if @enterprise.save
+        current_user.increment!(:enterprise_count)
         format.html { redirect_to @enterprise, notice: "Brand was successfully created." }
         format.json { render :show, status: :created, location: @enterprise }
       else
@@ -83,19 +87,19 @@ class EnterprisesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
+  def require_subscription
+    unless current_user.subscribed?
+      flash[:error] = "A subscription is required to create a brand."
+      redirect_to new_transaction_path
+    end
+  end
+
   def set_enterprise
     @enterprise = Enterprise.find(params[:id])
   end
   
 
-  # def check_quota
-  #   if current_user.enterprises.count >= 1
-  #     @quota_warning = "Maximum number of Brands reached!"
-  #   end
-  # end
-
-  # Only allow a list of trusted parameters through.
   def enterprise_params
     params.require(:enterprise).permit(:status, :name, :image, :remove_image, :image_cache, 
       :category_id, :user_id, :address, :email, :phone_number, 

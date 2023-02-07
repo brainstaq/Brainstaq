@@ -14,11 +14,6 @@
       </ul>
     </div>
   <% end %>
-	<%# <div class="text-danger text-center mb-3" id="error_explanation"> %>
-		<%# if @quota_warning.present? %>
-			<span><%#= @quota_warning %></span>
-		<%# end %>
-	<%# </div> %>
 
   <section class="profile-account-setting">
 		<div class="container">
@@ -38,66 +33,73 @@
 								<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
 									<div class="acc-setting">
 										<h3>Brand Details</h3>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Brand Name</h5>
 												<div class="cpp-fiel">
 													<%= form.text_field :name, :readonly => form.object.persisted?, maxlength: "23", 
-                          class: "form-control", placeholder: "Enter brand name"  %>
+                          class: "form-control", placeholder: "Enter name"  %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-4">
 												<h5>Brand Category</h5>
 												<div class="cpp-fiel">
 													<%= form.collection_select(:category_id, Category.all, :id, :name, 
-                          {prompt: 'Select brand category'}, class: "form-control") %>
+                          {prompt: 'Select category'}, class: "form-control") %>
+												</div>
+											</div>
+											<div class="cp-field col-md-4">
+												<h5>Country</h5>
+												<div class="cpp-fiel">
+													<%= form.text_field :country, class: "form-control", placeholder: "Nigeria..."%>
+                          <%#= tinymce %>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>About Brand</h5>
 												<div class="cpp-fiel">
-													<%= form.rich_text_area :info, class: "form-control", placeholder: "About your brand"%>
+													<%= form.text_area :info, class: "form-control", placeholder: "About your brand"%>
                           <%#= tinymce %>
 												</div>
 											</div>
 											<div class="cp-field">
 											  <h5>Address</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :address, class: "form-control", placeholder: "Brand address"%>
+													<%= form.text_field :address, class: "form-control", placeholder: "Enter address"%>
                           <%#= tinymce %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-3">
 												<h5>Email Address</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :email, class: "form-control", placeholder: "Brand email address"%>
+													<%= form.text_field :email, class: "form-control", placeholder: "brand@g..."%>
                           <%#= tinymce %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-3">
 												<h5>Phone Number</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :phone_number, class: "form-control", placeholder: "Enter phone number"%>
+													<%= form.text_field :phone_number, class: "form-control", placeholder: "+234..."%>
                           <%#= tinymce %>
 												</div>
 											</div>
-											<div class="cp-field">
-												<h5>Country</h5>
-												<div class="cpp-fiel">
-													<%= form.text_field :country, class: "form-control", placeholder: "Enter country"%>
-                          <%#= tinymce %>
-												</div>
-											</div>
-                      <div class="cp-field">
+                      <div class="cp-field col-md-3">
 												<h5>State</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :state, class: "form-control", placeholder: "Enter state"%>
+													<%# <%= form.text_field :state, class: "form-control", placeholder: "Delta"%> %>
+													<%= form.select :state, [
+														"Abia","Adamawa","Akwa Ibom","Anambra","Bauchi","Bayelsa","Benue",
+														"Borno","Cross River","Delta", "Ebonyi","Edo","Ekiti","Enugu","FCT",
+														"Gombe","Imo","Jigawa","Kaduna","Kano","Katsina","Kebbi","Kogi","Kwara",
+														"Lagos","Nassarawa","Niger","Ogun","Ondo","Osun","Oyo State","Plateau",
+														"River State","Sokoto","Taraba","Yobe","Zamfara"
+														], prompt: "Select...",class:"custom-select form-control", required:"required"%>
                           <%#= tinymce %>
 												</div>
 											</div>
-      								<div class="cp-field">
+      								<div class="cp-field col-md-3">
 												<h5>City</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :city, class: "form-control", placeholder: "Enter city"%>
+													<%= form.text_field :city, class: "form-control", placeholder: "Warri"%>
                           <%#= tinymce %>
 												</div>
 											</div>
@@ -115,28 +117,28 @@
 							  		<div class="acc-setting">
 							  			<h3>Social Profiles</h3>
 							  			
-											<div class="cp-field">
+											<div class="cp-field col-md-3">
 												<h5>Business Website</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :website_url, placeholder: "Enter your website... e.g http://example.com", class: "form-control" %>
+													<%= form.text_field :website_url, placeholder: "http://example.com", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-3">
 												<h5>Facebook</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :facebook_url, placeholder: "Enter your Facebook profile link... e.g https://facebook.com/profile", class: "form-control" %>
+													<%= form.text_field :facebook_url, placeholder: "https://facebook.com/profile", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-3">
 												<h5>Twitter</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :twitter_url, placeholder: "Enter your Twitter profile link... e.g https://twitter.com/profile", class: "form-control" %>
+													<%= form.text_field :twitter_url, placeholder: "https://twitter.com/profile", class: "form-control" %>
 												</div>
 											</div>
-											<div class="cp-field">
+											<div class="cp-field col-md-3">
 												<h5>Instagram</h5>
 												<div class="cpp-fiel">
-													<%= form.text_field :instagram_url, placeholder: "Enter your Instagram profile link... e.g https://instagram.com/profile", class: "form-control" %>
+													<%= form.text_field :instagram_url, placeholder: "https://instagram.com/profile", class: "form-control" %>
 												</div>
 											</div>
                       <div class="field">
@@ -178,8 +180,13 @@
       										</div>
 													<div class="save-stngs pd2">
 														<ul>
+														<% if enterprise.new_record? %>
                               <li><%= form.submit 'Create Brand', class: "actions btn rounded btn-primary" %></li>
 													    <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+														<% else %>
+															<li><%= form.submit 'Update Brand', class: "actions btn rounded btn-primary" %></li>
+													    <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+														<% end %>
 														</ul>
 													</div><!--save-stngs end-->
 							  				</div><!--request-detailse end-->

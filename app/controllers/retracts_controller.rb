@@ -9,18 +9,15 @@ class RetractsController < ApplicationController
     transactions = PaystackTransactions.new(@paystackObj)
     result = transactions.verify(transaction_reference)
     @res = result['data']
-    @customer = result['data']['customer']
-  
+    @customer = result['data']['customer']  
     if @res['status'] == "success"
       user = user.find_by_email(@customer['email']) 
       user.update(status: 1 )
-
       if user.interval == "monthly"
         res = 30
       else user == "annually"
         res = 365
       end
-      
       user.transactions.create(
         amount: (@res['amount'].to_f)/100,
         channel: @res['channel'], 
@@ -34,18 +31,15 @@ class RetractsController < ApplicationController
       )
     end
   end
-
   def web
     res = 0;
     @paystackObj = Paystack.new(ENV['PAYSTACK_PUBLIC_KEY'], ENV['PAYSTACK_PRIVATE_KEY'])
     @res = params['data']
     @plan = params['data']['plan']['interval']
     @customer = params['data']['customer']
-  
     if @res['status'] == "success"
       user = user.find_by_email(@customer['email']) 
       user.update(status: 1 )
-        
       if @plan == "monthly"
         res = 30
       else @plan == "annually"

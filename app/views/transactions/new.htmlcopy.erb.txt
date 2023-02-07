@@ -34,7 +34,10 @@
   <div class="panel-body">
     <%# <% if current_user.admin? %>
       <div class="row">
-        <% @plans_list.each do |post| %>
+      <% if @plans_list.blank? %>
+        <p>Error: Could not fetch plans from Paystack API</p>
+      <% else %>
+        <% @plans_list.each do |plan| %>
           <div class="col-md-4"> 
             <div class="panel panel-success">
               <div class="cnrflash">
@@ -43,12 +46,12 @@
                 </div>
               </div>
               <div class="panel-heading">
-                <h3 class="panel-title"><%=post['name']%></h3>
+                <h3 class="panel-title"><%=plan['name']%></h3>
               </div>
               <div class="panel-body">
                 <div class="the-price">
-                  <h1><%=post['currency']%> <%=post['amount']/100%>
-                    <span class="subscript">/<%=post['interval']%></span>
+                  <h1><%=plan['currency']%> <%=plan['amount']/100%>
+                    <span class="subscript">/<%=plan['interval']%></span>
                   </h1>
                   <small>1 month FREE trial</small>
                 </div>
@@ -86,11 +89,12 @@
                 </table>
               </div>
               <div class="panel-footer">
-                <%= button_to 'Select Plan', transactions_path(:code => post['plan_code'], :interval=> post['interval']), method: :post, class:"btn btn-success" %>
+                <%= button_to 'Select Plan', transactions_path(:code => plan['plan_code'], :interval=> plan['interval']), method: :post, class:"btn btn-success" %>
               </div>
             </div>
           </div> 
         <% end %>
+      <% end %>
       </div>
     <%# end %>     
   </div>

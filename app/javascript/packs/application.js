@@ -91,3 +91,5 @@ document.addEventListener("turbo:load", function() {
     $('.scroller').slick()
 })
 
+
+

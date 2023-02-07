@@ -3,7 +3,7 @@ class ProcessWebhookJob < ApplicationJob
 
   def perform(options)
     if options['event'] == 'charge.success'
-      
+      # Membership::SubscriptionActivity.new(options).call
     end
   end
 end

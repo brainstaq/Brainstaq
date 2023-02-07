@@ -93,9 +93,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'paystack'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
 
-gem 'rave_ruby'
+# gem 'rave_ruby'
 gem 'pg'
 gem 'shufflejs-rails'
+gem 'httparty', '~> 0.21.0'
 
 
 gem "fog-aws"
@@ -130,3 +131,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 # gem "stimulus_reflex", "~> 3.3"
+# gem "chat_gpt", "~> 0.1.1"

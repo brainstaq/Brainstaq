@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_29_211917) do
+ActiveRecord::Schema.define(version: 2023_01_17_164542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_details", force: :cascade do |t|
+    t.datetime "subscribe_date"
+    t.datetime "unsubscribe_date"
+    t.datetime "expiry_date"
+    t.integer "user_status"
+    t.integer "pause_permit_count", default: 0
+    t.datetime "pause_start_date"
+    t.datetime "pause_cancel_date"
+    t.integer "amount"
+    t.boolean "recurring_billing"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_account_details_on_user_id"
+  end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -243,6 +259,18 @@ ActiveRecord::Schema.define(version: 2022_12_29_211917) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "charges", force: :cascade do |t|
+    t.string "service_plan"
+    t.integer "amount"
+    t.string "payment_method"
+    t.string "duration"
+    t.string "brainstaq_transaction_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_charges_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "username"
     t.text "body"
@@ -357,6 +385,15 @@ ActiveRecord::Schema.define(version: 2022_12_29_211917) do
     t.string "website_url"
     t.index ["slug"], name: "index_enterprises_on_slug", unique: true
     t.index ["user_id"], name: "index_enterprises_on_user_id"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "subscription_plan_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subscription_plan_id"], name: "index_features_on_subscription_plan_id"
   end
 
   create_table "financial_plans", force: :cascade do |t|
@@ -557,6 +594,18 @@ ActiveRecord::Schema.define(version: 2022_12_29_211917) do
     t.index ["business_plan_id"], name: "index_milestones_on_business_plan_id"
   end
 
+  create_table "paystack_charges", force: :cascade do |t|
+    t.datetime "paid_at"
+    t.string "plan"
+    t.integer "amount"
+    t.string "channel"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_paystack_charges_on_created_at"
+    t.index ["user_id"], name: "index_paystack_charges_on_user_id"
+  end
+
   create_table "perks", force: :cascade do |t|
     t.string "title"
     t.decimal "amount", precision: 8, scale: 2, default: "0.0"
@@ -697,6 +746,19 @@ ActiveRecord::Schema.define(version: 2022_12_29_211917) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "subscription_plans", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "plan_name"
+    t.integer "cost"
+    t.string "description"
+    t.boolean "recurring"
+    t.string "paystack_plan_code"
+    t.integer "status", default: 0
+    t.integer "duration"
+    t.index ["paystack_plan_code"], name: "index_subscription_plans_on_paystack_plan_code"
+  end
+
   create_table "swots", force: :cascade do |t|
     t.string "swot_type"
     t.text "description"
@@ -787,10 +849,17 @@ ActiveRecord::Schema.define(version: 2022_12_29_211917) do
     t.integer "balance", default: 0, null: false
     t.integer "course_income", default: 0, null: false
     t.integer "enrollment_expenses", default: 0, null: false
+    t.integer "enterprise_count", default: 0
+    t.integer "business_plan_count", default: 0
+    t.string "paystack_subscription_code"
+    t.bigint "customer_code"
+    t.bigint "subscription_plan_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["customer_code"], name: "index_users_on_customer_code", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["subscription_plan_id"], name: "index_users_on_subscription_plan_id"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
@@ -820,18 +889,22 @@ ActiveRecord::Schema.define(version: 2022_12_29_211917) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "business_plans", "enterprises"
+  add_foreign_key "charges", "users"
   add_foreign_key "course_tags", "courses"
   add_foreign_key "course_tags", "tags"
   add_foreign_key "courses", "users"
+  add_foreign_key "donations", "perks"
   add_foreign_key "donors", "users"
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
+  add_foreign_key "features", "subscription_plans"
   add_foreign_key "financial_plans", "enterprises"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "enterprises"
   add_foreign_key "lessons", "courses"
   add_foreign_key "marketing_expenses", "business_plans"
   add_foreign_key "milestones", "business_plans"
+  add_foreign_key "paystack_charges", "users"
   add_foreign_key "perks", "ideas"
   add_foreign_key "pitch_decks", "enterprises"
   add_foreign_key "portfolios", "enterprises"
@@ -841,4 +914,5 @@ ActiveRecord::Schema.define(version: 2022_12_29_211917) do
   add_foreign_key "swots", "business_plans"
   add_foreign_key "user_lessons", "lessons"
   add_foreign_key "user_lessons", "users"
+  add_foreign_key "users", "subscription_plans"
 end

@@ -43,8 +43,8 @@
         <div class="collapse navbar-collapse" id="navlinks">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item @@about">
-              <%= link_to how_it_works_path, title: "Tour", class: "text-decoration-none" do %>
-                <span class="nav-link">Tour</span>
+              <%= link_to all_features_path, title: "Tour", class: "text-decoration-none" do %>
+                <span class="nav-link">Features</span>
               <% end %>
             </li>
             <li class="nav-item dropdown @@pricing">
@@ -109,12 +109,10 @@
                 </a>
               
               <% else %>
-                <%#= image_tag 'avatar.png', class: 'rounded-circle mt-0', style:"width:24px; height: 24px; margin-right: 0px;" %>
+                <%= image_tag 'avatar.png', class: 'rounded-circle mt-3', style:"width:24px; height: 24px; margin-right: 0px;" %>
                 <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
                   style = "font-size: 14px; color: #000 !important; background-color: #F7F9F9 !important;">
-                  
-                  <%= current_user.first_name %>
                   <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.06L7.94 0L4.5 3.44L1.06 0L0 1.06L4.5 5.56L9 1.06Z" fill="currentColor"/></svg>
                 </a>
               <% end %>

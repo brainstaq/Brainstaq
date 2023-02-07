@@ -1,15 +1,15 @@
-  <% content_for :title, "Tranaction History" %>
+<% content_for :title, "Tranaction History" %>
   
-  <!-- start of page-header -->
+<!-- start of page-header -->
 <section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
   <div class="container h-100">
     <div class="row d-flex align-items-center h-100">
       <div class="col-md-12 text-center">
-        <h2 class="h1 font-weight-bold">Pricing</h2>
+        <h2 class="h1 font-weight-bold">Transaction History</h2>
         <nav class="mt-15" aria-label="breadcrumb">
           <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
-            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
-            <li class="breadcrumb-item text-primary" aria-current="page">Pricing</li>
+            <li class="breadcrumb-item"><%= link_to "Back",:back, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">History</li>
           </ol>
         </nav>
       </div>
@@ -27,45 +27,48 @@
 </section>
 <!-- end of page-header -->
   
-  <% if current_user.admin? %>
-  <div class="forms">
-    <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
-      <div class="form-title">
-        <h4>Transactions</h4>
-      </div>
-      <div class="form-body">
-        <% if @ress.any?%>
-          <h5><strong><%= pluralize(@ress.count, "Transaction") %> made.</strong></h5>
-
-          <% @ress.each do |f| %>
-            <div class="card-body card-body">
-              <table style="font-size:16px;" class="table table-user-information">
-                <thead>
-                  <tr>
-                    <th>Reference</th>
-                    <th>Status</th>
-                    <th colspan="2"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><%= f.reference %></td>
-                    <td><%= f.status %></td>
-                    <%= link_to 'view report', details_transaction_path(f.id), class:"btn btn-success" %> |
-                  </tr>
-                </tbody>
-              </table>
+<section class="section-padding pb-0" data-aos="fade-in" data-aos-delay="150">
+  <div class="container">
+    <div class="row justify-content-center">
+      <% if current_user.admin? %>
+        <div class="forms">
+          <div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+            <div class="form-title">
+              <h4>Transactions</h4>
             </div>
-          <% end %>
-        <% end %>
-      </div>
+            <div class="form-body">
+              <% if @ress.any?%>
+                <h5><strong><%= pluralize(@ress.count, "Transaction") %> made.</strong></h5>
+
+                <% @ress.each do |f| %>
+                  <div class="card-body card-body">
+                    <table style="font-size:16px;" class="table table-user-information">
+                      <thead>
+                        <tr>
+                          <th>Reference</th>
+                          <th>Status</th>
+                          <th colspan="2"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><%= f.reference %></td>
+                          <td><%= f.status %></td>
+                          <%= link_to 'view report', details_transaction_path(f.id), class:"btn btn-success" %>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <h5> Your are not allowed to view this page. <%= link_to "Go Back!", :back %> </h5>
+      <% end %>
+      <br>
+      <%#= link_to 'Back to Dashboard', dashboard_path(current_user.full_name), class:"btn btn-info" %>
     </div>
   </div>
-  <% else %>
-    <h5> Your are not allowed to view this page </h5>
-  <% end %>
-
-  <br>
-  
-  <%= link_to 'Back to Dashboard', dashboard_path(current_user.full_name), class:"btn btn-info" %> |
-  <%= link_to "Back", :back, class:"btn btn-warning"%> 
+</section>

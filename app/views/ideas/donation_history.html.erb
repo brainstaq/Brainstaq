@@ -1,0 +1,172 @@
+<% content_for :title, "Donation History" %>
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
+  <div class="container h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col-md-12 text-center">
+        <h2 class="h1 font-weight-bold">Donations</h2>
+        <nav class="mt-15" aria-label="breadcrumb">
+          <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
+            <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-black-300" %></li>
+            <li class="breadcrumb-item text-primary" aria-current="page">Donations</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="shape-1 bg-secondary shape-xs rounded-circle"></div>
+  <div class="shape-2 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-3 bg-primary shape-sm-2 rounded-circle"></div>
+  <div class="shape-4 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-5 bg-tertiary shape-xs rounded-circle"></div>
+  <div class="shape-6 bg-primary shape-sm rounded-circle"></div>
+  <div class="shape-7 bg-primary shape-xs-2 rounded-circle"></div>
+  <div class="shape-8 bg-secondary shape-xs rounded-circle"></div>
+</section>
+<!-- end of page-header -->
+<header class="section-header mb-5" style="padding-top: 50px;">
+  <%# <h3 span class="text-primary">Donations</span></h3> %>
+</header>
+<div class="container-fluid mb-5" style="width: 1000px" class="mx-auto">
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-12">
+        <table id="example" class="table table-hover responsive nowrap" style="width:100%">
+          <thead>
+            <tr>
+              <th>Donor</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Perk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @idea.donations.each do |donation| %>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="mr-3"><%= image_tag donation.user.image_url, style:"width:28px; height: 28px; margin-right: 0px;", class: "rounded-circle" %></div>
+                    <div class="">
+                      <p class="font-weight-bold mb-0"><%= link_to (donation.user.full_name), profile_path(donation.user.username) %></p>
+                      <p class="text-muted mb-0"><%=donation.user.email %></p>
+                      <p class="text-muted mb-0"><%= donation.user.phone %></p>
+                    </div>
+                  </div>
+                </td>
+                <td><%= number_to_currency(donation.amount/100, :unit => "₦") %></td>
+                <td><%= donation.created_at.strftime("%d/%m/%Y") %></td>
+                <td>
+                  <% if donation.perk %>
+                    <%= donation.perk.title %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /* body {
+  background: #f7f7f7;
+  } */
+
+  .table {
+  border-spacing: 0 0.85rem !important;
+  }
+
+  .table td,
+  .table th {
+  vertical-align: middle;
+  margin-bottom: 10px;
+  border: none;
+  }
+
+  .table thead tr,
+  .table thead th {
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  }
+
+  .table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  }
+
+  .table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  }
+
+  table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > td:first-child:before,
+  table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > th:first-child:before {
+  top: 28px;
+  left: 14px;
+  border: none;
+  box-shadow: none;
+  }
+
+  table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child,
+  table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child {
+  padding-left: 48px;
+  }
+
+  table.dataTable > tbody > tr.child ul.dtr-details {
+  width: 100%;
+  }
+
+  table.dataTable > tbody > tr.child span.dtr-title {
+  min-width: 50%;
+  }
+
+  table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
+  table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
+  table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
+  padding: 0.75rem 1rem 0.125rem;
+  }
+
+  div.dataTables_wrapper div.dataTables_length label,
+  div.dataTables_wrapper div.dataTables_filter label {
+  margin-bottom: 0;
+  }
+
+  @media (max-width: 767px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    margin-top: 1rem;
+  }
+  }
+
+  .table a {
+  color: #212529;
+  }
+
+  .table a:hover,
+  .table a:focus {
+  text-decoration: none;
+  }
+
+  table.dataTable {
+  margin-top: 12px !important;
+  }
+
+  /* .avatar-blue {
+  background-color: #c8d9f1;
+  color: #467fcf;
+  } */
+</style>

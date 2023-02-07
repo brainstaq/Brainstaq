@@ -82,6 +82,9 @@ class Idea < ApplicationRecord
     self.end_date < Time.now 
   end
   
+  def purchased_perk(perk)
+    
+  end
 
   def relevance_bar
     self.relevance_bar = (self.impressions.size + self.get_likes.size + self.comments.size)

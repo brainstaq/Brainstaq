@@ -1,6 +1,7 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
   before_action :get_enterprise
+  before_action :require_subscription, only: [:new]
   before_action :set_invoice, only: %i[ show edit update destroy ]
   
 
@@ -76,6 +77,13 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to enterprise_invoices_path(@enterprise), notice: "Business plan was successfully deleted" }
       format.json { head :no_content }
+    end
+  end
+
+  def require_subscription
+    unless current_user.subscribed?
+      flash[:error] = "A subscription is required to create an invoice."
+      redirect_to new_transaction_path
     end
   end
 

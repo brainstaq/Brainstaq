@@ -117,8 +117,8 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  # gem "better_errors"
-  # gem "binding_of_caller"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
@@ -132,3 +132,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 # gem "stimulus_reflex", "~> 3.3"
 # gem "chat_gpt", "~> 0.1.1"
+
+gem "dockerfile-rails", ">= 1.0", :group => :development

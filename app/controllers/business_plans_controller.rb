@@ -11,9 +11,16 @@ class BusinessPlansController < ApplicationController
     @business_plans = @enterprise.business_plans
   end
 
-  # def download
-  #   @business_plan = BusinessPlan.find(params[:id])
-  # end
+  def generate_business_plan
+    context = {
+      name: 'John Doe',
+      address: '123 Main Street'
+    }
+    template_path = Rails.root.join('path/to/template.docx')
+    output_path = Rails.root.join('path/to/generated_document.docx')
+
+    Sablon.template(template_path).render_to_file(output_path, context)
+  end
   
   def new
     if current_user.can_create_business_plan?

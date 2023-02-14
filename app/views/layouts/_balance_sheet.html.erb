@@ -8,11 +8,11 @@
         <thead>
           <tr>
 						<th scope="col"></th>
-            <th scope="col">Year One</th>
-            <th scope="col">Year Two</th>
-            <th scope="col">Year Three</th>
-						<th scope="col">Year Four</th>
-            <th scope="col">Year Five</th>
+            <th class="text-center" scope="col">Year One</th>
+            <th class="text-center" scope="col">Year Two</th>
+            <th class="text-center" scope="col">Year Three</th>
+						<th class="text-center" scope="col">Year Four</th>
+            <th class="text-center" scope="col">Year Five</th>
           </tr>
         </thead>
 				<tbody>
@@ -29,54 +29,54 @@
           </tr>
           <tr>
             <td style="padding-left:25px;">Cash & Cash Equivalents</td>
-            <td><%= number_to_currency( @cash_at_year_start_2, :unit => "₦") %></td>
-            <td><%= number_to_currency( @cash_at_year_start_3, :unit => "₦") %></td>
-            <td><%= number_to_currency( @cash_at_year_start_4, :unit => "₦") %></td>
-            <td><%= number_to_currency( @cash_at_year_start_5, :unit => "₦") %></td>
-            <td><%= number_to_currency( @cash_at_year_start_6, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @cash_at_year_start_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @cash_at_year_start_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @cash_at_year_start_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @cash_at_year_start_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @cash_at_year_start_6, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="padding-left:25px;">Accounts Receivable</td>
-            <td><%= number_to_currency(@products_and_growth_rate.days_receivable_one, :unit => "₦") %></td>
-            <td><%= number_to_currency(@products_and_growth_rate.days_receivable_two, :unit => "₦") %></td>
-            <td><%= number_to_currency(@products_and_growth_rate.days_receivable_three, :unit => "₦") %></td>
-            <td><%= number_to_currency(@products_and_growth_rate.days_receivable_four, :unit => "₦") %></td>
-            <td><%= number_to_currency(@products_and_growth_rate.days_receivable_five, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@products_and_growth_rate.days_receivable_one, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@products_and_growth_rate.days_receivable_two, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@products_and_growth_rate.days_receivable_three, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@products_and_growth_rate.days_receivable_four, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@products_and_growth_rate.days_receivable_five, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="padding-left:25px;">Inventory</td>
-            <td><%= number_to_currency(@business_plan.inventory_schedule_1, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.inventory_schedule_2, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.inventory_schedule_3, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.inventory_schedule_4, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.inventory_schedule_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.inventory_schedule_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.inventory_schedule_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.inventory_schedule_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.inventory_schedule_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.inventory_schedule_5, :unit => "₦") %></td>
 					</tr>
           <tr style="padding-left:25px;font-weight:bold;">
             <td>Total Current Assets</td>
-            <td><%= number_to_currency(@total_current_assets_1, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_current_assets_2, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_current_assets_3, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_current_assets_4, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_current_assets_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_current_assets_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_current_assets_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_current_assets_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_current_assets_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_current_assets_5, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="font-weight:bold;">Non-Current Assets</td>
           </tr>
           <tr>
             <td style="padding-left:25px;">Property, Plant & Equipment</td>
-            <td><%= number_to_currency(@business_plan.total_net_1, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.total_net_2, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.total_net_3, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.total_net_4, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.total_net_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.total_net_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.total_net_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.total_net_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.total_net_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.total_net_5, :unit => "₦") %></td>
 					</tr>
           <tr>
             <td style="font-weight:bold;">Total Assets</td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_assets_1, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_assets_2, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_assets_3, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_assets_4, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_assets_5, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_assets_1, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_assets_2, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_assets_3, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_assets_4, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_assets_5, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="font-weight:bold;">LIABILITIES & EQUITY</td>
@@ -91,11 +91,11 @@
           </tr>
           <tr>
             <td style="padding-left:25px;">Accounts Payable</td>
-            <td><%= number_to_currency(@business_plan.days_payable_1, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.days_payable_2, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.days_payable_3, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.days_payable_4, :unit => "₦") %></td>
-            <td><%= number_to_currency(@business_plan.days_payable_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.days_payable_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.days_payable_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.days_payable_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.days_payable_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@business_plan.days_payable_5, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="padding-left:25px;">Tax Payable</td>
@@ -107,57 +107,57 @@
           </tr>
           <tr>
             <td style="font-weight:bold;">Total Liabilities</td>
-            <td style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_1, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_2, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_3, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_4, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_5, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_1, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_2, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_3, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_4, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@business_plan.days_payable_5, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="font-weight:bold;">Non-Current Liabilities</td>
           </tr>
           <tr>
             <td style="padding-left:25px;">Long Term Loan</td>
-            <td><%= number_to_currency( @closing_debt_1, :unit => "₦") %></td>
-            <td><%= number_to_currency( @closing_debt_2, :unit => "₦") %></td>
-            <td><%= number_to_currency( @closing_debt_3, :unit => "₦") %></td>
-            <td><%= number_to_currency( @closing_debt_4, :unit => "₦") %></td>
-            <td><%= number_to_currency( @closing_debt_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @closing_debt_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @closing_debt_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @closing_debt_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @closing_debt_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency( @closing_debt_5, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="font-weight:bold;">Shareholders' Equity</td>
           </tr>
           <tr>
             <td style="padding-left:25px;">Investment Capital</td>
-            <td><%= number_to_currency(@investment_capital_1, :unit => "₦") %></td>
-            <td><%= number_to_currency(@investment_capital_2, :unit => "₦") %></td>
-            <td><%= number_to_currency(@investment_capital_3, :unit => "₦") %></td>
-            <td><%= number_to_currency(@investment_capital_4, :unit => "₦") %></td>
-            <td><%= number_to_currency(@investment_capital_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@investment_capital_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@investment_capital_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@investment_capital_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@investment_capital_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@investment_capital_5, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="padding-left:25px;">Retained Earnings</td>
-            <td><%= number_to_currency(@retained_earnings_1, :unit => "₦") %></td>
-            <td><%= number_to_currency(@retained_earnings_2, :unit => "₦") %></td>
-            <td><%= number_to_currency(@retained_earnings_3, :unit => "₦") %></td>
-            <td><%= number_to_currency(@retained_earnings_4, :unit => "₦") %></td>
-            <td><%= number_to_currency(@retained_earnings_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@retained_earnings_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@retained_earnings_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@retained_earnings_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@retained_earnings_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@retained_earnings_5, :unit => "₦") %></td>
           </tr>
           <tr style="font-weight:bold;">
             <td>Total Shareholders' Equity</td>
-            <td><%= number_to_currency(@total_shareholders_equity_1, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_shareholders_equity_2, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_shareholders_equity_3, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_shareholders_equity_4, :unit => "₦") %></td>
-            <td><%= number_to_currency(@total_shareholders_equity_5, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_shareholders_equity_1, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_shareholders_equity_2, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_shareholders_equity_3, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_shareholders_equity_4, :unit => "₦") %></td>
+            <td class="text-right"><%= number_to_currency(@total_shareholders_equity_5, :unit => "₦") %></td>
           </tr>
           <tr>
             <td style="font-weight:bold;">Total Liabilities & Equity</td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_1, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_2, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_3, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_4, :unit => "₦") %></td>
-            <td style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_5, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_1, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_2, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_3, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_4, :unit => "₦") %></td>
+            <td class="text-right" style="font-weight:bold;"><%= number_to_currency(@total_liabilities_and_equity_5, :unit => "₦") %></td>
           </tr>
 				</tbody>
       </table>

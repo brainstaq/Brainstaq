@@ -62,9 +62,9 @@
               <td><%= @enterprise.user.full_name.titleize %></td>
               <td><%= local_time(business_plan.updated_at)%></td>
               <td>
-                <%= link_to fa_icon("eye", title: "View", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), enterprise_business_plan_path(@enterprise, business_plan) %>
-                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), edit_enterprise_business_plan_path(@enterprise, business_plan) %>
-                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), [@enterprise, business_plan], method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to fa_icon("eye", title: "View", class: "text-primary mr-2 mb-2", style: "font-size: 16px;"), enterprise_business_plan_path(@enterprise, business_plan) %>
+                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2 mb-2", style: "font-size: 16px;"), edit_enterprise_business_plan_path(@enterprise, business_plan) %>
+                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mr-2 mb-2", style: "font-size: 16px;"), [@enterprise, business_plan], method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
           </tbody>

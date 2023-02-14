@@ -5,7 +5,7 @@
   <div class="container h-100">
     <div class="row d-flex align-items-center h-100">
       <div class="col-md-12 text-center">
-        <h2 class="h1 font-weight-bold">Business Plan for <%= @enterprise.name.titleize %></h2>
+        <h2 class="h1 font-weight-bold"><%= @enterprise.name.titleize %></h2>
         <nav class="mt-15" aria-label="breadcrumb">
           <ol class="breadcrumb font-weight-bold bg-transparent p-0 justify-content-center">
             <li class="breadcrumb-item"><%= link_to "Business Plans", enterprise_business_plans_path(@enterprise), class: "text-black-300" %></li>

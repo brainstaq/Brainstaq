@@ -30,7 +30,6 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"]
   database: brainstaq_app_production
   username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>

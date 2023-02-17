@@ -1,8 +1,8 @@
 <!-- start of header -->
 <header class="header-nav position-relative bg-light-gray" id="top" data-spy="scroll" data-target="#navbar-spy">
   <div class="container">
-    <nav class="navbar navbar-expand-xl sticky-top navbar-light px-0">
-      <%= link_to (image_tag 'logo.png', class:"img-fluid navbar-brand p-0", style:"width:150px; height: 50px;"), root_path %>
+    <nav class="navbar navbar-expand-xl navbar-light">
+      <%= link_to (image_tag 'brainstaq-logo.png', class:"img-fluid navbar-brand p-0", style:"width:150px; height: 30px;"), root_path %>
       <!-- logo -->
 
       <button class="navbar-toggler bg-white rounded-0 p-0" type="button" data-toggle="collapse" data-target="#navlinks" aria-controls="navlinks" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,8 +17,7 @@
               <%= link_to dashboard_path(current_user.full_name), title: "Dashboard", class: "text-decoration-none" do %>
                 <span class="nav-link"> Dashboard</span>
               <% end %>
-            </li>
-            
+            </li>       
             <li class="nav-item dropdown @@pricing">
               <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-1">Discover</span>
@@ -39,7 +38,7 @@
             </li>
           </ul>
         </div>  
-        <% else %>
+      <% else %>
         <div class="collapse navbar-collapse" id="navlinks">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item @@about">
@@ -66,27 +65,15 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item @@about">
-              <%#= link_to new_transaction_path, title: "Pricing", class: "text-decoration-none" do %>
-                <%# <span class="nav-link">Pricing</span> %>
-              <%# end %>
-            </li>
-            <li class="nav-item @@about">
-              <%#= link_to help_path, title: "Support", class: "text-decoration-none" do %>
-                <%# <span class="nav-link">Support</span> %>
-              <%# end %>
-            </li>
           </ul>
         <%= form_with url: search_path, method: :get, local: true, class: 'form-inline' do |form| %>
           <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-3 rounded', placeholder: 'Search' %>
         <% end %>
       <% end %>
-      
       <% if user_signed_in? %>
         <%= form_with url: search_path, method: :get, local: true, class: 'form-inline' do |form| %>
           <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-3 rounded', placeholder: 'Search' %>
         <% end %>
-
           <div class="dropdown ml-4 float-right text-primary" style="font-size: 20px;">
             <a class="dropdown-toggle fas fa-edit" href="#" role="button" id="dropdownMenuLink" 
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -95,59 +82,58 @@
               <%= link_to "New Brand", new_enterprise_path, class: "dropdown-item" %>
               <%= link_to "New Project", new_idea_path, class: "dropdown-item" %>
             </div>
-          </div>
-             
-        <div class="navbar-text ml-3 float-right">
-          <div class="dropdown mr-0">
-            <a href="#" class="text-decoration-none" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <% if current_user.image_url %>
-                <%= image_tag current_user.image_url, class: 'rounded-circle mt-1 ml-3', style:"width: 24px; height: 24px; margin-right: 0px;" %>
+          </div>   
+          <div class="navbar-text ml-3 float-right">
+            <div class="dropdown mr-0">
+              <a href="#" class="text-decoration-none" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if current_user.image_url %>
+                  <%= image_tag current_user.image_url, class: 'rounded-circle mt-1 ml-3', style:"width: 24px; height: 24px; margin-right: 0px;" %>
+                  
+                  <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                    style = "font-size: 12px; margin-top: 2px; margin-left: 1px; color: #000 !important; background-color: #F7F9F9  !important;">
+                  </a>
                 
-                <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
-                  style = "font-size: 12px; margin-top: 2px; margin-left: 1px; color: #000 !important; background-color: #F7F9F9  !important;">
-                </a>
-              
-              <% else %>
-                <%= image_tag 'avatar.png', class: 'rounded-circle mt-3', style:"width:24px; height: 24px; margin-right: 0px;" %>
-                <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
-                  style = "font-size: 14px; color: #000 !important; background-color: #F7F9F9 !important;">
-                  <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.06L7.94 0L4.5 3.44L1.06 0L0 1.06L4.5 5.56L9 1.06Z" fill="currentColor"/></svg>
-                </a>
-              <% end %>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-              <li class= "dropdown-item" style="font-size: 14px;">  
-                <%= link_to profile_path(current_user.username) do %>
-                  <i class="fa fa-user mr-3"></i> Profile
+                <% else %>
+                  <%= image_tag 'avatar.png', class: 'rounded-circle mt-3', style:"width:24px; height: 24px; margin-right: 0px;" %>
+                  <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                    style = "font-size: 14px; color: #000 !important; background-color: #F7F9F9 !important;">
+                    <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1.06L7.94 0L4.5 3.44L1.06 0L0 1.06L4.5 5.56L9 1.06Z" fill="currentColor"/></svg>
+                  </a>
                 <% end %>
-              </li>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-              <li class= "dropdown-item" style="font-size: 14px;">  
-                <%= link_to conversations_path do %>
-                  <i class="fa fa-comment-alt mr-3"></i> Messages
-                <%end%>
-              </li>
+                <li class= "dropdown-item" style="font-size: 14px;">  
+                  <%= link_to profile_path(current_user.username) do %>
+                    <i class="fa fa-user mr-3"></i> Profile
+                  <% end %>
+                </li>
 
-              <li class= "dropdown-item" style="font-size: 14px;">  
-                <%= link_to edit_user_registration_path do %>
-                  <i class="fas fa-cogs mr-3"></i> Settings
-                <%end%>
-              </li>
-              
-              <div class="dropdown-divider"></div>
-              
-              <li class= "dropdown-item" style="font-size: 14px;">  
-                <%= link_to destroy_user_session_url, :method => 'delete', class: "text-danger" do %>
-                  <i class="fa fa-sign-out-alt mr-3 text-danger"></i> Log Out
-                <%end%>
-              </li>
+                <li class= "dropdown-item" style="font-size: 14px;">  
+                  <%= link_to conversations_path do %>
+                    <i class="fa fa-comment-alt mr-3"></i> Messages
+                  <%end%>
+                </li>
 
+                <li class= "dropdown-item" style="font-size: 14px;">  
+                  <%= link_to edit_user_registration_path do %>
+                    <i class="fas fa-cogs mr-3"></i> Settings
+                  <%end%>
+                </li>
+                
+                <div class="dropdown-divider"></div>
+                
+                <li class= "dropdown-item" style="font-size: 14px;">  
+                  <%= link_to destroy_user_session_url, :method => 'delete', class: "text-danger" do %>
+                    <i class="fa fa-sign-out-alt mr-3 text-danger"></i> Log Out
+                  <%end%>
+                </li>
+
+              </div>
             </div>
           </div>
-        </div>
         <% else %>
           <div class="navbar-button">
             <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-outline-primary mr-1" %>

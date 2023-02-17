@@ -88,12 +88,12 @@ class EnterprisesController < ApplicationController
 
   private
 
-  def require_subscription
-    unless current_user.subscribed?
-      flash[:error] = "A subscription is required to create a brand."
-      redirect_to new_transaction_path
-    end
-  end
+  # def require_subscription
+  #   unless current_user.subscribed?
+  #     flash[:error] = "A subscription is required to create a brand."
+  #     redirect_to new_transaction_path
+  #   end
+  # end
 
   def set_enterprise
     @enterprise = Enterprise.find(params[:id])

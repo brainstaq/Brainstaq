@@ -287,12 +287,12 @@ class BusinessPlansController < ApplicationController
     self.loan_end = (self.loan_year + self.repayment_period)
   end
 
-  def require_subscription
-    unless current_user.subscribed?
-      flash[:error] = "A subscription is required to create a business plan."
-      redirect_to new_transaction_path
-    end
-  end
+  # def require_subscription
+  #   unless current_user.subscribed?
+  #     flash[:error] = "A subscription is required to create a business plan."
+  #     redirect_to new_transaction_path
+  #   end
+  # end
 
   private
   

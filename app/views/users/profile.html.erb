@@ -116,9 +116,9 @@
               </div>
               
               <div class="col-lg-6 col-md-8 no-pd">
-                <div class="main-ws-sec">
+                <div class="main-ws-sec profile-sec">
                   <div class="user-tab-sec mb-3">
-                    <h3 style="font-size: 24px;"><%= @user.full_name.titleize %></h3>
+                    <h3 class="user-prof-name" style="font-size: 24px;"><%= @user.full_name.titleize %></h3>
                     <h4 style="font-size: 14px; color: #007bff;">@<%= @user.username %></h4>
                     <div class="star-descp">
                       <h5 class="mt-1" style="font-weight: bold; margin-bottom: 3px;">Bio</h5>
@@ -185,7 +185,7 @@
               
               <div class="col-lg-3 pd-right-none no-pd">
                 <div class="right-sidebar" style="width: 280px; padding-bottom: 10px;">
-									<div class="widget widget-about sidebar-item widget-jobs">
+									<div class="widget widget-about sidebar-item widget-jobs widget-jobsss">
 										<%= link_to (image_tag 'brand.png', class:"img-fluid navbar-brand p-0", style:"width:70px; height: 80px;"), root_path %>
 										<span class="mb-3 mt-2">Get access to a growing library <br>of professional business 
 										courses, and build a smarter enterprise</span>
@@ -198,9 +198,8 @@
 									</ul>
 								</div>
 							</div><!--widget-about end-->
-                 
-								<%= render partial: "layouts/top_brands", locals: { enterprises: @enterprises} %>
-                </div><!--right-sidebar end-->
+							<%= render partial: "layouts/top_brands", locals: { enterprises: @enterprises} %>
+            </div><!--right-sidebar end-->
               </div>
             </div>
           </div><!-- main-section-data end-->

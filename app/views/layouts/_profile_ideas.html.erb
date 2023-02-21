@@ -8,14 +8,13 @@
         <div class="post_topbar">
           <div class="usy-dt">
             <% if @user.image_url %>
-              <%= image_tag @user.image_url, style: "width: 40px;", class: "rounded-circle ml-1" %>
+              <%= image_tag @user.image_url, style: "width: 40px;", class: "rounded-circle img-dt ml-1" %>
             <% else %>
-              <%= image_tag 'avatar.png', style: "width: 40px;", class: "rounded-circle ml-1" %>
+              <%= image_tag 'avatar.png', style: "width: 40px;", class: "rounded-circle img-dt ml-1" %>
             <% end %>
             <div class="usy-name">
-              <h3><%= idea.user.full_name.titleize %></h3>
-              <span class="ml-1">
-                <i class="fas fa-clock mr-1"></i>
+              <h3><%= link_to idea.user.full_name.titleize, "#", class: 'text-dark profile-title' %></h3>
+              <span class="project-dts ml-1">
                 Created on <%= local_time(idea.created_at) %>
               </span>
             </div>
@@ -47,22 +46,22 @@
           </ul>
         </div>
         <div class="job_descp">
-          <h3><%= link_to idea.title.titleize, idea, class: 'text-dark' %></h3>
+          <h3><%= link_to idea.title.titleize, idea, class: 'text-dark prjt-name' %></h3>
           <% if idea.relevance_bar.to_i > 75 && idea.expired? || idea.relevance_bar.to_i < 75 && idea.expired? %>
-            <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
-              <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
+            <span class="float-right cmp-st text-danger mb-2" style="font-weight: bold; font-size: 12px;">Campaign Expired! <br>
+              <small class="amt-dt" style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
                 <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
               </small>
             </span>
           <% elsif idea.relevance_bar.to_i < 75 %>
-            <span class="float-right text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
-              <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
+            <span class="float-right cmp-st text-danger mb-2" style="font-weight: bold; font-size: 12px;">Inactive Campaign <br>
+              <small class="amt-dt" style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
                 <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
               </small>
             </span>
           <% elsif idea.relevance_bar.to_i > 75 %>
-            <span class="float-right text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
-              <small style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
+            <span class="float-right cmp-st text-success mb-2" style="font-weight: bold; font-size: 12px;">Active Campaign <br>
+              <small class="amt-dt" style="font-size: 9px;"><%= number_to_currency(idea.donated_amount, :unit => "₦") %> raised of 
                 <%= number_to_currency(idea.donation_goal, :unit => "₦") %> <br>
               </small>
             </span>
@@ -98,7 +97,7 @@
             <% end %>
             <li style="font-size: 12px;" class="mb-0"><i class="fa fa-comments text-primary"></i>  <%= pluralize(idea.comments.size, 'Comment') %></li> 
           </ul>
-          <a style="font-size: 12px;">
+          <a class="rel_count" style="font-size: 12px;">
             <i class="fa fa-filter text-primary"></i> Relevance: 
             <strong>
               <%= "#{idea.relevance_bar.to_i}%" %>

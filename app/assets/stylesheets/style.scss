@@ -5,13 +5,6 @@ h1,
     line-height: 56px;
 }
 
-@media (max-width: 767px) {
-    h1,
-    .h1 {
-        font-size: 38px;
-    }
-}
-
 .sgt-text {
 	float: left;
 	padding-left: 10px;
@@ -468,6 +461,13 @@ body.loaded .section-padding {
 
 .has-shadow.shadow-light::after {
     background-color: #f6f6f6;
+}
+
+@media (max-width: 767px) {
+  h1,
+  .h1 {
+      font-size: 38px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -2659,27 +2659,27 @@ a.text-black-400:hover {
     position: relative;
 }
 
-.has-video-popup .video-play-btn {
-    border: 0;
-    outline: 0;
-    height: 70px;
-    width: 70px;
-    padding: 2px 0 0 4px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    color: #ffffff;
-    background-color: #0070C0;
-    border-radius: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    transition: 0.3s;
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
-    box-shadow: 0 0 25px #ffffff;
-}
+// .has-video-popup .video-play-btn {
+//     border: 0;
+//     outline: 0;
+//     height: 70px;
+//     width: 70px;
+//     padding: 2px 0 0 4px;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     color: #ffffff;
+//     background-color: #0070C0;
+//     border-radius: 50%;
+//     -webkit-transform: translate(-50%, -50%);
+//     transform: translate(-50%, -50%);
+//     transition: 0.3s;
+//     -webkit-transition: 0.3s;
+//     -moz-transition: 0.3s;
+//     -ms-transition: 0.3s;
+//     -o-transition: 0.3s;
+//     box-shadow: 0 0 25px #ffffff;
+// }
 
 @media (max-width: 767px) {
     .has-video-popup .video-play-btn {
@@ -4351,20 +4351,6 @@ input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
     display: none;
 }
-
-// input[type=search] {
-//     background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-//     border: none;
-//     padding: 9px 10px 9px 42px;
-//     margin-right: 10px;
-//     width: 55px;
-//     -webkit-border-radius: 10em;
-//     -moz-border-radius: 10em;
-//     border-radius: 10em;
-//     -webkit-transition: all .5s;
-//     -moz-transition: all .5s;
-//     transition: all .5s;
-// }
 
 input:-moz-placeholder {
     color: #999;

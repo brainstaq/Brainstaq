@@ -100,28 +100,152 @@ img {
 	float: left;
 }
 
-/* Extra Small Devices (phones) */
-@media only screen and (max-width: 576px) {
-  /* CSS rules go here */
-}
+//------------ Media Queries ----------------//
+@media (max-width: 360px) {
+  .navbar-toggler {
+     padding-right: 0px !important;
+  }
+  html, body {
+    overflow-x: hidden !important;
+    width: 100vw !important;
+  }
+  .search-fm {
+    margin-top: 0px !important;
+  }
+  .navbar-text {
+    float: right;
+    margin-right: -10px !important;
+    margin-top: 15px !important;
+    font-size: 8px;
+  }
 
-/* Small Devices (landscape phones) */
-@media only screen and (min-width: 576px) and (max-width: 768px) {
-  /* CSS rules go here */
-}
+  .flash-message {
 
-/* Medium Devices (tablets) */
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  /* CSS rules go here */
+  }
+  .create-fm {
+    float: right;
+    margin-left: 10px !important;
+    margin-top: 20px !important;
+  }
+  .create-dd .dropdown-item {
+    font-size: 11px !important;
+  }
+  .nvb-dd .dropdown-item {
+    font-size: 11px !important;
+  }
+  .right-sidebar {
+    margin-left: 15px;
+    width: 300px !important;
+  }
+  .sidebar-item {
+    margin-right: -5px;
+    width: 300px !important;
+  }
+  .user-data {
+    margin-right: -5px;
+    width: 300px !important;
+    display: none !important;
+  }
+  .widget-p {
+    margin: auto;
+  }
+  .suggestions {
+    margin-right: 10px !important;
+    width: 300px !important;
+  }
+  .main-ws-sec {
+    margin-left: 10px !important;
+    width: 300px !important;
+  }
+  .post-topbar {
+    margin-left: -20px !important;
+    width: 300px !important;
+  }
+  .posts-section {
+    margin-left: -20px !important;
+    width: 300px !important;
+  }
+  .profile-title {
+    font-size: 12px !important;
+  }
+  .img-dt {
+    width: 25px !important;
+    height: 25px !important;
+  }
+  .project-dt {
+    float: left;
+    margin-left: -35px;
+  }
+  .prjt-name {
+    font-size: 16px !important;
+  }
+  .amt-dt {
+    display: none !important;
+  }
+  .cmp-st {
+    font-size: 10px !important;
+    margin-top: 50px !important;
+  }
+  .rel_count {
+    float: left !important;
+  }
+  //------- Profile styles ------//
+  .main-left-sidebar {
+    width: 300px !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+  .user_profile {
+    margin-left: 2px !important;
+    width: 300px !important;
+  }
+  .profile-sec {
+    margin-left: -25px !important;
+    margin-right: 25px !important;
+    margin-top: -30px !important;
+    width: 324px !important;
+  }
+  .user-prof-name {
+    font-size: 16px !important;
+  }
+  .tab-feed span {
+    font-size: 11px !important;
+    font-weight: 300 !important;
+    text-transform: uppercase;
+  }
+  .tab-feed ul li span {
+    display: block;
+    color: #b2b2b2;
+    font-weight: 200 !important;
+    font-size: 12px !important;
+  }
+  .tab-feed ul li {
+    display: inline-block !important;
+    margin-right: 15px !important;
+    text-align: center !important;
+  }
+  .tab-feed.st2 ul li {
+    margin-right: 10px !important;
+  }
+  .tab-feed ul li:last-child {
+    margin-right: 0 !important;
+  }
+  .profile-titles {
+    font-size: 8px !important;
+  }
+  .project-dts {
+    float: left;
+    margin-left: -35px !important;
+  }
+  .product-feed-tab {
+    margin-left: 20px !important;
+    width: 300px !important;
+  }
+  .widget-jobsss {
+    margin-right: 5px;
+    margin-left: -18px !important;
+    width: 300px !important;
+    // display: none !important;
+  }
 }
-
-/* Large Devices (desktops) */
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-  /* CSS rules go here */
-}
-
-/* Extra Large Devices (large desktops) */
-@media only screen and (min-width: 1200px) {
-  /* CSS rules go here */
-}
-

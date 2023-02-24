@@ -4,7 +4,7 @@
   </button>
 
   <% if current_page?(ideas_path) %>  
-    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+    <div class="dropdown-menu dropdown-menu cat-bg" aria-labelledby="dropdownMenu2">
       <% Category.all.each do |category| %>
         <li>
           <%= link_to category.name, ideas_path(category: category.name), class: "dropdown-item" %>
@@ -12,7 +12,7 @@
       <% end %>      
     </div>
   <% elsif current_page?(enterprises_path) %>
-    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+    <div class="dropdown-menu dropdown-menu cat-bg" aria-labelledby="dropdownMenu2">
       <% Category.all.each do |category| %>
         <li>
           <%= link_to category.name, enterprises_path(category: category.name), class: "dropdown-item" %>

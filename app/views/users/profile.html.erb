@@ -188,18 +188,43 @@
 									<div class="widget widget-about sidebar-item widget-jobs widget-jobsss">
 										<%= link_to (image_tag 'brand.png', class:"img-fluid navbar-brand p-0", style:"width:70px; height: 80px;"), root_path %>
 										<span class="mb-3 mt-2">Get access to a growing library <br>of professional business 
-										courses, and build a smarter enterprise</span>
+										  courses, and build a smarter enterprise
+                    </span>
 								    <h5 class="text-uppercase mb-3 mt-0">Explore <br>Brainstaq Academy!</h5>
-								  <div>
-									<ul class="user-fw-status" style="margin-bottom: 0px;">
-										<li>
-											<%= link_to 'Get Started', "#" %>
-										</li>
-									</ul>
-								</div>
-							</div><!--widget-about end-->
-							<%= render partial: "layouts/top_brands", locals: { enterprises: @enterprises} %>
-            </div><!--right-sidebar end-->
+								    <div>
+                      <ul class="user-fw-status" style="margin-bottom: 0px;">
+                        <li>
+                          <%= link_to 'Get Started', "#" %>
+                        </li>
+                      </ul>
+								    </div>
+							    </div><!--widget-about end-->
+							    <%#= render partial: "layouts/top_brands", locals: { enterprises: @enterprises} %>
+                  <div class="widget sidebar-item widget-jobs widget-jobsss" style="width: 280px; padding-bottom: 10px;">
+                    <div class="sd-title">
+                      <h3 class="text-center">Top Brands</h3>
+                    </div>
+                    <% @enterprises.each do |enterprise| %>  
+                      <div class="suggestions-list make-me-sticky" style="padding-bottom: 60px;">
+                        <div class="suggestion-usd" style="margin-bottom: -60px;">
+                          <a href="<%= enterprise_url(enterprise) %>">
+                            <%= image_tag enterprise.image_url, style: "width: 60px; height: flex; margin-left: 5px; margin-right: 5px;" %>
+                          </a>
+                          <div class="sgt-text">
+                            <h4><%= link_to enterprise.name.titleize, enterprise, class: 'text-dark' %></h4>
+                            <span>
+                              <% if enterprise.category %>
+                              <%= enterprise.category.name %>
+                              <% else %>
+                              <%= 'General' %>
+                              <% end %>
+                            </span><br>
+                            </div>
+                        </div> 
+                      </div>
+                    <% end %>
+                  </div>
+                </div><!--right-sidebar end-->
               </div>
             </div>
           </div><!-- main-section-data end-->

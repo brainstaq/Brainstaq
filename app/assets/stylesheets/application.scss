@@ -99,8 +99,15 @@
 img {
 	float: left;
 }
+.cat-bg {
+  background-color: #ffffff !important;
+  margin-top: 70px !important;
+  margin-left: -200px !important;
+}
 
 //------------ Media Queries ----------------//
+//-------- Homepage, header, dashboard, and profile -----//
+
 @media (max-width: 360px) {
   .navbar-toggler {
      padding-right: 0px !important;
@@ -112,6 +119,19 @@ img {
   .search-fm {
     margin-top: 0px !important;
   }
+  .col-lg-11 {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .nav-pills {
+    justify-content: space-around;
+  }
+  
+  .nav-item {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+  }
   .navbar-text {
     float: right;
     margin-right: -10px !important;
@@ -120,8 +140,27 @@ img {
   }
 
   .flash-message {
-
-  }
+    &.error {
+      border: solid 2px #900;
+      background-color: red;
+    }
+    &.notice {
+      border: solid 2px #26722D;
+      background-color: green;
+    }
+    color: white;
+    z-index: auto;
+    position: fixed;
+    font-weight: bold;
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 25%;
+    text-align: center;
+    p {
+      font-size: 60%;
+      margin: 5px 0;
+    }
+}
   .create-fm {
     float: right;
     margin-left: 10px !important;
@@ -135,10 +174,6 @@ img {
   }
   .right-sidebar {
     margin-left: 15px;
-    width: 300px !important;
-  }
-  .sidebar-item {
-    margin-right: -5px;
     width: 300px !important;
   }
   .user-data {
@@ -189,7 +224,6 @@ img {
   .rel_count {
     float: left !important;
   }
-  //------- Profile styles ------//
   .main-left-sidebar {
     width: 300px !important;
     border-left: none !important;
@@ -242,10 +276,45 @@ img {
     margin-left: 20px !important;
     width: 300px !important;
   }
+  .sidebar-item {
+    margin-left: 0px !important;
+    width: 300px !important;
+  }
   .widget-jobsss {
-    margin-right: 5px;
+    // margin-right: 5px;
     margin-left: -18px !important;
     width: 300px !important;
     // display: none !important;
+  }
+  
+  //category-dropdown
+  .cat-bg {
+    background-color: #ffffff !important;
+    margin-top: 70px !important;
+  }
+
+  //project show page
+  .project-img {
+    margin-top: -10px !important;
+  }
+  .card-title {
+    font-size: 20px !important;
+  }
+  .cat-sm {
+    font-size: 11px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-top: -290px !important;
+    // margin-bottom: 10px !important;
+  }
+  .date-text {
+    font-size: 11px !important;
+  }
+  .card-text {
+    margin-top: 5px !important;
+  }
+  .cardsss {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
   }
 }

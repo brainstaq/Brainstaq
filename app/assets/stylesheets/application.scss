@@ -116,6 +116,15 @@ img {
     overflow-x: hidden !important;
     width: 100vw !important;
   }
+  .h1 {
+    font-size: 22px !important;
+  }
+  .breadcrumb-item {
+    font-size: 12px !important;
+  }
+  .bd-padding {
+    margin-top: -50px !important;
+  }
   .search-fm {
     margin-top: 0px !important;
   }
@@ -337,5 +346,14 @@ img {
     padding: 10px 12px 10px 12px !important;
     margin-left: 50px !important;
     margin-right: 105px !important;
+  }
+  th, td {
+    font-size: 12px !important;
+  }
+  .bus-link {
+    font-size: 14px !important;
+  }
+  .cp-tax {
+    margin-bottom: 15px !important;
   }
 }

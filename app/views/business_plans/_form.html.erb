@@ -19,7 +19,7 @@
 
   <section class="profile-account-setting">
 		<div class="container">
-			<div class="account-tabs-setting">
+			<div class="account-tabs-setting bpd-top">
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="acc-leftbar">
@@ -46,7 +46,7 @@
 						<div class="tab-content" id="nav-tabContent">
 							<div class="tab-pane fade show active" id="nav-summary" role="tabpanel" aria-labelledby="nav-summary-tab">
 								<div class="acc-setting">
-									<h3>Executive Summary
+									<h3 class="plan-h3">Executive Summary
 										<details>
 											<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 											<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -65,16 +65,21 @@
 									</div>
 									<div class="save-stngs">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->	
 								</div><!--acc-setting end-->
 							</div>
 
 							<div class="tab-pane fade" id="nav-intro" role="tabpanel" aria-labelledby="nav-intro-tab">
 								<div class="acc-setting">
-									<h3>Introduction</h3>	
+									<h3 class="plan-h3">Introduction</h3>	
 									<div class="cp-field">
 										<h5>Vision
 											<details>
@@ -131,9 +136,14 @@
 									</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								
 								</div><!--acc-setting end-->
@@ -141,7 +151,7 @@
 								
 							<div class="tab-pane fade" id="nav-value" role="tabpanel" aria-labelledby="nav-value-tab">
 								<div class="acc-setting">
-									<h3>Value Proposition
+									<h3 class="plan-h3">Value Proposition
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -167,16 +177,21 @@
 									</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 
 							<div class="tab-pane fade" id="nav-products" role="tabpanel" aria-labelledby="nav-products-tab">
 								<div class="acc-setting">
-									<h3>Products & Services
+									<h3 class="plan-h3">Products & Services
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -194,15 +209,20 @@
 									
 									<div class="save-stngs pd2">
 									<ul>
-										<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-										<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-									</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 								</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 							<div class="tab-pane fade" id="nav-industry" role="tabpanel" aria-labelledby="nav-industry-tab">
 								<div class="acc-setting">
-									<h3>Industry Analysis
+									<h3 class="plan-h3">Industry Analysis
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -227,15 +247,20 @@
 									</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 							<div class="tab-pane fade" id="nav-competition" role="tabpanel" aria-labelledby="nav-competition-tab">
 								<div class="acc-setting">
-									<h3>Competition
+									<h3 class="plan-h3">Competition
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -257,16 +282,21 @@
 									</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 
 							<div class="tab-pane fade" id="nav-swot" role="tabpanel" aria-labelledby="nav-swot-tab">
 								<div class="acc-setting">
-									<h3>SWOT Analysis
+									<h3 class="plan-h3">SWOT Analysis
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -317,16 +347,21 @@
 								</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 							
 							<div class="tab-pane fade" id="nav-operations" role="tabpanel" aria-labelledby="nav-operations-tab">
 								<div class="acc-setting">
-									<h3>Operations Plan
+									<h3 class="plan-h3">Operations Plan
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -353,16 +388,21 @@
 									</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 							
 							<div class="tab-pane fade" id="nav-marketing" role="tabpanel" aria-labelledby="nav-marketing-tab">
 								<div class="acc-setting">
-									<h3>Marketing Plan
+									<h3 class="plan-h3">Marketing Plan
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -408,16 +448,21 @@
 								</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 							
 							<div class="tab-pane fade" id="nav-mgt" role="tabpanel" aria-labelledby="nav-mgt-tab">
 								<div class="acc-setting">
-									<h3>Management Plan
+									<h3 class="plan-h3">Management Plan
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -445,16 +490,21 @@
 									</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 
 							<div class="tab-pane fade" id="nav-positions" role="tabpanel" aria-labelledby="nav-positions-tab">
 								<div class="acc-setting">
-									<h3>Add Employee & Position
+									<h3 class="plan-h3">Add Employee & Position
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -482,9 +532,14 @@
 									</div>
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
@@ -493,7 +548,7 @@
 
 							<div class="tab-pane fade" id="nav-financial" role="tabpanel" aria-labelledby="nav-financial-tab">
 								<div class="acc-setting">
-									<h3>Financial Plan
+									<h3 class="plan-h3">Financial Plan
 									<details>
 										<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 										<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -1235,16 +1290,21 @@
 
 									<div class="save-stngs pd2">
 										<ul>
-											<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-											<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-										</ul>
+                      <% if business_plan.new_record? %>
+                        <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% else %>
+                        <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                      <% end %>
+                    </ul>
 									</div><!--save-stngs end-->
 								</div><!--acc-setting end-->
 							</div>
 
 						<div class="tab-pane fade" id="nav-milestones" role="tabpanel" aria-labelledby="nav-milestones-tab">
 							<div class="acc-setting">
-								<h3>Milestones
+								<h3 class="plan-h3">Milestones
 								<details>
 									<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 									<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -1275,16 +1335,21 @@
 								</div>
 								<div class="save-stngs pd2">
 									<ul>
-										<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-										<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-									</ul>
+                    <% if business_plan.new_record? %>
+                      <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                      <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                    <% else %>
+                      <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                      <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                    <% end %>
+                  </ul>
 								</div><!--save-stngs end-->
 							</div><!--acc-setting end-->
 						</div>
 
 						<div class="tab-pane fade" id="nav-appendices" role="tabpanel" aria-labelledby="nav-appendices-tab">
 							<div class="acc-setting">
-								<h3>Appendices
+								<h3 class="plan-h3">Appendices
 								<details>
 									<summary class="text-info" style="font-size:12px; font-style: italic; margin-bottom: 0px;">Tip!</summary>
 									<p class="text-info mt-1" style="font-size:11px; font-style: italic;">
@@ -1302,9 +1367,14 @@
 								</div>
 								<div class="save-stngs pd2">
 									<ul>
-										<li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
-										<li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
-									</ul>
+                    <% if business_plan.new_record? %>
+                      <li><%= form.submit 'Submit', class: "actions btn rounded btn-primary" %></li>
+                      <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                    <% else %>
+                      <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                      <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                    <% end %>
+                  </ul>
 								</div><!--save-stngs end-->
 							</div><!--acc-setting end-->
 						</div>

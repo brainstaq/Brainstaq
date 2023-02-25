@@ -30,7 +30,7 @@
 <section class="section-padding pb-0" style="margin-top: -40px !important; margin-bottom: -20px !important;" data-aos="fade-in" data-aos-delay="150">
   <div class="site-section ideas-entry-wrap mt-0" style="margin-top: 0px;" data-aos="fade" data-aos-delay="100">
     <div class="container mb-5">
-      <%= link_to 'New Pitch Deck', new_enterprise_pitch_deck_path(@enterprise), class: "btn btn-primary float-right mr-5 mb-0 mt-0" %>
+      <%= link_to 'New Pitch Deck', new_enterprise_pitch_deck_path(@enterprise), class: "btn btn-primary new-biz float-right mr-5 mb-0 mt-0" %>
     </div>
   </div>
 </section>
@@ -43,7 +43,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 table-responsive">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -62,9 +62,9 @@
               <td><%= @enterprise.user.full_name.titleize %></td>
               <td><%= local_time(pitch_deck.updated_at)%></td>
               <td>
-                <%= link_to fa_icon("eye", title: "View", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), enterprise_pitch_deck_path(@enterprise, pitch_deck) %>
-                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), edit_enterprise_pitch_deck_path(@enterprise, pitch_deck) %>
-                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), [@enterprise, pitch_deck], method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%#= link_to fa_icon("eye", title: "View", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), enterprise_pitch_deck_path(@enterprise, pitch_deck) %>
+                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary pd-link mr-2 mb-2", style: "font-size: 20px;"), edit_enterprise_pitch_deck_path(@enterprise, pitch_deck) %>
+                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger pd-link2 mt-4 mr-2 mb-2", style: "font-size: 20px;"), [@enterprise, pitch_deck], method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
           </tbody>

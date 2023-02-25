@@ -30,7 +30,7 @@
 <section class="section-padding pb-0" style="margin-top: -40px !important; margin-bottom: -20px !important;" data-aos="fade-in" data-aos-delay="150">
   <div class="site-section ideas-entry-wrap mt-0" style="margin-top: 0px;" data-aos="fade" data-aos-delay="100">
     <div class="container mb-0">
-      <%= link_to 'New Invoice', new_enterprise_invoice_path(@enterprise), class: "btn btn-primary float-right mr-5 mb-0 mt-0" %>
+      <%= link_to 'New Invoice', new_enterprise_invoice_path(@enterprise), class: "btn btn-primary new-inv float-right mr-5 mb-0 mt-0" %>
     </div>
   </div>
 </section>
@@ -66,9 +66,9 @@
               <td><%= invoice.vat %></td>
               <td><%= number_to_currency(invoice.total, :unit => "₦") %></td>
               <td>
-                <%= link_to fa_icon("eye", title: "View", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), enterprise_invoice_path(@enterprise, invoice) %>
-                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), edit_enterprise_invoice_path(@enterprise, invoice) %>
-                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), [@enterprise, invoice], method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to fa_icon("eye", title: "View", class: "text-primary inv-link1 mr-2 mb-2", style: "font-size: 20px;"), enterprise_invoice_path(@enterprise, invoice) %>
+                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary inv-link2 mr-2 mb-2", style: "font-size: 20px;"), edit_enterprise_invoice_path(@enterprise, invoice) %>
+                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger inv-link3 mt-4 mr-2 mb-2", style: "font-size: 20px;"), [@enterprise, invoice], method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
           <% end %>

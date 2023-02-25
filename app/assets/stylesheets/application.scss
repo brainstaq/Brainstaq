@@ -326,6 +326,11 @@ img {
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
+  // Project Form
+  .account-tabs-setting {
+    margin-right: 0px !important;
+    width: 324px !important;
+  }
   // Brand show page
   .cd-bt {
     margin-bottom: 15px !important;
@@ -355,5 +360,58 @@ img {
   }
   .cp-tax {
     margin-bottom: 15px !important;
+  }
+  .plan-h3 {
+    margin-top: 20px !important;
+  }
+  .gen-plan {
+    margin-top: -95px !important;
+    margin-bottom: 0px !important;
+  }
+  .bpd-top {
+    margin-top: -35px !important;
+  }
+
+  // Invoice
+  .new-inv {
+    font-size: 11px !important;
+    padding: 10px 12px 10px 12px !important;
+    margin-left: 30px !important;
+    margin-right: 115px !important;
+  }
+  .inv-link1 {
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+  }
+  .inv-link2 {
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+  }
+  .inv-link3 {
+    font-size: 14px !important;
+    margin-top: 1px !important;
+  }
+  .inv-new {
+    margin-top: -80px !important;
+  }
+  .bpd-tops {
+    // margin-top: -90px !important;
+  }
+
+  // Pitch Deck
+  .pd-link {
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+  }
+  .pd-link2 {
+    font-size: 14px !important;
+    margin-top: 1px !important;
+  }
+  .pd-padding {
+    margin-top: 70px !important;
+  }
+  // Edit settings
+  .up-acct {
+    margin-bottom: 10px !important;
   }
 }

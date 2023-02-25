@@ -27,18 +27,18 @@
 </section>
 <!-- end of page-header -->
 
-<div class="idea-form container col-lg-8", style= "margin-top: 100px;">
+<div class="idea-form pd-padding container col-lg-8", style= "margin-top: 100px;">
   <small class="text-center mb-5">Created by <%= link_to (@enterprise.user.full_name.titleize), profile_path(@enterprise.user.username, @user) %> 
     on <%= local_time(@pitch_deck.created_at) %>
   </small>
 
   <div class="container-fluid col-lg-6 text-right float-right">
     <% if user_signed_in? && current_user.id == @enterprise.user_id %>
-        <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
+        <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger bus-link mt-4 mr-2 mb-2", style: "font-size: 20px;"), 
         enterprise_pitch_deck_path(@enterprise), method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to fa_icon("edit", title: "Edit Pitch Deck", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+        <%= link_to fa_icon("edit", title: "Edit Pitch Deck", class: "text-primary bus-link mr-2 mb-2", style: "font-size: 20px;"), 
         edit_enterprise_pitch_deck_path(@enterprise) %>
-        <%= link_to fa_icon("file", title: "Download", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
+        <%= link_to fa_icon("file", title: "Download", class: "text-primary bus-link mr-2 mb-2", style: "font-size: 20px;"), 
         enterprise_pitch_deck_path(@enterprise, format: :pdf) %>
     <% end %>
   </div>

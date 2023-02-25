@@ -94,8 +94,13 @@
                     </div>
                     <div class="save-stngs pd2">
                       <ul>
-                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
-                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                        <% if pitch_deck.new_record? %>
+                          <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% else %>
+                          <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% end %>
                       </ul>
                     </div><!--save-stngs end-->
                   </div><!--acc-setting end-->
@@ -160,8 +165,13 @@
                     </div>
                     <div class="save-stngs pd2">
                       <ul>
-                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
-                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                        <% if pitch_deck.new_record? %>
+                          <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% else %>
+                          <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% end %>
                       </ul>
                     </div><!--save-stngs end-->
                   </div><!--acc-setting end-->
@@ -226,8 +236,13 @@
                     </div>
                     <div class="save-stngs pd2">
                       <ul>
-                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
-                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                        <% if pitch_deck.new_record? %>
+                          <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% else %>
+                          <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% end %>
                       </ul>
                     </div><!--save-stngs end-->
                   </div><!--acc-setting end-->
@@ -292,8 +307,13 @@
                     </div>
                     <div class="save-stngs pd2">
                       <ul>
-                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
-                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                        <% if pitch_deck.new_record? %>
+                          <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% else %>
+                          <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% end %>
                       </ul>
                     </div><!--save-stngs end-->
                   </div><!--acc-setting end-->
@@ -379,8 +399,13 @@
                     </div>
                     <div class="save-stngs pd2">
                       <ul>
-                        <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
-                        <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded"  %></li>
+                        <% if pitch_deck.new_record? %>
+                          <li><%= form.submit 'Create Pitch', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% else %>
+                          <li><%= form.submit 'Update', class: "actions btn rounded btn-primary" %></li>
+                          <li><%= link_to 'Back', :back, class: "btn btn-secondary rounded" %></li>
+                        <% end %>
                       </ul>
                     </div><!--save-stngs end-->
                   </div><!--acc-setting end-->

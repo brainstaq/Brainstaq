@@ -49,7 +49,7 @@
             <section class="search-result-item">
               <a class="image-link" href="<%= idea_url(idea) %>">
                 <% if idea.image.present? %>
-                  <%=image_tag idea.image_url, class: "image", style: "width: 200px; height: 200px;" %>
+                  <%=image_tag idea.image_url, class: "image search-img", style: "width: 200px; height: 200px;" %>
                 <% end %>
               </a>
               <div class="search-result-item-body">
@@ -88,7 +88,7 @@
             <section class="search-result-item">
               <a class="image-link" href="<%= enterprise_url(enterprise) %>">
                 <% if enterprise.image.present? %>
-                  <%=image_tag enterprise.image_url, class: "image", style: "width: 200px; height: 200px;" %>
+                  <%=image_tag enterprise.image_url, class: "image search-img", style: "width: 200px; height: 200px;" %>
                 <% end %>
               </a>
               <div class="search-result-item-body">
@@ -116,7 +116,7 @@
               <section class="search-result-item">
                 <a class="image-link" href="<%= profile_path(user.username, @user) %>">
                   <% if user.image.url %>
-                    <%=image_tag (user.image_url), class: "image", style: "width: 200px; height: 210px;" %>
+                    <%=image_tag (user.image_url), class: "image search-img", style: "width: 200px; height: 210px;" %>
                   <% else %>
                     <%= image_tag 'avatar.png', class: "image", style: "width: 200px; height: 210px;" %>
                   <% end %>
@@ -140,7 +140,9 @@
               </section>
               <% c = c + 1 %>
             <% end %>
-            <p class="search-results-count" style="position: absolute; top: -50px;">Showing <%= pluralize(c, 'result') %> containing your search!</p>  
+            <div class="search-result-item">
+              <p class="search-results-count" style="position: absolute; top: -50px;">Showing <%= pluralize(c, 'result') %> containing your search!</p>  
+            </div>
           </div>
         </div>
       </div>

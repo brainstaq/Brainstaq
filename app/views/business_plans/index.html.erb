@@ -41,43 +41,6 @@
   </p>
 <% else %>
 
-<%
-=begin%>
- <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Created By</th>
-            <th scope="col">Updated On</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <% @business_plans.each do |business_plan| %>
-          <tbody>
-            <tr>
-              <th scope="row"><%= business_plan.id %></th>
-              <td><%= link_to (business_plan.enterprise.name).titleize, enterprise_business_plan_path(@enterprise, business_plan), class: "text-dark" %></td>
-              <td><%= @enterprise.user.full_name.titleize %></td>
-              <td><%= local_time(business_plan.updated_at)%></td>
-              <td>
-                <%= link_to fa_icon("eye", title: "View", class: "text-primary mr-2 mb-2", style: "font-size: 16px;"), enterprise_business_plan_path(@enterprise, business_plan) %>
-                <%= link_to fa_icon("edit", title: "Edit", class: "text-primary mr-2 mb-2", style: "font-size: 16px;"), edit_enterprise_business_plan_path(@enterprise, business_plan) %>
-                <%= link_to fa5_icon("trash", title: "Delete", class: "text-danger mr-2 mb-2", style: "font-size: 16px;"), [@enterprise, business_plan], method: :delete, data: { confirm: 'Are you sure?' } %>
-              </td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
-    </div>
-  </div>
-</div> 
-<%
-=end%>
-
 <div class="container">
   <div class="row">
     <div class="col-12 table-responsive">

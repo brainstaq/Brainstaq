@@ -394,9 +394,7 @@ img {
   .inv-new {
     margin-top: -80px !important;
   }
-  .bpd-tops {
-    // margin-top: -90px !important;
-  }
+
 
   // Pitch Deck
   .pd-link {
@@ -420,3 +418,320 @@ img {
     width: 100% !important;
   }  
 }
+
+// @media (max-width: 412px) {
+//   .navbar-toggler {
+//      padding-right: 0px !important;
+//   }
+//   html, body {
+//     overflow-x: hidden !important;
+//     width: 100vw !important;
+//   }
+//   .h1 {
+//     font-size: 22px !important;
+//   }
+//   .breadcrumb-item {
+//     font-size: 12px !important;
+//   }
+//   .bd-padding {
+//     margin-top: -50px !important;
+//   }
+//   .search-fm {
+//     margin-top: 0px !important;
+//   }
+//   .col-lg-11 {
+//     width: 100%;
+//     margin-right: 0;
+//   }
+  
+//   .nav-pills {
+//     justify-content: space-around;
+//   }
+  
+//   .nav-item {
+//     flex-basis: 100%;
+//     margin-bottom: 10px;
+//   }
+//   .navbar-text {
+//     float: right;
+//     margin-right: -10px !important;
+//     margin-top: 15px !important;
+//     font-size: 8px;
+//   }
+
+//   .flash-message {
+//     &.error {
+//       border: solid 2px #900;
+//       background-color: red;
+//     }
+//     &.notice {
+//       border: solid 2px #26722D;
+//       background-color: green;
+//     }
+//     color: white;
+//     z-index: auto;
+//     position: fixed;
+//     font-weight: bold;
+//     width: 50%;
+//     margin-top: 50px;
+//     margin-left: 25%;
+//     text-align: center;
+//     p {
+//       font-size: 60%;
+//       margin: 5px 0;
+//     }
+// }
+//   .create-fm {
+//     float: right;
+//     margin-left: 10px !important;
+//     margin-top: 20px !important;
+//   }
+//   .create-dd .dropdown-item {
+//     font-size: 11px !important;
+//   }
+//   .nvb-dd .dropdown-item {
+//     font-size: 11px !important;
+//   }
+//   .right-sidebar {
+//     margin-left: 15px;
+//     width: 400px !important;
+//   }
+//   .user-data {
+//     margin-right: -5px;
+//     width: 400px !important;
+//     display: none !important;
+//   }
+//   .widget-p {
+//     margin: auto;
+//   }
+//   .suggestions {
+//     margin-right: 10px !important;
+//     width: 350px !important;
+//   }
+//   .main-ws-sec {
+//     margin-left: 10px !important;
+//     width: 350px !important;
+//   }
+//   .post-topbar {
+//     margin-left: -20px !important;
+//     width: 350px !important;
+//   }
+//   .posts-section {
+//     margin-left: -20px !important;
+//     width: 350px !important;
+//   }
+//   .profile-title {
+//     font-size: 12px !important;
+//   }
+//   .img-dt {
+//     width: 25px !important;
+//     height: 25px !important;
+//   }
+//   .project-dt {
+//     float: left;
+//     margin-left: -35px;
+//   }
+//   .prjt-name {
+//     font-size: 16px !important;
+//   }
+//   .amt-dt {
+//     display: none !important;
+//   }
+//   .cmp-st {
+//     font-size: 10px !important;
+//     margin-top: 50px !important;
+//   }
+//   .rel_count {
+//     float: left !important;
+//   }
+//   .main-left-sidebar {
+//     width: 350px !important;
+//     border-left: none !important;
+//     border-right: none !important;
+//     border-bottom: none !important;
+//   }
+//   .user_profile {
+//     margin-left: 2px !important;
+//     width: 350px !important;
+//   }
+//   .profile-sec {
+//     margin-left: -25px !important;
+//     margin-right: 25px !important;
+//     margin-top: -30px !important;
+//     width: 350px !important;
+//   }
+//   .user-prof-name {
+//     font-size: 16px !important;
+//   }
+//   .tab-feed span {
+//     font-size: 11px !important;
+//     font-weight: 300 !important;
+//     text-transform: uppercase;
+//   }
+//   .tab-feed ul li span {
+//     display: block;
+//     color: #b2b2b2;
+//     font-weight: 200 !important;
+//     font-size: 12px !important;
+//   }
+//   .tab-feed ul li {
+//     display: inline-block !important;
+//     margin-right: 15px !important;
+//     text-align: center !important;
+//   }
+//   .tab-feed.st2 ul li {
+//     margin-right: 10px !important;
+//   }
+//   .tab-feed ul li:last-child {
+//     margin-right: 0 !important;
+//   }
+//   .profile-titles {
+//     font-size: 8px !important;
+//   }
+//   .project-dts {
+//     float: left;
+//     margin-left: -35px !important;
+//   }
+//   .product-feed-tab {
+//     margin-left: 20px !important;
+//     width: 350px !important;
+//   }
+//   .sidebar-item {
+//     margin-left: 0px !important;
+//     width: 350px !important;
+//   }
+//   .user-tab-sec {
+//     // margin-left: 0px !important;
+//     width: 350px !important;
+//   }
+//   .widget-jobsss {
+//     // margin-right: 5px;
+//     margin-left: -18px !important;
+//     width: 350px !important;
+//     // display: none !important;
+//   }
+  
+//   //category-dropdown
+//   .cat-bg {
+//     background-color: #ffffff !important;
+//     margin-top: 70px !important;
+//   }
+
+//   //project show page
+//   .project-img {
+//     margin-top: -10px !important;
+//   }
+//   .card-title {
+//     font-size: 20px !important;
+//   }
+//   .cat-sm {
+//     font-size: 11px !important;
+//     padding-left: 15px !important;
+//     padding-right: 15px !important;
+//     margin-top: -290px !important;
+//     // margin-bottom: 10px !important;
+//   }
+//   .date-text {
+//     font-size: 11px !important;
+//   }
+//   .card-text {
+//     margin-top: 5px !important;
+//   }
+//   .cardsss {
+//     margin-left: 0px !important;
+//     margin-right: 0px !important;
+//   }
+//   // Project Form
+//   .account-tabs-setting {
+//     margin-right: 0px !important;
+//     width: 324px !important;
+//   }
+//   // Brand show page
+//   .cd-bt {
+//     margin-bottom: 15px !important;
+//   }
+//   .brand-cat-sm {
+//     font-size: 11px !important;
+//     padding-left: 15px !important;
+//     padding-right: 15px !important;
+//     margin-top: -730px !important;
+//   }
+//   .dp-bg {
+//     background-color: #ffffff !important;
+//   }
+
+// // Business plans
+//   .new-biz {
+//     font-size: 11px !important;
+//     padding: 10px 12px 10px 12px !important;
+//     margin-left: 50px !important;
+//     margin-right: 105px !important;
+//   }
+//   th, td {
+//     font-size: 12px !important;
+//   }
+//   .bus-link {
+//     font-size: 14px !important;
+//   }
+//   .cp-tax {
+//     margin-bottom: 15px !important;
+//   }
+//   .plan-h3 {
+//     margin-top: 20px !important;
+//   }
+//   .gen-plan {
+//     margin-top: -95px !important;
+//     margin-bottom: 0px !important;
+//   }
+//   .bpd-top {
+//     margin-top: -35px !important;
+//   }
+
+//   // Invoice
+//   .new-inv {
+//     font-size: 11px !important;
+//     padding: 10px 12px 10px 12px !important;
+//     margin-left: 30px !important;
+//     margin-right: 115px !important;
+//   }
+//   .inv-link1 {
+//     font-size: 14px !important;
+//     margin-bottom: 2px !important;
+//   }
+//   .inv-link2 {
+//     font-size: 14px !important;
+//     margin-bottom: 2px !important;
+//   }
+//   .inv-link3 {
+//     font-size: 14px !important;
+//     margin-top: 1px !important;
+//   }
+//   .inv-new {
+//     margin-top: -80px !important;
+//   }
+//   .bpd-tops {
+//     // margin-top: -90px !important;
+//   }
+
+//   // Pitch Deck
+//   .pd-link {
+//     font-size: 14px !important;
+//     margin-bottom: 2px !important;
+//   }
+//   .pd-link2 {
+//     font-size: 14px !important;
+//     margin-top: 1px !important;
+//   }
+//   .pd-padding {
+//     margin-top: 70px !important;
+//   }
+//   // Edit settings
+//   .up-acct {
+//     margin-bottom: 10px !important;
+//   }
+
+//   // Search Result
+//   .search-img {
+//     width: 100% !important;
+//   }  
+// }

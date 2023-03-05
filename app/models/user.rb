@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :login
   enum status: [:inactive, :active]
   
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: %i[github google_oauth2]
 

@@ -42,7 +42,18 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
+  # config.action_mailer.default_url_options = { host: 'https://691c-197-210-226-44.ngrok.io' }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+ 
+  # config.action_mailer.smtp_settings = {
+  #   user_name: 'brainstaq@gmail.com',
+  #   password:  'tfbwhmmhvjwpaqpc',
+  #   domain:    'gmail.com',
+  #   address:   'smtp.gmail.com',
+  #   port:      '587', #'465'
+  #   authentication: :plain,
+  #   enable_starttls_auto: true
+  # }
 
   config.action_mailer.smtp_settings = {
     user_name: ENV['GMAIL_USERNAME'],
@@ -92,5 +103,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   #config.hosts << /[a-z0-9]+\.ngrok\.io/
-  config.hosts << "2516-197-210-84-138.ngrok.io"
+  config.hosts << "691c-197-210-226-44.ngrok.io"
 end

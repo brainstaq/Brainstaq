@@ -103,5 +103,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   #config.hosts << /[a-z0-9]+\.ngrok\.io/
-  config.hosts << "691c-197-210-226-44.ngrok.io"
+  config.hosts << "a9db-197-210-54-107.ngrok.io"
 end

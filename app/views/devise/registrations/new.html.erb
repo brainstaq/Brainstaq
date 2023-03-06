@@ -39,16 +39,16 @@
 
     <article class="card-body mx-auto" style="max-width: 400px; padding-top: 30px;">
       <p>
-        <%#= link_to user_google_oauth2_omniauth_authorize_path do %>
-						<%# <span class="btn btn-outline-primary w-100 mb-2"> %>
-							<%# <i class="fab fa-google"></i> Sign up with Google %>
+        <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+						<span class="btn btn-outline-primary w-100 mb-2">
+							<i class="fab fa-google"></i> Sign up with Google
 						</span>
-					<%# end %>
+					<% end %>
       
       </p>
-      <%# <p class="divider-text mb-2 mt-2">
+      <p class="divider-text mb-2 mt-2">
         <span class="bg-light">OR</span>
-      </p> %>
+      </p>
     
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <small><%= render "devise/shared/error_messages", resource: resource %></small>

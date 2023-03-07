@@ -60,10 +60,18 @@
             <% if @idea.end_date.future? %>
               <%= link_to fa_icon("edit", title: "Edit Idea", class: "text-primary mr-2 mb-2", style: "font-size: 20px;"), 
                 edit_idea_path(@idea) %>
-            <% end %>   
-            <%= social_share_button_tag('Share', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook twitter whatsapp_app email telegram)) %>  
+            <% end %>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Tweet" id="share-tweet"><i class="fab fa-twitter"></i></a>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Share" id="share-facebook"><i class="fab fa-facebook"></i></a>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Share" id="share-instagram"><i class="fab fa-instagram"></i></a>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Share" id="share-linkedin"><i class="fab fa-linkedin"></i></a>
+            <p class="text-dark float-right mr-2 mt-1" style= "font-size: 16px;">Share:</p>
           <% else %>
-            <%= social_share_button_tag('Share', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook twitter whatsapp_app email telegram)) %>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Tweet" id="share-tweet"><i class="fab fa-twitter"></i></a>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Share" id="share-facebook"><i class="fab fa-facebook"></i></a>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Share" id="share-instagram"><i class="fab fa-instagram"></i></a>
+            <a class="text-primary float-right mr-2 mb-2" style= "font-size: 20px;" title="Share" id="share-linkedin"><i class="fab fa-linkedin"></i></a>
+            <p class="text-dark float-right mr-2 mt-1" style= "font-size: 16px;">Share:</p>
           <% end %>
           <% if @idea.relevance_bar.to_i > 75 && @idea.expired? || @idea.relevance_bar.to_i < 75 && @idea.expired? %>
             <div class="mt-3" style="margin-bottom: -30px;">
@@ -113,8 +121,6 @@
           <% end %>
         <% else %>
         
-          <%#= social_share_button_tag('Share to Facebook', :url => idea_path(@idea), desc: @idea.title, :allow_sites => %w(facebook)) %>
-          <%#= link_to fa_icon("share-alt", title: "Share", class: "text-primary mr-2", style: "font-size: 28px;")%>
           <% if @idea.relevance_bar.to_i > 75 && @idea.expired? || @idea.relevance_bar.to_i < 75 && @idea.expired? %>
             <div class="mt-3" style="margin-bottom: -30px;">
               <p class="text-danger mb-5" style="font-weight: bold;">Campaign Expired! <br>
@@ -270,7 +276,6 @@
                       <%= link_to "Support this project with #{number_to_currency(perk.amount, :unit => "₦")}", 
                       new_donation_path(amount: perk.amount, idea: @idea, perk_id: perk.id), class: "btn btn-primary rounded text-white" %>
 
-                      
                       <% end %>
                     <% end %>
                   <% end %>
@@ -285,3 +290,65 @@
   </div>
   <%= render partial: "layouts/cta" %>
 </main>
+
+<script>
+// Share on Twitter
+document.getElementById('share-tweet').addEventListener('click', shareTweet);
+
+// Share on Facebook
+document.getElementById('share-facebook').addEventListener('click', shareFacebook);
+
+// Share on Instagram
+document.getElementById('share-instagram').addEventListener('click', shareInstagram);
+
+// Share on LinkedIn
+document.getElementById('share-linkedin').addEventListener('click', shareLinkedIn);
+
+function shareFallback(url) {
+  window.open(url, '_blank');
+}
+
+function shareTweet() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      url: window.location.href,
+    });
+  } else {
+    shareFallback('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title));
+  }
+}
+
+function shareFacebook() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      url: window.location.href,
+    });
+  } else {
+    shareFallback('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href));
+  }
+}
+
+function shareInstagram() {
+  if (navigator.share) {
+    navigator.share({
+      files: [window.location.href],
+    });
+  } else {
+    shareFallback('https://www.instagram.com/share?url=' + encodeURIComponent(window.location.href));
+  }
+}
+
+function shareLinkedIn() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      url: window.location.href,
+    });
+  } else {
+    shareFallback('https://www.linkedin.com/shareArticle?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent(document.title));
+  }
+}
+
+</script>

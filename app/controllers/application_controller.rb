@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
+  
   def set_session
     set_session_id
     @session = Session.new(@session_id)

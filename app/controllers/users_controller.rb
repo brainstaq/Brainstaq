@@ -34,13 +34,27 @@ class UsersController < ApplicationController
   #   self.user_rating = (self.ideas.count + self.comments.count)
   # end
 
-  def create
-    @users = User.create(params.require(:user))
-    session[:user_id] = @user.id
+  # def create
+  #   if verify_recaptcha
+  #     @user = User.create(params.require(:user))
+  #     session[:user_id] = @user.id
+  #     redirect_to root_path, notice: 'Confirmation required. Check your email!'
+  #   else
+  #     flash.now[:error] = "There was an error with the recaptcha code below. Please re-enter the code."
+  #     render :new
+  #   end
+  # end
 
-    # redirect_to root_path
-    format.html { redirect_to root_path, notice: 'Confirmation required. Check your email!' }
+  def create
+    if verify_recaptcha(model: @user) && @user.save
+      @user = User.create(sign_up_params)
+      session[:user_id] = @user.id
+      redirect_to root_path
+    else
+      render :new
+    end
   end
+  
   
   def new
     @user = User.new
@@ -82,6 +96,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:id, :first_name, :last_name, :image, :image_url, :username, :country, 
       :website, :phone, :gender, :bio, :email, :password, :password_confirmation, :facebook_url, 
       :twitter_url, :instagram_url, :linkedin_url)
+  end
+
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :username, :country, :password_confirmation)
   end
 
   def image_params

@@ -115,13 +115,6 @@ GEM
       aws_cf_signer
       rest-client (>= 2.0.0)
     cocoon (1.2.15)
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crass (1.0.6)
@@ -447,8 +440,6 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    social-share-button (1.2.4)
-      coffee-rails
     spreadsheet (1.3.0)
       ruby-ole
     spring (2.1.1)
@@ -463,6 +454,8 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.1.1)
+    stimulus-rails (1.2.1)
+      railties (>= 6.0.0)
     temple (0.9.1)
     thor (1.2.1)
     tilt (2.0.11)
@@ -579,10 +572,10 @@ DEPENDENCIES
   shufflejs-rails
   sidekiq (~> 6.2, >= 6.2.1)
   simple_form
-  social-share-button
   spreadsheet
   spring
   spring-watcher-listen (~> 2.0.0)
+  stimulus-rails (~> 1.2, >= 1.2.1)
   tapir-reports!
   trix-rails
   turbo-rails

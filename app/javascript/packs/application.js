@@ -9,7 +9,6 @@ var jQuery = require("jquery");
 //= require popper
 //= require activestorage
 //= require local-time
-//= require social-share-buttons
 //= require shuffle
 //= require turbo
 //= require jquery_ujs

@@ -1,11 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  # prepend_before_action :check_captcha, only: [:create]
+  prepend_before_action :check_captcha, only: [:create]
   
   private
   
   def sign_up_params
-    params.require(:user).permit(:email, :password, :last_name, :first_name, :username, :country, :password_confirmation)
+    params.require(:user).permit(:email, :password, :last_name, :first_name, 
+      :username, :country, :password_confirmation)
   end
 
   def account_update_params
@@ -22,14 +23,19 @@ class RegistrationsController < Devise::RegistrationsController
     profile_path(current_user.username)
   end
 
-  # def check_captcha
-  #   unless verify_recaptcha
-  #     self.resource = resource_class.new sign_up_params
-  #     resource.validate
-  #     set_minimum_password_length
-  #     respond_with_navigational(resource) { render :new }
-  #   end
-  # end
+  def check_captcha
+    return if verify_recaptcha # verify_recaptcha(action: 'signup') for v3
+
+    self.resource = resource_class.new sign_up_params
+    resource.validate # Look for any other validation errors besides reCAPTCHA
+    set_minimum_password_length
+
+    respond_with_navigational(resource) do
+      flash.discard(:recaptcha_error) # We need to discard flash to avoid showing it on the next page reload
+      render :new
+    end
+  end
+  
 end
    
 

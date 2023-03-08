@@ -118,7 +118,7 @@ Rails.application.routes.draw do
 
   get 'search' => 'search#index'
 
-  get '/:username-profile' => 'users#profile', as: :profile
+  get '/:username' => 'users#profile', as: :profile
 
   get '/user/:full_name' => 'users#dashboard', as: :dashboard
 

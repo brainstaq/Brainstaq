@@ -7,7 +7,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[github google_oauth2]
 
   mount_uploader :image, ImageUploader
-
+  
+  validates :username, presence: true
   validate :image_size_validation
   validates :bio, length: { maximum: 180 }
 

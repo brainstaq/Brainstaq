@@ -9,25 +9,25 @@ class UsersController < ApplicationController
   def dashboard
     @ideas = Idea.all.order(created_at: :desc).limit(15)
     @enterprises = Enterprise.all.order(created_at: :desc).limit(15)
-    # @user = User.find_by(username: params[:username])
-
+  
     following_ids = current_user.followees.pluck(:id)
     following_ids << current_user.id
-
+  
     @follower_suggestions = User.where.not(id: following_ids).limit(10)
   end
-
+  
   def follow
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by(username: params[:username])
     current_user.followees << @user
-    redirect_back(fallback_location: profile_path(@user))
+    redirect_back(fallback_location: profile_path(@user.username))
   end
   
   def unfollow
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by(username: params[:username])
     current_user.followed_users.find_by(followee_id: @user.id).destroy
-    redirect_back(fallback_location: profile_path(@user))
+    redirect_back(fallback_location: profile_path(@user.username))
   end
+  
 
   def create
     @user = User.create(params.require(:user))
@@ -48,6 +48,7 @@ class UsersController < ApplicationController
     @profile = User.find_by(username: params[:username])
     @ideas = current_user.ideas.order(created_at: :desc)
     @enterprises = Enterprise.all.order(created_at: :desc).limit(15)
+    @user = User.find_by(username: params[:username])
 
     following_ids = current_user.followees.pluck(:id)
     following_ids << current_user.id

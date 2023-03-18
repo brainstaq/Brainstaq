@@ -45,6 +45,10 @@ class UsersController < ApplicationController
   end
 
   def profile
+    if params[:username].nil?
+      redirect_to root_path
+      return
+    end
     @profile = User.find_by(username: params[:username])
     @ideas = current_user.ideas.order(created_at: :desc)
     @enterprises = Enterprise.all.order(created_at: :desc).limit(15)

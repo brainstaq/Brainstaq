@@ -76,7 +76,7 @@
               <div class="dropdown-menu nvb-dd" style="font-size: 12px; background-color: white;" aria-labelledby="dropdownMenuLink">
 
                 <li class= "dropdown-item" style="font-size: 14px;">  
-                  <%= link_to profile_path(current_user.username) do %>
+                  <%= link_to profile_path(username: current_user.username) do %>
                     <i class="fa fa-user mr-3"></i> Profile
                   <% end %>
                 </li>

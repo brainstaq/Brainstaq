@@ -7,7 +7,7 @@
     <% @follower_suggestions.each do |user| %>
       <div class="suggestions-list">
         <div class="suggestion-usd" style="margin-bottom: -50px; margin-left: 5px;">      
-          <a href="<%= profile_path(user.username) %>">
+          <a href="<%= profile_path(username: user.username) %>">
             <% if user.image.url %>
             <%=image_tag (user.image_url), style: "width: 35px; height: 35px;", class: "rounded-circle" %>
             <% else %>

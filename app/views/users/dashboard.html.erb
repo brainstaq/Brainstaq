@@ -53,7 +53,7 @@
 			        <div class="main-ws-sec">
                 <div class="post-topbar">
 				          <div class="user-picy">
-                    <a href="<%= profile_path(current_user.username) %>"> 
+                    <a href="<%= profile_path(username: current_user.username) %>"> 
                       <% if current_user.image_url %>
                         <%= image_tag current_user.image_url, class: 'rounded-circle mt-1', 
                         style:"width:40px; height: 40px; margin-right: 0px;" %>
@@ -197,7 +197,7 @@
 					<div class="col-lg-3 pd-right-none no-pd">
 						<div class="right-sidebar" style="width: 280px; padding-bottom: 10px;">
 							<div class="sidebar-item">
-              	<a href="<%= profile_path(current_user.username) %>">
+              	<a href="<%= profile_path(username: current_user.username) %>">
 									<div class="user-data make-me-sticky full-width" style="width: 280px;">
 										<div class="user-profile">
 											<div class="username-dt">
@@ -220,7 +220,7 @@
 					
 										<ul class="user-fw-status" style="margin-bottom: 0px;">
 											<li>
-												<%= link_to 'View Profile', profile_path(current_user.username) %>
+												<%= link_to 'View Profile', profile_path(username: current_user.username) %>
 											</li>
 										</ul>
 									</div><!--user-data end-->

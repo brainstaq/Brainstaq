@@ -8,33 +8,37 @@ class UsersController < ApplicationController
 
   def dashboard
     @ideas = Idea.all.order(created_at: :desc).limit(15)
+    # @users = User.find_by_username params[:username]
     @enterprises = Enterprise.all.order(created_at: :desc).limit(15)
   
-    following_ids = current_user.followees.pluck(:id)
+    # following_ids = current_user.followees.pluck(:id)
+    following_ids = Follow.where(follower_id: current_user.id).map(&:followee_id)
     following_ids << current_user.id
   
     @follower_suggestions = User.where.not(id: following_ids).limit(10)
   end
   
   def follow
-    @user = User.find_by(username: params[:username])
+    # @user = User.find_by(username: params[:username])
+    @user = User.find_by_username params[:username]
     current_user.followees << @user
     redirect_back(fallback_location: profile_path(@user.username))
   end
   
   def unfollow
-    @user = User.find_by(username: params[:username])
+    # @user = User.find_by(username: params[:username])
+    @user = User.find_by_username params[:username]
     current_user.followed_users.find_by(followee_id: @user.id).destroy
     redirect_back(fallback_location: profile_path(@user.username))
   end
-  
 
   def create
     @user = User.create(params.require(:user))
 
     if verify_recaptcha(model: @user) && @user.save
       session[:user_id] = @user.id
-      redirect_to root_path
+      # redirect_to root_path
+      format.html { redirect_to root_path, notice: 'Confirmation required. Check your email!' }
     else
       render :new
     end
@@ -45,11 +49,8 @@ class UsersController < ApplicationController
   end
 
   def profile
-    if params[:username].nil?
-      redirect_to root_path
-      return
-    end
-    @profile = User.find_by(username: params[:username])
+    # @profile = User.find_by(username: params[:username])
+    @profile = User.find_by_username params[:username]
     @ideas = current_user.ideas.order(created_at: :desc)
     @enterprises = Enterprise.all.order(created_at: :desc).limit(15)
     @user = User.find_by(username: params[:username])
@@ -61,7 +62,8 @@ class UsersController < ApplicationController
   end
 
   def ideas
-    @user = User.find_by(username: params[:username])
+    # @user = User.find_by(username: params[:username])
+    @user = User.find_by_username params[:username]
     @ideas = @user.ideas
   end
 
@@ -90,6 +92,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(username: params[:username])
+    # @user = User.find_by(username: params[:username])
+    @user = User.find_by_username(params[:username])
   end
 end

@@ -5,6 +5,7 @@
     </div>
     
     <% @follower_suggestions.each do |user| %>
+      <% next unless user.username.present? %>
       <div class="suggestions-list">
         <div class="suggestion-usd" style="margin-bottom: -50px; margin-left: 5px;">      
           <a href="<%= profile_path(username: user.username) %>">
@@ -24,8 +25,8 @@
             <% end %>
           </div>
         </div> 
-      </div>
+      </div><!--suggestions-list end-->
     <% end %>
-  </div><!--suggestions-list end-->
+  </div>
 </div><!--suggestions end-->						  
 </div><!--main-left-sidebar end-->

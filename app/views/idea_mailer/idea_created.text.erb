@@ -1,0 +1,5 @@
+Hi <%= @idea.user.full_name ||= @idea.user.username %>,
+
+We wanted to inform your Project, <%= @idea.title %> was successfully created. 
+Please follow the link below to view and share your Project with family and friends.  
+<%= link_to "View your project", idea_url(@idea), target: "_blank" %>.

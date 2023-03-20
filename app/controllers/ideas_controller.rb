@@ -70,6 +70,7 @@ class IdeasController < ApplicationController
     # @idea = Idea.new(idea_params)
     respond_to do |format|
       if @idea.save
+        IdeaMailer.with(idea: @idea).idea_created.deliver_now
         # ExpireIdeaJob.set(wait_until: @idea.expires_at).perform_later(@idea)
         format.html { redirect_to @idea, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @idea }

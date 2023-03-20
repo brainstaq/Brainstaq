@@ -39,18 +39,24 @@ class BusinessPlansController < ApplicationController
     @milestones = Milestone.all
     @positions = Position.all
     @products_and_growth_rates = ProductsAndGrowthRate.all
-    @total_cost = (
-      @business_plan.land + @business_plan.rent +
-      @business_plan.office_supplies + @business_plan.equipment +
-      @business_plan.vehicles + @business_plan.utilities +
-      @business_plan.opening_inventory + @business_plan.capital + 
+    @total_cost = [
+      @business_plan.land,
+      @business_plan.rent,
+      @business_plan.office_supplies,
+      @business_plan.equipment,
+      @business_plan.vehicles,
+      @business_plan.utilities,
+      @business_plan.opening_inventory,
+      @business_plan.capital,
       @business_plan.contingency
-    )
+    ].sum
+    
 
     @loan_year = if @business_plan.loan_year == 0 then @business_plan.loan_year else 0 end
     @repayment_period = if @business_plan.repayment_period == 0 then @business_plan.repayment_period else 0 end
-    @loan_end = @loan_year + @repayment_period
-    @loan_amount = if @business_plan.debt == 0 then 0 else @business_plan.debt * 0.01 * @total_cost end
+    @loan_end = @loan_year += @repayment_period
+    @loan_amount = @business_plan.debt == 0 ? 0 : @business_plan.debt * 0.01 * @total_cost
+
     @equity = @business_plan.equity
     @calculated_equity = @total_cost * (@equity / 100.0)
     @equity_injection_one = @business_plan.equity_injection_one
@@ -102,27 +108,34 @@ class BusinessPlansController < ApplicationController
     @direct_labour_cost = @business_plan.direct_labour_cost
     @factory_overhead = @business_plan.factory_overhead
     @inbound_transport = @business_plan.inbound_transport
-    @total_direct_cost = (
-      @business_plan.raw_material_cost + @business_plan.direct_labour_cost +
-      @business_plan.factory_overhead + @business_plan.inbound_transport)
+    @total_direct_cost = [
+      @business_plan.raw_material_cost, 
+      @business_plan.direct_labour_cost,
+      @business_plan.factory_overhead,
+      @business_plan.inbound_transport
+    ].sum
       
-    @total_fixed_cost = (
-      @business_plan.admin_cost + @business_plan.website_cost +
-      @business_plan.telephone_cost + @business_plan.transport_cost +
-      @business_plan.salaries_one + @business_plan.rent_cost +
-      @business_plan.utilities_cost + @business_plan.marketing_cost + 
+    @total_fixed_cost = [
+      @business_plan.admin_cost,
+      @business_plan.website_cost,
+      @business_plan.telephone_cost, 
+      @business_plan.transport_cost,
+      @business_plan.salaries_one, 
+      @business_plan.rent_cost,
+      @business_plan.utilities_cost, 
+      @business_plan.marketing_cost, 
       @business_plan.misc
-    )
+    ].sum
     
     # @total_salaries_one = Position.all.sum(&:total_salaries_one)
 
     @products_and_growth_rate = ProductsAndGrowthRate.find(params[:id])
 
-    @net_working_capital_1 = (@products_and_growth_rate.days_receivable_one + @business_plan.inventory_schedule_1) - @business_plan.days_payable_1
-    @net_working_capital_2 = (@products_and_growth_rate.days_receivable_two + @business_plan.inventory_schedule_2) - @business_plan.days_payable_2
-    @net_working_capital_3 = (@products_and_growth_rate.days_receivable_three + @business_plan.inventory_schedule_3) - @business_plan.days_payable_3
-    @net_working_capital_4 = (@products_and_growth_rate.days_receivable_four + @business_plan.inventory_schedule_4) - @business_plan.days_payable_4
-    @net_working_capital_5 = (@products_and_growth_rate.days_receivable_five + @business_plan.inventory_schedule_5) - @business_plan.days_payable_5
+    @net_working_capital_1 = [@products_and_growth_rate.days_receivable_one, @business_plan.inventory_schedule_1].sum - @business_plan.days_payable_1
+    @net_working_capital_2 = [@products_and_growth_rate.days_receivable_two, @business_plan.inventory_schedule_2].sum - @business_plan.days_payable_2
+    @net_working_capital_3 = [@products_and_growth_rate.days_receivable_three, @business_plan.inventory_schedule_3].sum - @business_plan.days_payable_3
+    @net_working_capital_4 = [@products_and_growth_rate.days_receivable_four, @business_plan.inventory_schedule_4].sum - @business_plan.days_payable_4
+    @net_working_capital_5 = [@products_and_growth_rate.days_receivable_five, @business_plan.inventory_schedule_5].sum - @business_plan.days_payable_5
 
     @change_net_cap_1 = @net_working_capital_1
     @change_net_cap_2 = @net_working_capital_2 - @net_working_capital_1
@@ -161,17 +174,17 @@ class BusinessPlansController < ApplicationController
     @net_income_4 = @profit_before_tax_4 - @taxation_4
     @net_income_5 = @profit_before_tax_5 - @taxation_5
 
-    @net_op_cashflow_1 = (@net_income_1 + @taxation_1 + @interest_expense_1 + @business_plan.total_charge_1) - @change_net_cap_1
-    @net_op_cashflow_2 = (@net_income_2 + @taxation_2 + @interest_expense_2 + @business_plan.total_charge_2) - @change_net_cap_2
-    @net_op_cashflow_3 = (@net_income_3 + @taxation_3 + @interest_expense_3 + @business_plan.total_charge_3) - @change_net_cap_3
-    @net_op_cashflow_4 = (@net_income_4 + @taxation_4 + @interest_expense_4 + @business_plan.total_charge_4) - @change_net_cap_4
-    @net_op_cashflow_5 = (@net_income_5 + @taxation_5 + @interest_expense_5 + @business_plan.total_charge_5) - @change_net_cap_5
+    @net_op_cashflow_1 = [@net_income_1, @taxation_1, @interest_expense_1, @business_plan.total_charge_1].sum - @change_net_cap_1
+    @net_op_cashflow_2 = [@net_income_2, @taxation_2, @interest_expense_2, @business_plan.total_charge_2].sum - @change_net_cap_2
+    @net_op_cashflow_3 = [@net_income_3, @taxation_3, @interest_expense_3, @business_plan.total_charge_3].sum - @change_net_cap_3
+    @net_op_cashflow_4 = [@net_income_4, @taxation_4, @interest_expense_4, @business_plan.total_charge_4].sum - @change_net_cap_4
+    @net_op_cashflow_5 = [@net_income_5, @taxation_5, @interest_expense_5, @business_plan.total_charge_5].sum - @change_net_cap_5
 
-    @net_financing_cashflow_1 = (@calculated_equity + @addition_debt_1 + @principal_repayment_1 + @interest_expense_1)
-    @net_financing_cashflow_2 = (@business_plan.equity_injection_one + @addition_debt_2 + @principal_repayment_2 + @interest_expense_2)
-    @net_financing_cashflow_3 = (@business_plan.equity_injection_two + @addition_debt_3 + @principal_repayment_3 + @interest_expense_3)
-    @net_financing_cashflow_4 = (@business_plan.equity_injection_three + @addition_debt_4 + @principal_repayment_4 + @interest_expense_4)
-    @net_financing_cashflow_5 = (@business_plan.equity_injection_four + @addition_debt_5 + @principal_repayment_5 + @interest_expense_5)
+    @net_financing_cashflow_1 = [@calculated_equity, @addition_debt_1, @principal_repayment_1, @interest_expense_1].sum
+    @net_financing_cashflow_2 = [@business_plan.equity_injection_one, @addition_debt_2, @principal_repayment_2, @interest_expense_2].sum
+    @net_financing_cashflow_3 = [@business_plan.equity_injection_two, @addition_debt_3, @principal_repayment_3, @interest_expense_3].sum
+    @net_financing_cashflow_4 = [@business_plan.equity_injection_three, @addition_debt_4, @principal_repayment_4, @interest_expense_4].sum
+    @net_financing_cashflow_5 = [@business_plan.equity_injection_four, @addition_debt_5, @principal_repayment_5, @interest_expense_5].sum
 
     @cash_generated_1 = (@net_financing_cashflow_1 + @net_op_cashflow_1) - @business_plan.total_add_1
     @cash_generated_2 = (@net_financing_cashflow_2 + @net_op_cashflow_2) - @business_plan.total_add_2
@@ -180,10 +193,10 @@ class BusinessPlansController < ApplicationController
     @cash_generated_5 = (@net_financing_cashflow_5 + @net_op_cashflow_5) - @business_plan.total_add_5
 
     @cash_at_year_end_1 = @cash_generated_1
-    @cash_at_year_end_2 = @cash_generated_2 + @cash_at_year_end_1
-    @cash_at_year_end_3 = @cash_generated_3 + @cash_at_year_end_2
-    @cash_at_year_end_4 = @cash_generated_4 + @cash_at_year_end_3
-    @cash_at_year_end_5 = @cash_generated_5 + @cash_at_year_end_4
+    @cash_at_year_end_2 = [@cash_generated_2, @cash_at_year_end_1].sum
+    @cash_at_year_end_3 = [@cash_generated_3, @cash_at_year_end_2].sum
+    @cash_at_year_end_4 = [@cash_generated_4, @cash_at_year_end_3].sum
+    @cash_at_year_end_5 = [@cash_generated_5, @cash_at_year_end_4].sum
 
     @cash_at_year_start_1 = 0
     @cash_at_year_start_2 = @cash_at_year_end_1
@@ -192,41 +205,61 @@ class BusinessPlansController < ApplicationController
     @cash_at_year_start_5 = @cash_at_year_end_4
     @cash_at_year_start_6 = @cash_at_year_end_5
 
-    @total_current_assets_1 = @cash_at_year_start_2 + @products_and_growth_rate.days_receivable_one + @business_plan.inventory_schedule_1
-    @total_current_assets_2 = @cash_at_year_start_3 + @products_and_growth_rate.days_receivable_two + @business_plan.inventory_schedule_2
-    @total_current_assets_3 = @cash_at_year_start_4 + @products_and_growth_rate.days_receivable_three + @business_plan.inventory_schedule_3
-    @total_current_assets_4 = @cash_at_year_start_5 + @products_and_growth_rate.days_receivable_four + @business_plan.inventory_schedule_4
-    @total_current_assets_5 = @cash_at_year_start_6 + @products_and_growth_rate.days_receivable_five + @business_plan.inventory_schedule_5
+    @total_current_assets_1 = [
+      @cash_at_year_start_2,
+      @products_and_growth_rate.days_receivable_one,
+      @business_plan.inventory_schedule_1
+    ].sum
+    @total_current_assets_2 = [
+      @cash_at_year_start_3,
+      @products_and_growth_rate.days_receivable_two,
+      @business_plan.inventory_schedule_2
+    ].sum
+    @total_current_assets_3 = [
+      @cash_at_year_start_4,
+      @products_and_growth_rate.days_receivable_three,
+      @business_plan.inventory_schedule_3
+    ].sum
+    @total_current_assets_4 = [
+      @cash_at_year_start_5,
+      @products_and_growth_rate.days_receivable_four,
+      @business_plan.inventory_schedule_4
+    ].sum
+    @total_current_assets_5 = [
+      @cash_at_year_start_6,
+      @products_and_growth_rate.days_receivable_five,
+      @business_plan.inventory_schedule_5
+    ].sum
 
-    @total_assets_1 = @total_current_assets_1 + @business_plan.total_net_1
-    @total_assets_2 = @total_current_assets_2 + @business_plan.total_net_2
-    @total_assets_3 = @total_current_assets_3 + @business_plan.total_net_3
-    @total_assets_4 = @total_current_assets_4 + @business_plan.total_net_4
-    @total_assets_5 = @total_current_assets_5 + @business_plan.total_net_5
+    @total_assets_1 = [@total_current_assets_1, @business_plan.total_net_1].sum
+    @total_assets_2 = [@total_current_assets_2, @business_plan.total_net_2].sum
+    @total_assets_3 = [@total_current_assets_3, @business_plan.total_net_3].sum
+    @total_assets_4 = [@total_current_assets_4, @business_plan.total_net_4].sum
+    @total_assets_5 = [@total_current_assets_5, @business_plan.total_net_5].sum
 
     @investment_capital_1 = @calculated_equity
-    @investment_capital_2 = @investment_capital_1 + @equity_injection_one
-    @investment_capital_3 = @investment_capital_2 + @equity_injection_two
-    @investment_capital_4 = @investment_capital_3 + @equity_injection_three
-    @investment_capital_5 = @investment_capital_4 + @equity_injection_four
+    @investment_capital_2 = [@investment_capital_1, @equity_injection_one].sum
+    @investment_capital_3 = [@investment_capital_2, @equity_injection_two].sum
+    @investment_capital_4 = [@investment_capital_3, @equity_injection_three].sum
+    @investment_capital_5 = [@investment_capital_4, @equity_injection_four].sum
 
     @retained_earnings_1 = @profit_before_tax_1
-    @retained_earnings_2 = @retained_earnings_1 + @profit_before_tax_2
-    @retained_earnings_3 = @retained_earnings_2 + @profit_before_tax_3
-    @retained_earnings_4 = @retained_earnings_3 + @profit_before_tax_4
-    @retained_earnings_5 = @retained_earnings_4 + @profit_before_tax_5
+    @retained_earnings_2 = [@retained_earnings_1, @profit_before_tax_2].sum
+    @retained_earnings_3 = [@retained_earnings_2, @profit_before_tax_3].sum
+    @retained_earnings_4 = [@retained_earnings_3, @profit_before_tax_4].sum
+    @retained_earnings_5 = [@retained_earnings_4, @profit_before_tax_5].sum
 
-    @total_shareholders_equity_1 = @investment_capital_1 + @retained_earnings_1
-    @total_shareholders_equity_2 = @investment_capital_2 + @retained_earnings_2
-    @total_shareholders_equity_3 = @investment_capital_3 + @retained_earnings_3
-    @total_shareholders_equity_4 = @investment_capital_4 + @retained_earnings_4
-    @total_shareholders_equity_5 = @investment_capital_5 + @retained_earnings_5
+    @total_shareholders_equity_1 = [@investment_capital_1, @retained_earnings_1].sum
+    @total_shareholders_equity_2 = [@investment_capital_2, @retained_earnings_2].sum
+    @total_shareholders_equity_3 = [@investment_capital_3, @retained_earnings_3].sum
+    @total_shareholders_equity_4 = [@investment_capital_4, @retained_earnings_4].sum
+    @total_shareholders_equity_5 = [@investment_capital_5, @retained_earnings_5].sum
 
-    @total_liabilities_and_equity_1 = @retained_earnings_1 + @investment_capital_1 + @closing_debt_1 + @business_plan.days_payable_1
-    @total_liabilities_and_equity_2 = @retained_earnings_2 + @investment_capital_2 + @closing_debt_2 + @business_plan.days_payable_2
-    @total_liabilities_and_equity_3 = @retained_earnings_3 + @investment_capital_3 + @closing_debt_3 + @business_plan.days_payable_3
-    @total_liabilities_and_equity_4 = @retained_earnings_4 + @investment_capital_4 + @closing_debt_4 + @business_plan.days_payable_4
-    @total_liabilities_and_equity_5 = @retained_earnings_5 + @investment_capital_5 + @closing_debt_5 + @business_plan.days_payable_5
+    @total_liabilities_and_equity_1 = [@retained_earnings_1, @investment_capital_1, @closing_debt_1, @business_plan.days_payable_1].sum
+    @total_liabilities_and_equity_2 = [@retained_earnings_2, @investment_capital_2, @closing_debt_2, @business_plan.days_payable_2].sum
+    @total_liabilities_and_equity_3 = [@retained_earnings_3, @investment_capital_3, @closing_debt_3, @business_plan.days_payable_3].sum
+    @total_liabilities_and_equity_4 = [@retained_earnings_4, @investment_capital_4, @closing_debt_4, @business_plan.days_payable_4].sum
+    @total_liabilities_and_equity_5 = [@retained_earnings_5, @investment_capital_5, @closing_debt_5, @business_plan.days_payable_5].sum
 
     respond_to do |format|
       format.html

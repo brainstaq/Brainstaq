@@ -64,10 +64,10 @@ class BusinessPlansController < ApplicationController
     @equity_injection_three = @business_plan.equity_injection_three
     @equity_injection_four = @business_plan.equity_injection_four
 
-    @calculated_equity_2 = @calculated_equity + @equity_injection_one
-    @calculated_equity_3 = @calculated_equity_2 + @equity_injection_two
-    @calculated_equity_4 = @calculated_equity_3 + @equity_injection_three
-    @calculated_equity_5 = @calculated_equity_4 + @equity_injection_four
+    @calculated_equity_2 = [@calculated_equity, @equity_injection_one].sum
+    @calculated_equity_3 = [@calculated_equity_2, @equity_injection_two].sum
+    @calculated_equity_4 = [@calculated_equity_3, @equity_injection_three].sum
+    @calculated_equity_5 = [@calculated_equity_4, @equity_injection_four].sum
 
     @opening_debt_1 = 0
     @addition_debt_1 = if @business_plan.debt? && @loan_year == 2 then @loan_amount else 0 end

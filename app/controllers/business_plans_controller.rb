@@ -120,7 +120,7 @@ class BusinessPlansController < ApplicationController
       @business_plan.website_cost,
       @business_plan.telephone_cost, 
       @business_plan.transport_cost,
-      @business_plan.salaries_one, 
+      @business_plan.salaries_one,
       @business_plan.rent_cost,
       @business_plan.utilities_cost, 
       @business_plan.marketing_cost, 

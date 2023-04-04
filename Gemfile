@@ -3,26 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.4'
-
-# Use Puma as the app server
 gem 'puma', '~> 5.3', '>= 5.3.2'
-# Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.x'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 gem 'redis-rails'
 # gem 'kredis', github: 'rails/kredis'
-# Use Active Model has_secure_password
-#gem 'bcrypt', '~> 3.1.7'
-
+# gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 4.8'
 gem 'devise_invitable', '~> 2.0.0'
 gem 'jquery-rails'
@@ -74,13 +64,12 @@ gem 'wicked_pdf'
 gem 'stimulus-rails', '~> 1.2', '>= 1.2.1'
 gem 'wicked', '~> 2.0'
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
-gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
-gem "wkhtmltopdf-heroku", group: :production
+gem 'wkhtmltopdf-binary', '~> 0.12.6.6'
+# gem "wkhtmltopdf-heroku", group: :production
 gem 'turbo-rails'
 gem 'public_activity', '~> 2.0', '>= 2.0.2'
 gem 'inherited_resources', '~> 1.13', '>= 1.13.1'
 gem 'figaro', '~> 1.2'
-
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'paystack'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
@@ -91,19 +80,15 @@ gem "fog-aws"
 gem 'activerecord', '~> 6.0', '>= 6.0.3.2'
 gem 'ahoy_matey'
 gem 'pagy', '~> 4.10', '>= 4.10.1'
-
-
 # gem 'country_select'
 # gem 'countries'
 # gem 'city-state'
-
 
 # local ENV var
 # gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 # gem 'rails_admin_rollincode', '~> 1.0'
 # gem "aws-sdk-s3", require: false
 
-# Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # gem 'webpacker-pwa', group: :development
 
@@ -126,7 +111,6 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 # gem "stimulus_reflex", "~> 3.3"

@@ -23,7 +23,7 @@ class Enterprise < ApplicationRecord
   belongs_to :category
 
   has_many_attached :images, dependent: :destroy
-  has_many :line_items, inverse_of: :order
+  # has_many :line_items, inverse_of: :order
   has_many :business_plans, dependent: :destroy
   has_many :invoices, dependent: :destroy
   has_many :pitch_decks, dependent: :destroy

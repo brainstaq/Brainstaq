@@ -35,7 +35,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'receipts'
 gem 'mini_magick'
-gem 'intro', '~> 0.3.0'
+# gem 'intro', '~> 0.3.0'
 gem 'friendly_id', '~> 5.3'
 gem 'local_time', '~> 2.1'
 #gem 'tel_to_helper'
@@ -78,17 +78,8 @@ gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 gem "wkhtmltopdf-heroku", group: :production
 gem 'turbo-rails'
 gem 'public_activity', '~> 2.0', '>= 2.0.2'
-# gem 'country_select'
-# gem 'countries'
-# gem 'city-state'
-
-# local ENV var
+gem 'inherited_resources', '~> 1.13', '>= 1.13.1'
 gem 'figaro', '~> 1.2'
-gem 'rails_admin', '~> 2.0', '>= 2.0.2'
-gem 'rails_admin_rollincode', '~> 1.0'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'paystack'
@@ -96,15 +87,24 @@ gem 'omniauth', '~> 1.9', '>= 1.9.1'
 gem 'pg'
 gem 'shufflejs-rails'
 gem 'httparty', '~> 0.21.0'
-
-
 gem "fog-aws"
 gem 'activerecord', '~> 6.0', '>= 6.0.3.2'
-#gem "aws-sdk-s3", require: false
-
 gem 'ahoy_matey'
 gem 'pagy', '~> 4.10', '>= 4.10.1'
 
+
+# gem 'country_select'
+# gem 'countries'
+# gem 'city-state'
+
+
+# local ENV var
+# gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+# gem 'rails_admin_rollincode', '~> 1.0'
+# gem "aws-sdk-s3", require: false
+
+# Use Active Storage variant
+# gem 'image_processing', '~> 1.2'
 # gem 'webpacker-pwa', group: :development
 
 group :development, :test do
@@ -133,3 +133,5 @@ gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 # gem "chat_gpt", "~> 0.1.1"
 
 gem "dockerfile-rails", ">= 1.0", :group => :development
+
+gem "forest_liana", "~> 8.0"

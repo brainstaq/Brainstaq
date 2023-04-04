@@ -104,4 +104,4 @@ Category.create!([
 #   {name: "Uyo", country_id: Country.find_by(name: "Nigeria").id},
 #   {name: "Asaba", country_id: Country.find_by(name: "Nigeria").id},
 #   {name: "Jos", country_id: Country.find_by(name: "Nigeria").id}
-# ])
+# ])AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -25,7 +25,7 @@ class Idea < ApplicationRecord
   has_many :users, through: :donations
   has_many :perks, dependent: :destroy
   has_many_attached :images, dependent: :destroy
-  has_many :line_items, inverse_of: :order
+  # has_many :line_items, inverse_of: :order
 
   accepts_nested_attributes_for :perks, allow_destroy: true, reject_if: proc { |attr| attr['title'].blank? } 
 

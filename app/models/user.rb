@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :business_plans, through: :enterprises
   has_many :donations #through: :ideas
   has_many :comments, dependent: :destroy
-  has_many :team_members, through: :enterprises
+  # has_many :team_members, through: :enterprises
 
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy
   has_many :visits, class_name: "Ahoy::Visit"

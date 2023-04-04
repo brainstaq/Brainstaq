@@ -8,21 +8,20 @@ class BusinessPlan < ApplicationRecord
   # validates_uniqueness_of :enterprise_id
 
   belongs_to :enterprise
-  belongs_to :user
-
+  # belongs_to :user
+  
   has_many :products_and_growth_rates, dependent: :destroy
   has_many :positions, dependent: :destroy
   has_many :marketing_expenses, dependent: :destroy
   has_many :milestones, dependent: :destroy
   has_many :swots, dependent: :destroy
+  
 
   accepts_nested_attributes_for :swots, allow_destroy: true
   accepts_nested_attributes_for :milestones, allow_destroy: true
   accepts_nested_attributes_for :marketing_expenses, allow_destroy: true
   accepts_nested_attributes_for :positions, allow_destroy: true
   accepts_nested_attributes_for :products_and_growth_rates, allow_destroy: true
-  
-  
   
   
   def raw_materials_op_cost_1

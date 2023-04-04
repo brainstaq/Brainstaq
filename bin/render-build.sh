@@ -26,6 +26,7 @@
 set -o errexit
 
 # install dependencies and run migrations
+apt-get update && apt-get install -y libjpeg8-dev
 bundle install
 bundle exec rails db:migrate
 

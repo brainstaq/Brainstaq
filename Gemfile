@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.2.2'
 
 gem 'rails', '~> 6.1.4'
 gem 'puma', '~> 5.3', '>= 5.3.2'
@@ -91,6 +91,7 @@ gem 'pagy', '~> 4.10', '>= 4.10.1'
 
 # gem 'image_processing', '~> 1.2'
 # gem 'webpacker-pwa', group: :development
+# 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
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -118,4 +119,4 @@ gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 
 gem "dockerfile-rails", ">= 1.0", :group => :development
 
-gem "forest_liana", "~> 8.0"
+# gem "forest_liana", "~> 8.0"

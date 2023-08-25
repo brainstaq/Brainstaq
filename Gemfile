@@ -23,7 +23,7 @@ gem "font-ionicons-rails"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'carrierwave'
 gem 'cloudinary'
-gem 'receipts'
+# gem 'receipts'
 gem 'mini_magick'
 # gem 'intro', '~> 0.3.0'
 gem 'friendly_id', '~> 5.3'
@@ -51,12 +51,12 @@ gem 'active_storage_validations'
 gem 'uglifier', '~> 4.2', require: 'uglifier'
 gem 'omniauth-google-oauth2'
 gem 'maxminddb'
-gem 'docx_replace'
-gem 'htmltoword'
+# gem 'docx_replace'
+# gem 'htmltoword'
 gem 'spreadsheet'
 gem 'tapir-reports', git: 'https://github.com/jnicho02/tapir-reports'
 gem 'trix-rails', require: 'trix'
-gem 'sablon'
+# gem 'sablon'
 # gem 'geoip'
 # gem 'geocoder'
 # gem 'blazer'
@@ -91,7 +91,6 @@ gem 'pagy', '~> 4.10', '>= 4.10.1'
 
 # gem 'image_processing', '~> 1.2'
 # gem 'webpacker-pwa', group: :development
-# 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
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -125,8 +125,6 @@ GEM
       devise (>= 4.6)
     dockerfile-rails (1.5.3)
       rails
-    docx_replace (1.2.1)
-      rubyzip (~> 1.2, >= 1.2.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
@@ -179,10 +177,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
     hashie (5.0.0)
-    htmltoword (1.1.1)
-      actionpack
-      nokogiri
-      rubyzip (>= 1.0)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
@@ -275,14 +269,8 @@ GEM
     pagy (4.11.0)
     paystack (0.1.10)
       rest-client (~> 2.0)
-    pdf-core (0.9.0)
     pg (1.5.3)
     popper_js (2.9.3)
-    prawn (2.4.0)
-      pdf-core (~> 0.9.0)
-      ttfunk (~> 1.7)
-    prawn-table (0.2.2)
-      prawn (>= 1.3.0, < 3.0.0)
     public_activity (2.0.2)
       actionpack (>= 5.0.0)
       activerecord (>= 5.0)
@@ -343,9 +331,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     recaptcha (5.15.0)
-    receipts (2.2.0)
-      prawn (>= 1.3.0, < 3.0.0)
-      prawn-table (~> 0.2.1)
     redis (4.8.1)
     redis-actionpack (5.3.0)
       actionpack (>= 5, < 8)
@@ -381,9 +366,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (1.3.0)
-    sablon (0.3.2)
-      nokogiri (>= 1.8.5)
-      rubyzip (>= 1.1.1)
     safely_block (0.4.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -430,7 +412,6 @@ GEM
     timeout (0.4.0)
     trix-rails (2.4.0)
       rails (> 4.1)
-    ttfunk (1.7.0)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -492,7 +473,6 @@ DEPENDENCIES
   devise (~> 4.8)
   devise_invitable (~> 2.0.0)
   dockerfile-rails (>= 1.0)
-  docx_replace
   dotenv-rails
   exception_notification
   faker
@@ -502,7 +482,6 @@ DEPENDENCIES
   font_awesome5_rails
   friendly_id (~> 5.3)
   groupdate
-  htmltoword
   httparty (~> 0.21.0)
   impressionist
   inherited_resources (~> 1.13, >= 1.13.1)
@@ -528,11 +507,9 @@ DEPENDENCIES
   ranked-model
   ransack
   recaptcha (~> 5.8, >= 5.8.1)
-  receipts
   redis (~> 4.0)
   redis-rails
   rolify (~> 6.0)
-  sablon
   sass-rails (>= 6)
   selenium-webdriver
   shufflejs-rails

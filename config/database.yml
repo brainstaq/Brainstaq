@@ -13,7 +13,7 @@ default: &default
 
 development:
   <<: *default
-  database: brainstaq_app_development
+  database: brainstaq_development
   username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>
 
@@ -24,12 +24,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: brainstaq_app_test
+  database: brainstaq_test
   username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>
 
 production:
   <<: *default
-  database: brainstaq_app_production
+  database: brainstaq_production
   username: sircliffjoe
   password: <%= ENV['DB_PASSWORD'] %>

@@ -45,15 +45,15 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: 'https://691c-197-210-226-44.ngrok.io' }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
  
-  # config.action_mailer.smtp_settings = {
-  #   user_name: 'brainstaq@gmail.com',
-  #   password:  'tfbwhmmhvjwpaqpc',
-  #   domain:    'gmail.com',
-  #   address:   'smtp.gmail.com',
-  #   port:      '587', #'465'
-  #   authentication: :plain,
-  #   enable_starttls_auto: true
-  # }
+  config.action_mailer.smtp_settings = {
+    user_name: 'brainstaq@gmail.com',
+    password:  'tfbwhmmhvjwpaqpc',
+    domain:    'gmail.com',
+    address:   'smtp.gmail.com',
+    port:      '587', #'465'
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   config.action_mailer.smtp_settings = {
     user_name: ENV['GMAIL_USERNAME'],

@@ -157,7 +157,5 @@ Rails.application.routes.draw do
 
   # get 'plan_subscriptions/success'
   # get 'transactions/success'
-
   post 'paystack/receive_webhooks', to: 'paystack#webhook'
-
 end

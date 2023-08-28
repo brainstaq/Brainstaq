@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: %i[github google_oauth2]
 
+  
+  # before_create :confirmation_token
   mount_uploader :image, ImageUploader
   
   validates :username, presence: true
@@ -125,6 +127,12 @@ class User < ApplicationRecord
 
   # def setup_subscription_plan
   #   SubscriptionPlan.create(user_id: self.id, plan: "free", active_until: 12.months.from_now)
+  # end
+
+  # def confirmation_token
+  #   if self.confirm_token.blank?
+  #       self.confirm_token = SecureRandom.urlsafe_base64.to_s
+  #   end
   # end
 
   def image_size_validation

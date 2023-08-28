@@ -33,7 +33,7 @@ bundle exec rails db:migrate
 # clean and precompile assets
 bundle exec rails assets:clean
 bundle exec rails assets:precompile
-bundle exec rails runner 'Category.delete_all'
+# bundle exec rails runner 'Category.delete_all'
 
 # seed the database
 #bundle exec rails db:seed

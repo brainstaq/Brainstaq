@@ -36,4 +36,4 @@ bundle exec rails assets:precompile
 # bundle exec rails runner 'Category.delete_all'
 
 # seed the database
-# bundle exec rails db:seed
+bundle exec rails db:seed

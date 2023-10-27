@@ -42,6 +42,10 @@
 //  @import '@fortawesome/fontawesome-free/scss/brands';
 //  @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
+::placeholder {
+	font-size: 13px;
+}
+
 .flash-message {
     &.error {
         border: solid 2px #900;
@@ -189,9 +193,9 @@ img {
     width: 300px !important;
     display: none !important;
   }
-  .widget-p {
-    margin: auto;
-  }
+  // .widget-p {
+  //   margin: auto 15px auto 5px;
+  // }
   .suggestions {
     margin-right: 10px !important;
     width: 300px !important;

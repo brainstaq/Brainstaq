@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  # mount ForestLiana::Engine => '/forest'
   require "sidekiq/web"
   mount Sidekiq::Web, at: "/sidekiq"
   # mount Intro::Engine => "/intro" #brainstaq.com/intro/admin

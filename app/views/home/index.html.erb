@@ -1,13 +1,12 @@
 <% content_for :title, "The Best Business Manangement Platform" %>
 
-  <!-- start of banner -->
+<!-- start of banner -->
   <section class="banner bg-cover-bottom has-shapes bg-light-gray has-bg-brash bg-brash-bottom" style="background-image: url(<%= image_path "banner.svg" %>)">
 	  <div class="container h-100">
 	    <div class="d-block d-lg-flex no-gutters align-items-center h-100">
 		    <div class="col-12 col-xl-8 col-lg-8 order-lg-1">
 		      <div class="banner-image has-shapes mb-4 mb-md-5 mb-lg-0">
 					<%= image_tag 'banner-shot.png' %> 
-
 					<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
 					<div class="shape-3 shape-sm-2 bg-primary rounded-circle"></div>
 					<div class="shape-4 shape-sm-2 bg-primary rounded-circle"></div>
@@ -35,21 +34,22 @@
 						<span class="bg-light-gray">OR GET STARTED</span>
 					</div>
 			  	<%#= link_to user_google_oauth2_omniauth_authorize_path do %>
-					<%= link_to new_user_registration_path do %>
-						<span class="btn btn-outline-primary w-100 mb-2">
-							<i class="fa fa-user-plus"></i> Create an Account
-						</span>
-					<% end %>	
+						<%= link_to new_user_registration_path do %>
+							<span class="btn btn-outline-primary w-100 mb-2">
+								<i class="fa fa-user-plus"></i> Create an Account
+							</span>
+						<% end %>	
+					<%# end %>
 				<% end %>
 			</div>
 		</div>
-			<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
-			<div class="shape-3 shape-sm-2 bg-primary rounded-circle"></div>
-			<div class="shape-4 shape-sm-2 bg-primary rounded-circle"></div>
-			<div class="shape-5 shape-xs bg-secondary rounded-circle"></div>
-			<div class="shape-6 shape-xs bg-tertiary rounded-circle"></div>
-			<div class="shape-7 shape-xs-2 bg-tertiary rounded-circle"></div>
-			<div class="shape-8 shape-xs-2 bg-primary rounded-circle"></div>
+		<div class="shape-1 shape-sm bg-secondary rounded-circle"></div>
+		<div class="shape-3 shape-sm-2 bg-primary rounded-circle"></div>
+		<div class="shape-4 shape-sm-2 bg-primary rounded-circle"></div>
+		<div class="shape-5 shape-xs bg-secondary rounded-circle"></div>
+		<div class="shape-6 shape-xs bg-tertiary rounded-circle"></div>
+		<div class="shape-7 shape-xs-2 bg-tertiary rounded-circle"></div>
+		<div class="shape-8 shape-xs-2 bg-primary rounded-circle"></div>
 	</section>
   <!-- end of banner -->
 
@@ -80,19 +80,20 @@
 			</div>
 		</div>
 	</section>
+	
 
   <!-- start of how-it-works tab -->
 	<section class="section-padding how-it-works-tab mt-5 pt-0 overflow-hidden">
 	  <div class="container">
 	    <div class="row justify-content-center">
-		    <div class="col-lg-6 col-md-9 text-center mt-5 mb-5">
+		    <div class="col-lg-6 col-md-9 text-center mt-2 mb-5">
 		      <h2 class="section-title">Brainstaq <strong class="text-primary">Features</strong></h2>
 		      <p>Brainstaq provides the tools to help entrepreneurs create and manage their brands, 
 					projects and documents like business plans, financial models, invoices, 
 					and raise funds via crowdfunding.</p>
 		    </div>
-		    <!--<div class="col-lg-11">
-          <ul class="nav nav-pills justify-content-center mb-20" id="pills-tab" role="tablist">
+				<div class="col-lg-11">
+					<ul class="nav nav-pills d-flex flex-wrap justify-content-center mb-20" id="pills-tab" role="tablist">
 						<li class="nav-item mb-20" role="presentation">
 							<a class="nav-link active" id="pill-management-tab" data-toggle="pill" href="#management-tab" role="tab" aria-controls="management-tab" aria-selected="true">
 								<i class="circle-shape"></i>Setup Brand
@@ -113,30 +114,7 @@
 								<i class="circle-shape"></i>Crowdfunding
 							</a>
 						</li>
-					</ul> -->
-          <div class="col-lg-11">
-            <ul class="nav nav-pills d-flex flex-wrap justify-content-center mb-20" id="pills-tab" role="tablist">
-              <li class="nav-item mb-20" role="presentation">
-                <a class="nav-link active" id="pill-management-tab" data-toggle="pill" href="#management-tab" role="tab" aria-controls="management-tab" aria-selected="true">
-                  <i class="circle-shape"></i>Setup Brand
-                </a>
-              </li>
-              <li class="nav-item mb-20" role="presentation">
-                <a class="nav-link" id="pill-chat-tab" data-toggle="pill" href="#chat-tab" role="tab" aria-controls="chat-tab" aria-selected="false">
-                  <i class="circle-shape"></i>Business Documents
-                </a>
-              </li>
-              <li class="nav-item mb-20" role="presentation">
-                <a class="nav-link" id="pill-analytics-tab" data-toggle="pill" href="#analytics-tab" role="tab" aria-controls="analytics-tab" aria-selected="false">
-                  <i class="circle-shape"></i>Academy
-                </a>
-              </li>
-              <li class="nav-item mb-20" role="presentation">
-                <a class="nav-link" id="pill-collaboration-tab" data-toggle="pill" href="#collaboration-tab" role="tab" aria-controls="collaboration-tab" aria-selected="false">
-                  <i class="circle-shape"></i>Crowdfunding
-                </a>
-              </li>
-            </ul>
+					</ul>
 					<div class="tab-content" id="pills-tabContent" data-aos="fade-in">
 						<div class="tab-pane fade show active" id="management-tab" role="tabpanel" aria-labelledby="pill-management-tab">
 							<div class="row align-items-center">
@@ -227,10 +205,7 @@
 				</div>
 			</div>
 		</div>
-
     <%= render partial: "layouts/ideas", locals: { ideas: @ideas} %>
-		
-	  </div>
 	  <div class="row justify-content-center mt-4 mb-5">
 		  <div class="col-7 text-center">
         <%= link_to ideas_path, class: "btn btn-primary has-icon" do %>View More
